@@ -1,14 +1,16 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.utils.decorators import method_decorator
 from django.contrib import auth
 from django.contrib.auth.models import User
-from .models import UserProfile
+from user_profile.models import UserProfile
+from .serializers import UserSerializer
 
 @method_decorator(csrf_protect, name='dispatch')
 class CheckAuthenticatedView(APIView):
+    permission_classes = (AllowAny, )
 
     def get(self, request, format=None):
         try:
@@ -32,6 +34,7 @@ class SignUpView(APIView):
             username = data['username']
             password = data['password']
             re_password = data['re_password']
+            
             if password == re_password:
                 if User.objects.filter(username=username).exists():
                     return Response({'error': 'User already exists'})
@@ -74,6 +77,7 @@ class LoginView(APIView):
             return Response({'error': 'Something went wrong'})
 
 class LogoutView(APIView):
+    permission_classes = (IsAuthenticated, )
     
     def post(self, request, format=None):
         try:
@@ -90,6 +94,32 @@ class GetCSRFToken(APIView):
     def get(self, request, format=None):
         try:
             return Response(({'success': 'Cookie set'}))
+        except Exception as e:
+            print(e)
+            return Response({'error': 'Something went wrong'})
+
+
+class DeleteAccountView(APIView):
+    permission_classes = (IsAuthenticated, )
+
+    def delete(self, request, format=None):
+        try:
+            user = self.request.user
+            user = User.objects.filter(id=user.id).delete()
+            return Response(({'success': 'User deleted'}))
+        except Exception as e:
+            print(e)
+            return Response({'error': 'Something went wrong'})
+
+
+class GetUsersView(APIView):
+    permission_classes = (AllowAny, )
+
+    def get(self, request, format=None):
+        try:
+            users = User.objects.all()
+            users = UserSerializer(users, many=True)
+            return Response(users.data)
         except Exception as e:
             print(e)
             return Response({'error': 'Something went wrong'})
