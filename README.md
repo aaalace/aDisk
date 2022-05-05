@@ -1,5 +1,5 @@
-cd adisk
-python manage.py runserver
+### cd adisk
+> python manage.py runserver
 
-cd client
-npm start
+### cd client
+> npm start
