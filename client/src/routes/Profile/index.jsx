@@ -1,7 +1,7 @@
 import React from "react"
 import './style.scss'
 
-const Profile = () => {
+export const Profile = () => {
 
     return (
       <div className="profile">
@@ -9,5 +9,3 @@ const Profile = () => {
       </div>
     );
 }
-
-export default Profile

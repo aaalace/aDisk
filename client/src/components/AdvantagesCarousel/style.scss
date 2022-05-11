@@ -1,0 +1,49 @@
+.adv-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 45vw;
+    height: 85vh;
+    background: linear-gradient(to right, rgba(47, 60, 179, 0.7), rgba(183, 58, 255, 0.7)), url('../../images/servers.jpg') no-repeat;
+    background-size: cover;
+    border-radius: 0 20px 20px 0;
+
+    .adv-carousel-name-container{
+        display: flex;
+        justify-content: left;
+        width: 80%;
+
+        .icon {
+            font-family: 'Courier New', monospace;
+            font-size: 35px;
+            font-weight: 500;
+            color: white;
+        }
+    }
+
+    .adv-carousel-description-container{
+        display: flex;
+        justify-content: center;
+        width: 80%;
+
+        .desc {
+            font-size: 20px;
+            color: white;
+        }
+    }
+
+    .adv-carousel-bar-container{
+        display: flex;
+        justify-content: left;
+        width: 80%;
+
+        .bar {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            margin-right: 10%;
+        }
+    }
+
+}

@@ -1,13 +1,16 @@
 import React from "react"
 import './style.scss'
+import { AdvantagesCarousel } from "../../components/AdvantagesCarousel";
+import { LoginForm } from "../../components/LoginForm";
 
-const Login = () => {
+export const Login = () => {
 
     return (
-      <div className="login">
-          login
-      </div>
+        <div className="login-page">
+            <div className="login-container">
+                <LoginForm/>
+                <AdvantagesCarousel/>
+            </div>
+        </div>
     );
 }
-
-export default Login
