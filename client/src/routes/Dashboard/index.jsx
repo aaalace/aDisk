@@ -1,7 +1,7 @@
 import React from "react"
 import './style.scss'
 
-export const Dashboard = () => {
+const Dashboard = (props) => {
 
     return (
       <div className="dashboard">
@@ -9,3 +9,5 @@ export const Dashboard = () => {
       </div>
     );
 }
+
+export default Dashboard

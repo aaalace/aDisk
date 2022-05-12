@@ -1,16 +1,24 @@
 import React from "react"
 import './style.scss'
-import { AdvantagesCarousel } from "../../components/AdvantagesCarousel";
-import { LoginForm } from "../../components/LoginForm";
+import AdvantagesCarousel from "../../components/AdvantagesCarousel";
+import LoginForm from "../../components/LoginForm";
 
-export const Login = () => {
+const Login = (props) => {
 
     return (
-        <div className="login-page">
+        <div className="login-page" style={props.responsive ? {} : {backgroundColor: 'rgb(249, 248, 248)'}}>
+            {props.responsive ? 
             <div className="login-container">
-                <LoginForm/>
+                <LoginForm responsive={props.responsive}/>
+            </div>
+            :
+            <div className="login-container">
+                <LoginForm responsive={props.responsive}/>
                 <AdvantagesCarousel/>
             </div>
+            }
         </div>
     );
 }
+
+export default Login

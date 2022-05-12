@@ -1,5 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.http import JsonResponse
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.utils.decorators import method_decorator
@@ -7,6 +8,8 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from user_profile.models import UserProfile
 from .serializers import UserSerializer
+from validate_email import validate_email
+from django.middleware.csrf import get_token
 
 @method_decorator(csrf_protect, name='dispatch')
 class CheckAuthenticatedView(APIView):
@@ -14,6 +17,8 @@ class CheckAuthenticatedView(APIView):
 
     def get(self, request, format=None):
         try:
+            user = self.request.user
+
             isAuthenticated = User.is_authenticated
 
             if isAuthenticated:
@@ -31,27 +36,30 @@ class SignUpView(APIView):
     def post(self, request, format=None):
         try:
             data = self.request.data
+
+            email = data['email']
             username = data['username']
             password = data['password']
             re_password = data['re_password']
             
-            if password == re_password:
-                if User.objects.filter(username=username).exists():
-                    return Response({'error': 'User already exists'})
-                else:
-                    if len(password) < 8:
-                        return Response({'error': 'Password must be at least 8 characters'})
+            if validate_email(email):
+                if password == re_password:
+                    if User.objects.filter(username=username).exists():
+                        return Response({'error': 'User already exists'})
+                    elif User.objects.filter(email=email).exists():
+                        return Response({'error': 'Email is already in use'})
                     else:
-                        user = User.objects.create_user(username=username, password=password)
-                        user.save()
+                        if len(password) < 8:
+                            return Response({'error': 'Password must be at least 8 characters'})
+                        else:
+                            user = User.objects.create_user(email=email, username=username, password=password)
 
-                        user = User.objects.get(id=user.id)
-                        user_profile = UserProfile(user=user, first_name='', last_name='', user_id=user.id)
-                        user_profile.save()
+                            user = User.objects.get(id=user.id)
 
-                        return Response({'success': 'User created'})
-
-            return Response({'error': 'Passwords do not match'})
+                            UserProfile.objects.create(user=user, first_name='', last_name='', user_id=user.id)
+                            return Response({'success': 'User created'})
+                return Response({'error': 'Passwords do not match'})
+            return Response({'error': 'Email does not exists'})
         except:
             return Response({'error': 'Something went wrong'})
 
@@ -68,9 +76,12 @@ class LoginView(APIView):
 
             user = auth.authenticate(username=username, password=password)
 
+            user_model = User.objects.get(id=user.id)
+            user_objects = UserSerializer(user_model).data
+
             if user is not None:
                 auth.login(request, user)
-                return Response({'success': 'User authenticated', 'username': username})
+                return Response({'success': 'User authenticated', 'username': username, 'email': user_objects['email']})
             return Response({'error': 'User is not authenticated'})
         except Exception as e:
             print(e)
@@ -93,7 +104,7 @@ class GetCSRFToken(APIView):
 
     def get(self, request, format=None):
         try:
-            return Response(({'success': 'Cookie set'}))
+            return JsonResponse({'csrfToken': get_token(request)})
         except Exception as e:
             print(e)
             return Response({'error': 'Something went wrong'})

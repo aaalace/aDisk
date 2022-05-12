@@ -1,13 +1,28 @@
+.mobile-login-header {
+    position: relative;
+    top: 0;
+    height: 25vh;
+    width: 100%;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 60%, 70% 90%, 30% 95%, 0% 70%);
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 60%, 70% 90%, 30% 95%, 0% 70%);
+    background-color: #9C68F0;
+
+    p {        
+        display: table-caption;
+        font-size: 40px;
+        color: white;
+        margin-top: 3vh;
+        margin-left: 10vw;
+    }
+}
+
+
 .login-form {
     display: flex;
-    width: 25vw;
-    height: 85vh;
-    border-radius: 20px 0 0 20px;
-    background-color: rgb(255, 255, 255);
+    min-height: 85vh;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
-
+    background-color: white;
 
     .login-form-container {
         margin-bottom: 10%;

@@ -13,7 +13,6 @@ class GetUserProfileView(APIView):
             user = self.request.user
             username = user.username
 
-            user = User.objects.get(id=user.id)
             user_profile = UserProfile.objects.get(user=user)
             user_profile = UserProfileSerializer(user_profile)
 
@@ -37,8 +36,6 @@ class UpdateUserProfileView(APIView):
             last_name = data['last_name']
             prev_first_name = user_profile.data['first_name']
             prev_last_name = user_profile.data['last_name']
-
-            user = User.objects.get(id=user.id)
 
             UserProfile.objects.filter(user=user).update(first_name=first_name, last_name=last_name)
 

@@ -2,7 +2,7 @@ import React from "react"
 import './style.scss'
 import { Link } from 'react-router-dom';
 
-export const AdvantagesCarousel = () => {
+const AdvantagesCarousel = (props) => {
 
     return (
       <div className="adv-carousel">
@@ -20,3 +20,5 @@ export const AdvantagesCarousel = () => {
       </div>
     );
 }
+
+export default AdvantagesCarousel

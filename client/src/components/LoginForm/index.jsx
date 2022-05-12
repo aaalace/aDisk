@@ -1,16 +1,55 @@
-import React from "react"
+import React, { useEffect } from "react"
 import './style.scss'
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { login } from "../../actions/auth";
+import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import CSRFToken from "../CSRFToken";
 
-export const LoginForm = () => {
+const MobileLoginHeader = () => {
+    return(
+        <div className="mobile-login-header">
+            <p>Welcome Back</p>
+        </div>
+    )
+}
+
+const LoginForm = (props) => {
+    const navigate = useNavigate();
+
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    
+    useEffect(() => {
+        if(props.isAuthenticated){
+            navigate('/profile')
+        }
+    }, [])
+
+    const onSubmit = e => {
+        e.preventDefault()
+        props.login(username, password)
+        navigate('/profile')
+        setUsername('')
+        setPassword('')
+    }
 
     return (
-      <div className="login-form">
-        <div className="login-form-container">
-            <div className="page-info-container">
-                <h2 className="page-name">Login</h2>
-                <p className="page-comm">Save your files in a safe place!</p>
-            </div>
+      <div className="login-form" style={props.responsive ? {width: '100vw', height: '100vh'} : {width: '25vw', borderRadius: '20px 0 0 20px', justifyContent: "center"}}>
+        {props.responsive ?
+            <MobileLoginHeader/>
+        :
+        null}
+        <div className="login-form-container" >
+            {props.responsive ?
+                null
+            :
+                <div className="page-info-container">
+                    <h2 className="page-name">Login</h2>
+                    <p className="page-comm">Save your files in a safe place!</p>
+                </div>
+            }
             
             <div className="login-types-container">
                 <button className="google-sign-in"><img alt="" src="../images/google.png" className="google-img"></img> Sign in with Google</button>
@@ -18,25 +57,27 @@ export const LoginForm = () => {
                 <div className="custom-hr">
                     <p>or Sign in with Username</p>
                 </div>
-                
-                <div className="username-sign-in">
-                    <div className="username-line">
-                        <p>Username</p>
-                        <input type='text'/>
+                <form onSubmit={e => onSubmit(e)}>
+                    <CSRFToken/>
+                    <div className="username-sign-in">
+                        <div className="username-line">
+                            <p>Username</p>
+                            <input type='text' onChange={e => setUsername(e.target.value)} value={username}/>
+                        </div>
+                        <div className="username-line">
+                            <p>Password</p>
+                            <input type='password' onChange={e => setPassword(e.target.value)} value={password}/>
+                        </div>
+                    
                     </div>
-                    <div className="username-line">
-                        <p>Password</p>
-                        <input type='password'/>
+                    
+                    <div className="remember-container">
+                        <input type="checkbox" value="lsRememberMe"/>
+                        <label htmlFor="rememberMe">Remember me</label>
                     </div>
-                
-                </div>
-                
-                <div className="remember-container">
-                    <input type="checkbox" value="lsRememberMe"/>
-                    <label for="rememberMe">Remember me</label>
-                </div>
-                
-                <button className="sign-in-button">Login</button>
+                    
+                    <button type="submit" className="sign-in-button">Sign in</button>
+                </form>
 
                 <div className="not-registered-container">
                     <p className="question">Not registered yet?&nbsp;&nbsp;</p>
@@ -47,3 +88,11 @@ export const LoginForm = () => {
       </div>
     );
 }
+
+const mapStateToProps = (state) => {
+    return {
+        isAuthenticated: state.auth.isAuthenticated
+    }
+}
+
+export default connect(mapStateToProps, {login})(LoginForm)
