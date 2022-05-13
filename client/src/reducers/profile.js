@@ -1,6 +1,7 @@
 import { 
     LOAD_PROFILE_SUCCESS,
-    LOAD_PROFILE_FAIL
+    LOAD_PROFILE_FAIL,
+    LOGOUT_SUCCESS_PROFILE
 } from '../actions/types'
 
 const initialState = {
@@ -20,11 +21,12 @@ export default function(state = initialState, action) {
                 user_id: payload.user_id, 
                 email: payload.email,
                 username: payload.username,
-                first_name: payload.first_name,
-                last_name: payload.last_name
+                first_name: payload.profile.first_name,
+                last_name: payload.profile.last_name
             }
         
         case LOAD_PROFILE_FAIL:
+        case LOGOUT_SUCCESS_PROFILE:
             return initialState
 
         default:

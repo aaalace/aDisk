@@ -1,28 +1,32 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.contrib.auth.models import User
 from .models import UserProfile
 from .serializers import UserProfileSerializer
+from user.serializers import UserSerializer
 
 class GetUserProfileView(APIView):
-    permission_classes = (IsAuthenticated, )
 
     def get(self, request, format=None):
         try:
             user = self.request.user
-            username = user.username
+
+            user_model = User.objects.get(id=user.id)
+            user_objects = UserSerializer(user_model)
+
+            user_id = user_objects.data['id']
+            username = user_objects.data['username']
+            email = user_objects.data['email']
 
             user_profile = UserProfile.objects.get(user=user)
             user_profile = UserProfileSerializer(user_profile)
 
-            return Response({'profile': user_profile.data, 'username': username})
+            return Response({'profile': user_profile.data, 'username': str(username), 'user_id': user_id, 'email': email})
         except Exception as e:
             print(e)
             return Response({'error': 'Something went wrong'})
 
 class UpdateUserProfileView(APIView):
-    permission_classes = (IsAuthenticated, )
 
     def put(self, request, format=None):
         try:

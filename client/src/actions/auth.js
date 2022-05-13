@@ -1,5 +1,6 @@
 import { app } from '../axios'
 import Cookies from 'js-cookie'
+import { loadUser } from './profile'
 import { 
     REGISTER_SUCCESS, 
     REGISTER_FAIL, 
@@ -8,7 +9,8 @@ import {
     LOGOUT_SUCCESS, 
     LOGOUT_FAIL,
     AUTHENTICATED_SUCCESS, 
-    AUTHENTICATED_FAIL 
+    AUTHENTICATED_FAIL,
+    LOGOUT_SUCCESS_PROFILE
 } from './types'
 
 export const checkAuth = () => async dispatch => {
@@ -28,26 +30,30 @@ export const checkAuth = () => async dispatch => {
                 type: AUTHENTICATED_FAIL,
                 payload: false
             })
+            return false
         }
         else if(result.data.isAuthenticated === 'success'){
             dispatch({
                 type: AUTHENTICATED_SUCCESS,
                 payload: true
             })
+            return true
         }
-
         else{
             dispatch({
                 type: AUTHENTICATED_FAIL,
                 payload: false
             })
+            return false
         }
-    } catch (error) {
+    } 
+    catch (error) {
         console.log('error in authcheck')
         dispatch({
             type: AUTHENTICATED_FAIL,
             payload: false
         })
+        return false
     }
 }
 
@@ -69,9 +75,9 @@ export const login = (username, password) => async dispatch => {
 
         if(result.data.success){
             dispatch({
-                type: LOGIN_SUCCESS,
-                payload: result.data
+                type: LOGIN_SUCCESS
             })
+            dispatch(loadUser())
             return true
         }
         else {
@@ -109,6 +115,9 @@ export const logout = () => async dispatch => {
         if(result.success){
             dispatch({
                 type: LOGOUT_SUCCESS,
+            })
+            dispatch({
+                type: LOGOUT_SUCCESS_PROFILE,
             })
             return true
         }

@@ -27,7 +27,7 @@ const RegisterForm = (props) => {
 
     useEffect(() => {
         if(props.isAuthenticated){
-            navigate('/profile')
+            navigate('/dashboard')
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

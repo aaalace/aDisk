@@ -2,12 +2,17 @@ import React, {Fragment} from "react"
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { checkAuth } from "../../actions/auth";
+import { loadUser } from "../../actions/profile";
 
 
 const CheckerContainer = (props) => {
 
     useEffect(() => {
-        props.checkAuth()
+        const authProcess = () => {
+            props.checkAuth()
+            props.loadUser()
+        }
+        authProcess()
     }, [])
 
     return (
@@ -17,4 +22,4 @@ const CheckerContainer = (props) => {
     );
 }
 
-export default connect(null, {checkAuth})(CheckerContainer)
+export default connect(null, {checkAuth, loadUser})(CheckerContainer)

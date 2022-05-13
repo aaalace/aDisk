@@ -14,7 +14,7 @@ export const loadUser = () => async dispatch => {
             }
         }
 
-        const result = await app.post(`/user_profile/get_user_profile`, config)
+        const result = await app.get(`/user_profile/get_user_profile`, config)
         
         if(result.data.error){
             dispatch({
