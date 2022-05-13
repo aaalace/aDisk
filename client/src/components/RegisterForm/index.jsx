@@ -29,6 +29,7 @@ const RegisterForm = (props) => {
         if(props.isAuthenticated){
             navigate('/profile')
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     let readyToSend = false
@@ -36,12 +37,25 @@ const RegisterForm = (props) => {
         readyToSend = true
     }
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault()
-        props.register(email, username, password, rePassword)
-        navigate('/login')
+        const res = await props.register(email, username, password, rePassword)
+        if(res){
+            navigate('/login')
+        }
+        else{
+            registerErrorStaff()
+        }
+        setUsername('')
+        setPassword('')
+        setEmail('')
+        setRePassword('')
     }
 
+    const registerErrorStaff = () => {
+        
+    }
+ 
     return (
       <div className="register-form" style={props.responsive ? {width: '100vw', height: '100vh'} : {width: '25vw', borderRadius: '20px 0 0 20px', justifyContent: "center"}}>
         {termsState ? <TermsAndConditions state={setTermsState}/> : null}

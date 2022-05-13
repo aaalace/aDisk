@@ -1,29 +1,76 @@
-import { REGISTER_SUCCESS, REGISTER_FAIL, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, LOGOUT_FAIL } from './types'
+import { app } from '../axios'
 import Cookies from 'js-cookie'
+import { 
+    REGISTER_SUCCESS, 
+    REGISTER_FAIL, 
+    LOGIN_SUCCESS, 
+    LOGIN_FAIL, 
+    LOGOUT_SUCCESS, 
+    LOGOUT_FAIL,
+    AUTHENTICATED_SUCCESS, 
+    AUTHENTICATED_FAIL 
+} from './types'
+
+export const checkAuth = () => async dispatch => {
+    
+    try {
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const result = await app.get(`/user/auth`, config)
+
+        if(result.data.error || result.data.isAuthenticated === 'error'){
+            dispatch({
+                type: AUTHENTICATED_FAIL,
+                payload: false
+            })
+        }
+        else if(result.data.isAuthenticated === 'success'){
+            dispatch({
+                type: AUTHENTICATED_SUCCESS,
+                payload: true
+            })
+        }
+
+        else{
+            dispatch({
+                type: AUTHENTICATED_FAIL,
+                payload: false
+            })
+        }
+    } catch (error) {
+        console.log('error in authcheck')
+        dispatch({
+            type: AUTHENTICATED_FAIL,
+            payload: false
+        })
+    }
+}
+
 
 export const login = (username, password) => async dispatch => {
     
     try {
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken')
+            }
+        }
+
         const body = JSON.stringify({username, password})
-        const csrftoken = Cookies.get('csrftoken')
-        let headers = new Headers()
-        headers.append('Accept', 'application/json')
-        headers.append('Content-Type', 'application/json')
-        headers.append('X-CSRFToken', csrftoken)
 
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/user/login`, {
-            method: 'POST',
-            body: body,
-            headers: headers,
-            credentials: 'include'
-        })
+        const result = await app.post(`/user/login`, body, config)
 
-        const result = await response.json()
-
-        if(result.success){
+        if(result.data.success){
             dispatch({
                 type: LOGIN_SUCCESS,
-                payload: result
+                payload: result.data
             })
             return true
         }
@@ -37,7 +84,6 @@ export const login = (username, password) => async dispatch => {
         dispatch({
             type: LOGIN_FAIL
         })
-        console.log(error)
         console.log('error in login')
         return false
     }
@@ -83,24 +129,19 @@ export const logout = () => async dispatch => {
 
 export const register = (email, username, password, re_password) => async dispatch =>  {
 
-    try {
+    try {        
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken')
+            }
+        }
         const body = JSON.stringify({email, username, password, re_password})
-        const csrftoken = Cookies.get('csrftoken')
-        let headers = new Headers()
-        headers.append('Accept', 'application/json')
-        headers.append('Content-Type', 'application/json')
-        headers.append('X-CSRFToken', csrftoken)
 
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/user/register`, {
-            method: 'POST',
-            body: body,
-            headers: headers,
-            credentials: 'include'
-        })
+        const result = await app.post(`/user/register`, body, config)
 
-        const result = await response.json()
-
-        if(result.success){
+        if(result.data.success){
             dispatch({
                 type: REGISTER_SUCCESS
             })

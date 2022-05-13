@@ -8,6 +8,7 @@ import { useState } from "react";
 import CSRFToken from "../CSRFToken";
 
 const MobileLoginHeader = () => {
+
     return(
         <div className="mobile-login-header">
             <p>Welcome Back</p>
@@ -25,14 +26,25 @@ const LoginForm = (props) => {
         if(props.isAuthenticated){
             navigate('/profile')
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault()
-        props.login(username, password)
-        navigate('/profile')
+
+        const res = await props.login(username, password)
+        if(res){
+            navigate('/profile')
+        }
+        else{
+            loginErrorStaff()
+        }
         setUsername('')
         setPassword('')
+    }
+
+    const loginErrorStaff = () => {
+
     }
 
     return (

@@ -1,12 +1,16 @@
-import { REGISTER_SUCCESS, REGISTER_FAIL, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, LOGOUT_FAIL } from '../actions/types'
+import { 
+    REGISTER_SUCCESS, 
+    REGISTER_FAIL, 
+    LOGIN_SUCCESS, 
+    LOGIN_FAIL, 
+    LOGOUT_SUCCESS, 
+    LOGOUT_FAIL,
+    AUTHENTICATED_SUCCESS, 
+    AUTHENTICATED_FAIL 
+} from '../actions/types'
 
 const initialState = {
-    id: null,
-    isAuthenticated: null,
-    email: '',
-    username: '',
-    first_name: '',
-    last_name: '',
+    isAuthenticated: null
 }
 
 export default function(state = initialState, action) {
@@ -16,20 +20,20 @@ export default function(state = initialState, action) {
         case REGISTER_SUCCESS: 
             return {...state, isAuthenticated: false}
 
-        case REGISTER_FAIL: 
-            return state
-        
         case LOGIN_SUCCESS: 
-            return {...state, isAuthenticated: true, username: payload.username, email: payload.email}
-
-        case LOGIN_FAIL: 
-            return state
-
+            return {...state, isAuthenticated: true}
+    
         case LOGOUT_SUCCESS: 
-            return {...state, isAuthenticated: false, username: '', email: ''}
+            return {...initialState, isAuthenticated: false}
 
+        case REGISTER_FAIL: 
+        case LOGIN_FAIL: 
         case LOGOUT_FAIL: 
             return state
+
+        case AUTHENTICATED_SUCCESS:
+        case AUTHENTICATED_FAIL:
+            return {...state, isAuthenticated: payload}
 
         default:
             return state

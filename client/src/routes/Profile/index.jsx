@@ -7,9 +7,13 @@ import { useNavigate } from 'react-router-dom';
 const Profile = (props) => {
     const navigate = useNavigate();
 
-    const logOut = () => {
-        props.logout()
-        navigate('/login')
+    const logOut = async e => {
+        e.preventDefault()
+
+        const res = await props.logout()
+        if(res){
+            navigate('/login')
+        }
     }
 
     return (

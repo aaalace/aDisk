@@ -11,9 +11,7 @@ from .serializers import UserSerializer
 from validate_email import validate_email
 from django.middleware.csrf import get_token
 
-@method_decorator(csrf_protect, name='dispatch')
 class CheckAuthenticatedView(APIView):
-    permission_classes = (AllowAny, )
 
     def get(self, request, format=None):
         try:
@@ -76,19 +74,15 @@ class LoginView(APIView):
 
             user = auth.authenticate(username=username, password=password)
 
-            user_model = User.objects.get(id=user.id)
-            user_objects = UserSerializer(user_model).data
-
             if user is not None:
                 auth.login(request, user)
-                return Response({'success': 'User authenticated', 'username': username, 'email': user_objects['email']})
+                return Response({'success': 'User authenticated'})
             return Response({'error': 'User is not authenticated'})
         except Exception as e:
             print(e)
             return Response({'error': 'Something went wrong'})
 
 class LogoutView(APIView):
-    permission_classes = (IsAuthenticated, )
     
     def post(self, request, format=None):
         try:
@@ -111,7 +105,6 @@ class GetCSRFToken(APIView):
 
 
 class DeleteAccountView(APIView):
-    permission_classes = (IsAuthenticated, )
 
     def delete(self, request, format=None):
         try:
