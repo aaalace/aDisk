@@ -58,7 +58,7 @@ const LoginForm = (props) => {
                 null
             :
                 <div className="page-info-container">
-                    <h2 className="page-name">Login</h2>
+                    <h2 className="page-name">Sign in</h2>
                     <p className="page-comm">Save your files in a safe place!</p>
                 </div>
             }
