@@ -34,7 +34,7 @@ const LoginForm = (props) => {
 
         const res = await props.login(username, password)
         if(res){
-            navigate('/profile')
+            navigate('/dashboard')
         }
         else{
             loginErrorStaff()
@@ -48,12 +48,12 @@ const LoginForm = (props) => {
     }
 
     return (
-      <div className="login-form" style={props.responsive ? {width: '100vw', height: '100vh'} : {width: '25vw', borderRadius: '20px 0 0 20px', justifyContent: "center"}}>
+      <div className="login-form" style={props.responsive ? {width: '100vw', height: '100vh'} : {width: '25vw', borderRadius: '20px 0 0 20px'}}>
         {props.responsive ?
             <MobileLoginHeader/>
         :
-        null}
-        <div className="login-form-container" >
+            <div className="login-form-header"/>}
+        <div className="login-form-container">
             {props.responsive ?
                 null
             :
@@ -83,11 +83,6 @@ const LoginForm = (props) => {
                     
                     </div>
                     
-                    <div className="remember-container">
-                        <input type="checkbox" value="lsRememberMe"/>
-                        <label htmlFor="rememberMe">Remember me</label>
-                    </div>
-                    
                     <button type="submit" className="sign-in-button">Sign in</button>
                 </form>
 
@@ -96,6 +91,9 @@ const LoginForm = (props) => {
                     <Link className="solution" to='/register'>Create an account</Link>
                 </div>
             </div>
+        </div>
+        <div className="rights">
+            &#169; 2022 aDisk. All rights reserved | aDisk
         </div>            
       </div>
     );

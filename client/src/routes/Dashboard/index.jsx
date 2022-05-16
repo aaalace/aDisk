@@ -1,13 +1,16 @@
-import React from "react"
+import React, { useEffect } from "react"
 import './style.scss'
+import { Link } from "react-router-dom";
 
-const Dashboard = (props) => {
+const Dashboard = () => {
 
     return (
       <div className="dashboard">
-          dashboard
+          <h2>dashboard</h2>
+          <Link to='/profile'>profile</Link>
       </div>
     );
 }
+
 
 export default Dashboard

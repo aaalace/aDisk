@@ -21,8 +21,10 @@
     display: flex;
     min-height: 85vh;
     align-items: center;
+    justify-content: space-between;
     flex-direction: column;
     background-color: white;
+    padding: 0 0 25px 0;
 
     .login-form-container {
         margin-bottom: 10%;
@@ -108,23 +110,6 @@
                 }
             }
 
-            .remember-container {
-                display: flex;
-                align-items: center;
-                margin-top: 20px;
-
-                label {
-                    margin-left: 5px;
-                    font-size: 12px;
-                    font-weight: 600;
-                }
-
-                input {
-                    background-color: #9C68F0;
-                    padding: 10px;
-                }
-            }
-
             .sign-in-button {
                 display: flex;
                 align-items: center;
@@ -160,5 +145,12 @@
                 }
             }
         }
+    }
+
+    .rights {
+        width: 70%;
+        align-items: start;
+        font-size: 11px;
+        color: rgb(99, 99, 99);
     }
 }

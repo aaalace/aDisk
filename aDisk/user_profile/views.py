@@ -33,20 +33,15 @@ class UpdateUserProfileView(APIView):
             user = self.request.user
             data = self.request.data
 
-            user_profile = UserProfile.objects.get(user=user)
-            user_profile = UserProfileSerializer(user_profile)
-
             first_name = data['first_name']
             last_name = data['last_name']
-            prev_first_name = user_profile.data['first_name']
-            prev_last_name = user_profile.data['last_name']
 
             UserProfile.objects.filter(user=user).update(first_name=first_name, last_name=last_name)
 
             user_profile = UserProfile.objects.get(user=user)
             user_profile = UserProfileSerializer(user_profile)
 
-            return Response({'profile': user_profile.data, 'prev_data': {'first_name': prev_first_name, 'last_name': prev_last_name}})
+            return Response({'profile': user_profile.data})
         except Exception as e:
             print(e)
             return Response({'error': 'Something went wrong'})

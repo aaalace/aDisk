@@ -4,7 +4,7 @@
     justify-content: space-around;
     flex-direction: column;
     width: 45vw;
-    height: 85vh;
+    min-height: 85vh;
     background: linear-gradient(to right, rgba(47, 60, 179, 0.7), rgba(183, 58, 255, 0.7)), url('../../images/servers.jpg') no-repeat;
     background-size: cover;
     border-radius: 0 20px 20px 0;

@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { checkAuth } from "../../actions/auth";
 import { loadUser } from "../../actions/profile";
 
-
 const CheckerContainer = (props) => {
 
     useEffect(() => {

@@ -10,7 +10,9 @@ import {
     LOGOUT_FAIL,
     AUTHENTICATED_SUCCESS, 
     AUTHENTICATED_FAIL,
-    LOGOUT_SUCCESS_PROFILE
+    LOGOUT_SUCCESS_PROFILE,
+    DELETE_USER_SUCCESS,
+    DELETE_USER_FAIL
 } from './types'
 
 export const checkAuth = () => async dispatch => {
@@ -116,9 +118,6 @@ export const logout = () => async dispatch => {
             dispatch({
                 type: LOGOUT_SUCCESS,
             })
-            dispatch({
-                type: LOGOUT_SUCCESS_PROFILE,
-            })
             return true
         }
         else {
@@ -167,6 +166,40 @@ export const register = (email, username, password, re_password) => async dispat
             type: REGISTER_FAIL
         })
         console.log('error in register')
+        return false
+    }
+}
+
+export const deleteAccount = () => async dispatch =>  {
+
+    try {
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken')
+            }
+        }
+
+        const result = await app.delete(`/user/delete`, config)
+
+        if(result.data.success){
+            dispatch({
+                type: DELETE_USER_SUCCESS
+            })
+            return true
+        }
+        else {
+            dispatch({
+                type: DELETE_USER_FAIL
+            })
+        }
+        return false
+    } catch (err) {
+        dispatch({
+            type: DELETE_USER_FAIL
+        })
+        console.log('error in delete account')
         return false
     }
 }

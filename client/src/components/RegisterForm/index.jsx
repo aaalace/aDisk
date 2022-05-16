@@ -57,12 +57,12 @@ const RegisterForm = (props) => {
     }
  
     return (
-      <div className="register-form" style={props.responsive ? {width: '100vw', height: '100vh'} : {width: '25vw', borderRadius: '20px 0 0 20px', justifyContent: "center"}}>
+      <div className="register-form" style={props.responsive ? {width: '100vw', height: '100vh'} : {width: '25vw', borderRadius: '20px 0 0 20px'}}>
         {termsState ? <TermsAndConditions state={setTermsState}/> : null}
         {props.responsive ?
             <MobileRegisterHeader/>
         :
-        null}
+            <div className="register-form-header"/>}
         <div className="register-form-container">
             {props.responsive ?
             null
@@ -101,18 +101,23 @@ const RegisterForm = (props) => {
                     
                     <div className="remember-container">
                         <input type="checkbox" value="terms"/>
-                        <label htmlFor="terms">I agree to the <i onClick={() => setTermsState(true)} className="terms">Terms & Conditions</i></label>
+                        <label htmlFor="terms">I agree to the <label onClick={() => setTermsState(true)} className="terms">Terms & Conditions</label></label>
                     </div>
                     
                     <button type="submit" className="register-button" disabled={readyToSend ? false : true} style={readyToSend ? {backgroundColor: '#9C68F0'}: {backgroundColor: '#7C7C7C'}}>Sign Up</button>
                 </form>
 
                 <div className="already-registered-container">
-                    <p className="question">Already have an account?&nbsp;&nbsp;</p>
-                    <Link className="solution" to='/login'>Sign in</Link>
+                    <div style={{display: 'flex'}}>
+                        <p className="question">Already have an account?&nbsp;&nbsp;</p>
+                        <Link className="solution" to='/login'>Sign in</Link>
+                    </div>
                 </div>
-            </div>
-        </div>            
+            </div> 
+        </div>
+        <div className="rights">
+            &#169; 2022 aDisk. All rights reserved | aDisk
+        </div>              
       </div>
     );
 }

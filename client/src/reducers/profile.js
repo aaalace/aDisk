@@ -1,7 +1,11 @@
 import { 
     LOAD_PROFILE_SUCCESS,
     LOAD_PROFILE_FAIL,
-    LOGOUT_SUCCESS_PROFILE
+    LOGOUT_SUCCESS,
+    UPDATE_PROFILE_SUCCESS, 
+    UPDATE_PROFILE_FAIL,
+    DELETE_USER_SUCCESS,
+    DELETE_USER_FAIL
 } from '../actions/types'
 
 const initialState = {
@@ -12,6 +16,7 @@ const initialState = {
     last_name: '',
 }
 
+// eslint-disable-next-line
 export default function(state = initialState, action) {
     const { type, payload } = action
 
@@ -26,8 +31,21 @@ export default function(state = initialState, action) {
             }
         
         case LOAD_PROFILE_FAIL:
-        case LOGOUT_SUCCESS_PROFILE:
+        case LOGOUT_SUCCESS:
             return initialState
+        
+        case UPDATE_PROFILE_SUCCESS:
+            return {...state,
+                first_name: payload.profile.first_name,
+                last_name: payload.profile.last_name
+            }
+
+        case DELETE_USER_SUCCESS:
+            return initialState
+
+        case UPDATE_PROFILE_FAIL:
+        case DELETE_USER_FAIL:
+            return state
 
         default:
             return state
