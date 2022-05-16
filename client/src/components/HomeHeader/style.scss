@@ -1,0 +1,48 @@
+.home-header {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 64px;
+    width: 100%;
+
+    
+    @media screen and (max-width: 767px) {
+        height: 60px;
+    }
+
+    .home-header_row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 65%;
+
+        @media screen and (max-width: 767px) {
+            width: 90%;
+        }
+
+        .icon {
+            font-family: 'Courier New', monospace;
+            font-size: 35px;
+            font-weight: 500;
+            color: rgb(0, 0, 0);
+        }
+
+        .home-header_sign-in {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            height: 42px;
+            background-color: #444444;
+            color: white;
+            border: 1px solid transparent;
+            border-radius: 20px;
+            font-size: 14px;
+            letter-spacing: 0.7px;
+        }
+    }
+}
