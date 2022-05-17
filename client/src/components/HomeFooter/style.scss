@@ -1,0 +1,32 @@
+.home-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    bottom: 0;
+    height: 64px;
+    width: 100%;
+    border: 1px solid transparent;
+    background-color: #ffffff;
+
+    .home-footer_row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 40%;
+
+        .rights-footer {
+            align-items: start;
+            font-size: 16px;
+            color: rgb(99, 99, 99);
+        }
+
+        .terms-footer {
+            font-size: 16px;
+            color: #0073ff;
+            cursor: pointer;
+            margin: 0;
+        }
+    }
+}

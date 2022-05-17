@@ -1,8 +1,9 @@
-import React from "react"
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { connect } from 'react-redux'
 import './style.scss'
 import { HomeHeader } from "../../components/HomeHeader";
+import { HomeFooter } from '../../components/HomeFooter';
 
 const HomeBlocksContainer = (props) => {
     const navigate = useNavigate()
@@ -10,40 +11,65 @@ const HomeBlocksContainer = (props) => {
     return (
         <div className="home-blocks-container">
 
-            <div className="home-block-container">
+            <div className="home-block-container" style={{backgroundColor: '#f1f5f8'}}>
                 <div className="home-block">
-                    <div className="home-block_info">
-                        <h2 className="heading">
+                    <div style={{gridArea: '2 / 1 / 6 / 3'}} className="home-block_info">
+                        <div className="heading">
                             Secure storage for your photos
-                        </h2>
-                        <h4 className="description">
+                        </div>
+                        <div className="description">
                             Enable auto-upload on your phone and Yandex Disk will store all your photos in their original resolution.
-                        </h4>
+                        </div>
                         <button className="home-button" onClick={() => navigate('/register')}>Get started</button>
                     </div>
-                    <div className="home-block_image">
+                    <div style={{gridArea: '1 / 3 / 8 / 6'}} className="home-block_image"/>
+                </div>
+            </div>
 
+            <div className="home-block-container">
+                <div className="home-block">
+                    <div style={{gridArea: '1 / 1 / 8 / 4'}} className="home-block_image"/>
+                    <div style={{gridArea: '2 / 4 / 6 / 6', alignItems: 'flex-end'}} className="home-block_info">
+                        <div className="heading" style={{width: '80%'}}>
+                            Secure storage for your photos
+                        </div>
+                        <div className="description">
+                            Enable auto-upload on your phone and Yandex Disk will store all your photos in their original resolution.
+                        </div>
+                        <button className="home-button" onClick={() => navigate('/register')}>Get started</button>
                     </div>
                 </div>
             </div>
 
             <div className="home-block-container" style={{backgroundColor: '#f1f5f8'}}>
                 <div className="home-block">
-                    <div className="home-block_info">
-                        <h2 className="heading">
+                    <div style={{gridArea: '2 / 1 / 6 / 3'}} className="home-block_info">
+                        <div className="heading">
                             Secure storage for your photos
-                        </h2>
-                        <h4 className="description">
+                        </div>
+                        <div className="description">
                             Enable auto-upload on your phone and Yandex Disk will store all your photos in their original resolution.
-                        </h4>
+                        </div>
                         <button className="home-button" onClick={() => navigate('/register')}>Get started</button>
                     </div>
-                    <div className="home-block_image">
-
-                    </div>
+                    <div style={{gridArea: '1 / 3 / 8 / 6'}} className="home-block_image"/>
                 </div>
             </div>
 
+            <div className="home-block-container">
+                <div className="home-block">
+                    <div style={{gridArea: '1 / 1 / 8 / 4'}} className="home-block_image"/>
+                    <div style={{gridArea: '2 / 4 / 6 / 6', alignItems: 'flex-end'}} className="home-block_info">
+                        <div className="heading" style={{width: '80%'}}>
+                            Secure storage for your photos
+                        </div>
+                        <div className="description">
+                            Enable auto-upload on your phone and Yandex Disk will store all your photos in their original resolution.
+                        </div>
+                        <button className="home-button" onClick={() => navigate('/register')}>Get started</button>
+                    </div>
+                </div>
+            </div>
         </div>
       );
 }
@@ -56,6 +82,7 @@ const Home = (props) => {
       <div className="home">
             <HomeHeader responsive={props.responsive}/>
             <HomeBlocksContainer responsive={props.responsive}/>
+            <HomeFooter/>
       </div>
     );
 }
