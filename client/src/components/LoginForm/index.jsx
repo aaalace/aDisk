@@ -27,7 +27,7 @@ const LoginForm = (props) => {
             navigate('/dashboard')
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [props.isAuthenticated, ])
 
     const onSubmit = async e => {
         e.preventDefault()

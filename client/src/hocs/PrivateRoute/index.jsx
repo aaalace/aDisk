@@ -2,7 +2,6 @@ import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 
 const PrivateRoute = ({children, isAuthenticated}) => {
-    console.log(isAuthenticated)
 
     if(isAuthenticated){
         return children
