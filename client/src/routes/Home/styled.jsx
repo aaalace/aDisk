@@ -59,7 +59,7 @@ export const HomeBlockName = styled.div`
     @media ${HomePageDevices.desktop} {
         font-size: 30px;
         margin: 10px 0;
-        width: 70%;
+        width: 75%;
     }
 
     @media ${HomePageDevices.tablet} {
@@ -78,7 +78,7 @@ export const HomeBlockDescription = styled.div`
     @media ${HomePageDevices.desktop} {
         font-size: 20px;
         margin: 10px 0;
-        width: 70%;
+        width: 75%;
     }
 
     @media ${HomePageDevices.tablet} {
@@ -95,7 +95,7 @@ export const HomeBlockButton = styled.div`
 
     @media ${HomePageDevices.desktop} {
         display: flex;
-        width: 70%;
+        width: 75%;
         margin: 30px 0;
         padding: 10px
     }
