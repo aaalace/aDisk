@@ -17,67 +17,46 @@
 
         .home-block {
             position: relative;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: repeat(7, 1fr);
-            grid-column-gap: 0px;
-            grid-row-gap: 0px;
-            width: 65%;
         
             .home-block_info { 
-                position: relative;
                 display: flex;
                 flex-direction: column;
-                justify-content: flex-end;
-                grid-template-rows: repeat(3, 1fr);
-                grid-row-gap: 40px;
-                z-index: 2;
+                align-items: center;
 
                 .heading {
-                    width: 70%;
-                    font-size: 30px;
                     font-weight: 700;
                     overflow: hidden;
                 }
 
                 .description {
-                    width: 80%;
-                    overflow: hidden;
-                    font-size: 20px;
                     font-weight: 500;
+                    overflow: hidden;
                 }
     
                 .home-button {
-                    width: 80%;
-                    height: 60px;
                     background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
                     border-radius: 30px;
                     border-style: none;
                     box-sizing: border-box;
                     color: #FFFFFF;
                     cursor: pointer;
-                    flex-shrink: 0;
                     font-size: 21px;
-                    text-align: center;
+                    align-items: center;
+                    justify-content: center;
                     box-shadow: rgba(80, 63, 205, 0.5) 7px 7px 10px;
                     text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
-                    user-select: none;
-                    -webkit-user-select: none;
-                    touch-action: manipulation;
         
                     &:hover {
                         box-shadow: rgba(80, 63, 205, 0.5) 7px 7px 5px;
-                        width: 70%;
+                        width: 80%;
                     }
                 }
             }
     
             .home-block_image {
                 position: relative;
-                display: flex;
-                z-index: 1;
+                background-repeat: no-repeat;
                 background-size: cover;
-                background: url('../../images/servers.jpg') 50% 50% no-repeat;
             }
         }
     }

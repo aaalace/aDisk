@@ -11,7 +11,7 @@ export const HomeFooter = () => {
                     Terms of Use
                 </div> 
                 <div className="rights-footer">
-                    &#169; 2022 aDisk 
+                    &#169;2022 aDisk 
                 </div>
                 <LanguagueChoice/>
             </div>

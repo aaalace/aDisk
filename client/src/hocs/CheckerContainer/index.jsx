@@ -7,12 +7,12 @@ import { loadUser } from "../../actions/profile";
 const CheckerContainer = (props) => {
 
     useEffect(() => {
-        const authProcess = () => {
-            props.checkAuth()
-            props.loadUser()
+        async function authProcess () {
+            await props.checkAuth()
+            await props.loadUser()
         }
         authProcess()
-    }, [])
+    }, [props])
 
     return (
       <Fragment>

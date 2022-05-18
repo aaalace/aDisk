@@ -18,7 +18,7 @@ const Profile = (props) => {
 
         const res = await props.logout()
         if(res){
-            navigate('/login')
+            navigate('/')
         }
     }
 
@@ -33,7 +33,7 @@ const Profile = (props) => {
         e.preventDefault()
         if (window.confirm('Are you sure you want to delete an account?')){
             props.deleteAccount()
-            navigate('/login')
+            navigate('/')
         }
     }
 

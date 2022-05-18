@@ -16,6 +16,11 @@
         align-items: center;
         width: 40%;
 
+        @media screen and (max-width: 767px) {
+            width: 90%;
+        }
+
+
         .rights-footer {
             align-items: start;
             font-size: 16px;

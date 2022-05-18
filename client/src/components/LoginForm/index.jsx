@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import './style.scss'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
@@ -6,28 +6,13 @@ import { login } from "../../actions/auth";
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import CSRFToken from "../CSRFToken";
-
-const MobileLoginHeader = () => {
-
-    return(
-        <div className="mobile-login-header">
-            <p>Welcome Back</p>
-        </div>
-    )
-}
+import { LoginFormStyled } from "./styled";
 
 const LoginForm = (props) => {
     const navigate = useNavigate();
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    
-    useEffect(() => {
-        if(props.isAuthenticated){
-            navigate('/dashboard')
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.isAuthenticated, ])
 
     const onSubmit = async e => {
         e.preventDefault()
@@ -48,21 +33,13 @@ const LoginForm = (props) => {
     }
 
     return (
-      <div className="login-form" style={props.responsive ? {width: '100vw', height: '100vh'} : {width: '25vw', borderRadius: '20px 0 0 20px'}}>
-        {props.responsive ?
-            <MobileLoginHeader/>
-        :
-            <div className="login-form-header"/>}
+      <LoginFormStyled className="login-form">
+        <div className="login-form-header"/>
         <div className="login-form-container">
-            {props.responsive ?
-                null
-            :
-                <div className="page-info-container">
-                    <h2 className="page-name">Sign in</h2>
-                    <p className="page-comm">Save your files in a safe place!</p>
-                </div>
-            }
-            
+            <div className="page-info-container">
+                <h2 className="page-name">Sign in</h2>
+                <p className="page-comm">Save your files in a safe place!</p>
+            </div>
             <div className="login-types-container">
                 <button className="google-sign-in"><img alt="" src="../images/google.png" className="google-img"></img> Sign in with Google</button>
                 
@@ -95,14 +72,8 @@ const LoginForm = (props) => {
         <div className="rights">
             &#169; 2022 aDisk. All rights reserved | aDisk
         </div>            
-      </div>
+      </LoginFormStyled>
     );
 }
 
-const mapStateToProps = (state) => {
-    return {
-        isAuthenticated: state.auth.isAuthenticated
-    }
-}
-
-export default connect(mapStateToProps, {login})(LoginForm)
+export default connect(null, {login})(LoginForm)

@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive'
 import { Provider } from "react-redux";
 
 import CheckerContainer from "./hocs/CheckerContainer";
-import PrivateRoute from "./hocs/PrivateRoute";
+import PrivateWrapper from "./hocs/PrivateRoute";
+import AnonymousRoute from "./hocs/AnonymousRoute";
 
 import Login from "./routes/Login";
 import Register from "./routes/Register";
@@ -15,25 +15,35 @@ import Profile from "./routes/Profile";
 import { store } from "./store";
 
 export const App = () => {
-    let responsive = false 
-    if (useMediaQuery({ query: '(max-width: 1200px)' })){
-        responsive = true
-    }
 
     return (
         <Provider store={store}>
             <CheckerContainer>
                 <Router>
                     <Routes>
-                        <Route exact path="/*" element={<Home responsive={responsive}/>}/>
-                        <Route exact path="/login" element={<Login responsive={responsive}/>}/>
-                        <Route exact path="/register" element={<Register responsive={responsive}/>}/>
-                        <Route exact path="/dashboard" element={<PrivateRoute>
-                                                                    <Dashboard responsive={responsive}/>
-                                                                </PrivateRoute>}/>
-                        <Route exact path="/profile" element={<PrivateRoute>
-                                                                    <Profile responsive={responsive}/>
-                                                              </PrivateRoute>}/>
+                        <Route exact path="/*" element={<Home/>}/>
+                        <Route
+                        exact path="/login"
+                        element={
+                            <AnonymousRoute>
+                                <Login/>
+                            </AnonymousRoute>
+                        }
+                        />
+                        <Route
+                        exact path="/register"
+                        element={
+                            <AnonymousRoute>
+                                <Register/>
+                            </AnonymousRoute>
+                        }
+                        />
+                        <Route element={<PrivateWrapper />}>
+                            <Route exact path="/dashboard" element={<Dashboard/>} />
+                        </Route>
+                        <Route element={<PrivateWrapper />}>
+                            <Route exact path="/profile" element={<Profile/>} />
+                        </Route>
                     </Routes>
                 </Router>
             </CheckerContainer>

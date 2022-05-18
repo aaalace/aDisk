@@ -1,25 +1,5 @@
-.mobile-login-header {
-    position: relative;
-    top: 0;
-    height: 25vh;
-    width: 100%;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 60%, 70% 90%, 30% 95%, 0% 70%);
-    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 60%, 70% 90%, 30% 95%, 0% 70%);
-    background-color: #9C68F0;
-
-    p {        
-        display: table-caption;
-        font-size: 40px;
-        color: white;
-        margin-top: 3vh;
-        margin-left: 10vw;
-    }
-}
-
-
 .login-form {
     display: flex;
-    min-height: 85vh;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
@@ -116,7 +96,7 @@
                 justify-content: center;
                 width: 100%;
                 height: 35px;
-                background-color: #9C68F0;
+                background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
                 color: white;
                 border: 1px solid #DFDFDF;
                 border-radius: 20px;
@@ -139,7 +119,7 @@
                 .solution {
                     font-size: 11px;
                     font-weight: 600;
-                    color: #9C68F0;
+                    color: #0073ff;
                     cursor: pointer;
                     text-decoration: none;
                 }
