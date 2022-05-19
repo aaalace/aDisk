@@ -4,7 +4,7 @@ import * as THREE from 'three'
 
 import img from '../../images/earth.jpg'
 
-import { Canvas, useFrame, useLoader  } from "react-three-fiber";
+import { Canvas, useFrame, useLoader } from "react-three-fiber";
 
 const Box = (props) => {
     const mesh = useRef()
@@ -33,7 +33,6 @@ const Lights = () => {
     return(
         <>
             <ambientLight />
-            <pointLight position={[1, 5, 1]} intensity={1}/>
         </>
     )
 }

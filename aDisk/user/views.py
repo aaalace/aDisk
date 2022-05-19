@@ -11,6 +11,7 @@ from .serializers import UserSerializer
 from validate_email import validate_email
 from django.middleware.csrf import get_token
 
+
 class CheckAuthenticatedView(APIView):
 
     def get(self, request, format=None):
@@ -61,6 +62,7 @@ class SignUpView(APIView):
         except:
             return Response({'error': 'Something went wrong'})
 
+
 @method_decorator(csrf_protect, name='dispatch')
 class LoginView(APIView):
     permission_classes = (AllowAny, )
@@ -81,6 +83,7 @@ class LoginView(APIView):
         except Exception as e:
             print(e)
             return Response({'error': 'Something went wrong'})
+
 
 class LogoutView(APIView):
     

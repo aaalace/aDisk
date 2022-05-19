@@ -133,3 +133,22 @@ export const HomeBlockImage = styled.div`
         display: none
     }
 `
+
+export const PaymentCarouselStyled = styled.div`
+
+    @media ${HomePageDevices.desktop} {
+        display: flex;
+        width: 
+    }
+
+    @media ${HomePageDevices.tablet} {
+        display: flex;
+        width: 300px;
+        height: 300px;
+        background-image: url(${props => images[props.id]});
+    }
+
+    @media ${HomePageDevices.mobile} {
+        display: none
+    }
+`

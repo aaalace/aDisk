@@ -1,17 +1,19 @@
 import React from 'react';
-import './style.scss'
+import './style.scss';
 import { useNavigate } from "react-router-dom";
 import { connect } from 'react-redux'
 import { HomeHeader } from "../../components/HomeHeader";
 import { HomeFooter } from '../../components/HomeFooter';
 import ThreeFigure from '../../components/ThreeFigure';
+import { useTransition } from "react";
 import { 
     HomeBlock,
     HomeBlockInfo,
     HomeBlockImage,
     HomeBlockButton,
     HomeBlockName,
-    HomeBlockDescription 
+    HomeBlockDescription,
+    PaymentCarouselStyled
 } from './styled';
 
 const Block = (props) => {
@@ -41,20 +43,37 @@ const HomeBlocksContainer = (props) => {
 
     return (
         <div className="home-blocks-container">
-            <Block responsive={props.responsive} id={1} />
-            <Block responsive={props.responsive} id={2} />
-            <Block responsive={props.responsive} id={3} />
-            <Block responsive={props.responsive} id={4} />
+            <Block id={1} />
+            <Block id={2} />
+            <Block id={3} />
+            <Block id={4} />
         </div>
       );
+}
+
+const PaymentCasrouselBlock = () => {
+    return(
+        <div>
+            
+        </div>
+    )
+}
+
+const PaymentCasrousel = () => {
+    return (
+        <PaymentCarouselStyled className='payment-carousel-container'>
+            <PaymentCasrouselBlock/>
+        </PaymentCarouselStyled>
+    )
 }
 
 const Home = (props) => {
 
     return (
       <div className="home">
-            <HomeHeader responsive={props.responsive}/>
-            <HomeBlocksContainer responsive={props.responsive}/>
+            <HomeHeader />
+            <HomeBlocksContainer />
+            <PaymentCasrousel />
             <HomeFooter/>
       </div>
     );
