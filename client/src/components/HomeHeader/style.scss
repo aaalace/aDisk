@@ -1,6 +1,6 @@
 .home-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: fixed;
     left: 0;
@@ -8,7 +8,20 @@
     height: 64px;
     width: 100%;
     border: 1px solid transparent;
-    background-color: #f1f5f8;
+
+    .theme-choice-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        cursor: pointer;
+        margin-left: 20px;
+
+        .icon {
+            width: 25px;
+            height: 25px;
+        }
+    }
 
     .home-header_row {
         display: flex;
@@ -17,8 +30,69 @@
         align-items: flex-end;
         width: 65%;
 
-        @media screen and (max-width: 769px) {
-            width: 90%;
+        .buttons-menu {
+            display: flex;
+
+            .home-header_sign-in {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 140px;
+                height: 42px;
+                background-color: #444444;
+                color: white;
+                border: 1px solid transparent;
+                border-radius: 20px;
+                font-size: 14px;
+                letter-spacing: 0.7px;
+                margin-left: 10px;
+    
+                &:hover {
+                    background-color: #2a2929;
+                }
+            }
+
+            .home-header_payment {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 140px;
+                height: 42px;
+                background-color: transparent;
+                border: 1px solid transparent;
+                border-radius: 20px;
+                font-size: 14px;
+                letter-spacing: 0.7px;
+                margin-left: 10px;
+    
+                &:hover {
+                    color: #000000;
+                }
+            }
+        }
+
+        .buttons-menu-mobile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .home-header_sign-in {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid transparent;
+                font-size: 20px;
+                letter-spacing: 0.7px;
+            }
+
+            .home-header_payment {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid transparent;
+                font-size: 20px;
+                letter-spacing: 0.7px;
+            }
         }
 
         .icon {
@@ -27,24 +101,20 @@
             font-size: 35px;
             font-weight: 500;
             color: rgb(0, 0, 0);
+            cursor: pointer;
         }
 
-        .home-header_sign-in {
-            display: flex;
+        @media screen and (max-width: 769px) {
             align-items: center;
-            justify-content: center;
-            width: 120px;
-            height: 42px;
-            background-color: #444444;
-            color: white;
-            border: 1px solid transparent;
-            border-radius: 20px;
-            font-size: 14px;
-            letter-spacing: 0.7px;
-
-            &:hover {
-                background-color: #444444b6;
-            }
         }
+    }
+
+    @media screen and (max-width: 769px) {
+        justify-content: center;
+    }
+
+    .languague-choice-container{
+        display: flex;
+        margin-right: 20px;
     }
 }

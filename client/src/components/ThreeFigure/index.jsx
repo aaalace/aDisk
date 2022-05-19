@@ -1,4 +1,5 @@
-import React, { useRef, useState, Suspense, useEffect } from "react";
+import React, { useRef, useState, Suspense } from "react";
+import { useMediaQuery } from "react-responsive";
 import './style.scss'
 import * as THREE from 'three'
 
@@ -12,7 +13,7 @@ const Box = (props) => {
     const [clicked, setClicked] = useState(false)
     const [scale, setScale]= useState(1)
     
-    useFrame(() => (mesh.current.rotation.y += 0.001, mesh.current.rotation.x += 0.0005))
+    useFrame(() => (mesh.current.rotation.y += 0.002, mesh.current.rotation.x-= 0.0015))
 
     const texture = useLoader(THREE.TextureLoader, img)
 
@@ -33,14 +34,20 @@ const Lights = () => {
     return(
         <>
             <ambientLight />
+            <pointLight position={[-20, 5, 5]} intensity={6}/>
         </>
     )
 }
 
 export default function ThreeFigure() {
+    const Mobile = useMediaQuery({
+        query: '(max-width: 1224px)'
+    })
+
+    console.log(Mobile)
 
     return (
-        <Canvas style={{display: 'flex', width: '500px', height: '600px'}} colorManagement camera={{position: [0, 0, 10], fov: 20}}>
+        <Canvas style={Mobile ? {display: 'none'} : {display: 'flex', width: '500px', height: '600px'}} colorManagement camera={{position: [0, 0, 10], fov: 20}}>
             <Suspense fallback={null}>
                 <Lights/>
                 <Box position={[0, 0, 2]}/>

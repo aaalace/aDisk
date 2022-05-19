@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './style.scss';
 import { useNavigate } from "react-router-dom";
 import { connect } from 'react-redux'
 import { HomeHeader } from "../../components/HomeHeader";
 import { HomeFooter } from '../../components/HomeFooter';
 import ThreeFigure from '../../components/ThreeFigure';
-import { useTransition } from "react";
+
 import { 
     HomeBlock,
     HomeBlockInfo,
@@ -19,18 +19,23 @@ import {
 const Block = (props) => {
     const navigate = useNavigate()
 
+    let stls_13 = {margin: '0 20px 0 20px'}
+    if(props.id === 1){
+        stls_13 = {backgroundImage: 'linear-gradient(120deg, #ffffff 30%, #000000 120%)'}
+    }
+
     return(
-        <div className="home-block-container" style={props.id % 2 === 1 ? {backgroundColor: '#f1f5f8'} : null}>
-            <HomeBlock className="home-block">
+        <div className="home-block-container" style={props.id % 2 === 0 ? {backgroundColor: '#f1f5f8'} : stls_13}>
+            <HomeBlock id={props.id} className="home-block">
                 {props.id % 2 === 0 && props.id !== 1 ? <HomeBlockImage id={props.id} className="home-block_image"/> : null}
                 <HomeBlockInfo id={props.id} className="home-block_info">
-                    <HomeBlockName className="heading">
+                    <HomeBlockName id={props.id} className="heading">
                         Secure storage for your photo
                     </HomeBlockName>
-                    <HomeBlockDescription className="description">
+                    <HomeBlockDescription id={props.id} className="description">
                         Enable auto-upload on your phone and Yandex Disk will store all your photos in their original resolution.
                     </HomeBlockDescription>
-                    <HomeBlockButton className="home-button" onClick={() => navigate('/register')}><p>Get started</p></HomeBlockButton>
+                    {props.id === 1 ? <HomeBlockButton id={props.id} className="home-button" onClick={() => navigate('/register')}><p>Get started</p></HomeBlockButton> : null}
                 </HomeBlockInfo>
                 {props.id === 1 ? <ThreeFigure/> : null}
                 {props.id % 2 === 1 && props.id !== 1 ? <HomeBlockImage id={props.id} className="home-block_image"/> : null}
@@ -42,7 +47,7 @@ const Block = (props) => {
 const HomeBlocksContainer = (props) => {
 
     return (
-        <div className="home-blocks-container">
+        <div className="home-blocks-container" ref={props.blocksRef}>
             <Block id={1} />
             <Block id={2} />
             <Block id={3} />
@@ -53,27 +58,54 @@ const HomeBlocksContainer = (props) => {
 
 const PaymentCasrouselBlock = () => {
     return(
-        <div>
-            
+        <div className='payment-carousel-block'>
+            ewfe
         </div>
     )
 }
 
-const PaymentCasrousel = () => {
+const PaymentCasrousel = (props) => {
     return (
-        <PaymentCarouselStyled className='payment-carousel-container'>
+        <PaymentCarouselStyled className='payment-carousel-container' ref={props.paymentRef}>
+            <div className='payment-carousel-header'>
+                <p className='top'>Subscribe to AD+ and get:</p>
+                <p className='bottom'>Choose your subscription.</p>
+            </div>
             <PaymentCasrouselBlock/>
         </PaymentCarouselStyled>
     )
 }
 
-const Home = (props) => {
+const Home = () => {
+    const navigate = useNavigate()
+
+    const blocksRef = useRef(null)
+    const paymentRef = useRef(null)
+
+    const executePriceScroll = () => {
+        paymentRef.current.scrollIntoView()
+    }
+    const executeHomeScroll = () => {
+        blocksRef.current.scrollIntoView()
+    }
+
+    const handleScroll = () => {
+        setScroll(window.scrollY);
+    };
+
+    const [scroll, setScroll] = useState(0)
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
       <div className="home">
-            <HomeHeader />
-            <HomeBlocksContainer />
-            <PaymentCasrousel />
+            <HomeHeader priceScrollFunc={executePriceScroll} homeScrollFunc={executeHomeScroll} />
+            <HomeBlocksContainer blocksRef={blocksRef} />
+            <PaymentCasrousel paymentRef={paymentRef}/>
+            {scroll > 300 ? <button className="home-foot-button" onClick={() => navigate('/register')}><p>Get started</p></button> : null}
             <HomeFooter/>
       </div>
     );
