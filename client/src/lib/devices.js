@@ -5,7 +5,6 @@ export const HomePageDevices = {
 };
 
 export const LoginPageDevices = {
-
     mobile: "(max-width: 1000px)",
     desktop: "(min-width: 1000px)"
 };

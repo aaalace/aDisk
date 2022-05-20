@@ -2,6 +2,8 @@ import React, { useRef, useState, Suspense } from "react";
 import { useMediaQuery } from "react-responsive";
 import './style.scss'
 import * as THREE from 'three'
+import { bounce } from 'react-animations';
+import styled, { keyframes } from 'styled-components';
 
 import img from '../../images/earth.jpg'
 
@@ -39,12 +41,11 @@ const Lights = () => {
     )
 }
 
-export default function ThreeFigure() {
+export default function ThreeFigure(props) {
     const Mobile = useMediaQuery({
         query: '(max-width: 1224px)'
     })
 
-    console.log(Mobile)
 
     return (
         <Canvas style={Mobile ? {display: 'none'} : {display: 'flex', width: '500px', height: '600px'}} colorManagement camera={{position: [0, 0, 10], fov: 20}}>

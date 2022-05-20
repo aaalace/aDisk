@@ -1,3 +1,5 @@
+@import url('http://fonts.cdnfonts.com/css/forced-square');
+
 .home {
     display: flex;
     flex-direction: column;
@@ -8,6 +10,30 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+
+    .home-blocks-header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        padding-top:40px;
+        background-color: #f1f5f8;
+
+        p{
+            font-family: 'FORCED SQUARE', sans-serif;
+            font-size: 30px;
+            text-align: left;
+            max-width: 60%;
+
+            background-image: linear-gradient(45deg, #455EB5, #673FD7);
+
+            background-size: 100%;
+            background-repeat: repeat;
+        
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
 
     .home-block-container {
         display: flex;
@@ -40,6 +66,7 @@
                 }
     
                 .home-button {
+                    height: 64px;
                     background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
                     border-radius: 30px;
                     border-style: none;
@@ -52,7 +79,6 @@
                     text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
         
                     &:hover {
-                        box-shadow: rgba(80, 63, 205, 0.5) 7px 7px 5px;
                         width: 80%;
                     }
                 }
@@ -76,6 +102,8 @@
     height: 64px;
     width: 400px;
 
+    transition: all 1s;
+
     background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
     border-radius: 30px;
     border-style: none;
@@ -86,88 +114,4 @@
     align-items: center;
     justify-content: center;
     text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
-
-    &:hover {
-        left: calc(50% - 12.5%);
-        width: 25%;
-    }
-}
-
-.payment-carousel-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    height: 100vh;
-    background-image: linear-gradient(90deg, #455db57a, #af42616c);
-    z-index: 0;
-     
-    &:hover{
-        filter: blur(0px);
-    }
-
-    .payment-carousel-header {
-
-        .top {
-            font-weight: normal;
-            font-size: 60px;
-            text-align: left;
-            cursor: pointer;
-            margin-bottom: 20px;
-            
-            background-image: linear-gradient(45deg, #455EB5, #af4261);
-            
-            background-size: 100%;
-            background-repeat: repeat;
-        
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; 
-
-            animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
-            
-            &:hover{
-                animation: rainbow-text-simple-animation 0.5s ease-in forwards;
-            }
-
-            @keyframes rainbow-text-simple-animation-rev {
-                0% {
-                    background-size: 650%;
-                }
-                40% {
-                    background-size: 650%;
-                }
-                100% {
-                    background-size: 100%;
-                }
-            }
-
-            @keyframes rainbow-text-simple-animation {
-                0% {
-                    background-size: 100%;
-                }
-                80% {
-                    background-size: 650%;
-                }
-                100% {
-                    background-size: 650%;
-                }
-            }
-        }
-
-        .bottom {
-            font-size: 30px;
-            text-align: left;
-            max-width: 60%;
-            cursor: pointer;
-            margin-bottom: 20px;
-
-            background-image: linear-gradient(45deg, #455EB5, #af4261);
-
-            background-size: 100%;
-            background-repeat: repeat;
-        
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; 
-        }
-    }
 }

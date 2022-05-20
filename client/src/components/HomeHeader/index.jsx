@@ -3,6 +3,7 @@ import './style.scss'
 import { useNavigate } from "react-router-dom"
 import { LanguagueChoice } from "../LanguagueChoice"
 import { useMediaQuery } from "react-responsive"
+import { FormattedMessage } from 'react-intl'
 
 export const HomeHeader = (props) => {
     const navigate = useNavigate()
@@ -43,7 +44,7 @@ export const HomeHeader = (props) => {
                 <div onClick={props.homeScrollFunc} className="icon"><p style={{color: '#5643CC'}} className="icon">a</p>Disk</div>
                 { !Mobile ? 
                 <div className="buttons-menu">
-                    <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><i className='fas fa-user-alt'></i>&nbsp;&nbsp;Sign in</button>
+                    <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><i className='fas fa-user-alt'></i>&nbsp;&nbsp;<FormattedMessage id='login_button'/></button>
                     <button onClick={props.priceScrollFunc} type="button" className="home-header_payment" style={scroll === 0 ? {color: 'white'} : {color: '#444444'}}><i class='fas fa-coins'></i>&nbsp;&nbsp;AD+</button>
                 </div> : 
                 <div className="buttons-menu-mobile">
@@ -53,7 +54,7 @@ export const HomeHeader = (props) => {
                 }
             </div>
             { !Mobile ? <div className="languague-choice-container">
-                <LanguagueChoice customStyles={scroll === 0 ? {color: 'white'} : {color: '#444444'}}/>
+                <LanguagueChoice handleChange={props.handleChange} currentLocale={props.currentLocale} customStyles={scroll === 0 ? {color: 'white', backgroundColor: '#444444'} : {color: '#444444'}}/>
             </div> : null}
         </div>
     )

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { LoginPageDevices } from '../../devices'
+import { LoginPageDevices } from '../../lib/devices';
 
 export const LoginFormStyled = styled.div`
     @media ${LoginPageDevices.desktop} { 

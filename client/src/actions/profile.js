@@ -1,4 +1,4 @@
-import { app } from '../axios'
+import { app } from '../lib/axios'
 import Cookies from 'js-cookie'
 import { 
     LOAD_PROFILE_SUCCESS,

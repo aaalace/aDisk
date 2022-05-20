@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { HomePageDevices } from '../../devices';
+import { HomePageDevices } from '../../lib/devices';
 
 import div2 from '../../images/div2.jpg'
 import div3 from '../../images/div3.jpg'
@@ -23,7 +23,7 @@ export const HomeBlock = styled.div`
         justify-content: center;
         ${props => props.id === 1 ? 'height: 100vh;' : ''}
         ${props => props.id === 1 ? 'height: 100vh;' : ''}
-        ${props => props.id === 2 ? 'padding: 60px 0 0 0;' : ''}
+        ${props => props.id === 2 ? 'padding: 40px 0 0 0;' : ''}
         ${props => props.id === 4 ? 'padding: 0 0 60px 0;' : ''}
     }
 
@@ -33,7 +33,7 @@ export const HomeBlock = styled.div`
         align-items: center;
         justify-content: center;
         ${props => props.id === 1 ? 'height: 100vh;' : ''}
-        ${props => props.id === 2 ? 'padding: 60px 0 0 0;' : ''}
+        ${props => props.id === 2 ? 'padding: 40px 0 0 0;' : ''}
         ${props => props.id === 4 ? 'padding: 0 0 60px 0;' : ''}
     }
 
@@ -55,6 +55,7 @@ export const HomeBlockInfo = styled.div`
         display: flex;
         width: 50%;
         height: 350px;
+        ${props => props.id === 1 ? 'width: 70%' : 'width: 50%'}
     }
 
     @media ${HomePageDevices.mobile} {
@@ -140,21 +141,6 @@ export const HomeBlockImage = styled.div`
         height: 350px;
         background-image: url(${props => images[props.id][1]}), url(${props => images[props.id][0]});
     }
-    @media ${HomePageDevices.mobile} {
-        display: none
-    }
-`
-
-export const PaymentCarouselStyled = styled.div`
-
-    @media ${HomePageDevices.desktop} {
-        display: flex;
-    }
-
-    @media ${HomePageDevices.tablet} {
-        display: flex;
-    }
-
     @media ${HomePageDevices.mobile} {
         display: none
     }

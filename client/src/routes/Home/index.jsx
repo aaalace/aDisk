@@ -2,9 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import './style.scss';
 import { useNavigate } from "react-router-dom";
 import { connect } from 'react-redux'
+
 import { HomeHeader } from "../../components/HomeHeader";
-import { HomeFooter } from '../../components/HomeFooter';
+import PaymentCasrousel from '../../components/PaymentCarousel';
 import ThreeFigure from '../../components/ThreeFigure';
+import { FormattedMessage } from 'react-intl'
 
 import { 
     HomeBlock,
@@ -12,8 +14,7 @@ import {
     HomeBlockImage,
     HomeBlockButton,
     HomeBlockName,
-    HomeBlockDescription,
-    PaymentCarouselStyled
+    HomeBlockDescription
 } from './styled';
 
 const Block = (props) => {
@@ -24,18 +25,48 @@ const Block = (props) => {
         stls_13 = {backgroundImage: 'linear-gradient(120deg, #ffffff 30%, #000000 120%)'}
     }
 
+    const nameSwitch = (id) => {
+        switch(id) {
+            case 1:
+                return <FormattedMessage id='first_box_name'/>;
+            case 2:
+                return <FormattedMessage id='second_box_name'/>;
+            case 3:
+                return <FormattedMessage id='third_box_name'/>;
+            case 4:
+                return <FormattedMessage id='fourth_box_name'/>;
+            default:
+                return <FormattedMessage id='first_box_name'/>;
+          }
+    }
+
+    const descSwitch = (id) => {
+        switch(id) {
+            case 1:
+                return <FormattedMessage id='first_box_desc'/>;
+            case 2:
+                return <FormattedMessage id='second_box_desc'/>;
+            case 3:
+                return <FormattedMessage id='third_box_desc'/>;
+            case 4:
+                return <FormattedMessage id='fourth_box_desc'/>;
+            default:
+                return <FormattedMessage id='first_box_desc'/>;
+          }
+    }
+
     return(
         <div className="home-block-container" style={props.id % 2 === 0 ? {backgroundColor: '#f1f5f8'} : stls_13}>
             <HomeBlock id={props.id} className="home-block">
                 {props.id % 2 === 0 && props.id !== 1 ? <HomeBlockImage id={props.id} className="home-block_image"/> : null}
                 <HomeBlockInfo id={props.id} className="home-block_info">
                     <HomeBlockName id={props.id} className="heading">
-                        Secure storage for your photo
+                        {nameSwitch(props.id)}
                     </HomeBlockName>
                     <HomeBlockDescription id={props.id} className="description">
-                        Enable auto-upload on your phone and Yandex Disk will store all your photos in their original resolution.
+                        {descSwitch(props.id)}
                     </HomeBlockDescription>
-                    {props.id === 1 ? <HomeBlockButton id={props.id} className="home-button" onClick={() => navigate('/register')}><p>Get started</p></HomeBlockButton> : null}
+                    {props.id === 1 ? <HomeBlockButton id={props.id} className="home-button" onClick={() => navigate('/register')}><p><FormattedMessage id='get_started_btn'/></p></HomeBlockButton> : null}
                 </HomeBlockInfo>
                 {props.id === 1 ? <ThreeFigure/> : null}
                 {props.id % 2 === 1 && props.id !== 1 ? <HomeBlockImage id={props.id} className="home-block_image"/> : null}
@@ -48,7 +79,8 @@ const HomeBlocksContainer = (props) => {
 
     return (
         <div className="home-blocks-container" ref={props.blocksRef}>
-            <Block id={1} />
+            <Block id={1}/>
+            <div className="home-blocks-header"><p><FormattedMessage id='features'/></p></div>
             <Block id={2} />
             <Block id={3} />
             <Block id={4} />
@@ -56,34 +88,15 @@ const HomeBlocksContainer = (props) => {
       );
 }
 
-const PaymentCasrouselBlock = () => {
-    return(
-        <div className='payment-carousel-block'>
-            ewfe
-        </div>
-    )
-}
-
-const PaymentCasrousel = (props) => {
-    return (
-        <PaymentCarouselStyled className='payment-carousel-container' ref={props.paymentRef}>
-            <div className='payment-carousel-header'>
-                <p className='top'>Subscribe to AD+ and get:</p>
-                <p className='bottom'>Choose your subscription.</p>
-            </div>
-            <PaymentCasrouselBlock/>
-        </PaymentCarouselStyled>
-    )
-}
-
-const Home = () => {
+const Home = (props) => {
     const navigate = useNavigate()
 
     const blocksRef = useRef(null)
     const paymentRef = useRef(null)
 
     const executePriceScroll = () => {
-        paymentRef.current.scrollIntoView()
+        const prY = paymentRef.current.offsetTop
+        window.scrollTo(0, prY - 64)
     }
     const executeHomeScroll = () => {
         blocksRef.current.scrollIntoView()
@@ -102,11 +115,10 @@ const Home = () => {
 
     return (
       <div className="home">
-            <HomeHeader priceScrollFunc={executePriceScroll} homeScrollFunc={executeHomeScroll} />
-            <HomeBlocksContainer blocksRef={blocksRef} />
-            <PaymentCasrousel paymentRef={paymentRef}/>
-            {scroll > 300 ? <button className="home-foot-button" onClick={() => navigate('/register')}><p>Get started</p></button> : null}
-            <HomeFooter/>
+            <HomeHeader priceScrollFunc={executePriceScroll} homeScrollFunc={executeHomeScroll} currentLocale={props.currentLocale} handleChange={props.handleChange}/>
+            <HomeBlocksContainer blocksRef={blocksRef}  />
+            <PaymentCasrousel paymentRef={paymentRef} />
+            {scroll > 300 ? <button className="home-foot-button" onClick={() => navigate('/register')}><p><FormattedMessage id='get_started_btn'/></p></button> : <button className="home-foot-button" style={{marginLeft: '200vw'}} onClick={() => navigate('/register')}><p>Get started</p></button> }
       </div>
     );
 }
