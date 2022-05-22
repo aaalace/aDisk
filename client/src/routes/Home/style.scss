@@ -114,4 +114,10 @@
     align-items: center;
     justify-content: center;
     text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+
+    
+    @media screen and (max-width: 768px) {
+        left: calc(50% - 150px);
+        width: 300px;
+    }
 }

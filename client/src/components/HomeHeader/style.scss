@@ -27,11 +27,38 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: center;
         width: 65%;
+
+        @media screen and (max-width: 769px) {
+            width: 80%;
+
+        }
 
         .buttons-menu {
             display: flex;
+            align-items: center;
+
+            .profile-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 55px;
+                height: 55px;
+                margin: auto;
+
+                position: relative;
+                padding: 3px;
+                box-sizing: border-box;
+
+                $border: 5px;
+                color: #FFF;
+                background: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%) no-repeat;
+                background-size: cover;
+                background-clip: padding-box;
+                border: solid $border transparent; 
+                border-radius: 30px;            
+            }
 
             .home-header_sign-in {
                 display: flex;
@@ -76,13 +103,44 @@
             align-items: center;
             justify-content: center;
 
+            .profile-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 55px;
+                height: 55px;
+                margin: auto;
+
+                position: relative;
+                padding: 3px;
+                box-sizing: border-box;
+
+                $border: 5px;
+                color: #FFF;
+                background: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%) no-repeat;
+                background-size: cover;
+                background-clip: padding-box;
+                border: solid $border transparent; 
+                border-radius: 30px;            
+            }
+            
             .home-header_sign-in {
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                width: 140px;
+                height: 42px;
+                background-color: #444444;
+                color: white;
                 border: 1px solid transparent;
-                font-size: 20px;
+                border-radius: 20px;
+                font-size: 14px;
                 letter-spacing: 0.7px;
+                margin-left: 10px;
+    
+                &:hover {
+                    background-color: #2a2929;
+                }
             }
 
             .home-header_payment {

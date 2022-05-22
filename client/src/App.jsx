@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from "react-redux";
-import { IntlProvider } from 'react-intl'
+import { IntlProvider } from 'react-intl';
 
 import CheckerContainer from "./hocs/CheckerContainer";
 import PrivateWrapper from "./hocs/PrivateRoute";
@@ -33,7 +33,7 @@ export const App = () => {
     }
 
     return (
-        <IntlProvider messages={messages[currentLocale]}>
+        <IntlProvider messages={messages[currentLocale]} locale={currentLocale}>
             <Provider store={store}>
                 <CheckerContainer>
                     <Router>
@@ -47,7 +47,7 @@ export const App = () => {
                             <Route element={<PrivateWrapper />}>
                                 <Route exact path="/profile" element={<Profile/>} />
                             </Route>
-                        </Routes>
+                        </Routes>  
                     </Router>
                 </CheckerContainer>
             </Provider>

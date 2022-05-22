@@ -2,11 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import './style.scss';
 import { useNavigate } from "react-router-dom";
 import { connect } from 'react-redux'
+import { FormattedMessage } from 'react-intl'
+import { useMediaQuery } from 'react-responsive';
 
-import { HomeHeader } from "../../components/HomeHeader";
+import HomeHeader from "../../components/HomeHeader";
 import PaymentCasrousel from '../../components/PaymentCarousel';
 import ThreeFigure from '../../components/ThreeFigure';
-import { FormattedMessage } from 'react-intl'
 
 import { 
     HomeBlock,
@@ -19,6 +20,17 @@ import {
 
 const Block = (props) => {
     const navigate = useNavigate()
+
+    const Mobile = useMediaQuery({
+        query: '(max-width: 768px)'
+    })
+    
+    let bottomButtonMessageId = 'get_started_btn'
+    let bottomButtonNavigate = '/register'
+    if(props.isAuthenticated){
+        bottomButtonMessageId = 'open_disk_btn'
+        bottomButtonNavigate = '/dashboard'
+    }
 
     let stls_13 = {margin: '0 20px 0 20px'}
     if(props.id === 1){
@@ -58,7 +70,7 @@ const Block = (props) => {
     return(
         <div className="home-block-container" style={props.id % 2 === 0 ? {backgroundColor: '#f1f5f8'} : stls_13}>
             <HomeBlock id={props.id} className="home-block">
-                {props.id % 2 === 0 && props.id !== 1 ? <HomeBlockImage id={props.id} className="home-block_image"/> : null}
+                {props.id % 2 === 0 && props.id !== 1 && !Mobile ? <HomeBlockImage id={props.id} className="home-block_image"/> : null}
                 <HomeBlockInfo id={props.id} className="home-block_info">
                     <HomeBlockName id={props.id} className="heading">
                         {nameSwitch(props.id)}
@@ -66,10 +78,10 @@ const Block = (props) => {
                     <HomeBlockDescription id={props.id} className="description">
                         {descSwitch(props.id)}
                     </HomeBlockDescription>
-                    {props.id === 1 ? <HomeBlockButton id={props.id} className="home-button" onClick={() => navigate('/register')}><p><FormattedMessage id='get_started_btn'/></p></HomeBlockButton> : null}
+                    {props.id === 1 ? <HomeBlockButton id={props.id} className="home-button" onClick={() => navigate(bottomButtonNavigate)}><p><FormattedMessage id={bottomButtonMessageId}/></p></HomeBlockButton> : null}
                 </HomeBlockInfo>
                 {props.id === 1 ? <ThreeFigure/> : null}
-                {props.id % 2 === 1 && props.id !== 1 ? <HomeBlockImage id={props.id} className="home-block_image"/> : null}
+                {props.id % 2 === 1 && props.id !== 1 && !Mobile ? <HomeBlockImage id={props.id} className="home-block_image"/> : null}
             </HomeBlock>
         </div>
     )
@@ -79,7 +91,7 @@ const HomeBlocksContainer = (props) => {
 
     return (
         <div className="home-blocks-container" ref={props.blocksRef}>
-            <Block id={1}/>
+            <Block id={1} isAuthenticated={props.isAuthenticated} />
             <div className="home-blocks-header"><p><FormattedMessage id='features'/></p></div>
             <Block id={2} />
             <Block id={3} />
@@ -90,6 +102,10 @@ const HomeBlocksContainer = (props) => {
 
 const Home = (props) => {
     const navigate = useNavigate()
+
+    const Mobile = useMediaQuery({
+        query: '(max-width: 768px)'
+    })
 
     const blocksRef = useRef(null)
     const paymentRef = useRef(null)
@@ -108,6 +124,13 @@ const Home = (props) => {
 
     const [scroll, setScroll] = useState(0)
 
+    let bottomButtonMessageId = 'get_started_btn'
+    let bottomButtonNavigate = '/register'
+    if(props.isAuthenticated){
+        bottomButtonMessageId = 'open_disk_btn'
+        bottomButtonNavigate = '/dashboard'
+    }
+
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
@@ -116,9 +139,13 @@ const Home = (props) => {
     return (
       <div className="home">
             <HomeHeader priceScrollFunc={executePriceScroll} homeScrollFunc={executeHomeScroll} currentLocale={props.currentLocale} handleChange={props.handleChange}/>
-            <HomeBlocksContainer blocksRef={blocksRef}  />
+            <HomeBlocksContainer blocksRef={blocksRef} isAuthenticated={props.isAuthenticated} />
             <PaymentCasrousel paymentRef={paymentRef} />
-            {scroll > 300 ? <button className="home-foot-button" onClick={() => navigate('/register')}><p><FormattedMessage id='get_started_btn'/></p></button> : <button className="home-foot-button" style={{marginLeft: '200vw'}} onClick={() => navigate('/register')}><p>Get started</p></button> }
+            {scroll > 300 || Mobile ? 
+                <button className="home-foot-button" onClick={() => navigate(bottomButtonNavigate)}><p><FormattedMessage id={bottomButtonMessageId}/></p></button> 
+            : 
+                <button className="home-foot-button" style={{marginLeft: '200vw'}} onClick={() => navigate(bottomButtonNavigate)}><p><FormattedMessage id={bottomButtonMessageId}/></p></button> 
+            }
       </div>
     );
 }

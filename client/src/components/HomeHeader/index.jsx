@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react"
+import { connect } from "react-redux"
 import './style.scss'
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { LanguagueChoice } from "../LanguagueChoice"
 import { useMediaQuery } from "react-responsive"
 import { FormattedMessage } from 'react-intl'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoins, faUserAlt, faMoon } from '@fortawesome/free-solid-svg-icons'
 
-export const HomeHeader = (props) => {
+const HomeHeader = (props) => {
     const navigate = useNavigate()
 
     const Mobile = useMediaQuery({
@@ -38,18 +41,25 @@ export const HomeHeader = (props) => {
     return (
         <div style={scroll === 0 ? topHeaderStyle : movedHeaderStyle} className='home-header' onScroll={handleScroll}>
             { !Mobile ? <div className="theme-choice-container">
-                <i className="fas fa-moon icon" style={{fontSize: '24px'}}></i>
+            <FontAwesomeIcon icon={faMoon} style={{fontSize: '24px'}}/>
             </div> : null }
             <div className="home-header_row">
                 <div onClick={props.homeScrollFunc} className="icon"><p style={{color: '#5643CC'}} className="icon">a</p>Disk</div>
                 { !Mobile ? 
                 <div className="buttons-menu">
-                    <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><i className='fas fa-user-alt'></i>&nbsp;&nbsp;<FormattedMessage id='login_button'/></button>
-                    <button onClick={props.priceScrollFunc} type="button" className="home-header_payment" style={scroll === 0 ? {color: 'white'} : {color: '#444444'}}><i class='fas fa-coins'></i>&nbsp;&nbsp;AD+</button>
+                    {props.isAuthenticated ? 
+                        <img className="profile-icon" alt="" src="../images/default-image.jpg" onClick={() => navigate('/profile')}></img>
+                    : 
+                        <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/>&nbsp;&nbsp;<FormattedMessage id='login_button'/></button>
+                    }
+                    <button onClick={props.priceScrollFunc} type="button" className="home-header_payment" style={scroll === 0 ? {color: 'white'} : {color: '#444444'}}><FontAwesomeIcon icon={faCoins}/>&nbsp;&nbsp;AD+</button>
                 </div> : 
                 <div className="buttons-menu-mobile">
-                    <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"  style={scroll === 0 ? {color: 'white'} : {color: '#444444'}}><i className='fas fa-user-alt'></i></button>
-                    <button onClick={props.priceScrollFunc} type="button" className="home-header_payment" style={scroll === 0 ? {color: 'white'} : {color: '#444444'}}><i class='fas fa-coins'></i></button>
+                   {props.isAuthenticated ? 
+                        <img className="profile-icon" alt="" src="../images/default-image.jpg" onClick={() => navigate('/profile')}></img>
+                    : 
+                        <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/>&nbsp;&nbsp;<FormattedMessage id='login_button'/></button>
+                    }
                 </div>
                 }
             </div>
@@ -59,3 +69,12 @@ export const HomeHeader = (props) => {
         </div>
     )
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+        isAuthenticated: state.auth.isAuthenticated
+    }
+}
+
+export default connect(mapStateToProps, null)(HomeHeader)

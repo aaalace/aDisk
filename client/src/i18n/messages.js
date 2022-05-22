@@ -7,6 +7,7 @@ export const messages = {
 
     // Home
     get_started_btn: 'Get started',
+    open_disk_btn: 'Open disk',
     features: 'Features',
 
     first_box_name: 'Secure storage for your photo',
@@ -18,7 +19,7 @@ export const messages = {
     fourth_box_name: 'Secure storage for your photo',
     fourth_box_desc: 'Enable auto-upload on your phone and aDisk will store all your photos in their original resolution',
 
-    home_payment_header: 'Easy Accessible & Secure',
+    home_payment_header: 'Affordable & Secure',
     home_payment_month: 'month',
     home_payment_body_1: 'GB storage',
     home_payment_body_2: 'Creating public catalogs',
@@ -31,6 +32,7 @@ export const messages = {
     
     // Home
     get_started_btn: 'Зарегистрироваться',
+    open_disk_btn: 'Открыть диск',
     features: 'Преимущества',
     
     first_box_name: 'Надежное хранилище для ваших фото',
@@ -42,7 +44,7 @@ export const messages = {
     fourth_box_name: 'Надежное хранилище для ваших фото',
     fourth_box_desc: 'Включите автозагрузку на телефоне и aDisk сохранит все ваши фото в исходном разрешении',
 
-    home_payment_header: 'Простой и Безопасный',
+    home_payment_header: 'Доступный и Безопасный',
     home_payment_month: 'месяц',
     home_payment_body_1: 'ГБ памяти',
     home_payment_body_2: 'Создание общих каталогов',
@@ -55,6 +57,7 @@ export const messages = {
     
     // Home
     get_started_btn: 'Loslegen',
+    open_disk_btn: 'Scheibe öffnen',
     features: 'Eigenschaften',
 
     first_box_name: 'Sichere Aufbewahrung für Ihr Foto',
@@ -66,7 +69,7 @@ export const messages = {
     fourth_box_name: 'Sichere Aufbewahrung für Ihr Foto',
     fourth_box_desc: 'Aktivieren Sie den automatischen Upload auf Ihrem Telefon und aDisk speichert alle Ihre Fotos in ihrer ursprünglichen Auflösung.',
 
-    home_payment_header: 'Leicht zugänglich und sicher',
+    home_payment_header: 'Erschwinglich und sicher',
     home_payment_month: 'monat',
     home_payment_body_1: 'GB-Speicher',
     home_payment_body_2: 'Erstellung öffentlicher Kataloge',

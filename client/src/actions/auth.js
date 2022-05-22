@@ -27,30 +27,15 @@ export const checkAuth = () => async dispatch => {
 
         const result = await app.get(`/user/auth`, config)
 
-        if(result.data.error || result.data.isAuthenticated === 'error'){
-            dispatch({
-                type: AUTHENTICATED_FAIL,
-                payload: false
-            })
-            return false
-        }
-        else if(result.data.isAuthenticated === 'success'){
+        if(result.data.isAuthenticated === 'success'){
             dispatch({
                 type: AUTHENTICATED_SUCCESS,
                 payload: true
             })
             return true
         }
-        else{
-            dispatch({
-                type: AUTHENTICATED_FAIL,
-                payload: false
-            })
-            return false
-        }
     } 
     catch (error) {
-        console.log('error in authcheck')
         dispatch({
             type: AUTHENTICATED_FAIL,
             payload: false

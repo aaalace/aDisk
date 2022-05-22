@@ -5,46 +5,54 @@ import 'aos/dist/aos.css'
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { FormattedMessage } from 'react-intl'
-
+import { useMediaQuery } from "react-responsive"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck, faClose, faCertificate } from '@fortawesome/free-solid-svg-icons'
 import { PaymentCarouselStyled, ADPLUSstyled, Standardstyled, PaymentCarouselBlockStyled } from "./styled"
 
 const CommonSubscriptionBlock = (props) => {
+    const Mobile = useMediaQuery({
+        query: '(max-width: 768px)'
+    })
 
     return(
-        <Standardstyled className='carousel-block' data-aos='faded-top'>
+        <Standardstyled className='carousel-block' data-aos={Mobile ? 'zoom-in' : 'zoom-in-right'}>
             <div className="carousel-block-header">
-                <i className="fas fa-certificate icon"></i>
+                <FontAwesomeIcon className="icon" icon={faCertificate}/>
                 <p className="name">Standard</p>
             </div>
             <div className="carousel-block-body">
                 <ul className="list">
-                    <li><i className="fas fa-check lft" style={{color: '#79d246', marginRight: '5px'}}></i><b>10&nbsp;</b><FormattedMessage id='home_payment_body_1'/></li>
-                    <li><i className="fa fa-close lft"></i><FormattedMessage id='home_payment_body_2'/></li>
-                    <li><i className="fa fa-close lft"></i><FormattedMessage id='home_payment_body_3'/></li>
+                    <li><FontAwesomeIcon icon={faCheck} style={{color: '#79d246', marginRight: '5px'}}/><b>10&nbsp;</b><FormattedMessage id='home_payment_body_1'/></li>
+                    <li><FontAwesomeIcon icon={faClose} style={{color: '#c81b1b', marginRight: '5px'}}/><FormattedMessage id='home_payment_body_2'/></li>
+                    <li><FontAwesomeIcon icon={faClose} style={{color: '#c81b1b', marginRight: '5px'}}/><FormattedMessage id='home_payment_body_3'/></li>
                 </ul>
                 <hr style={{margin: '20px 0', color: '#79d246'}}></hr>
                 <div className="price-container">
                     <p className="num">0</p>
-                    <p className="adict"><i class="fas fa-ruble-sign"></i>/<FormattedMessage id='home_payment_month'/></p>
+                    <p className="adict"><i className="fas fa-ruble-sign"></i>/<FormattedMessage id='home_payment_month'/></p>
                 </div>
             </div>
         </Standardstyled>
     )
 }
 
-const ADPLUSSubscriptionBlock = (props) => {
+const ADPLUSSubscriptionBlock = () => {
+    const Mobile = useMediaQuery({
+        query: '(max-width: 768px)'
+    })
 
     return(
-        <ADPLUSstyled className='carousel-block' data-aos='faded-left'>
+        <ADPLUSstyled className='carousel-block' data-aos={Mobile ? 'zoom-in' : 'zoom-in-right'}>
             <div className="carousel-block-header-ADPLUS">
-                <i className="fas fa-certificate icon"></i>
+                <FontAwesomeIcon className="icon" icon={faCertificate}/>
                 <p className="name">AD+</p>
             </div>
             <div className="carousel-block-body-ADPLUS">
                 <ul className="list">
-                    <li><i className="fas fa-check lft"></i><b style={{color: '#455EB5'}}>100&nbsp;</b><FormattedMessage id='home_payment_body_1'/></li>
-                    <li><i className="fas fa-check lft"></i><FormattedMessage id='home_payment_body_2'/></li>
-                    <li><i className="fas fa-check lft"></i><FormattedMessage id='home_payment_body_3'/></li>
+                    <li><FontAwesomeIcon icon={faCheck} style={{color: '#79d246', marginRight: '5px'}}/><b style={{color: '#5643CC'}}>100&nbsp;</b><FormattedMessage id='home_payment_body_1'/></li>
+                    <li><FontAwesomeIcon icon={faCheck} style={{color: '#79d246', marginRight: '5px'}}/><FormattedMessage id='home_payment_body_2'/></li>
+                    <li><FontAwesomeIcon icon={faCheck} style={{color: '#79d246', marginRight: '5px'}}/><FormattedMessage id='home_payment_body_3'/></li>
                 </ul>
                 <hr style={{margin: '20px 0', color: '#79d246'}}></hr>
                 <div className="price-container">
@@ -52,7 +60,7 @@ const ADPLUSSubscriptionBlock = (props) => {
                         60
                     </p>
                     <p className="adict">
-                        <i class="fas fa-ruble-sign"></i>/month
+                        <i className="fas fa-ruble-sign"></i>/<FormattedMessage id='home_payment_month'/>
                     </p>
                 </div>
             </div>
@@ -62,9 +70,18 @@ const ADPLUSSubscriptionBlock = (props) => {
 
 const PaymentCasrouselBlock = () => {
     const navigate = useNavigate()
+
+    const Mobile = useMediaQuery({
+        query: '(max-width: 768px)'
+    })
+
+    let onesState = false
+    if(Mobile){
+        onesState = true
+    }
     
     useEffect(() => {
-        Aos.init({duration: 3000})
+        Aos.init({duration: 3000, once: onesState})
     }, [])
 
     const navigateFromCarousel = () => {
@@ -73,8 +90,8 @@ const PaymentCasrouselBlock = () => {
 
     return(
         <PaymentCarouselBlockStyled className='payment-carousel-block'>
-            <CommonSubscriptionBlock clickFunc={navigateFromCarousel}/>
             <ADPLUSSubscriptionBlock clickFunc={navigateFromCarousel}/>
+            <CommonSubscriptionBlock clickFunc={navigateFromCarousel}/>
         </PaymentCarouselBlockStyled>
     )
 }

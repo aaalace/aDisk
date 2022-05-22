@@ -12,7 +12,8 @@ export const PaymentCarouselStyled = styled.div`
     }
 
     @media ${HomePageDevices.mobile} {
-        display: none
+        display: flex;
+        align-items: center;
     }
 `
 
@@ -27,7 +28,8 @@ export const PaymentCarouselBlockStyled = styled.div`
     }
 
     @media ${HomePageDevices.mobile} {
-        display: none
+        flex-direction: column;
+        width: 70vw
     }
 `
 
@@ -42,7 +44,8 @@ export const ADPLUSstyled = styled.div`
     }
 
     @media ${HomePageDevices.mobile} {
-        display: none
+        margin-top: 40px;
+        width: 100%;
     }
 `
 
@@ -59,6 +62,8 @@ export const Standardstyled = styled.div`
     }
 
     @media ${HomePageDevices.mobile} {
-        display: none
+        margin-top: 40px;
+        margin-bottom: 150px;
+        width: 100%;
     }
 `
