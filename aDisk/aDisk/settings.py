@@ -1,20 +1,29 @@
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-n&dnm7ow$&+a3#=nlc@21*_n%*hk4j7tn_)etu8-3*@uofrd5r'
+SECRET_KEY = 'ysb(#wa4t+ee6^wf*=@d7_(c*z##^6ipkru2yol$elc7ez^7qw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000', 'http://172.20.10.2:3000']
+
+CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://172.20.10.2:3000']
+
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'http://172.20.10.2:3000']
+
+ROOT_URLCONF = 'aDisk.urls'
 
 # Application definition
 
@@ -25,13 +34,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'user.apps.UserConfig',
     'user_profile.apps.UserProfileConfig',
-    'rest_framework'
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -40,12 +51,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'aDisk.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'aDisk/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -62,22 +71,20 @@ WSGI_APPLICATION = 'aDisk.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'daqhaod5mij9uv',
-        'USER': 'wdykmtxuqcohwf',
-        'PASSWORD': '491ee07e2fe96ed4d759d8414205fe8eba5077091ceb25dad5ed2c79e21439e2',
-        'HOST': 'ec2-99-80-170-190.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432'
+        'NAME': 'aDiskDB',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost'
     }
 }
 
-
 # Password validation
-# https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -96,23 +103,29 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/4.0/topics/i18n/
+# https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
+# https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}

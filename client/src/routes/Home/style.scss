@@ -1,0 +1,124 @@
+@import url('http://fonts.cdnfonts.com/css/forced-square');
+
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.home-blocks-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .home-blocks-header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        padding-top:40px;
+        background-color: #f1f5f8;
+
+        p{
+            font-family: 'FORCED SQUARE', sans-serif;
+            font-size: 30px;
+            text-align: left;
+            max-width: 60%;
+
+            background-image: linear-gradient(45deg, #455EB5, #673FD7);
+
+            background-size: 100%;
+            background-repeat: repeat;
+        
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    .home-block-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .home-block {
+            padding: '50px 0 50px 0';
+
+            .game-home-container {
+                position: absolute;
+                width: 20px;
+            }
+        
+            .home-block_info { 
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                .heading {
+                    font-weight: 700;
+                    overflow: hidden;
+                    color: var(--black_to_white);
+                }
+
+                .description {
+                    font-weight: 500;
+                    overflow: hidden;
+                    color: var(--black_to_white);
+                }
+    
+                .home-button {
+                    height: 64px;
+                    background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+                    border-radius: 30px;
+                    border-style: none;
+                    box-sizing: border-box;
+                    color: #FFFFFF;
+                    cursor: pointer;
+                    font-size: 21px;
+                    align-items: center;
+                    justify-content: center;
+                    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+        
+                    &:hover {
+                        width: 80%;
+                    }
+                }
+            }
+    
+            .home-block_image {
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+    }
+}
+
+.home-foot-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 20px;
+    left: calc(50% - 200px);
+    height: 64px;
+    width: 400px;
+
+    transition: all 1s;
+
+    background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+    border-radius: 30px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 21px;
+    align-items: center;
+    justify-content: center;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+
+    
+    @media screen and (max-width: 768px) {
+        left: calc(50% - 150px);
+        width: 300px;
+    }
+}

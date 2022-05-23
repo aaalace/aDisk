@@ -1,0 +1,54 @@
+.languague_choice-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    color: #0073ff;
+
+    .switcher {
+        display: flex;
+        border: 1px solid var(--select-border);
+        cursor: pointer;
+
+
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border: none;
+            padding: 5px;
+            margin: 0;
+            width: 100%;
+            font-family: inherit;
+            font-size: inherit;
+            cursor: inherit;
+            line-height: inherit;
+            outline: none;
+            
+            &::-ms-expand {
+                display: none;
+            }
+        }
+
+        .blueText {
+            color: #000000;
+            background-color: transparent;
+        }
+
+
+    }
+
+    .icon {
+        width: 16px;
+        height: 16px;
+        border-radius: 10px;
+    }
+
+    .name {
+        margin-bottom: 2px;
+        margin-left: 5px;
+        font-size: 16px;
+    }
+}

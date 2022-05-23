@@ -1,0 +1,18 @@
+[data-theme='light'] {
+    --black_to_white : black;
+
+    --home_header_background: white;
+    --home_header_icon_p: #5643CC;
+
+
+    --home_background_main: linear-gradient(120deg, #ffffff 30%, #000000 120%);
+}
+
+[data-theme='dark'] {
+    --black_to_white : white;
+
+    --home_header_background: rgb(84, 84, 84);
+    --home_header_icon_p: white;
+
+    --home_background_main: linear-gradient(120deg, #000000b8 10%, #ffffff 200%);
+}

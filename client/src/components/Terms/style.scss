@@ -1,0 +1,46 @@
+.terms-box {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    z-index: 4;
+}
+
+.box-terms {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.terms-box-close {
+    color: #ffffff;
+    margin: 10px;
+    background-color: #9C68F0;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.terms-widget {
+    width: 200px;
+    background-color: #9C68F0;
+    color: #ffffff;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    position: absolute;
+    z-index: 5;
+}

@@ -1,11 +1,17 @@
 import React from "react"
 import './style.scss'
+import { Link } from "react-router-dom";
 
-export const Dashboard = () => {
+const Dashboard = () => {
 
     return (
       <div className="dashboard">
-          dashboard
+          <h2>dashboard</h2>
+          <Link to='/profile'>profile</Link>
       </div>
     );
 }
+
+
+export default Dashboard
+

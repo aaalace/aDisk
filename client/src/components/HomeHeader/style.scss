@@ -1,0 +1,186 @@
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 64px;
+    width: 100%;
+    border: 1px solid transparent;
+
+    .theme-choice-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        cursor: pointer;
+        margin-left: 20px;
+
+        .icon {
+            width: 25px;
+            height: 25px;
+        }
+    }
+
+    .home-header_row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 65%;
+
+        @media screen and (max-width: 769px) {
+            width: 80%;
+
+        }
+
+        .buttons-menu {
+            display: flex;
+            align-items: center;
+
+            .profile-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 55px;
+                height: 55px;
+                margin: auto;
+
+                position: relative;
+                padding: 3px;
+                box-sizing: border-box;
+
+                $border: 5px;
+                color: #FFF;
+                background: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%) no-repeat;
+                background-size: cover;
+                background-clip: padding-box;
+                border: solid $border transparent; 
+                border-radius: 30px;            
+            }
+
+            .home-header_sign-in {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 140px;
+                height: 42px;
+                background-color: #444444;
+                color: white;
+                border: 1px solid transparent;
+                border-radius: 20px;
+                font-size: 14px;
+                letter-spacing: 0.7px;
+                margin-left: 10px;
+    
+                &:hover {
+                    background-color: #2a2929;
+                }
+            }
+
+            .home-header_payment {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 140px;
+                height: 42px;
+                background-color: transparent;
+                border: 1px solid transparent;
+                border-radius: 20px;
+                font-size: 14px;
+                letter-spacing: 0.7px;
+                margin-left: 10px;
+    
+                &:hover {
+                    color: #000000;
+                }
+            }
+        }
+
+        .buttons-menu-mobile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .profile-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 55px;
+                height: 55px;
+                margin: auto;
+
+                position: relative;
+                padding: 3px;
+                box-sizing: border-box;
+
+                $border: 5px;
+                color: #FFF;
+                background: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%) no-repeat;
+                background-size: cover;
+                background-clip: padding-box;
+                border: solid $border transparent; 
+                border-radius: 30px;            
+            }
+            
+            .home-header_sign-in {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 140px;
+                height: 42px;
+                background-color: #444444;
+                color: white;
+                border: 1px solid transparent;
+                border-radius: 20px;
+                font-size: 14px;
+                letter-spacing: 0.7px;
+                margin-left: 10px;
+    
+                &:hover {
+                    background-color: #2a2929;
+                }
+            }
+
+            .home-header_payment {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid transparent;
+                font-size: 20px;
+                letter-spacing: 0.7px;
+            }
+        }
+
+        .icon {
+            display: flex;
+            font-family: 'Courier New', monospace;
+            font-size: 35px;
+            font-weight: 500;
+            color: var(--black_to_white);
+            cursor: pointer;
+
+            .icon {
+                color: var(--home_header_icon_p);
+            }
+
+            &::selection {
+                background-color: transparent;
+            }
+        }
+
+        @media screen and (max-width: 769px) {
+            align-items: center;
+        }
+    }
+
+    @media screen and (max-width: 769px) {
+        justify-content: center;
+    }
+
+    .languague-choice-container{
+        display: flex;
+        margin-right: 20px;
+    }
+}
