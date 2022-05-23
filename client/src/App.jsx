@@ -1,11 +1,13 @@
 import React from "react";
+import './index.css'
 import { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Provider } from "react-redux";
 import { IntlProvider } from 'react-intl';
 
 import CheckerContainer from "./hocs/CheckerContainer";
 import PrivateWrapper from "./hocs/PrivateRoute";
+import ThemeContainer from "./hocs/ThemeContainer";
 
 import { messages } from './i18n/messages'
 import { LOCALES } from './i18n/locales'
@@ -29,6 +31,9 @@ export const App = () => {
 
     function getInitialLocale() {
         const savedLocale = JSON.parse(localStorage.getItem('locale'))
+        if(!savedLocale){
+            localStorage.setItem('locale', JSON.stringify('en'))
+        }
         return savedLocale || LOCALES.ENGLISH
     }
 
@@ -36,19 +41,21 @@ export const App = () => {
         <IntlProvider messages={messages[currentLocale]} locale={currentLocale}>
             <Provider store={store}>
                 <CheckerContainer>
-                    <Router>
-                        <Routes>
-                            <Route exact path="/*" element={<Home currentLocale={currentLocale} handleChange={handleChange}/>}/>
-                            <Route exact path="/login" element={<Login/>}/>
-                            <Route exact path="/register" element={<Register/>}/>
-                            <Route element={<PrivateWrapper />}>
-                                <Route exact path="/dashboard" element={<Dashboard/>} />
-                            </Route>
-                            <Route element={<PrivateWrapper />}>
-                                <Route exact path="/profile" element={<Profile/>} />
-                            </Route>
-                        </Routes>  
-                    </Router>
+                    <ThemeContainer>
+                        <BrowserRouter>
+                            <Routes>
+                                <Route exact path="/*" element={<Home currentLocale={currentLocale} handleChange={handleChange}/>}/>
+                                <Route exact path="/login" element={<Login/>}/>
+                                <Route exact path="/register" element={<Register/>}/>
+                                <Route element={<PrivateWrapper />}>
+                                    <Route exact path="/dashboard" element={<Dashboard/>} />
+                                </Route>
+                                <Route element={<PrivateWrapper />}>
+                                    <Route exact path="/profile" element={<Profile/>} />
+                                </Route>
+                            </Routes>  
+                        </BrowserRouter>
+                    </ThemeContainer>
                 </CheckerContainer>
             </Provider>
         </IntlProvider>

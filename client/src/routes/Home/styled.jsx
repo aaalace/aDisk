@@ -11,6 +11,40 @@ const images = {
     4: [divsvg4]
 }
 
+
+export const HomeBlockContainer = styled.div`
+
+    @media ${HomePageDevices.desktop} { 
+        ${props => props.id % 2 === 0 ? 
+            'background-color: #f1f5f8' 
+        : 
+        props.id === 1 ? 
+            'background-image: var(--home_background_main)' 
+        : 'background-color: white'
+        };
+    }
+
+    @media ${HomePageDevices.tablet} {
+        ${props => props.id % 2 === 0 ? 
+            'background-color: #f1f5f8' 
+        : 
+        props.id === 1 ? 
+            'background-image: var(--home_background_main)' 
+        : 'background-color: white'
+        };
+    }
+
+    @media ${HomePageDevices.mobile} {
+        ${props => props.id % 2 === 0 ? 
+            'background-color: #f1f5f8' 
+        : 
+        props.id === 1 ? 
+            'background-image: var(--home_background_main)' 
+        : 'background-color: white'
+        };
+    }
+`
+
 export const HomeBlock = styled.div`
 
     @media ${HomePageDevices.desktop} { 

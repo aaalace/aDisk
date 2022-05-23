@@ -39,7 +39,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: transparent;
 
         .home-block {
             padding: '50px 0 50px 0';
@@ -58,11 +57,13 @@
                 .heading {
                     font-weight: 700;
                     overflow: hidden;
+                    color: var(--black_to_white);
                 }
 
                 .description {
                     font-weight: 500;
                     overflow: hidden;
+                    color: var(--black_to_white);
                 }
     
                 .home-button {

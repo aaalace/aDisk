@@ -9,7 +9,8 @@ import HomeHeader from "../../components/HomeHeader";
 import PaymentCasrousel from '../../components/PaymentCarousel';
 import ThreeFigure from '../../components/ThreeFigure';
 
-import { 
+import {
+    HomeBlockContainer,
     HomeBlock,
     HomeBlockInfo,
     HomeBlockImage,
@@ -30,13 +31,7 @@ const Block = (props) => {
     if(props.isAuthenticated){
         bottomButtonMessageId = 'open_disk_btn'
         bottomButtonNavigate = '/dashboard'
-    }
-
-    let stls_13 = {margin: '0 20px 0 20px'}
-    if(props.id === 1){
-        stls_13 = {backgroundImage: 'linear-gradient(120deg, #ffffff 30%, #000000 120%)'}
-    }
-
+    } 
     const nameSwitch = (id) => {
         switch(id) {
             case 1:
@@ -68,7 +63,7 @@ const Block = (props) => {
     }
 
     return(
-        <div className="home-block-container" style={props.id % 2 === 0 ? {backgroundColor: '#f1f5f8'} : stls_13}>
+        <HomeBlockContainer id={props.id} className="home-block-container">
             <HomeBlock id={props.id} className="home-block">
                 {props.id % 2 === 0 && props.id !== 1 && !Mobile ? <HomeBlockImage id={props.id} className="home-block_image"/> : null}
                 <HomeBlockInfo id={props.id} className="home-block_info">
@@ -83,7 +78,7 @@ const Block = (props) => {
                 {props.id === 1 ? <ThreeFigure/> : null}
                 {props.id % 2 === 1 && props.id !== 1 && !Mobile ? <HomeBlockImage id={props.id} className="home-block_image"/> : null}
             </HomeBlock>
-        </div>
+        </HomeBlockContainer>
     )
 }
 

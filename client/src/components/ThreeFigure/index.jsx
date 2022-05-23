@@ -1,4 +1,4 @@
-import React, { useRef, useState, Suspense } from "react";
+import React, { useRef, useState, Suspense, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import './style.scss'
 import * as THREE from 'three'
@@ -31,10 +31,23 @@ const Box = (props) => {
 }
 
 const Lights = () => {
+
+    // const [position, setPosition] = useState([-15, 5, 2])
+
+    // useEffect(() => {
+    //     const userTheme = localStorage.getItem('theme')
+    //     if (userTheme === 'dark'){
+    //         setPosition([25, -12, 5])
+    //     }
+    //     else{
+    //         setPosition([-15, 5, 2])
+    //     }
+    // }, [])
+
     return(
         <>
             <ambientLight />
-            <pointLight position={[-20, 5, 5]} intensity={6}/>
+            <pointLight position={[-15, 5, 2]} intensity={10}/>
         </>
     )
 }
