@@ -27,3 +27,31 @@ export const HomeHeaderStyled = styled.div`
         }
     }
 `
+
+
+export const HomeHeaderPayment = styled.button`
+
+    @media ${HomePageDevices.desktop} { 
+        ${props => props.scrolled ? 
+            'color: var(--scrolled_pay);'
+        : 
+            'color: var(--non_scrolled_pay);'
+        }
+    }
+
+    @media ${HomePageDevices.tablet} {
+        ${props => props.scrolled ? 
+            'color: var(--scrolled_pay);'
+        : 
+            'color: var(--non_scrolled_pay);'
+        }
+    }
+
+    @media ${HomePageDevices.mobile} {
+        ${props => props.scrolled ? 
+            'color: var(--scrolled_pay);'
+        : 
+            'color: var(--non_scrolled_pay);'
+        }
+    }
+`

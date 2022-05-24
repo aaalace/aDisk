@@ -8,7 +8,8 @@ import {
     AUTHENTICATED_SUCCESS, 
     AUTHENTICATED_FAIL,
     DELETE_USER_SUCCESS,
-    DELETE_USER_FAIL
+    DELETE_USER_FAIL,
+    CHANGE_THEME
 } from '../actions/types'
 
 const initialState = {

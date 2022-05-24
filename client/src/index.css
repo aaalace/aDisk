@@ -3,7 +3,8 @@
 
     --home_header_background: white;
     --home_header_icon_p: #5643CC;
-
+    --scrolled_pay: #444444;
+    --non_scrolled_pay: #ffffff;
 
     --home_background_main: linear-gradient(120deg, #ffffff 30%, #000000 120%);
 }
@@ -13,6 +14,8 @@
 
     --home_header_background: rgb(84, 84, 84);
     --home_header_icon_p: white;
+    --scrolled_pay: white;
+    --non_scrolled_pay: white;
 
     --home_background_main: linear-gradient(120deg, #000000b8 10%, #ffffff 200%);
 }

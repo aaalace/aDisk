@@ -57,9 +57,7 @@ const LoginForm = (props) => {
                             <p>Password</p>
                             <input type='password' onChange={e => setPassword(e.target.value)} value={password}/>
                         </div>
-                    
                     </div>
-                    
                     <button type="submit" className="sign-in-button">Sign in</button>
                 </form>
 

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { FormattedMessage } from 'react-intl'
 import { useMediaQuery } from "react-responsive"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faClose, faCertificate } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faClose, faCertificate, faRubleSign } from '@fortawesome/free-solid-svg-icons'
 import { PaymentCarouselStyled, ADPLUSstyled, Standardstyled, PaymentCarouselBlockStyled } from "./styled"
 
 const CommonSubscriptionBlock = (props) => {
@@ -30,7 +30,7 @@ const CommonSubscriptionBlock = (props) => {
                 <hr style={{margin: '20px 0', color: '#79d246'}}></hr>
                 <div className="price-container">
                     <p className="num">0</p>
-                    <p className="adict"><i className="fas fa-ruble-sign"></i>/<FormattedMessage id='home_payment_month'/></p>
+                    <p className="adict"><FontAwesomeIcon icon={faRubleSign}/>/<FormattedMessage id='home_payment_month'/></p>
                 </div>
             </div>
         </Standardstyled>
@@ -43,7 +43,7 @@ const ADPLUSSubscriptionBlock = () => {
     })
 
     return(
-        <ADPLUSstyled className='carousel-block' data-aos={Mobile ? 'zoom-in' : 'zoom-in-right'}>
+        <ADPLUSstyled className='carousel-block' data-aos={Mobile ? 'zoom-in' : 'zoom-in-left'}>
             <div className="carousel-block-header-ADPLUS">
                 <FontAwesomeIcon className="icon" icon={faCertificate}/>
                 <p className="name">AD+</p>
@@ -60,7 +60,7 @@ const ADPLUSSubscriptionBlock = () => {
                         60
                     </p>
                     <p className="adict">
-                        <i className="fas fa-ruble-sign"></i>/<FormattedMessage id='home_payment_month'/>
+                        <FontAwesomeIcon icon={faRubleSign}/>/<FormattedMessage id='home_payment_month'/>
                     </p>
                 </div>
             </div>
@@ -82,7 +82,7 @@ const PaymentCasrouselBlock = () => {
     
     useEffect(() => {
         Aos.init({duration: 3000, once: onesState})
-    }, [])
+    }, [onesState])
 
     const navigateFromCarousel = () => {
         navigate('/register')

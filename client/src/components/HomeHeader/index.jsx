@@ -7,12 +7,18 @@ import { useMediaQuery } from "react-responsive"
 import { FormattedMessage } from 'react-intl'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-import { faCoins, faUserAlt, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
+import { faCoins, faUserAlt } from '@fortawesome/free-solid-svg-icons'
 
-import { HomeHeaderStyled } from "./styled"
+import { 
+    HomeHeaderStyled,
+    HomeHeaderPayment } from "./styled"
 
 const HomeHeader = (props) => {
     const navigate = useNavigate()
+
+    const Mobile = useMediaQuery({
+        query: '(max-width: 769px)'
+    })
     
     const [scroll, setScroll] = useState(0)
 
@@ -25,10 +31,6 @@ const HomeHeader = (props) => {
     }
 
     const [appTheme, setAppTheme] = useState(setUserThemeIcon)
-
-    const Mobile = useMediaQuery({
-        query: '(max-width: 769px)'
-    })
 
     const handleScroll = () => {
         setScroll(window.scrollY);
@@ -54,7 +56,7 @@ const HomeHeader = (props) => {
     
     return (
         <HomeHeaderStyled scrolled={scroll === 0 ? false : true} className='home-header' onScroll={handleScroll}>
-            {!Mobile ? 
+            { !Mobile ? 
                 <div className="theme-choice-container">
                     <DarkModeSwitch
                         moonColor="black"
@@ -68,26 +70,29 @@ const HomeHeader = (props) => {
             <div className="home-header_row">
                 <div onClick={props.homeScrollFunc} className="icon"><p className="icon">a</p>Disk</div>
                 { !Mobile ? 
-                <div className="buttons-menu">
+                    <div className="buttons-menu">
+                        {props.isAuthenticated ? 
+                            <img className="profile-icon" alt="" src="../images/default-image.jpg" onClick={() => navigate('/profile')}></img>
+                        : 
+                            <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/>&nbsp;&nbsp;<FormattedMessage id='login_button'/></button>
+                        }
+                        <HomeHeaderPayment scrolled={scroll === 0 ? false : true} onClick={props.priceScrollFunc} type="button" className="home-header_payment"><FontAwesomeIcon icon={faCoins}/>&nbsp;&nbsp;AD+</HomeHeaderPayment>
+                    </div> 
+                : 
+                    <div className="buttons-menu-mobile">
                     {props.isAuthenticated ? 
-                        <img className="profile-icon" alt="" src="../images/default-image.jpg" onClick={() => navigate('/profile')}></img>
-                    : 
-                        <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/>&nbsp;&nbsp;<FormattedMessage id='login_button'/></button>
-                    }
-                    <button onClick={props.priceScrollFunc} type="button" className="home-header_payment" style={scroll === 0 ? {color: 'white'} : {color: '#444444'}}><FontAwesomeIcon icon={faCoins}/>&nbsp;&nbsp;AD+</button>
-                </div> : 
-                <div className="buttons-menu-mobile">
-                   {props.isAuthenticated ? 
-                        <img className="profile-icon" alt="" src="../images/default-image.jpg" onClick={() => navigate('/profile')}></img>
-                    : 
-                        <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/>&nbsp;&nbsp;<FormattedMessage id='login_button'/></button>
-                    }
-                </div>
+                            <img className="profile-icon" alt="" src="../images/default-image.jpg" onClick={() => navigate('/profile')}></img>
+                        : 
+                            <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/>&nbsp;&nbsp;<FormattedMessage id='login_button'/></button>
+                        }
+                    </div>
                 }
             </div>
-            { !Mobile ? <div className="languague-choice-container">
-                <LanguagueChoice handleChange={props.handleChange} currentLocale={props.currentLocale} customStyles={scroll === 0 ? {color: 'white', backgroundColor: '#444444'} : {color: '#444444'}}/>
-            </div> : null}
+            { !Mobile ? 
+                <div className="languague-choice-container">
+                    <LanguagueChoice scrolled={scroll === 0 ? false : true} handleChange={props.handleChange} currentLocale={props.currentLocale}/>
+                </div> 
+            : null }
         </HomeHeaderStyled>
     )
 }

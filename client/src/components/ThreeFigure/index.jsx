@@ -2,6 +2,7 @@ import React, { useRef, useState, Suspense, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import './style.scss'
 import * as THREE from 'three'
+import { connect } from "react-redux";
 
 import img from '../../images/earth.jpg'
 
@@ -32,27 +33,21 @@ const Box = (props) => {
 
 const Lights = () => {
 
-    // const [position, setPosition] = useState([-15, 5, 2])
-
-    // useEffect(() => {
-    //     const userTheme = localStorage.getItem('theme')
-    //     if (userTheme === 'dark'){
-    //         setPosition([25, -12, 5])
-    //     }
-    //     else{
-    //         setPosition([-15, 5, 2])
-    //     }
-    // }, [])
+    const doc = document.documentElement.getAttribute('data-theme')
+    const position = {
+        'dark': [25, -12, 5],
+        'light': [-15, 5, 2]
+    }
 
     return(
         <>
             <ambientLight />
-            <pointLight position={[-15, 5, 2]} intensity={10}/>
+            <pointLight position={position[doc]} intensity={10}/>
         </>
     )
 }
 
-export default function ThreeFigure(props) {
+function ThreeFigure(props) {
     const Mobile = useMediaQuery({
         query: '(max-width: 768px)'
     })
@@ -73,6 +68,7 @@ export default function ThreeFigure(props) {
         blockWidth = '400px'
         blockPositionZ = -2
     }
+    
 
     return (
         <Canvas style={{display: 'flex', width: blockWidth, height: blockHeight}} camera={{position: [0, 0, 10], fov: 20}}>
@@ -83,3 +79,6 @@ export default function ThreeFigure(props) {
         </Canvas>
     );
 }
+
+
+export default ThreeFigure

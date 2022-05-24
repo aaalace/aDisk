@@ -5,7 +5,6 @@
     align-items: center;
     justify-content: space-around;
     cursor: pointer;
-    color: #0073ff;
 
     .switcher {
         display: flex;
@@ -33,22 +32,10 @@
         }
 
         .blueText {
-            color: #000000;
+            color: #ffffff;
             background-color: transparent;
         }
 
 
-    }
-
-    .icon {
-        width: 16px;
-        height: 16px;
-        border-radius: 10px;
-    }
-
-    .name {
-        margin-bottom: 2px;
-        margin-left: 5px;
-        font-size: 16px;
     }
 }
