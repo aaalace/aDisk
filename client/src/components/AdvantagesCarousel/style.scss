@@ -2,14 +2,21 @@
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-    background: linear-gradient(to right, #455db5c4, #683fd7bb), url('../../images/servers.jpg') no-repeat;
-    box-shadow: inset 0 0 0 3000px rgba(150, 150, 150, 0.192);
+    background: var(--advantages_carousel_bg);
     background-size: cover;
+    overflow: hidden;
 
     .adv-carousel-name-container{
         display: flex;
-        justify-content: left;
+        justify-content: space-between;
         width: 80%;
+        z-index: 1;
+
+        .adv-workbtns-cont {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
 
         .icon {
             font-family: 'Courier New', monospace;
@@ -22,6 +29,7 @@
     .adv-carousel-description-container{
         justify-content: center;
         width: 80%;
+        z-index: 1;
 
         .desc {
             font-size: 20px;
@@ -33,8 +41,16 @@
         display: flex;
         justify-content: left;
         width: 80%;
+        z-index: 1;
+
+        @media screen and (max-width: 769px) {
+            max-width: 95vw;
+        }
+
 
         .bar {
+            display: flex;
+            align-items: center;
             font-size: 15px;
             color: rgba(255, 255, 255, 0.9);
             text-decoration: none;

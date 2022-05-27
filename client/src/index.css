@@ -1,21 +1,45 @@
 [data-theme='light'] {
     --black_to_white : black;
+    --white_to_black: white;
+
+    --cookie_bg: #e2e2e2;
 
     --home_header_background: white;
     --home_header_icon_p: #5643CC;
     --scrolled_pay: #444444;
-    --non_scrolled_pay: #ffffff;
+    --non_scrolled_pay: #444444;
 
     --home_background_main: linear-gradient(120deg, #ffffff 30%, #000000 120%);
+    --home_background_even: #f1f5f8;
+    --home_background_odd: rgb(255, 255, 255);
+    --home_payment_bg: linear-gradient(90deg, #455db55b, #af426160);
+
+    --advantages_carousel_bg: linear-gradient(to right, #455db5c4, #683fd7bb);
+
+    --sign_bg: #f1f5f8;
+    --sign_form_bg: white;
+    --sign_grey: rgb(99, 99, 99);
 }
 
 [data-theme='dark'] {
-    --black_to_white : white;
+    --black_to_white : rgb(241, 241, 241);
+    --white_to_black: black;
 
-    --home_header_background: rgb(84, 84, 84);
+    --cookie_bg: rgb(28, 28, 28);
+
+    --home_header_background: rgba(84, 84, 84, 0);
     --home_header_icon_p: white;
     --scrolled_pay: white;
     --non_scrolled_pay: white;
 
-    --home_background_main: linear-gradient(120deg, #000000b8 10%, #ffffff 200%);
+    --home_background_main: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
+    --home_background_even: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
+    --home_background_odd: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
+    --home_payment_bg: url('./images/stars.png'), linear-gradient(#000000, rgba(0, 0, 0, 0.779));
+
+    --advantages_carousel_bg: #121212;
+
+    --sign_bg: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
+    --sign_form_bg: #121212;
+    --sign_grey: rgb(180, 180, 180);
 }

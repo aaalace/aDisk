@@ -17,9 +17,9 @@ const Register = (props) => {
     return (
         <div className="register-page">
             <RegisterContainer className="register-container">
-                {Mobile ? <AdvantagesCarousel/> : null}
-                <RegisterForm/>
-                {Desktop ? <AdvantagesCarousel/> : null}
+                {Mobile ? <AdvantagesCarousel currentLocale={props.currentLocale} handleChange={props.handleChange}/> : null}
+                <RegisterForm />
+                {Desktop ? <AdvantagesCarousel currentLocale={props.currentLocale} handleChange={props.handleChange}/> : null}
             </RegisterContainer>
       </div>
     );

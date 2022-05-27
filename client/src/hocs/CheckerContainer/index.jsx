@@ -8,14 +8,20 @@ const CheckerContainer = (props) => {
 
     const [cookieClaimed, setCookieClaimed] = useState(false)
 
+    const claimCookie = () => {
+        localStorage.setItem('cookie-claim', true)
+        setCookieClaimed(true)
+    }
+
     useEffect(() => {
+        let cookieClaimedLS = localStorage.getItem('cookie-claim')
+        if(cookieClaimedLS){
+            setCookieClaimed(true)
+        }
+
         async function authProcess () {
             const res = await props.checkAuth()
-            if(!res){
-                setCookieClaimed(false)
-            }
-            else{
-                setCookieClaimed(true)
+            if(res){
                 props.loadUser()
             }
         }
@@ -34,7 +40,7 @@ const CheckerContainer = (props) => {
                         We use cookies to improve your experience on our site
                     </div>
                     <div className="accept">
-                        <button className="accept-button" type="button" onClick={() => setCookieClaimed(true)}>Accept cookies</button>
+                        <button className="accept-button" type="button" onClick={claimCookie}>Accept cookies</button>
                     </div>
                 </div> 
             : 

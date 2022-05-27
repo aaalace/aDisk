@@ -10,18 +10,17 @@ const languages = [
     { name: 'RU', code: LOCALES.RUSSIAN },
     { name: 'DE', code: LOCALES.GERMAN }
 ]
-// customStyles={scroll === 0 ? {color: 'white', backgroundColor: '#444444'} : {color: '#444444'}}
 
-export const LanguagueChoice = ({ currentLocale, handleChange, scrolled }) => {
+export const LanguagueChoice = ({ customStyles, currentLocale, handleChange, scrolled }) => {
 
     useEffect(() => {
         document.querySelector(`#styledSelect > option[value=${currentLocale}]`).setAttribute("selected", "selected");
     }, [])
 
     return (
-        <LanguagueSelect scrolled={scrolled} className='languague_choice-container'>
+        <LanguagueSelect scrolled={scrolled} className='languague_choice-container' style={customStyles}>
             <div className='switcher' onChange={handleChange} value={currentLocale}>
-                <select scrolled={scrolled} id="styledSelect" className="blueText">
+                <select id="styledSelect" className="blueText" style={customStyles}>
                     {languages.map(({ name, code }) => (
                     <option key={code} value={code}>
                         {name}

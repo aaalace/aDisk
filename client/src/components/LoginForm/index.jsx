@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import CSRFToken from "../CSRFToken";
 import { LoginFormStyled } from "./styled";
+import { FormattedMessage } from 'react-intl'
 
 const LoginForm = (props) => {
     const navigate = useNavigate();
@@ -37,38 +38,38 @@ const LoginForm = (props) => {
         <div className="login-form-header"/>
         <div className="login-form-container">
             <div className="page-info-container">
-                <h2 className="page-name">Sign in</h2>
-                <p className="page-comm">Save your files in a safe place!</p>
+                <h2 className="page-name"><FormattedMessage id='sign_in_name'/></h2>
+                <p className="page-comm"><FormattedMessage id='sign_desc'/></p>
             </div>
             <div className="login-types-container">
-                <button className="google-sign-in"><img alt="" src="../images/google.png" className="google-img"></img> Sign in with Google</button>
+                <button className="google-sign-in"><img alt="" src="../images/google.png" className="google-img"></img><FormattedMessage id='sign_in_google_btn'/></button>
                 
                 <div className="custom-hr">
-                    <p>or Sign in with Username</p>
+                    <p><FormattedMessage id='sign_or'/></p>
                 </div>
                 <form onSubmit={e => onSubmit(e)}>
                     <CSRFToken/>
                     <div className="username-sign-in">
                         <div className="username-line">
-                            <p>Username</p>
+                            <p><FormattedMessage id='sign_username'/></p>
                             <input type='text' onChange={e => setUsername(e.target.value)} value={username}/>
                         </div>
                         <div className="username-line">
-                            <p>Password</p>
+                            <p><FormattedMessage id='sign_password'/></p>
                             <input type='password' onChange={e => setPassword(e.target.value)} value={password}/>
                         </div>
                     </div>
-                    <button type="submit" className="sign-in-button">Sign in</button>
+                    <button type="submit" className="sign-in-button"><FormattedMessage id='sign_in_button'/></button>
                 </form>
 
                 <div className="not-registered-container">
-                    <p className="question">Not registered yet?&nbsp;&nbsp;</p>
-                    <Link className="solution" to='/register'>Create an account</Link>
+                    <p className="question"><FormattedMessage id='sign_in_question'/>&nbsp;&nbsp;</p>
+                    <Link className="solution" to='/register'><FormattedMessage id='sign_in_answer'/></Link>
                 </div>
             </div>
         </div>
         <div className="rights">
-            &#169; 2022 aDisk. All rights reserved | aDisk
+            &#169; 2022 aDisk. <FormattedMessage id='sign_rights_reserved'/> | aDisk
         </div>            
       </LoginFormStyled>
     );

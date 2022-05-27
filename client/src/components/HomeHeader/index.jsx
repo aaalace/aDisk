@@ -6,12 +6,13 @@ import { LanguagueChoice } from "../LanguagueChoice"
 import { useMediaQuery } from "react-responsive"
 import { FormattedMessage } from 'react-intl'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { DarkModeSwitch } from "react-toggle-dark-mode";
+import ThemeSwitch from "../ThemeSwitch"
 import { faCoins, faUserAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { 
     HomeHeaderStyled,
-    HomeHeaderPayment } from "./styled"
+    HomeHeaderPayment 
+} from "./styled"
 
 const HomeHeader = (props) => {
     const navigate = useNavigate()
@@ -25,9 +26,9 @@ const HomeHeader = (props) => {
     const setUserThemeIcon = () => {
         const userTheme = localStorage.getItem('theme')
         if(userTheme === 'light'){
-            return true
+            return false
         }
-        return false
+        return true
     }
 
     const [appTheme, setAppTheme] = useState(setUserThemeIcon)
@@ -39,13 +40,13 @@ const HomeHeader = (props) => {
     const handleThemeChange = (changeTo) => {
         if(changeTo) {
             setAppTheme(true)
-            localStorage.setItem('theme', 'light');
-            document.documentElement.setAttribute('data-theme', 'light')
+            localStorage.setItem('theme', 'dark');
+            document.documentElement.setAttribute('data-theme', 'dark')
         } 
         else {
             setAppTheme(false)
-            localStorage.setItem('theme', 'dark');
-            document.documentElement.setAttribute('data-theme', 'dark')
+            localStorage.setItem('theme', 'light');
+            document.documentElement.setAttribute('data-theme', 'light')
         }
     };
 
@@ -58,13 +59,7 @@ const HomeHeader = (props) => {
         <HomeHeaderStyled scrolled={scroll === 0 ? false : true} className='home-header' onScroll={handleScroll}>
             { !Mobile ? 
                 <div className="theme-choice-container">
-                    <DarkModeSwitch
-                        moonColor="black"
-                        sunColor="white"
-                        checked={appTheme}
-                        onChange={handleThemeChange}
-                        size={24}
-                    />
+                    <ThemeSwitch checked={appTheme} onChange={() => handleThemeChange(!appTheme)}/>
                 </div>
             : null }
             <div className="home-header_row">
@@ -80,17 +75,23 @@ const HomeHeader = (props) => {
                     </div> 
                 : 
                     <div className="buttons-menu-mobile">
-                    {props.isAuthenticated ? 
+                        <div className="languague-choice-container" style={{marginRight: '0px'}}>
+                            <LanguagueChoice customStyles={scroll === 0 ? {color: 'var(--non_scrolled_pay)'} : {color: 'var(--scrolled_pay)'}} scrolled={scroll === 0 ? false : true} handleChange={props.handleChange} currentLocale={props.currentLocale}/>
+                        </div> 
+                        <div className="theme-choice-container">
+                            <ThemeSwitch checked={appTheme} onChange={() => handleThemeChange(!appTheme)}/>
+                        </div>
+                        {props.isAuthenticated ? 
                             <img className="profile-icon" alt="" src="../images/default-image.jpg" onClick={() => navigate('/profile')}></img>
                         : 
-                            <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/>&nbsp;&nbsp;<FormattedMessage id='login_button'/></button>
+                            <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/></button>
                         }
                     </div>
                 }
             </div>
             { !Mobile ? 
                 <div className="languague-choice-container">
-                    <LanguagueChoice scrolled={scroll === 0 ? false : true} handleChange={props.handleChange} currentLocale={props.currentLocale}/>
+                    <LanguagueChoice customStyles={scroll === 0 ? {color: 'var(--non_scrolled_pay)'} : {color: 'var(--scrolled_pay)'}} scrolled={scroll === 0 ? false : true} handleChange={props.handleChange} currentLocale={props.currentLocale}/>
                 </div> 
             : null }
         </HomeHeaderStyled>

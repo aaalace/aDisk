@@ -8,6 +8,7 @@ import { register } from '../../actions/auth'
 import { useNavigate } from 'react-router-dom';
 import CSRFToken from "../CSRFToken";
 import { RegisterFormStyled } from "./styled";
+import { FormattedMessage } from 'react-intl'
 
 const RegisterForm = (props) => {
     const navigate = useNavigate();
@@ -48,54 +49,54 @@ const RegisterForm = (props) => {
             <div className="register-form-header"/>
             <div className="register-form-container">
                 <div className="page-info-container">
-                    <h2 className="page-name">Sign Up</h2>
-                    <p className="page-comm">Save your files in a safe place!</p>
+                    <h2 className="page-name"><FormattedMessage id='sign_up_name'/></h2>
+                    <p className="page-comm"><FormattedMessage id='sign_desc'/></p>
                 </div>
                 <div className="register-types-container">
-                    <button className="google-register"><img alt="" src="../images/google.png" className="google-img"></img>Sign up with Google</button>
+                    <button className="google-register"><img alt="" src="../images/google.png" className="google-img"></img><FormattedMessage id='sign_up_google_btn'/></button>
                     
                     <div className="custom-hr">
-                        <p>or Sign up with Email</p>
+                        <p><FormattedMessage id='sign_or'/></p>
                     </div>
                     <form onSubmit={e => onSubmit(e)}>
                         <CSRFToken/>
                         <div className="username-register">
                             <div className="username-line">
-                                <p>Email</p>
+                                <p><FormattedMessage id='sign_up_email'/></p>
                                 <input type='email' onChange={e => setEmail(e.target.value)} value={email}/>
                             </div>
                             <div className="username-line">
-                                <p>Username</p>
+                                <p><FormattedMessage id='sign_username'/></p>
                                 <input type='text' onChange={e => setUsername(e.target.value)} value={username}/>
                             </div>
                             <div className="username-line">
-                                <p>Password</p>
+                                <p><FormattedMessage id='sign_password'/></p>
                                 <input type='password' autoComplete='new-password' onChange={e => setPassword(e.target.value)} value={password}/>
                             </div>
                             <div className="username-line">
-                                <p>Repeated password</p>
+                                <p><FormattedMessage id='sign_up_rep_pass'/></p>
                                 <input type='password' autoComplete='new-password' onChange={e => setRePassword(e.target.value)} value={rePassword}/>
                             </div>
                         </div>
                         
                         <div className="remember-container">
                             <input type="checkbox" value="terms"/>
-                            <label htmlFor="terms">I agree to the <label onClick={() => setTermsState(true)} className="terms">Terms & Conditions</label></label>
+                            <label htmlFor="terms"><FormattedMessage id='sign_up_agreement'/> <label onClick={() => setTermsState(true)} className="terms"><FormattedMessage id='sign_up_terms_link'/></label></label>
                         </div>
                         
-                        <button type="submit" className="register-button" disabled={readyToSend ? false : true} style={readyToSend ? {backgroundImage: 'linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%)'}: {backgroundColor: '#7C7C7C'}}>Sign Up</button>
+                        <button type="submit" className="register-button" disabled={readyToSend ? false : true} style={readyToSend ? {backgroundImage: 'linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%)'}: {backgroundColor: '#7C7C7C'}}><FormattedMessage id='sign_up_button'/></button>
                     </form>
 
                     <div className="already-registered-container">
                         <div style={{display: 'flex'}}>
-                            <p className="question">Already have an account?&nbsp;&nbsp;</p>
-                            <Link className="solution" to='/login'>Sign in</Link>
+                            <p className="question"><FormattedMessage id='sign_up_question'/>&nbsp;&nbsp;</p>
+                            <Link className="solution" to='/login'><FormattedMessage id='sign_up_answer'/></Link>
                         </div>
                     </div>
                 </div> 
             </div>
             <div className="rights">
-                &#169; 2022 aDisk. All rights reserved | aDisk
+                &#169; 2022 aDisk. <FormattedMessage id='sign_rights_reserved'/> | aDisk
             </div>              
         </RegisterFormStyled>
     );

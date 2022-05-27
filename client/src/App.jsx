@@ -45,8 +45,8 @@ export const App = () => {
                         <BrowserRouter>
                             <Routes>
                                 <Route exact path="/*" element={<Home currentLocale={currentLocale} handleChange={handleChange}/>}/>
-                                <Route exact path="/login" element={<Login/>}/>
-                                <Route exact path="/register" element={<Register/>}/>
+                                <Route exact path="/login" element={<Login currentLocale={currentLocale} handleChange={handleChange}/>}/>
+                                <Route exact path="/register" element={<Register currentLocale={currentLocale} handleChange={handleChange}/>}/>
                                 <Route element={<PrivateWrapper />}>
                                     <Route exact path="/dashboard" element={<Dashboard/>} />
                                 </Route>

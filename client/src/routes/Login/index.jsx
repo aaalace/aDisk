@@ -17,9 +17,9 @@ const Login = (props) => {
     return (
         <div className="login-page">
             <LoginContainer className="login-container">
-                {Mobile ? <AdvantagesCarousel/> : null}
-                <LoginForm/>
-                {Desktop ? <AdvantagesCarousel/> : null}
+                {Mobile ? <AdvantagesCarousel currentLocale={props.currentLocale} handleChange={props.handleChange}/> : null}
+                <LoginForm />
+                {Desktop ? <AdvantagesCarousel currentLocale={props.currentLocale} handleChange={props.handleChange}/> : null}
             </LoginContainer>
         </div>
     );

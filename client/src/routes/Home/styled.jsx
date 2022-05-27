@@ -16,31 +16,31 @@ export const HomeBlockContainer = styled.div`
 
     @media ${HomePageDevices.desktop} { 
         ${props => props.id % 2 === 0 ? 
-            'background-color: #f1f5f8' 
+            'background: var(--home_background_even);' 
         : 
         props.id === 1 ? 
-            'background-image: var(--home_background_main)' 
-        : 'background-color: white'
+            'background: var(--home_background_main);' 
+        : 'background: var(--home_background_odd);'
         };
     }
 
     @media ${HomePageDevices.tablet} {
         ${props => props.id % 2 === 0 ? 
-            'background-color: #f1f5f8' 
+            'background: var(--home_background_even);' 
         : 
         props.id === 1 ? 
-            'background-image: var(--home_background_main)' 
-        : 'background-color: white'
+            'background: var(--home_background_main);' 
+        : 'background: var(--home_background_odd);'
         };
     }
 
     @media ${HomePageDevices.mobile} {
         ${props => props.id % 2 === 0 ? 
-            'background-color: #f1f5f8' 
+            'background: var(--home_background_even);' 
         : 
         props.id === 1 ? 
-            'background-image: var(--home_background_main)' 
-        : 'background-color: white'
+            'background: var(--home_background_main);' 
+        : 'background: var(--home_background_odd);'
         };
     }
 `
