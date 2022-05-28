@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import './style.scss'
 import AdvantagesCarousel from "../../components/AdvantagesCarousel";
 import LoginForm from "../../components/LoginForm";
@@ -7,6 +7,11 @@ import { LoginContainer } from "./styled";
 import { useMediaQuery } from 'react-responsive'
 
 const Login = (props) => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     const Desktop = useMediaQuery({
         query: '(min-width: 1000px)'
     })

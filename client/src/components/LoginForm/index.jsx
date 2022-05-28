@@ -42,11 +42,13 @@ const LoginForm = (props) => {
                 <p className="page-comm"><FormattedMessage id='sign_desc'/></p>
             </div>
             <div className="login-types-container">
-                <button className="google-sign-in"><img alt="" src="../images/google.png" className="google-img"></img><FormattedMessage id='sign_in_google_btn'/></button>
+                <button className="google-sign-in"><img alt="" src="../images/google.png" className="google-img"></img><p style={{color: '#000'}}><FormattedMessage id='sign_in_google_btn'/></p></button>
                 
                 <div className="custom-hr">
-                    <p><FormattedMessage id='sign_or'/></p>
+                    <div><FormattedMessage id='sign_or'/></div>
+                    <hr></hr>
                 </div>
+
                 <form onSubmit={e => onSubmit(e)}>
                     <CSRFToken/>
                     <div className="username-sign-in">

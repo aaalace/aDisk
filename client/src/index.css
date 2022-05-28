@@ -8,7 +8,7 @@
     --home_header_background: white;
     --home_header_icon_p: #5643CC;
     --scrolled_pay: #444444;
-    --non_scrolled_pay: white;
+    --non_scrolled_pay: #444444;
 
     --home_background_main: linear-gradient(120deg, #ffffff 30%, #000000 120%);
     --home_background_even: #f1f5f8;

@@ -1,8 +1,12 @@
-import React from "react"
+import React, { useEffect} from "react"
 import './style.scss'
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
       <div className="dashboard">

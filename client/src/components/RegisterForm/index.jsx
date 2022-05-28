@@ -54,11 +54,13 @@ const RegisterForm = (props) => {
                     <p className="page-comm"><FormattedMessage id='sign_desc'/></p>
                 </div>
                 <div className="register-types-container">
-                    <button className="google-register"><img alt="" src="../images/google.png" className="google-img"></img><FormattedMessage id='sign_up_google_btn'/></button>
+                    <button className="google-register"><img alt="" src="../images/google.png" className="google-img"></img><p style={{color: '#000'}}><FormattedMessage id='sign_up_google_btn'/></p></button>
                     
                     <div className="custom-hr">
-                        <p><FormattedMessage id='sign_or'/></p>
+                        <div><FormattedMessage id='sign_or'/></div>
+                        <hr></hr>
                     </div>
+
                     <form onSubmit={e => onSubmit(e)}>
                         <CSRFToken/>
                         <div className="username-register">

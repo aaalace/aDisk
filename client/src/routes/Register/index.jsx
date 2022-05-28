@@ -1,18 +1,15 @@
-import React from "react"
+import React, { useEffect } from "react"
 import './style.scss'
 import RegisterForm from "../../components/RegisterForm";
 import AdvantagesCarousel from "../../components/AdvantagesCarousel";
 import { connect } from "react-redux";
 import { RegisterContainer } from "./styled";
-import { useMediaQuery } from 'react-responsive'
 
 const Register = (props) => {
-    const Desktop = useMediaQuery({
-        query: '(min-width: 1000px)'
-    })
-    const Mobile = useMediaQuery({
-        query: '(max-width: 1000px)'
-    })
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         <div className="register-page">

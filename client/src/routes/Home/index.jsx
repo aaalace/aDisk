@@ -114,6 +114,10 @@ const HomeBlocksContainer = (props) => {
 const Home = (props) => {
     const navigate = useNavigate()
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     const Mobile = useMediaQuery({
         query: '(max-width: 768px)'
     })

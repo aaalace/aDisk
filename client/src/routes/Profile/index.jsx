@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import './style.scss'
 import { connect } from 'react-redux'
 import { logout } from "../../actions/auth"
@@ -9,6 +9,10 @@ import { Link } from "react-router-dom";
 
 const Profile = (props) => {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const [first_name, setFirstName] = useState('')
     const [last_name, setLastName] = useState('')
