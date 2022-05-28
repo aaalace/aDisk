@@ -6,12 +6,16 @@ export const CarouselContainer = styled.div`
         display: flex;
         width: 45vw;
         min-height: 85vh;
+        background: var(--advantages_carousel_bg);
+        object-fit: cover;
     }
 
     @media ${LoginPageDevices.mobile} {
         display: flex;
         width: 100vw;
         height: 200px;
+        background: var(--advantages_carousel_mobile);
+        background-size: 100vw 400px;
     }
 }`
 

@@ -17,7 +17,8 @@
     --home_subs_bg: #f8f6fb;
     --unscrolled_text: rgb(233, 233, 233);
 
-    --advantages_carousel_bg: linear-gradient(to right, #455db5c4, #683fd7bb);
+    --advantages_carousel_bg: linear-gradient(to right, #455db5c4, #683fd7bb), url('./images/db.png');
+    --advantages_carousel_mobile: linear-gradient(to right, #455db5c4, #683fd7bb), url('./images/db.png');
 
     --sign_bg: #f1f5f8;
     --sign_form_bg: white;
@@ -44,6 +45,7 @@
     --unscrolled_text: rgb(36, 36, 36);
 
     --advantages_carousel_bg: transparent;
+    --advantages_carousel_mobile: linear-gradient(120deg, #00000079 10%, #0000006e 120%), url('./images/db.png');
 
     --sign_bg: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
     --sign_form_bg: rgba(0, 0, 0, 0);
