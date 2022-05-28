@@ -11,6 +11,7 @@ const Dashboard = () => {
     return (
       <div className="dashboard">
           <h2>dashboard</h2>
+          <Link to='/'>home</Link>
           <Link to='/profile'>profile</Link>
       </div>
     );
