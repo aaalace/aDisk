@@ -5,12 +5,13 @@ export const RegisterFormStyled = styled.div`
     @media ${LoginPageDevices.desktop} { 
         min-height: 85vh;
         min-width: 25vw;
-        border-radius: 10px 0 0 10px
+        justify-content: center;
     }
 
     @media ${LoginPageDevices.mobile} {
         flex-direction: column;
         width: 100vw;
-        height: 70vh
+        min-height: 70vh;
+        justify-content: flex-start;
     }
 }`

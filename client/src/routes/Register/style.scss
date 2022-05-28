@@ -9,4 +9,19 @@
 
 .register-container {
     display: flex;
+    position: absolute;
+    animation: slideInRegister 0.5s;
+   
+    @media screen and (max-width: 768px) {
+        top: 0;
+    }
+
+    @keyframes slideInRegister {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
 }

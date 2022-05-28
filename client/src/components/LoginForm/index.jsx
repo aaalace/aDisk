@@ -67,10 +67,7 @@ const LoginForm = (props) => {
                     <Link className="solution" to='/register'><FormattedMessage id='sign_in_answer'/></Link>
                 </div>
             </div>
-        </div>
-        <div className="rights">
-            &#169; 2022 aDisk. <FormattedMessage id='sign_rights_reserved'/> | aDisk
-        </div>            
+        </div>   
       </LoginFormStyled>
     );
 }

@@ -12,7 +12,8 @@
     --home_background_main: linear-gradient(120deg, #ffffff 30%, #000000 120%);
     --home_background_even: #f1f5f8;
     --home_background_odd: rgb(255, 255, 255);
-    --home_payment_bg: linear-gradient(90deg, #455db55b, #af426160);
+    --home_payment_bg: white;
+    --home_subs_bg: #f8f6fb;
 
     --advantages_carousel_bg: linear-gradient(to right, #455db5c4, #683fd7bb);
 
@@ -35,11 +36,12 @@
     --home_background_main: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
     --home_background_even: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
     --home_background_odd: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
-    --home_payment_bg: url('./images/stars.png'), linear-gradient(#000000, rgba(0, 0, 0, 0.779));
+    --home_payment_bg: url('./images/stars.png'), linear-gradient(#000000, rgb(0, 0, 0));
+    --home_subs_bg: rgba(97, 97, 97, 0.173);
 
-    --advantages_carousel_bg: #121212;
+    --advantages_carousel_bg: transparent;
 
     --sign_bg: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
-    --sign_form_bg: #121212;
+    --sign_form_bg: #222222;
     --sign_grey: rgb(180, 180, 180);
 }

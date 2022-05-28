@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     min-height: calc(100vh - 64px);
-    background-image: var(--home_payment_bg);
+    background: var(--home_payment_bg);
     z-index: 0;
 
     .payment-carousel-header {
@@ -64,7 +64,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            background-color: #ffffff;
+            background-color: var(--home_subs_bg);
             box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.241);
 
             .carousel-block-header {
@@ -85,7 +85,7 @@
                     font-weight: 600;
                     margin-top: 15px;
                     margin-bottom: 25px;
-                    color: rgb(49, 49, 49);
+                    color: var(--black_to_white);
                 }
             }
 
@@ -134,6 +134,7 @@
                         display: flex;
                         align-items: center;
                         margin-bottom: 1em;
+                        color: var(--black_to_white);
                     }
                 }
 
@@ -141,11 +142,13 @@
                     display: flex;
                     align-items: flex-start;
                     justify-content: center;
+                    color: var(--black_to_white);
                     
                     .num {
                         font-size: 40px;
                         font-weight: 500;
                         line-height: 50px;
+                        color: var(--black_to_white);
                     }
                 }
             }
@@ -164,6 +167,7 @@
                         display: flex;
                         align-items: center;
                         margin-bottom: 1em;
+                        color: var(--black_to_white);
                     }
                 }
 

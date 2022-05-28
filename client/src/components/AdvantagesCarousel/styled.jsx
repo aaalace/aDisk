@@ -6,13 +6,12 @@ export const CarouselContainer = styled.div`
         display: flex;
         width: 45vw;
         min-height: 85vh;
-        border-radius: 0 10px 10px 0;
     }
 
     @media ${LoginPageDevices.mobile} {
         display: flex;
         width: 100vw;
-        height: 30vh;
+        height: 200px;
     }
 }`
 

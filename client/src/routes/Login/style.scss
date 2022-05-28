@@ -9,4 +9,19 @@
 
 .login-container {
     display: flex;
+    position: absolute;
+    animation: slideInLogin 0.5s;
+
+    @media screen and (max-width: 768px) {
+        top: 0;
+    }
+
+    @keyframes slideInLogin {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
 }

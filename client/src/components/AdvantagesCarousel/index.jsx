@@ -22,7 +22,7 @@ const AdvantagesCarousel = (props) => {
                 <p className="desc"><FormattedMessage id='adv_text'/></p>
             </CarouselDescription>
             <div className="adv-carousel-bar-container">
-                <Link className="bar" to='/'><FontAwesomeIcon icon={faHome}/>&nbsp;&nbsp;<FormattedMessage id='adv_home'/></Link>
+                <Link className="bar" to='/'><FontAwesomeIcon icon={faHome} style={{fontSize: '24px'}}/></Link>
                 <Link className="bar" to='/login'><FontAwesomeIcon icon={faUserAlt}/>&nbsp;&nbsp;<FormattedMessage id='adv_login'/></Link>
                 <Link className="bar" to='/register'><FontAwesomeIcon icon={faUserPlus}/>&nbsp;&nbsp;<FormattedMessage id='adv_reg'/></Link>
             </div>

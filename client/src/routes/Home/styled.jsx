@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import { HomePageDevices } from '../../lib/devices';
 
-import divsvg2 from '../../images/div2.svg'
-import divsvg3 from '../../images/div3.svg'
-import divsvg4 from '../../images/div4.svg'
+import divsvg2 from '../../images/data_extraction.svg'
+import divsvg3 from '../../images/memory_storage.svg'
+import divsvg4 from '../../images/text_files.svg'
 
 const images = {
     2: [divsvg2],
@@ -171,16 +171,16 @@ export const HomeBlockImage = styled.div`
 
     @media ${HomePageDevices.desktop} {
         display: flex;
-        width: 500px;
-        height: 500px;
+        width: ${props => props.id % 2 === 0 ? '560px' : '680px'};
+        height: ${props => props.id % 2 === 0 ? '600px' : '590px'};
         background-image: url(${props => images[props.id][0]});
         margin: 20px 0;
     }
 
     @media ${HomePageDevices.tablet} {
         display: flex;
-        width: 350px;
-        height: 350px;
+        width: ${props => props.id % 2 === 0 ? '350px' : '400px'};
+        height: ${props => props.id % 2 === 0 ? '380px' : '360px'};
         background-image: url(${props => images[props.id][0]});
         margin: 20px 0;
     }

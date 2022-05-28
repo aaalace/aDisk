@@ -2,4 +2,16 @@
     display: 'flex';
     width: '500px';
     height: '600px';
+
+    position: absolute;
+    animation: slideInFigure 3s;
+
+    @keyframes slideInFigure {
+        from {
+            transform: translateY(100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
 }

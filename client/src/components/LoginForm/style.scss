@@ -1,13 +1,12 @@
 .login-form {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     flex-direction: column;
     background-color: var(--sign_form_bg);
-    padding: 0 0 25px 0;
+    height: calc(100vh - 200px);
+    padding-top: 30px;
 
     .login-form-container {
-        margin-bottom: 10%;
         width: 70%;
 
         .page-info-container {
@@ -128,12 +127,5 @@
                 }
             }
         }
-    }
-
-    .rights {
-        width: 70%;
-        align-items: start;
-        font-size: 11px;
-        color: var(--sign_grey);
     }
 }

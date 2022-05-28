@@ -2,7 +2,6 @@ import React, { useRef, useState, Suspense, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import './style.scss'
 import * as THREE from 'three'
-import { connect } from "react-redux";
 
 import img from '../../images/earth.jpg'
 
@@ -12,7 +11,6 @@ const Box = (props) => {
     const mesh = useRef()
 
     const [clicked, setClicked] = useState(false)
-    const [scale, setScale]= useState(1)
     
     useFrame(() => (mesh.current.rotation.y += 0.002, mesh.current.rotation.x-= 0.0015))
 
@@ -23,7 +21,7 @@ const Box = (props) => {
             {...props}
             castShadow
             ref={mesh}
-            scale={scale}
+            scale={1}
             onClick={() => setClicked(!clicked)}>
             <sphereBufferGeometry attach="geometry" args={[]}/>
             <meshStandardMaterial attach='material' map={texture} />
@@ -33,16 +31,10 @@ const Box = (props) => {
 
 const Lights = () => {
 
-    const doc = document.documentElement.getAttribute('data-theme')
-    const position = {
-        'dark': [25, -12, 5],
-        'light': [-15, 5, 2]
-    }
-
     return(
         <>
             <ambientLight />
-            <pointLight position={position[doc]} intensity={10}/>
+            <pointLight position={[-15, 5, 2]} intensity={10}/>
         </>
     )
 }
@@ -71,7 +63,7 @@ function ThreeFigure(props) {
     
 
     return (
-        <Canvas style={{display: 'flex', width: blockWidth, height: blockHeight}} camera={{position: [0, 0, 10], fov: 20}}>
+        <Canvas className="dfigure" style={{display: 'flex', width: blockWidth, height: blockHeight}} camera={{position: [0, 0, 10], fov: 20}}>
             <Suspense fallback={null}>
                 <Lights/>
                 <Box position={[0, 0, blockPositionZ]}/>
