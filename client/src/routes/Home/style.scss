@@ -18,6 +18,7 @@
         justify-content: space-around;
         padding-top: 40px;
         background: var(--home_background_even);
+        border: 1px solid transparent;
 
         p{
             font-family: 'FORCED SQUARE', sans-serif;
@@ -58,13 +59,11 @@
                 .heading {
                     font-weight: 700;
                     overflow: hidden;
-                    color: var(--black_to_white);
                 }
 
                 .description {
                     font-weight: 500;
-                    overflow: hidden;
-                    color: var(--black_to_white);
+                    overflow: hidden;              
                 }
     
                 .home-button {
@@ -84,6 +83,11 @@
                         width: 80%;
                     }
                 }
+            }
+
+            .element-show {
+                transition-duration: 1s;
+                color: var(--black_to_white);
             }
     
             .home-block_image {

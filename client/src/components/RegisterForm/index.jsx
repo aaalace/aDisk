@@ -18,9 +18,10 @@ const RegisterForm = (props) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [rePassword, setRePassword] = useState('')
+    const [checkBoxState, setCheckBoxState] = useState(false)
 
     let readyToSend = false
-    if(email !== '' && username !== '' && password.length > 7 && rePassword.length > 7){
+    if(email !== '' && username !== '' && password.length > 7 && rePassword.length > 7 && checkBoxState){
         readyToSend = true
     }
 
@@ -80,7 +81,7 @@ const RegisterForm = (props) => {
                         </div>
                         
                         <div className="remember-container">
-                            <input type="checkbox" value="terms"/>
+                            <input type="checkbox" value="terms" id="agreement" onChange={() => setCheckBoxState(!checkBoxState)}/>
                             <label htmlFor="terms"><FormattedMessage id='sign_up_agreement'/> <label onClick={() => setTermsState(true)} className="terms"><FormattedMessage id='sign_up_terms_link'/></label></label>
                         </div>
                         

@@ -44,14 +44,14 @@ export const App = () => {
                     <ThemeContainer>
                         <BrowserRouter>
                             <Routes>
-                                <Route exact path="/*" element={<Home currentLocale={currentLocale} handleChange={handleChange}/>}/>
-                                <Route exact path="/login" element={<Login currentLocale={currentLocale} handleChange={handleChange}/>}/>
-                                <Route exact path="/register" element={<Register currentLocale={currentLocale} handleChange={handleChange}/>}/>
+                                <Route path="/*" element={<Home currentLocale={currentLocale} handleChange={handleChange}/>}/>
+                                <Route path="/login" element={<Login currentLocale={currentLocale} handleChange={handleChange}/>}/>
+                                <Route path="/register" element={<Register currentLocale={currentLocale} handleChange={handleChange}/>}/>
                                 <Route element={<PrivateWrapper />}>
-                                    <Route exact path="/dashboard" element={<Dashboard/>} />
+                                    <Route path="/dashboard" element={<Dashboard/>} />
                                 </Route>
                                 <Route element={<PrivateWrapper />}>
-                                    <Route exact path="/profile" element={<Profile/>} />
+                                    <Route path="/profile" element={<Profile/>} />
                                 </Route>
                             </Routes>  
                         </BrowserRouter>

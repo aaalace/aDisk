@@ -15,7 +15,7 @@ const AdvantagesCarousel = (props) => {
             <div className="adv-carousel-name-container">
                 <p className="icon">aDisk</p>
                 <div className="adv-workbtns-cont">
-                    <LanguagueChoice currentLocale={props.currentLocale} handleChange={props.handleChange}/>
+                <LanguagueChoice currentLocale={props.currentLocale} handleChange={props.handleChange}/>
                 </div>
             </div>
             <CarouselDescription className="adv-carousel-description-container">

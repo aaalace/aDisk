@@ -6,6 +6,11 @@
     position: absolute;
     animation: slideInFigure 3s;
 
+    @media screen and (max-width: 768px) {
+        position: relative;
+        animation: none;
+    }
+
     @keyframes slideInFigure {
         from {
             transform: translateY(100%);

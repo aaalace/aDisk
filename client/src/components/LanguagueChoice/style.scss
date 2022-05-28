@@ -24,9 +24,10 @@
             cursor: inherit;
             line-height: inherit;
             outline: none;
+            background: var(--violet_to_black);
 
             option {
-                background: var(--white_to_black);
+                background: var(--violet_to_black);
             }
             
             &::-ms-expand {

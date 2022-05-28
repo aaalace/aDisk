@@ -86,18 +86,21 @@ export const HomeBlockInfo = styled.div`
         display: flex;
         width: 50%;
         height: 500px;
+        ${props => props.id !== 1 ? 'color: var(--unscrolled_text);' : 'color: var(--black_to_white);'};
     }
 
     @media ${HomePageDevices.tablet} {
         display: flex;
         width: 50%;
         height: 350px;
+        ${props => props.id !== 1 ? 'color: var(--unscrolled_text);' : 'color: var(--black_to_white);'};
     }
 
     @media ${HomePageDevices.mobile} {
         display: flex;
         flex-direction: row;
         align-items: center;
+        ${props => props.id !== 1 ? 'color: var(--unscrolled_text);' : 'color: var(--black_to_white);'};
     }
 `
 
@@ -117,7 +120,6 @@ export const HomeBlockName = styled.div`
 
     @media ${HomePageDevices.mobile} {
         font-size: 38px;
-        text-align: center;
     }
 `
 
@@ -138,7 +140,6 @@ export const HomeBlockDescription = styled.div`
     @media ${HomePageDevices.mobile} {
         margin: 20px 0 0 0;
         font-size: 20px;
-        text-align: center;
     }
 `
 

@@ -89,8 +89,8 @@ export const messages = {
 
     sign_in_name: 'Вход',
     sign_in_google_btn: 'Войти с помощью Google',
-    sign_in_question: 'Еще не зарегистрированы?',
-    sign_in_answer: 'Создайте аккаунт',
+    sign_in_question: 'Нет аккаунта?',
+    sign_in_answer: 'Зарегистрируйтесь',
     sign_in_button: 'Войти',
 
     // Sign up

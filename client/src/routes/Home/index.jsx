@@ -31,7 +31,8 @@ const Block = (props) => {
     if(props.isAuthenticated){
         bottomButtonMessageId = 'open_disk_btn'
         bottomButtonNavigate = '/dashboard'
-    } 
+    }
+
     const nameSwitch = (id) => {
         switch(id) {
             case 1:
@@ -60,6 +61,21 @@ const Block = (props) => {
             default:
                 return <FormattedMessage id='first_box_desc'/>;
           }
+    }
+
+    function onEntry(entry) {
+        entry.forEach(change => {
+            if (change.isIntersecting) {
+                change.target.classList.add('element-show');
+            }
+        });
+    }
+
+    let options = { threshold: [0.9] };
+    let observer = new IntersectionObserver(onEntry, options);
+    let elements = document.querySelectorAll('.home-block_info');
+    for (let elm of elements) {
+        observer.observe(elm);
     }
 
     return(
