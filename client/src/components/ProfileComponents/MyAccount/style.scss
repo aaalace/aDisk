@@ -1,0 +1,94 @@
+.my-account-container {
+    display: flex;
+    height: 85vh;
+    width: calc(100vw - 300px);
+
+    .my-account-view {
+        display: flex;
+        background-color: rgba(68, 68, 68, 0.1);
+        margin: 0 50px 50px 0;
+        border-radius: 30px;
+        padding: 50px;
+        width: 80%;
+        height: 90%;
+
+        .my-account {
+            display: flex;
+    
+            .main-widget {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                background-color: white;
+                padding: 20px;
+                border-radius: 20px;
+
+                .profile-icon {
+                    border-radius: 20px 20px 0 0;
+                    width: 300px;
+                    height: 250px;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    object-fit: cover;
+                }
+
+                .center-row {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 30px 0 50px 0;
+                    width: 90%;
+
+                    .username {
+                        font-size: 20px;
+                        font-weight: 500;
+                        color: #5543cc;
+                    }
+                }
+
+                .main-data-container {
+                    display: flex;
+                    flex-direction: column;
+                    width: 90%;
+
+                    .name_surname_container {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        margin-bottom: 40px;
+
+                        .name {
+                            height: 25px;
+                            width: 48%;
+                            border-bottom: 1px solid #ADADAD;
+                            font-size: 16px;
+                            color: #3F3F3F;
+                        }
+
+                        .surname {
+                            height: 25px;
+                            width: 48%;
+                            border-bottom: 1px solid #ADADAD;
+                            font-size: 16px;
+                            color: #3F3F3F;
+                        }
+                    }
+
+                    .email-container {
+                        display: flex;
+                        margin-bottom: 40px;
+
+                        .email {
+                            height: 25px;
+                            width: 100%;
+                            border-bottom: 1px solid #ADADAD;
+                            font-size: 16px;
+                            color: #3F3F3F;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

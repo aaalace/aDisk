@@ -1,9 +1,10 @@
 import React, { useEffect } from "react"
 import './style.scss'
-import RegisterForm from "../../components/RegisterForm";
-import AdvantagesCarousel from "../../components/AdvantagesCarousel";
 import { connect } from "react-redux";
 import { RegisterContainer } from "./styled";
+
+import RegisterForm from "../../components/AuthComponents/RegisterForm";
+import AdvantagesCarousel from "../../components/AuthComponents/AdvantagesCarousel";
 
 const Register = (props) => {
 

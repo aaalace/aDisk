@@ -5,9 +5,9 @@ import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import { useMediaQuery } from 'react-responsive';
 
-import HomeHeader from "../../components/HomeHeader";
-import PaymentCasrousel from '../../components/PaymentCarousel';
-import ThreeFigure from '../../components/ThreeFigure';
+import HomeHeader from "../../components/HomeComponents/HomeHeader";
+import PaymentCasrousel from '../../components/HomeComponents/PaymentCarousel';
+import ThreeFigure from '../../components/HomeComponents/ThreeFigure';
 
 import {
     HomeBlockContainer,

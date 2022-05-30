@@ -12,7 +12,7 @@ const Dashboard = () => {
       <div className="dashboard">
           <h2>dashboard</h2>
           <Link to='/'>home</Link>
-          <Link to='/profile'>profile</Link>
+          <Link to='/profile/account'>profile</Link>
       </div>
     );
 }

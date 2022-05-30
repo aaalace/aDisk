@@ -1,69 +1,41 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import './style.scss'
 import { connect } from 'react-redux'
 import { logout } from "../../actions/auth"
-import { useNavigate } from 'react-router-dom';
 import { updateProfile } from "../../actions/profile"
-import { deleteAccount } from "../../actions/auth";
-import { Link } from "react-router-dom";
+import { deleteAccount } from "../../actions/auth"
+import { useParams } from "react-router-dom"
 
-const Profile = (props) => {
-    const navigate = useNavigate();
+import NavigationPanel from "../../components/ProfileComponents/NavigationPanel"
+import MyAccount from "../../components/ProfileComponents/MyAccount"
+import ProfileHeader from "../../components/ProfileComponents/ProfileHeader"
+
+const Profile = () => {
+    const page = useParams().page
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
-    const [first_name, setFirstName] = useState('')
-    const [last_name, setLastName] = useState('')
-    
-    const logOut = async e => {
-        e.preventDefault()
-
-        const res = await props.logout()
-        if(res){
-            navigate('/')
-        }
-    }
-
-    const updateProfile = e => {
-        e.preventDefault()
-        props.updateProfile(first_name, last_name)
-        setFirstName('')
-        setLastName('')
-    }
-
-    const deleteAccount = e => {
-        e.preventDefault()
-        if (window.confirm('Are you sure you want to delete an account?')){
-            props.deleteAccount()
-            navigate('/')
+    const choosePage = (page) =>{
+        switch(page){
+            case 'account':
+                return <MyAccount/>
+            case 'settings':
+                return <MyAccount/>
+            case 'support':
+                return <MyAccount/>
         }
     }
 
     return (
-      <div className="profile">
-            <Link to='/dashboard' style={{display: 'block', marginBottom: '20px', textDecoration: 'underline'}}>dashboard</Link>
-            <div style={{marginBottom: '20px'}}>
-                <h3>Profile</h3>
-                <p>username: {props.username_global}</p>
-                <p>email: {props.email_global}</p>
-                <p>first name: {props.first_name_global}</p>
-                <p>last name: {props.last_name_global}</p>
+        <div className="profile">
+            <NavigationPanel/>
+            <div>
+                <ProfileHeader page={page} />
+                {choosePage(page)}
             </div>
-            <div style={{marginBottom: '20px'}}>
-                <h3>Update profile</h3>
-                <form onSubmit={e => updateProfile(e)}>
-                    <p>first name</p>
-                    <input type='text' value={first_name} onChange={e => setFirstName(e.target.value)}></input>
-                    <p>last name</p>
-                    <input type='text' value={last_name} onChange={e => setLastName(e.target.value)}></input>
-                    <button type="submit">Update</button>
-                </form>
-            </div>
-            <p style={{color: 'orange', cursor: 'pointer', marginBottom: '10px'}} onClick={logOut}>logout</p>
-            <p style={{color: 'red', cursor: 'pointer'}} onClick={deleteAccount}>delete account</p>
-      </div>
+        </div>
     );
 }
 

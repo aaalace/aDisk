@@ -1,10 +1,11 @@
 import React, { useEffect } from "react"
 import './style.scss'
-import AdvantagesCarousel from "../../components/AdvantagesCarousel";
-import LoginForm from "../../components/LoginForm";
 import { connect } from "react-redux";
 import { LoginContainer } from "./styled";
 import { useMediaQuery } from 'react-responsive'
+
+import AdvantagesCarousel from "../../components/AuthComponents/AdvantagesCarousel";
+import LoginForm from "../../components/AuthComponents/LoginForm";
 
 const Login = (props) => {
 
