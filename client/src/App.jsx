@@ -63,9 +63,7 @@ export const App = () => {
                                     </PrivateWrapper>
                                 }/>
                                 <Route path="/profile/:page" element={
-                                    <PrivateWrapper>
                                         <Profile/>
-                                    </PrivateWrapper>
                                 }/>
                             </Routes>  
                         </BrowserRouter>

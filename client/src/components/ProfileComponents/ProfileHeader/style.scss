@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: calc(100vw - 300px);
     height: 15vh;
 
     .name {
@@ -10,13 +9,20 @@
         font-weight: 600;
     }
 
+    @media screen and (max-width: 768px) {
+        width: calc(90vw);
+    }
+
     .user-data-container {
         display: flex;
         flex-direction: row;
         align-items: center;
-        margin-right: 80px;
         font-size: 20px;
         cursor: pointer;
+
+        @media screen and (max-width: 768px) {
+            margin-right: 0;
+        }
 
         .user {
             display: flex;
@@ -52,9 +58,9 @@
                 position: fixed;
                 margin-top: 35px;
                 color: white;
-                background-color: #5543cc7c;
+                background-color: #5543cc;
                 padding: 5px 10px;
-                border-radius: 10px;
+                border-radius: 5px;
                 font-size: 15px;
 
                 .icon {

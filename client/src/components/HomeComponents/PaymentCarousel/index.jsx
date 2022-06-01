@@ -30,7 +30,7 @@ const CommonSubscriptionBlock = (props) => {
                 <hr style={{margin: '20px 0', color: '#79d246'}}></hr>
                 <div className="price-container">
                     <p className="num">0</p>
-                    <p className="adict"><FontAwesomeIcon icon={faRubleSign}/>/<FormattedMessage id='home_payment_month'/></p>
+                    <p className="adict"><FontAwesomeIcon icon={faRubleSign}/></p>
                 </div>
             </div>
         </Standardstyled>
@@ -60,7 +60,7 @@ const ADPLUSSubscriptionBlock = () => {
                         60
                     </p>
                     <p className="adict">
-                        <FontAwesomeIcon icon={faRubleSign}/>/<FormattedMessage id='home_payment_month'/>
+                        <FontAwesomeIcon icon={faRubleSign}/>
                     </p>
                 </div>
             </div>

@@ -75,7 +75,7 @@ export const HomeBlock = styled.div`
         align-items: center;
         width: 80%;
         ${props => props.id === 1 ? 'margin: 15vh 0 0 0;' : 'justify-content: center;'}
-        ${props => props.id === 1 ? 'min-height: calc(100vh - 64px);' : 'min-height: 50vh;'}
+        ${props => props.id === 1 ? 'min-height: calc(100vh - 64px);' : 'margin: 20px 0 5vh 0;'}
 
     }
 `
@@ -119,7 +119,7 @@ export const HomeBlockName = styled.div`
     }
 
     @media ${HomePageDevices.mobile} {
-        font-size: 38px;
+        font-size: 28px;
     }
 `
 
@@ -186,6 +186,10 @@ export const HomeBlockImage = styled.div`
         margin: 20px 0;
     }
     @media ${HomePageDevices.mobile} {
-        display: none;
+        display: flex;
+        width: ${props => props.id % 2 === 0 ? '250px' : '300px'};
+        height: ${props => props.id % 2 === 0 ? '280px' : '260px'};
+        background-image: url(${props => images[props.id][0]});
+        margin: 20px 0;
     }
 `

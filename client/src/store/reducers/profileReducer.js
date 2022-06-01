@@ -12,8 +12,8 @@ const initialState = {
     user_id: null,
     email: '',
     username: '',
-    first_name: 'Неопознанный',
-    last_name: 'Объект',
+    first_name: 'Unnamed',
+    last_name: 'User',
 }
 
 // eslint-disable-next-line

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import './style.scss'
 import { connect } from "react-redux"
 import { logout } from "../../../actions/auth"
-
+import { ProfileHeaderStyled } from "./styled"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
@@ -22,7 +22,7 @@ const ProfileHeader = (props) => {
     }
     
     return (
-        <div className="prof-header-container">
+        <ProfileHeaderStyled className="prof-header-container">
             <p className="name">{chooseHeaderName(props.page)}</p>
             <div className="user-data-container">
                 <img className="profile-icon" alt="" src="../images/default-image.jpg"></img>
@@ -42,7 +42,7 @@ const ProfileHeader = (props) => {
                     }
                 </div>
             </div>
-        </div>
+        </ProfileHeaderStyled>
     )
 }
 

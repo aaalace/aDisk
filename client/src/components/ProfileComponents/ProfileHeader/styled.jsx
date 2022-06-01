@@ -2,14 +2,16 @@ import styled from 'styled-components'
 import { HomePageDevices } from '../../../lib/devices';
 
 
-export const NavPanelContainer = styled.div`
+export const ProfileHeaderStyled = styled.div`
 
     @media ${HomePageDevices.desktop} {
-        width: 300px;
+        width: calc(100vw - 380px);
+        margin-left: 300px;
     }
 
     @media ${HomePageDevices.tablet} {
-        width: 200px;
+        width: calc(100vw - 240px);
+        margin-left: 200px;
 
     }
 

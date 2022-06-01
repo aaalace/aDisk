@@ -1,39 +1,111 @@
-import React from "react"
+import React, {useState} from "react"
 import './style.scss'
+import { useMediaQuery } from "react-responsive"
 import { connect } from "react-redux"
 import { updateProfile } from "../../../actions/profile"
+import { MyAccountView, MyAccountHeader, HeaderDataContainer, MyAccountData } from "./styled"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faUser, faCloud, faPen, faCheck } from '@fortawesome/free-solid-svg-icons'
+
+import Charts from "../Chart"
 
 const MyAccount = (props) => {
+
+    const Tablet = useMediaQuery({
+        query: '(max-width: 1224px) and (min-width: 769px)'
+    })
+
+    const [editState, setEditState] = useState(false)
+
+    const [headerBgId, setHeaderBgId] = useState(0)
+
+    const headerBg = [
+        {'background': 'linear-gradient(45deg, #455db57e 9.16%, #5543cc82 43.89%, #683fd77b 64.72%)', 'preview': '#683fd77b'},
+        {'background': 'linear-gradient(45deg, #e5a0677e 9.16%, #e98b3e7e 43.89%, #ec710c7e 64.72%)', 'preview': '#ec710c7e'}
+    ]
+
+    const setHeaderBg = (id) => {
+        setHeaderBgId(id)
+    }
     
     return (
-        <div className="my-account-container">
-            <div className="my-account-view">
-                <div className="my-account">
-                    <div className="main-widget">
-                        <img className="profile-icon" alt="" src="../images/default-image.jpg"></img>
-                        <div className="center-row">
-                            <p className="username">{props.username_global}</p>
-                            <p className="sub-status">AD+</p>
+        <MyAccountView className="my-account-view">
+            <MyAccountHeader className="my-account-header">
+                <div className="header-profile-head-image" style={{background: headerBg[headerBgId]['background']}}>
+                    {
+                        editState ?
+                        <div className="change-head-image">
+                            <div className="icon" onClick={() => setHeaderBg(0)} style={{background: headerBg[0]['preview']}}/>
+                            <div className="icon" onClick={() => setHeaderBg(1)} style={{background: headerBg[1]['preview']}}/>
                         </div>
-                        <div className="main-data-container">
-                            <div className="name_surname_container">
-                                <div className="name">
-                                    <p>{props.first_name_global}</p>
-                                </div>
-                                <div className="surname">
-                                    <p>{props.last_name_global}</p>
-                                </div>
-                            </div>
-                            <div className="email-container">
-                                <div className="email">
-                                    <p>{props.email_global}</p>
-                                </div>
-                            </div>
+                        :
+                        null
+                    }
+                </div>
+                <HeaderDataContainer className="header-profile-head-data-container">
+                    <img className="profile-icon" alt="" src="../images/default-image.jpg"></img>
+                    <div className="center-row">
+                        <div>
+                            <p className="username">{props.username_global}</p>
+                        </div>
+                        {   
+                            editState ? 
+                            <   FontAwesomeIcon className="edit-icon" style={{color: headerBg[headerBgId]['preview'], fontSize: '22px'}} onClick={() => setEditState(false)} icon={faCheck} />
+                            :
+                                <FontAwesomeIcon className="edit-icon" style={{color: headerBg[headerBgId]['preview']}} onClick={() => setEditState(true)} icon={faPen} />
+                        }
+                    </div>
+                </HeaderDataContainer>
+            </MyAccountHeader>
+            {
+                editState ?
+                <MyAccountData className="my-account">
+                    <div className="name-surname-container">
+                        <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faUser} />&nbsp;Name</p>
+                        <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
+                            <input type='text'/>
                         </div>
                     </div>
-                </div>
+                    <div className="email-container">
+                        <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faEnvelope} />&nbsp;Email</p>
+                        <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
+                            <input type='text'/>
+                        </div>
+                    </div>
+                    <div className="subscription-container">
+                        <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faCloud} />&nbsp;Account status</p>
+                        <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
+                            <p style={{color: headerBg[headerBgId]['preview']}}>AD+</p>
+                        </div>
+                    </div>
+                </MyAccountData>
+                :
+                <MyAccountData className="my-account">
+                    <div className="name-surname-container">
+                        <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faUser} />&nbsp;Name</p>
+                        <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
+                            <p>{props.first_name_global}&nbsp;{props.last_name_global}</p>
+                        </div>
+                    </div>
+                    <div className="email-container">
+                        <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faEnvelope} />&nbsp;Email</p>
+                        <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
+                            <p>{props.email_global}</p>
+                        </div>
+                    </div>
+                    <div className="subscription-container">
+                        <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faCloud} />&nbsp;Account status</p>
+                        <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
+                            <p style={{color: headerBg[headerBgId]['preview']}}>AD+</p>
+                        </div>
+                    </div>
+                </MyAccountData>
+            }
+            <div className="storage-stats">
+                <p className="stats-header">Storage statistics</p>
+                <Charts themeId={headerBgId}/>
             </div>
-        </div>
+        </MyAccountView>
     )
 }
 

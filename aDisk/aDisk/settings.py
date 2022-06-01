@@ -79,7 +79,6 @@ DATABASES = {
         'NAME': 'aDiskDB',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'localhost'
     }
 }
 

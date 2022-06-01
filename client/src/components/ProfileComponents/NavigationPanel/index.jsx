@@ -3,12 +3,13 @@ import './style.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserAstronaut, faGear, faHeadset, faArrowLeftLong } from '@fortawesome/free-solid-svg-icons'
 import { Link, NavLink } from "react-router-dom"
+import { NavPanelContainer } from "./styled"
 
 const NavigationPanel = (props) => {
     
     
     return (
-        <div className="nav-panel-container">
+        <NavPanelContainer className="nav-panel-container">
             <div className="icon-contaner">
                 <img src="../../favicon.ico"></img>
             </div>
@@ -20,7 +21,7 @@ const NavigationPanel = (props) => {
                 </div>
                 <Link className="home-link" to='/dashboard'><FontAwesomeIcon className="icon" icon={faArrowLeftLong} /><p>Open aDisk</p></Link>
             </div>
-        </div>
+        </NavPanelContainer>
     )
 }
 

@@ -93,6 +93,7 @@ const Block = (props) => {
                 </HomeBlockInfo>
                 {props.id === 1 ? <ThreeFigure/> : null}
                 {props.id % 2 === 1 && props.id !== 1 && !Mobile ? <HomeBlockImage id={props.id} className="home-block_image"/> : null}
+                {props.id !== 1 && Mobile ? <HomeBlockImage id={props.id} className="home-block_image"/> : null}
             </HomeBlock>
         </HomeBlockContainer>
     )
