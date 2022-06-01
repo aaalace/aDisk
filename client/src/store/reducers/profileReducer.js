@@ -12,8 +12,9 @@ const initialState = {
     user_id: null,
     email: '',
     username: '',
-    first_name: 'Unnamed',
-    last_name: 'User',
+    first_name: '',
+    last_name: '',
+    date_joined: ''
 }
 
 // eslint-disable-next-line
@@ -27,7 +28,8 @@ export default function(state = initialState, action) {
                 email: payload.email,
                 username: payload.username,
                 first_name: payload.profile.first_name,
-                last_name: payload.profile.last_name
+                last_name: payload.profile.last_name,
+                date_joined: payload.date_joined
             }
         
         case LOAD_PROFILE_FAIL:

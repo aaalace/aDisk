@@ -9,6 +9,7 @@ import {
 
 export const loadUser = () => async dispatch => {
     try {
+
         const config = {
             headers: {
                 'Accept': 'application/json',

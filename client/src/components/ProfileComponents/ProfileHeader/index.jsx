@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import './style.scss'
 import { connect } from "react-redux"
 import { logout } from "../../../actions/auth"
@@ -7,6 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
 const ProfileHeader = (props) => {
+
+    const navigate = useNavigate()
 
     const [openedHeaderMenu, setOpenedHeaderMenu] = useState(false)
     
@@ -19,6 +22,11 @@ const ProfileHeader = (props) => {
             case 'support':
                 return 'Support'
         }
+    }
+
+    const logOut = () => {
+        props.logout()
+        navigate('/login')
     }
     
     return (
@@ -33,7 +41,7 @@ const ProfileHeader = (props) => {
                     </div>
                     {
                     openedHeaderMenu ? 
-                    <div className="opened-header-menu" onClick={() => props.logout()}>
+                    <div className="opened-header-menu" onClick={logOut}>
                         <p>Log out</p>
                         <FontAwesomeIcon className="icon" icon={faArrowRightFromBracket}/>
                     </div>

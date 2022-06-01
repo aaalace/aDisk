@@ -1,21 +1,15 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import './style.scss'
 import { useMediaQuery } from "react-responsive"
 import { connect } from 'react-redux'
-import { logout } from "../../actions/auth"
-import { updateProfile } from "../../actions/profile"
-import { deleteAccount } from "../../actions/auth"
 import { useParams } from "react-router-dom"
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserAstronaut, faGear, faHeadset, faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import { Link, NavLink } from "react-router-dom"
 
 import NavigationPanel from "../../components/ProfileComponents/NavigationPanel"
 import MyAccount from "../../components/ProfileComponents/MyAccount"
 import ProfileHeader from "../../components/ProfileComponents/ProfileHeader"
+import MobileProfile from "../../components/ProfileComponents/MobileProfile"
 
-const Profile = () => {
+const Profile = (props) => {
     const page = useParams().page
 
     const Mobile = useMediaQuery({
@@ -48,13 +42,7 @@ const Profile = () => {
                 </div>
             </div>
         :   
-            <div className="mobile-profile">
-                <div className="mobile-nav">
-                    <NavLink to='/profile/account' className="nav-link"><FontAwesomeIcon className="icon" icon={faUserAstronaut} /></NavLink>
-                    <NavLink to='/profile/settings' className="nav-link"><FontAwesomeIcon className="icon" icon={faGear} /></NavLink>
-                    <NavLink to='/profile/support' className="nav-link"><FontAwesomeIcon className="icon" icon={faHeadset} /></NavLink>
-                </div>
-            </div>
+            <MobileProfile/>
         }           
         </>
     );
@@ -69,4 +57,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {updateProfile, logout, deleteAccount})(Profile)
+export default connect(mapStateToProps, {})(Profile)

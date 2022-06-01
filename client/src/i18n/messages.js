@@ -2,6 +2,8 @@ import { LOCALES } from './locales'
 
 export const messages = {
   [LOCALES.ENGLISH]: {
+    fallback: '',
+
     // HomeHeader
     login_button: 'Sign in',
 
@@ -54,9 +56,27 @@ export const messages = {
     adv_login: 'Login',
     adv_reg: 'Register',
     adv_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+    
+    // Profile
+    january: 'January',
+    february: 'February',
+    march: 'March',
+    april: 'April',
+    may: 'May',
+    june: 'June',
+    july: 'July',
+    august: 'August',
+    september: 'September',
+    october: 'October',
+    november: 'November',
+    december: 'December',
+
+    since: 'aDisk user since'
   },
 
   [LOCALES.RUSSIAN]: {
+    fallback: '',
+
     // HomeHeader
     login_button: 'Войти',
     
@@ -109,9 +129,27 @@ export const messages = {
     adv_login: 'Вход',
     adv_reg: 'Регистрация',
     adv_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
-  },
+      
+    // Profile
+    january: 'Января',
+    february: 'Февраля',
+    march: 'Марта',
+    april: 'Апреля',
+    may: 'Мая',
+    june: 'Июня',
+    july: 'Июля',
+    august: 'Августа',
+    september: 'Сентября',
+    october: 'Октября',
+    november: 'Ноября',
+    december: 'Декабря',
+    
+    since: 'Пользователь aDisk c'
+    },
 
   [LOCALES.GERMAN]: {
+    fallback: '',
+
     // HomeHeader
     login_button: 'Eingang',
     
@@ -164,5 +202,21 @@ export const messages = {
     adv_login: 'Eingang',
     adv_reg: 'Anmelden',
     adv_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+        
+    // Profile
+    january: 'Januar',
+    february: 'Februar',
+    march: 'Marsch',
+    april: 'April',
+    may: 'Kann',
+    june: 'Juni',
+    july: 'Juli',
+    august: 'August',
+    september: 'September',
+    october: 'Oktober',
+    november: 'November',
+    december: 'Dezember',
+
+    since: 'aDisk-Benutzer seit'
   }
 }

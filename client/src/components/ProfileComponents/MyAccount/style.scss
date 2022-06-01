@@ -57,9 +57,8 @@
 
             .center-row {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 justify-content: space-between;
-                align-items: center;
                 width: 100%;
                 margin-left: 30px;
 
@@ -72,28 +71,6 @@
 
                 .since {
                     color: #5d5d5d;
-                }
-
-                .edit {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    height: 40px;
-                    width: fit-content;
-                    padding: 0 10px;
-
-                    background: rgb(66, 66, 66);
-                    border-radius: 10px;
-                    border-style: none;
-                    color: #FFFFFF;
-                    cursor: pointer;
-                    font-size: 18px;
-                    align-items: center;
-                    justify-content: center;
-
-                    &:hover {
-                        background: rgb(97, 97, 97);
-                    }
                 }
 
                 .edit-icon {

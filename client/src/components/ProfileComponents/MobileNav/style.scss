@@ -1,0 +1,28 @@
+.mobile-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    padding: 5px 15px;
+    background-color: rgb(246, 246, 246);
+    box-shadow: 2px 3px 4px rgb(230, 230, 230);
+    position: fixed;
+    bottom: 10px;
+    width: 70vw;
+
+    .nav-link {
+        color: #949494;
+        font-size: 20px;
+        padding: 5px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .active {
+        color: #455EB5;
+    }
+}
