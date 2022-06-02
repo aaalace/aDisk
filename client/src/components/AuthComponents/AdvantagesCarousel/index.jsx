@@ -10,12 +10,17 @@ import { LanguagueChoice } from "../../GeneralComponents/LanguagueChoice";
 
 const AdvantagesCarousel = (props) => {
 
+    const langStyles = {
+        select: {color: 'white'},
+        option: {color: 'white', backgroundColor: 'var(--violet_to_black)'}
+    }
+
     return (
       <CarouselContainer className="adv-carousel">
             <div className="adv-carousel-name-container">
                 <p className="icon">aDisk</p>
                 <div className="adv-workbtns-cont">
-                <LanguagueChoice currentLocale={props.currentLocale} handleChange={props.handleChange}/>
+                <LanguagueChoice currentLocale={props.currentLocale} handleChange={props.handleChange} customStyles={langStyles}/>
                 </div>
             </div>
             <CarouselDescription className="adv-carousel-description-container">

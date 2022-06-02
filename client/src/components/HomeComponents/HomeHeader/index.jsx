@@ -21,6 +21,11 @@ const HomeHeader = (props) => {
     const Mobile = useMediaQuery({
         query: '(max-width: 769px)'
     })
+
+    const langStyles = {
+        select: {color: 'var(--scrolled_pay)'},
+        option: {color: 'var(--scrolled_pay)', backgroundColor: 'var(--white_to_black)'}
+    }
     
     const [scroll, setScroll] = useState(0)
 
@@ -77,13 +82,13 @@ const HomeHeader = (props) => {
                 : 
                     <div className="buttons-menu-mobile">
                         <div className="languague-choice-container" style={{marginRight: '0px'}}>
-                            <LanguagueChoice customStyles={scroll === 0 ? {color: 'var(--non_scrolled_pay)'} : {color: 'var(--scrolled_pay)'}} scrolled={scroll === 0 ? false : true} handleChange={props.handleChange} currentLocale={props.currentLocale}/>
+                            <LanguagueChoice customStyles={langStyles} scrolled={scroll === 0 ? false : true} handleChange={props.handleChange} currentLocale={props.currentLocale}/>
                         </div> 
                         <div className="theme-choice-container">
                             <ThemeSwitch checked={appTheme} onChange={() => handleThemeChange(!appTheme)}/>
                         </div>
                         {props.isAuthenticated ? 
-                            <img className="profile-icon" alt="" src="../images/default-image.jpg" onClick={() => navigate('/profile')}></img>
+                            <img className="profile-icon" alt="" src="../images/default-image.jpg" onClick={() => navigate('/profile/account')}></img>
                         : 
                             <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/></button>
                         }
@@ -92,7 +97,7 @@ const HomeHeader = (props) => {
             </div>
             { !Mobile ? 
                 <div className="languague-choice-container">
-                    <LanguagueChoice customStyles={scroll === 0 ? {color: 'var(--non_scrolled_pay)'} : {color: 'var(--scrolled_pay)'}} scrolled={scroll === 0 ? false : true} handleChange={props.handleChange} currentLocale={props.currentLocale}/>
+                    <LanguagueChoice customStyles={langStyles} scrolled={scroll === 0 ? false : true} handleChange={props.handleChange} currentLocale={props.currentLocale}/>
                 </div> 
             : null }
         </HomeHeaderStyled>

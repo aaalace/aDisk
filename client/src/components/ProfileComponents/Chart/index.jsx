@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { PieChart, Pie, Sector } from 'recharts';
+import { FormattedMessage } from 'react-intl'
 
 const data = [
-  { name: 'Empty', value: 300 },
+  { name: <FormattedMessage id='prof_empty_storage'/>, value: 300 },
   { name: 'txt', value: 300 },
   { name: 'pdf', value: 250 },
   { name: 'png', value: 150 },

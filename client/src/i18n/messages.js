@@ -71,7 +71,18 @@ export const messages = {
     november: 'November',
     december: 'December',
 
-    since: 'aDisk user since'
+    prof_my_account: 'My account',
+    prof_settings: 'Settings',
+    prof_support: 'Support',
+    prof_open_adisk: 'Open aDisk',
+    prof_logout: 'Log out',
+    prof_since: 'aDisk user since',
+    prof_name: 'Name',
+    prof_email: 'Email',
+    prof_status: 'Account status',
+    prof_statistics: 'Storage statistics',
+    prof_empty_storage: 'Empty',
+    prof_GB: 'GB'
   },
 
   [LOCALES.RUSSIAN]: {
@@ -144,7 +155,18 @@ export const messages = {
     november: 'Ноября',
     december: 'Декабря',
     
-    since: 'Пользователь aDisk c'
+    prof_my_account: 'Аккаунт',
+    prof_settings: 'Настройки',
+    prof_support: 'Поддержка',
+    prof_open_adisk: 'aDisk',
+    prof_logout: 'Выйти',
+    prof_since: 'Пользователь aDisk с',
+    prof_name: 'Имя',
+    prof_email: 'Почта',
+    prof_status: 'Статус аккаунта',
+    prof_statistics: 'Хранилище',
+    prof_empty_storage: 'Свободно',
+    prof_GB: 'ГБ'
     },
 
   [LOCALES.GERMAN]: {
@@ -217,6 +239,17 @@ export const messages = {
     november: 'November',
     december: 'Dezember',
 
-    since: 'aDisk-Benutzer seit'
+    prof_my_account: 'Mein Konto',
+    prof_settings: 'Einstellungen',
+    prof_support: 'Support',
+    prof_open_adisk: 'aDisk',
+    prof_logout: 'Ausloggen',
+    prof_since: 'aDisk-Benutzer seit',
+    prof_name: 'Name',
+    prof_email: 'Email',
+    prof_status: 'Account status',
+    prof_statistics: 'Speicherstatistik',
+    prof_empty_storage: 'Leer',
+    prof_GB: 'GB'
   }
 }

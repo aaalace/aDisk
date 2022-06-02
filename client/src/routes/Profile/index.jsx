@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react"
 import './style.scss'
 import { useMediaQuery } from "react-responsive"
-import { connect } from 'react-redux'
 import { useParams } from "react-router-dom"
 
 import NavigationPanel from "../../components/ProfileComponents/NavigationPanel"
-import MyAccount from "../../components/ProfileComponents/MyAccount"
 import ProfileHeader from "../../components/ProfileComponents/ProfileHeader"
+import MyAccount from "../../components/ProfileComponents/MyAccount"
+import SettingsPage from "../../components/ProfileComponents/SettingsPage"
+import SupportPage from "../../components/ProfileComponents/SupportPage"
+
+import MobileNav from "../../components/ProfileComponents/MobileNav"
 import MobileProfile from "../../components/ProfileComponents/MobileProfile"
 
-const Profile = (props) => {
+const Profile = () => {
     const page = useParams().page
 
     const Mobile = useMediaQuery({
@@ -25,9 +28,24 @@ const Profile = (props) => {
             case 'account':
                 return <MyAccount/>
             case 'settings':
-                return <MyAccount/>
+                return <SettingsPage/>
             case 'support':
+                return <SupportPage/>
+            default: 
                 return <MyAccount/>
+        }
+    }
+
+    const chooseMobilePage = (page) =>{
+        switch(page){
+            case 'account':
+                return <MobileProfile/>
+            case 'settings':
+                return <SettingsPage/>
+            case 'support':
+                return <SupportPage/>
+            default: 
+                return <MobileProfile/>
         }
     }
 
@@ -42,19 +60,13 @@ const Profile = (props) => {
                 </div>
             </div>
         :   
-            <MobileProfile/>
+            <>
+                {chooseMobilePage(page)}
+                <MobileNav/>
+            </>
         }           
         </>
     );
 }
 
-const mapStateToProps = state => {
-    return {
-        username_global: state.profile.username,
-        email_global: state.profile.email,
-        first_name_global: state.profile.first_name,
-        last_name_global: state.profile.last_name
-    }
-}
-
-export default connect(mapStateToProps, {})(Profile)
+export default Profile

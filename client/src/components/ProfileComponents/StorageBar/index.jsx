@@ -1,12 +1,12 @@
 import React from "react";
+import { FormattedMessage } from 'react-intl'
 
 const StorageBar = (props) => {
     const { completed } = props;
 
     const containerStyles = {
         height: 25,
-        width: '90%',
-        marginLeft: '5%',
+        width: '100%',
         backgroundColor: "#e0e0de",
         borderRadius: 50,
         marginTop: 30,
@@ -50,7 +50,7 @@ const StorageBar = (props) => {
             <div style={fillerStyles}>
                 <span style={labelStyles}></span>
             </div>
-            <p style={storageInfo}>30.0GB<p style={storageAllInfo}>&nbsp;/ 100.0GB</p></p>
+            <div style={storageInfo}>30.0<FormattedMessage id="prof_GB"/><p style={storageAllInfo}>&nbsp;/ 100.0<FormattedMessage id="prof_GB"/></p></div>
         </div>
     );
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import './style.scss'
 import { connect } from "react-redux"
+import { FormattedMessage } from 'react-intl'
 import { logout } from "../../../actions/auth"
 import { ProfileHeaderStyled } from "./styled"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -16,11 +17,11 @@ const ProfileHeader = (props) => {
     const chooseHeaderName = (page) => {
         switch(page){
             case 'account':
-                return 'My account'
+                return <FormattedMessage id="prof_my_account"/>
             case 'settings':
-                return 'Settings'
+                return <FormattedMessage id="prof_settings"/>
             case 'support':
-                return 'Support'
+                return <FormattedMessage id="prof_support"/>
         }
     }
 
@@ -42,7 +43,7 @@ const ProfileHeader = (props) => {
                     {
                     openedHeaderMenu ? 
                     <div className="opened-header-menu" onClick={logOut}>
-                        <p>Log out</p>
+                        <p><FormattedMessage id="prof_logout"/></p>
                         <FontAwesomeIcon className="icon" icon={faArrowRightFromBracket}/>
                     </div>
                     :

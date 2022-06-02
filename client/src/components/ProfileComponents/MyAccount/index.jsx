@@ -26,7 +26,7 @@ const MyAccount = (props) => {
     }
 
     const remakeDateJoined = (date) => {
-        return <><FormattedMessage id='since'/>&nbsp;{date.split('-')[2]}&nbsp;<FormattedMessage id={months[date.split('-')[1]]}/>&nbsp;{date.split('-')[0]}</>
+        return <><FormattedMessage id='prof_since'/>&nbsp;{date.split('-')[2]}&nbsp;<FormattedMessage id={months[date.split('-')[1]]}/>&nbsp;{date.split('-')[0]}</>
     }
 
     const [headerBgId, setHeaderBgId] = useState(0)
@@ -53,26 +53,26 @@ const MyAccount = (props) => {
             </MyAccountHeader>
             <MyAccountData className="my-account">
                 <div className="name-surname-container">
-                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faUser} />&nbsp;Name</p>
+                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faUser} />&nbsp;<FormattedMessage id='prof_name'/></p>
                     <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
                         <p>{props.first_name_global}&nbsp;{props.last_name_global}</p>
                     </div>
                 </div>
                 <div className="email-container">
-                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faEnvelope} />&nbsp;Email</p>
+                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faEnvelope} />&nbsp;<FormattedMessage id='prof_email'/></p>
                     <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
                         <p>{props.email_global}</p>
                     </div>
                 </div>
                 <div className="subscription-container">
-                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faCloud} />&nbsp;Account status</p>
+                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faCloud} />&nbsp;<FormattedMessage id='prof_status'/></p>
                     <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
                         <p style={{color: headerBg[headerBgId]['preview']}}>AD+</p>
                     </div>
                 </div>
             </MyAccountData>
             <div className="storage-stats">
-                <p className="stats-header">Storage statistics</p>
+                <p className="stats-header"><FormattedMessage id='prof_statistics'/></p>
                 <Charts themeId={headerBgId}/>
             </div>
         </MyAccountView>

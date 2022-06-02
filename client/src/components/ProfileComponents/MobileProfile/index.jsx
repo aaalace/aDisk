@@ -8,7 +8,6 @@ import { FormattedMessage } from 'react-intl'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faEnvelope, faCloud, faArrowLeftLong, faAngleDown, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
-import MobileNav from "../MobileNav"
 import StorageBar from "../StorageBar"
 import { logout } from "../../../actions/auth"
 
@@ -36,7 +35,7 @@ const MobileProfile = (props) => {
     const [headerBgId, setHeaderBgId] = useState(0)
 
     const remakeDateJoined = (date) => {
-        return <><FormattedMessage id='since'/>&nbsp;{date.split('-')[2]}&nbsp;<FormattedMessage id={months[date.split('-')[1]]}/>&nbsp;{date.split('-')[0]}</>
+        return <><FormattedMessage id='prof_since'/>&nbsp;{date.split('-')[2]}&nbsp;<FormattedMessage id={months[date.split('-')[1]]}/>&nbsp;{date.split('-')[0]}</>
     }
 
     const headerBg = [
@@ -57,11 +56,9 @@ const MobileProfile = (props) => {
                         <img className="profile-icon" alt="" src="../images/default-image.jpg"></img>
                     </div>
                     <div className="user-main-container">
-                        <div style={{display: 'flex', flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between'}}>
-                            <div className="user-data" onClick={() => setOpenedHeaderMenu(!openedHeaderMenu)}>
-                                <p>{props.username_global}</p>
-                                <FontAwesomeIcon className="icon" icon={faAngleDown}/>
-                            </div>
+                        <div className="user-data" onClick={() => setOpenedHeaderMenu(!openedHeaderMenu)}>
+                            <p>{props.username_global}</p>
+                            <FontAwesomeIcon className="icon" icon={faAngleDown}/>
                         </div>
                         {
                             openedHeaderMenu ? 
@@ -78,26 +75,25 @@ const MobileProfile = (props) => {
             </div>
             <div className="main-mobile-profile">
                 <div className="name-surname-container">
-                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faUser} />&nbsp;Name</p>
+                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faUser} />&nbsp;<FormattedMessage id="prof_name"/></p>
                     <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
                         <p>{props.first_name_global}&nbsp;{props.last_name_global}</p>
                     </div>
                 </div>
                 <div className="email-container">
-                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faEnvelope} />&nbsp;Email</p>
+                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faEnvelope} />&nbsp;<FormattedMessage id="prof_email"/></p>
                     <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
                         <p>{props.email_global}</p>
                     </div>
                 </div>
                 <div className="subscription-container">
-                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faCloud} />&nbsp;Account status</p>
+                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faCloud} />&nbsp;<FormattedMessage id="prof_status"/></p>
                     <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
                         <p style={{color: headerBg[headerBgId]['preview']}}>AD+</p>
                     </div>
                 </div>
             </div>
-            <Link className="home-link" to='/dashboard'><FontAwesomeIcon className="icon" icon={faArrowLeftLong} /><p>Open aDisk</p></Link>
-            <MobileNav/>
+            <Link className="home-link" to='/dashboard'><FontAwesomeIcon className="icon" icon={faArrowLeftLong} /><p><FormattedMessage id="prof_open_adisk"/></p></Link>
         </div>
     )
 }

@@ -18,11 +18,11 @@ export const LanguagueChoice = ({ customStyles, currentLocale, handleChange, scr
     }, [])
 
     return (
-        <LanguagueSelect scrolled={scrolled} className='languague_choice-container' style={customStyles}>
+        <LanguagueSelect scrolled={scrolled} className='languague_choice-container'>
             <div className='switcher' onChange={handleChange} value={currentLocale}>
-                <select id="styledSelect" className="blueText" style={customStyles}>
+                <select id="styledSelect" className="whiteText" style={customStyles.select}>
                     {languages.map(({ name, code }) => (
-                    <option key={code} value={code}>
+                    <option key={code} value={code} style={customStyles.option}>
                         {name}
                     </option>
                     ))}
