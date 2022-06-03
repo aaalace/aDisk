@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { HomePageDevices } from '../../../lib/devices';
 
-export const LanguagueSelect = styled.div`
+export const LanguageSelect = styled.div`
 
     @media ${HomePageDevices.desktop} { 
         ${props => props.scrolled ? 

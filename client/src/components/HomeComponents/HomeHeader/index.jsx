@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins, faUserAlt } from '@fortawesome/free-solid-svg-icons'
 
 import ThemeSwitch from "../../GeneralComponents/ThemeSwitch"
-import { LanguagueChoice } from "../../GeneralComponents/LanguagueChoice"
+import { LanguageChoice } from "../../GeneralComponents/LanguageChoice"
 
 import { 
     HomeHeaderStyled,
@@ -37,11 +37,11 @@ const HomeHeader = (props) => {
         return true
     }
 
-    const [appTheme, setAppTheme] = useState(setUserThemeIcon)
-
     const handleScroll = () => {
         setScroll(window.scrollY);
     };
+
+    const [appTheme, setAppTheme] = useState(setUserThemeIcon)
 
     const handleThemeChange = (changeTo) => {
         if(changeTo) {
@@ -82,7 +82,7 @@ const HomeHeader = (props) => {
                 : 
                     <div className="buttons-menu-mobile">
                         <div className="languague-choice-container" style={{marginRight: '0px'}}>
-                            <LanguagueChoice customStyles={langStyles} scrolled={scroll === 0 ? false : true} handleChange={props.handleChange} currentLocale={props.currentLocale}/>
+                            <LanguageChoice customStyles={langStyles} scrolled={scroll === 0 ? false : true} handleChange={props.handleChange} currentLocale={props.currentLocale}/>
                         </div> 
                         <div className="theme-choice-container">
                             <ThemeSwitch checked={appTheme} onChange={() => handleThemeChange(!appTheme)}/>
@@ -97,7 +97,7 @@ const HomeHeader = (props) => {
             </div>
             { !Mobile ? 
                 <div className="languague-choice-container">
-                    <LanguagueChoice customStyles={langStyles} scrolled={scroll === 0 ? false : true} handleChange={props.handleChange} currentLocale={props.currentLocale}/>
+                    <LanguageChoice customStyles={langStyles} scrolled={scroll === 0 ? false : true} handleChange={props.handleChange} currentLocale={props.currentLocale}/>
                 </div> 
             : null }
         </HomeHeaderStyled>

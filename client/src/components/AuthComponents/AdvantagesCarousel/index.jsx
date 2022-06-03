@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faUserAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { FormattedMessage } from 'react-intl'
 
-import { LanguagueChoice } from "../../GeneralComponents/LanguagueChoice";
+import { LanguageChoice } from "../../GeneralComponents/LanguageChoice";
 
 const AdvantagesCarousel = (props) => {
 
@@ -20,7 +20,7 @@ const AdvantagesCarousel = (props) => {
             <div className="adv-carousel-name-container">
                 <p className="icon">aDisk</p>
                 <div className="adv-workbtns-cont">
-                <LanguagueChoice currentLocale={props.currentLocale} handleChange={props.handleChange} customStyles={langStyles}/>
+                <LanguageChoice currentLocale={props.currentLocale} handleChange={props.handleChange} customStyles={langStyles}/>
                 </div>
             </div>
             <CarouselDescription className="adv-carousel-description-container">

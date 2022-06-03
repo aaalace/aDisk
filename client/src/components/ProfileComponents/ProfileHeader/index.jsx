@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl'
 import { logout } from "../../../actions/auth"
 import { ProfileHeaderStyled } from "./styled"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown, faArrowRightFromBracket, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 
 const ProfileHeader = (props) => {
 
@@ -38,7 +38,7 @@ const ProfileHeader = (props) => {
                 <div className="user">
                     <div className="user-data" onClick={() => setOpenedHeaderMenu(!openedHeaderMenu)}>
                         <p>{props.username_global}</p>
-                        <FontAwesomeIcon className="icon" icon={faAngleDown}/>
+                        <FontAwesomeIcon className="icon" icon={openedHeaderMenu ? faAngleUp : faAngleDown}/>
                     </div>
                     {
                     openedHeaderMenu ? 

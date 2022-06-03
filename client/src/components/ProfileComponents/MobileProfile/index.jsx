@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import { FormattedMessage } from 'react-intl'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faEnvelope, faCloud, faArrowLeftLong, faAngleDown, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faEnvelope, faCloud, faArrowLeftLong, faAngleDown, faArrowRightFromBracket, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 
 import StorageBar from "../StorageBar"
 import { logout } from "../../../actions/auth"
@@ -58,17 +58,18 @@ const MobileProfile = (props) => {
                     <div className="user-main-container">
                         <div className="user-data" onClick={() => setOpenedHeaderMenu(!openedHeaderMenu)}>
                             <p>{props.username_global}</p>
-                            <FontAwesomeIcon className="icon" icon={faAngleDown}/>
+                            <FontAwesomeIcon className="icon" icon={openedHeaderMenu ? faAngleUp : faAngleDown}/>
                         </div>
                         {
-                            openedHeaderMenu ? 
+                        openedHeaderMenu ? 
                             <div className="opened-header-menu" onClick={logOut}>
-                                <p>Log out</p>
+                                <p><FormattedMessage id="prof_logout"/></p>
                                 <FontAwesomeIcon className="icon" icon={faArrowRightFromBracket}/>
                             </div>
-                            :
-                            <p style={{fontSize: '13px', color: 'rgb(100, 100, 100)', marginTop: '5px'}}>{props.date_joined_global ? remakeDateJoined(props.date_joined_global) : ''}</p>
+                        :
+                        null
                         }
+                        <p style={{fontSize: '13px', color: 'rgb(100, 100, 100)', marginTop: '5px'}}>{props.date_joined_global ? remakeDateJoined(props.date_joined_global) : ''}</p>
                     </div>
                 </div>
                 <StorageBar completed={30}/>

@@ -1,0 +1,54 @@
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 75vh;
+    padding-bottom: 40px;
+
+    .settings-header {
+        display: flex;
+        width: 90%;
+
+        p{
+            font-size: 15px;
+            margin-right: 20px;
+            padding: 5px 10px;
+            cursor: pointer;
+            color: rgb(99, 99, 99);
+            border-bottom: 1px solid transparent;
+            
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none; 
+
+            @media screen and (max-width: 769px) {
+                margin-right: 5px;
+                margin-left: 5px;
+            }
+        }
+
+        .active{
+            color: #5f0fc7;
+            border-bottom: 1px solid #5f0fc7;
+            animation: slideInMenuSettings .5s;
+
+            @keyframes slideInMenuSettings {
+                from {
+                    transform: translateY(-20%);
+                }
+                to {
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+
+    .settings-block {
+        display: flex;
+        width: 100%;
+        height: fit-content;
+        margin-top: 50px;
+    }
+}

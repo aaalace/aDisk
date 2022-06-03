@@ -1,0 +1,159 @@
+.pps-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+
+    .pps-header {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid;
+        border-color: rgb(215, 215, 215);
+        width: 100%;
+        margin-bottom: 50px;
+
+        @media screen and (max-width: 769px) {
+            margin-bottom: 30px;
+        }
+
+        .pps-header-name {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .pps-header-desc {
+            font-size: 13px;
+            color: rgb(99, 99, 99);
+            margin-bottom: 20px;
+        }
+    }
+
+    .pps {
+        display: flex;
+        flex-direction: row;
+
+        @media screen and (max-width: 769px) {
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .pps-main {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            margin-bottom: 50px;
+
+            @media screen and (max-width: 769px) {
+                width: 100%;
+            }
+    
+            .pps-main-container {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin-bottom: 20px;
+    
+                .pps-main-container-name {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: rgb(102, 102, 102);
+                    margin-bottom: 10px;
+
+                }
+    
+                .pps-main-container-input {
+                    width: 80%;
+                    height: 32px;
+                    border: 1px solid rgb(217, 217, 217);
+                    border-radius: 8px;
+                    padding: 10px 10px;
+                    margin-bottom: 20px;
+                    max-width: 400px;
+    
+                    &:hover {
+                        border: 1px solid #5643CC;
+                    }
+                }
+            }
+    
+            .update-profile {
+                width: fit-content;
+                height: fit-content;
+                min-height: 35px;
+                background-color: #5643CC;
+                color: white;
+                border: 0;
+                border-radius: 7px;
+                padding: 5px 10px;
+    
+                &:hover {
+                    background-color: #6651f0;
+                }
+            }
+        }
+
+        .pps-avatar {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            right: 0;
+
+            @media screen and (max-width: 769px) {
+                margin-bottom: 23px;
+            }
+
+            .pps-avatar-name {
+                font-size: 14px;
+                font-weight: 600;
+                color: rgb(102, 102, 102);
+                margin-bottom: 20px;
+                cursor: pointer;
+            }
+
+            .pps-avatar-container {
+                display: flex;
+                position: relative;
+
+                .pps-avatar {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 200px;
+                    height: 200px;
+                    position: relative;
+                    padding: 3px;
+                    box-sizing: border-box;
+                    $border: 5px;
+                    color: #FFF;
+                    background: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%) no-repeat;
+                    background-size: cover;
+                    background-clip: padding-box;
+                    border: solid $border transparent; 
+                    border-radius: 100px;     
+                }
+
+                .pps-edit-button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 30px;
+                    width: 30px;
+                    position: absolute;
+                    bottom: 17px;
+                    left: 17px;
+                    background-color: #5643CC;
+                    color: white;
+                    border: 0;
+                    border-radius: 30px;
+
+                    &:hover {
+                        background-color: #6651f0;
+                    }
+
+                    @media screen and (max-width: 769px) {
+                        bottom: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

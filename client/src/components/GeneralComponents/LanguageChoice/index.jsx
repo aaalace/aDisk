@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import './style.scss'
 import { LOCALES } from "../../../i18n/locales"
 
-import { LanguagueSelect } from "./styled"
+import { LanguageSelect } from "./styled"
 
 
 const languages = [
@@ -11,14 +11,14 @@ const languages = [
     { name: 'DE', code: LOCALES.GERMAN }
 ]
 
-export const LanguagueChoice = ({ customStyles, currentLocale, handleChange, scrolled }) => {
+export const LanguageChoice = ({ customStyles, currentLocale, handleChange, scrolled }) => {
 
     useEffect(() => {
         document.querySelector(`#styledSelect > option[value=${currentLocale}]`).setAttribute("selected", "selected");
     }, [])
 
     return (
-        <LanguagueSelect scrolled={scrolled} className='languague_choice-container'>
+        <LanguageSelect scrolled={scrolled} className='languague_choice-container'>
             <div className='switcher' onChange={handleChange} value={currentLocale}>
                 <select id="styledSelect" className="whiteText" style={customStyles.select}>
                     {languages.map(({ name, code }) => (
@@ -28,6 +28,6 @@ export const LanguagueChoice = ({ customStyles, currentLocale, handleChange, scr
                     ))}
                 </select>
             </div>
-        </LanguagueSelect>
+        </LanguageSelect>
     )
 }

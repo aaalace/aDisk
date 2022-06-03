@@ -9,7 +9,6 @@ import { store } from "./store/store";
 
 import CheckerContainer from "./hocs/CheckerContainer";
 import PrivateWrapper from "./hocs/PrivateWrapper";
-import AuthedWrapper from "./hocs/AuthedWrapper";
 import ThemeContainer from "./hocs/ThemeContainer";
 
 import { messages } from './i18n/messages'
@@ -47,15 +46,10 @@ export const App = () => {
                             <Routes>
                                 <Route path="/*" element={<Home currentLocale={currentLocale} handleChange={handleChange}/>}/>
                                 <Route path="/login" element={
-                                    <AuthedWrapper>
-                                        <Login currentLocale={currentLocale} handleChange={handleChange}/>
-                                    </AuthedWrapper>
+                                    <Login currentLocale={currentLocale} handleChange={handleChange}/>
                                 }/>
                                 <Route path="/register" element={
-                                    <AuthedWrapper>
-                                        <Register currentLocale={currentLocale} handleChange={handleChange}/>
-                                    </AuthedWrapper>
-
+                                    <Register currentLocale={currentLocale} handleChange={handleChange}/>
                                 }/>
                                 <Route path="/dashboard" element={
                                     <PrivateWrapper>
@@ -63,7 +57,7 @@ export const App = () => {
                                     </PrivateWrapper>
                                 }/>
                                 <Route path="/profile/:page" element={
-                                        <Profile/>
+                                        <Profile currentLocale={currentLocale} handleChange={handleChange}/>
                                 }/>
                             </Routes>  
                         </BrowserRouter>

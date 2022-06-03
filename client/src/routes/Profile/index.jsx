@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import './style.scss'
 import { useMediaQuery } from "react-responsive"
 import { useParams } from "react-router-dom"
@@ -12,7 +12,7 @@ import SupportPage from "../../components/ProfileComponents/SupportPage"
 import MobileNav from "../../components/ProfileComponents/MobileNav"
 import MobileProfile from "../../components/ProfileComponents/MobileProfile"
 
-const Profile = () => {
+const Profile = (props) => {
     const page = useParams().page
 
     const Mobile = useMediaQuery({
@@ -28,7 +28,7 @@ const Profile = () => {
             case 'account':
                 return <MyAccount/>
             case 'settings':
-                return <SettingsPage/>
+                return <SettingsPage currentLocale={props.currentLocale} handleChange={props.handleChange}/>
             case 'support':
                 return <SupportPage/>
             default: 
@@ -41,7 +41,7 @@ const Profile = () => {
             case 'account':
                 return <MobileProfile/>
             case 'settings':
-                return <SettingsPage/>
+                return <SettingsPage currentLocale={props.currentLocale} handleChange={props.handleChange}/>
             case 'support':
                 return <SupportPage/>
             default: 
@@ -60,10 +60,10 @@ const Profile = () => {
                 </div>
             </div>
         :   
-            <>
+            <div className="profile">
                 {chooseMobilePage(page)}
                 <MobileNav/>
-            </>
+            </div>
         }           
         </>
     );
