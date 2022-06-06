@@ -40,6 +40,8 @@ export const messages = {
     sign_in_answer: 'Create an account',
     sign_in_button: 'Sign in',
 
+    user_not_authenticated: 'User does not exists',
+
     // Sign up
     sign_up_name: 'Sign up',
     sign_up_google_btn: 'Sign up with Google',
@@ -50,6 +52,12 @@ export const messages = {
     sign_up_question: 'Already have an account?',
     sign_up_answer: 'Sign in',
     sign_up_button: 'Sign up',
+
+    user_already_exists: 'User is already registered',
+    email_is_already_in_use: 'Email is already in use',
+    password_characters: 'Password should be at least 8 characters',
+    passwords_do_not_match: 'Passwords do not match',
+    email_does_not_exists: 'Email does not exists',
 
     // Advantages Carousel
     adv_home: 'Home',
@@ -74,7 +82,7 @@ export const messages = {
     prof_my_account: 'My account',
     prof_settings: 'Settings',
     prof_support: 'Support',
-    prof_open_adisk: 'Open aDisk',
+    prof_open_adisk: 'aDisk',
     prof_logout: 'Log out',
     prof_since: 'aDisk user since',
     prof_name: 'Name',
@@ -124,6 +132,8 @@ export const messages = {
     sign_in_answer: 'Зарегистрируйтесь',
     sign_in_button: 'Войти',
 
+    user_not_authenticated: 'Пользователь не существует',
+
     // Sign up
     sign_up_name: 'Регистрация',
     sign_up_google_btn: 'Зарегистрироваться через Google',
@@ -134,6 +144,12 @@ export const messages = {
     sign_up_question: 'Уже есть аккаунт?',
     sign_up_answer: 'Войдите',
     sign_up_button: 'Зарегистрироваться',
+
+    user_already_exists: 'Пользователь уже зарегистрирован',
+    email_is_already_in_use: 'Почта уже используется',
+    password_characters: 'Пароль должен состоять минимум из 8 символов',
+    passwords_do_not_match: 'Пароли не совпадают',
+    email_does_not_exists: 'Почта не существует',
 
     // Advantages Carousel
     adv_home: 'Главная',
@@ -208,6 +224,8 @@ export const messages = {
     sign_in_answer: 'Ein Konto erstellen',
     sign_in_button: 'Eingang',
 
+    user_not_authenticated: 'Benutzer existiert nicht',
+
     // Sign up
     sign_up_name: 'Anmelden',
     sign_up_google_btn: 'Melden Sie sich bei Google an',
@@ -218,6 +236,12 @@ export const messages = {
     sign_up_question: 'Sie haben bereits ein Konto?',
     sign_up_answer: 'Eingang',
     sign_up_button: 'Anmelden',
+
+    user_already_exists: 'Benutzer ist bereits registriert',
+    email_is_already_in_use: 'E-Mail wird bereits verwendet',
+    password_characters: 'Passwort muss mindestens 8 Zeichen lang sein',
+    passwords_do_not_match:'Passwörter stimmen nicht überein',
+    email_does_not_exists: 'E-Mail existiert nicht',
 
     // Advantages Carousel
     adv_home: 'Hauptseite',

@@ -160,7 +160,7 @@ const Home = (props) => {
             {scroll > 300 || Mobile ? 
                 <button className="home-foot-button" onClick={() => navigate(bottomButtonNavigate)}><p><FormattedMessage id={bottomButtonMessageId}/></p></button> 
             : 
-                <button className="home-foot-button" style={{marginLeft: '200vw'}} onClick={() => navigate(bottomButtonNavigate)}><p><FormattedMessage id={bottomButtonMessageId}/></p></button> 
+                null
             }
       </div>
     );

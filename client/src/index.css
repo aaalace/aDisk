@@ -2,6 +2,9 @@
     --black_to_white : black;
     --white_to_black: white;
     --violet_to_black: #5643CC;
+    --grey_to_white: #b9b9b9;
+
+    --input_border: #DFDFDF;
 
     --cookie_bg: #e2e2e2;
 
@@ -13,7 +16,7 @@
     --home_background_even: #f1f5f8;
     --home_background_odd: rgb(255, 255, 255);
     --home_payment_bg: white;
-    --home_subs_bg: #f8f6fb;
+    --home_subs_bg: #fdfdfd;
     --unscrolled_text: rgb(233, 233, 233);
 
     --advantages_carousel_bg: linear-gradient(to right, #455db5c4, #683fd7bb), url('./images/db.png');
@@ -28,6 +31,9 @@
     --black_to_white : rgb(241, 241, 241);
     --white_to_black: black;
     --violet_to_black: black;
+    --grey_to_white: #ffffff;
+
+    --input_border: rgb(80, 80, 80);
 
     --cookie_bg: rgb(28, 28, 28);
 

@@ -39,7 +39,7 @@ export const loadUser = () => async dispatch => {
     }
 }
 
-export const updateProfile = (first_name, last_name) => async dispatch => {
+export const updateProfile = (data) => async dispatch => {
     try {
         const config = {
             headers: {
@@ -49,10 +49,7 @@ export const updateProfile = (first_name, last_name) => async dispatch => {
             }
         }
 
-        const body = JSON.stringify({
-            first_name,
-            last_name
-        })
+        const body = JSON.stringify(data)
 
         const result = await app.put(`/user_profile/update_user_profile`, body, config)
         
@@ -60,12 +57,14 @@ export const updateProfile = (first_name, last_name) => async dispatch => {
             dispatch({
                 type: UPDATE_PROFILE_FAIL,
             })
+            return [false, result.data.error]
         }
         else{
             dispatch({
                 type: UPDATE_PROFILE_SUCCESS,
-                payload: result.data
+                payload: data
             })
+            return [true]
         }
     } 
     catch (error) {
@@ -73,5 +72,6 @@ export const updateProfile = (first_name, last_name) => async dispatch => {
             type: UPDATE_PROFILE_FAIL,
         })
         console.log('error in updating profile')
+        return [false, '']
     }
 }

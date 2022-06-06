@@ -3,7 +3,6 @@ import './style.scss'
 import { SettingsContainer } from "./styled"
 import PublicProfile from "./Pages/PublicProfile"
 import AccountSettings from "./Pages/AccountSettings"
-
 import { SettingsHeader, SettingsBlock } from "./styled"
 
 const SettingsPage = (props) => {

@@ -13,6 +13,7 @@ import { FormattedMessage } from 'react-intl'
 const RegisterForm = (props) => {
     const navigate = useNavigate();
 
+    const [errorState, setErrorState] = useState('')
     const [termsState, setTermsState] = useState(false)
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
@@ -28,21 +29,18 @@ const RegisterForm = (props) => {
     const onSubmit = async e => {
         e.preventDefault()
         const res = await props.register(email, username, password, rePassword)
-        if(res){
+        if(res[0]){
             navigate('/login')
+            setUsername('')
+            setPassword('')
+            setEmail('')
+            setRePassword('')
         }
         else{
-            registerErrorStaff()
+            setErrorState(res[1])
         }
-        setUsername('')
-        setPassword('')
-        setEmail('')
-        setRePassword('')
     }
 
-    const registerErrorStaff = () => {
-        
-    }
  
     return (
         <RegisterFormStyled className="register-form">
@@ -54,7 +52,7 @@ const RegisterForm = (props) => {
                     <p className="page-comm"><FormattedMessage id='sign_desc'/></p>
                 </div>
                 <div className="register-types-container">
-                    <button className="google-register"><img alt="" src="../images/google.png" className="google-img"></img><p style={{color: '#000'}}><FormattedMessage id='sign_up_google_btn'/></p></button>
+                    <button className="google-register"><img alt="" src="../images/google.png" className="google-img"></img><p><FormattedMessage id='sign_up_google_btn'/></p></button>
                     
                     <div className="custom-hr">
                         <div><FormattedMessage id='sign_or'/></div>
@@ -86,8 +84,10 @@ const RegisterForm = (props) => {
                             <input type="checkbox" value="terms" id="agreement" onChange={() => setCheckBoxState(!checkBoxState)}/>
                             <label htmlFor="terms"><FormattedMessage id='sign_up_agreement'/> <label onClick={() => setTermsState(true)} className="terms"><FormattedMessage id='sign_up_terms_link'/></label></label>
                         </div>
-                        
-                        <button type="submit" className="register-button" disabled={readyToSend ? false : true} style={readyToSend ? {backgroundImage: 'linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%)'}: {backgroundColor: '#7C7C7C'}}><FormattedMessage id='sign_up_button'/></button>
+                        <div style={{marginTop: '20px'}}>
+                            {errorState ? <p style={{color: 'red', fontSize: '13px', bottom: '10px', position: 'relative'}}>{<FormattedMessage id={errorState}/>}</p> : ''}
+                            <button type="submit" className="register-button" disabled={readyToSend ? false : true} style={readyToSend ? {backgroundImage: 'linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%)'}: {backgroundColor: '#7C7C7C'}}><FormattedMessage id='sign_up_button'/></button>
+                        </div>
                     </form>
 
                     <div className="already-registered-container">

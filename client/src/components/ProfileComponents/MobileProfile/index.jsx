@@ -78,7 +78,7 @@ const MobileProfile = (props) => {
                 <div className="name-surname-container">
                     <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faUser} />&nbsp;<FormattedMessage id="prof_name"/></p>
                     <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
-                        <p>{props.first_name_global}&nbsp;{props.last_name_global}</p>
+                        <p>{props.name_global}</p>
                     </div>
                 </div>
                 <div className="email-container">
@@ -105,8 +105,7 @@ const mapStateToProps = state => {
     return {
         username_global: state.profile.username,
         email_global: state.profile.email,
-        first_name_global: state.profile.first_name,
-        last_name_global: state.profile.last_name,
+        name_global: state.profile.name,
         date_joined_global: state.profile.date_joined
     }
 }

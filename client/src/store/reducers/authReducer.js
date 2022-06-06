@@ -7,6 +7,8 @@ import {
     LOGOUT_FAIL,
     AUTHENTICATED_SUCCESS, 
     AUTHENTICATED_FAIL,
+    CHANGE_PASSWORD_SUCCESS,
+    CHANGE_PASSWORD_FAIL,
     DELETE_USER_SUCCESS,
     DELETE_USER_FAIL
 } from '../../actions/types'
@@ -33,6 +35,8 @@ export default function(state = initialState, action) {
         case REGISTER_FAIL: 
         case LOGIN_FAIL: 
         case LOGOUT_FAIL:
+        case CHANGE_PASSWORD_SUCCESS:
+        case CHANGE_PASSWORD_FAIL:    
         case DELETE_USER_FAIL:
             return state
 

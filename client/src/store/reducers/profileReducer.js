@@ -12,8 +12,7 @@ const initialState = {
     user_id: null,
     email: '',
     username: '',
-    first_name: '',
-    last_name: '',
+    name: '',
     date_joined: ''
 }
 
@@ -27,8 +26,7 @@ export default function(state = initialState, action) {
                 user_id: payload.user_id, 
                 email: payload.email,
                 username: payload.username,
-                first_name: payload.profile.first_name,
-                last_name: payload.profile.last_name,
+                name: payload.profile.name,
                 date_joined: payload.date_joined
             }
         
@@ -38,8 +36,9 @@ export default function(state = initialState, action) {
         
         case UPDATE_PROFILE_SUCCESS:
             return {...state,
-                first_name: payload.profile.first_name,
-                last_name: payload.profile.last_name
+                username: payload.username,
+                email: payload.email,
+                name: payload.name,
             }
 
         case DELETE_USER_SUCCESS:

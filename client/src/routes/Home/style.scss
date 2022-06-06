@@ -123,6 +123,17 @@
         background-image: linear-gradient(92.88deg, #5b72c6 9.16%, #455EB5 43.89%, #5643CC 64.72%);
     }
 
+    animation: slideInHomeButton 1s;
+
+    @keyframes slideInHomeButton {
+        from {
+            transform: translateX(500%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
     
     @media screen and (max-width: 768px) {
         left: calc(50% - 150px);

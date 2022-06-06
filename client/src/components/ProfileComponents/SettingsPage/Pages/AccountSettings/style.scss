@@ -59,6 +59,12 @@
                     margin-bottom: 20px;
                     border-bottom: 1px solid rgb(226, 226, 226);
                     padding-bottom: 10px;
+                    -webkit-touch-callout: none;
+                    -webkit-user-select: none;
+                    -khtml-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none; 
                 }
             }
 
@@ -80,6 +86,13 @@
                     margin-bottom: 20px;
                     border-bottom: 1px solid rgb(226, 226, 226);
                     padding-bottom: 10px;
+
+                    -webkit-touch-callout: none;
+                    -webkit-user-select: none;
+                    -khtml-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none; 
                 }
             }
 
@@ -101,6 +114,12 @@
                     margin-bottom: 20px;
                     border-bottom: 1px solid rgb(226, 226, 226);
                     padding-bottom: 10px;
+                    -webkit-touch-callout: none;
+                    -webkit-user-select: none;
+                    -khtml-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none; 
                 }
 
                 .ass-delete-desc {
@@ -118,6 +137,7 @@
                     border: 1px solid rgb(226, 226, 226);
                     border-radius: 7px;
                     padding: 5px 10px;
+                    
 
                     @media screen and (max-width: 769px) {
                         background-color: #F85149;
@@ -150,6 +170,12 @@
                 margin-bottom: 40px;
                 border-bottom: 1px solid rgb(226, 226, 226);
                 padding-bottom: 10px;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none; 
             }
             
             .password-line {
@@ -171,7 +197,7 @@
                     height: 32px;
                     border: 1px solid rgb(217, 217, 217);
                     border-radius: 8px;
-                    padding: 10px 10px;
+                    padding: 16px 10px;
                     margin-bottom: 20px;
                     max-width: 400px;
     
@@ -185,12 +211,16 @@
                 width: fit-content;
                 height: fit-content;
                 min-height: 35px;
-                background-color: #5643CC;
+                background-color: #959595;
                 color: white;
                 border: 0;
                 border-radius: 7px;
                 padding: 5px 10px;
-    
+            }
+
+            .active-change-password {
+                background-color: #5643CC;
+
                 &:hover {
                     background-color: #6651f0;
                 }

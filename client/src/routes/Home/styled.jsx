@@ -100,6 +100,7 @@ export const HomeBlockInfo = styled.div`
         display: flex;
         flex-direction: row;
         align-items: center;
+        padding-top: 20px;
         ${props => props.id !== 1 ? 'color: var(--unscrolled_text);' : 'color: var(--black_to_white);'};
     }
 `

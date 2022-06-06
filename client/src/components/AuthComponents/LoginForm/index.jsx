@@ -12,6 +12,7 @@ import { FormattedMessage } from 'react-intl'
 const LoginForm = (props) => {
     const navigate = useNavigate();
 
+    const [errorState, setErrorState] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -19,30 +20,28 @@ const LoginForm = (props) => {
         e.preventDefault()
 
         const res = await props.login(username, password)
-        if(res){
+        if(res[0]){
             navigate('/dashboard')
+            setUsername('')
+            setPassword('')
         }
         else{
-            loginErrorStaff()
+            setErrorState(res[1])
         }
-        setUsername('')
-        setPassword('')
-    }
-
-    const loginErrorStaff = () => {
-
     }
 
     return (
       <LoginFormStyled className="login-form">
-        <div className="login-form-header"/>
-        <div className="login-form-container">
+        <div className="recover-password" >
+            <div></div>
+        </div>
+        <div className="login-form-container" >
             <div className="page-info-container">
                 <h2 className="page-name"><FormattedMessage id='sign_in_name'/></h2>
                 <p className="page-comm"><FormattedMessage id='sign_desc'/></p>
             </div>
             <div className="login-types-container">
-                <button className="google-sign-in"><img alt="" src="../images/google.png" className="google-img"></img><p style={{color: '#000'}}><FormattedMessage id='sign_in_google_btn'/></p></button>
+                <button className="google-sign-in"><img alt="" src="../images/google.png" className="google-img"></img><p><FormattedMessage id='sign_in_google_btn'/></p></button>
                 
                 <div className="custom-hr">
                     <div><FormattedMessage id='sign_or'/></div>
@@ -60,8 +59,12 @@ const LoginForm = (props) => {
                             <p><FormattedMessage id='sign_password'/></p>
                             <input type='password' onChange={e => setPassword(e.target.value)} value={password}/>
                         </div>
+                        <div className="username-line"><p className="forget-pass">Forgot your password?</p></div>
                     </div>
-                    <button type="submit" className="sign-in-button"><FormattedMessage id='sign_in_button'/></button>
+                    <div style={{marginTop: '20px'}}>
+                        {errorState ? <p style={{color: 'red', fontSize: '13px', bottom: '10px', position: 'relative'}}>{<FormattedMessage id={errorState}/>}</p> : ''}
+                        <button type="submit" className="sign-in-button"><FormattedMessage id='sign_in_button'/></button>
+                    </div>
                 </form>
 
                 <div className="not-registered-container">
@@ -69,7 +72,7 @@ const LoginForm = (props) => {
                     <Link className="solution" to='/register'><FormattedMessage id='sign_in_answer'/></Link>
                 </div>
             </div>
-        </div>   
+        </div>
       </LoginFormStyled>
     );
 }

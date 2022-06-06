@@ -52,9 +52,7 @@ export const App = () => {
                                     <Register currentLocale={currentLocale} handleChange={handleChange}/>
                                 }/>
                                 <Route path="/dashboard" element={
-                                    <PrivateWrapper>
                                        <Dashboard/>
-                                    </PrivateWrapper>
                                 }/>
                                 <Route path="/profile/:page" element={
                                         <Profile currentLocale={currentLocale} handleChange={handleChange}/>
