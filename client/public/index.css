@@ -11,13 +11,12 @@ html {
     padding: 0;
     box-sizing: border-box;
     outline: none;
-    transition: all 0.25s;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-    background-color: rgb(255, 255, 255);
+    background: var(--white_to_black);
 }
 
 select, textarea, input {

@@ -5,9 +5,9 @@ import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import { useMediaQuery } from 'react-responsive';
 
-import HomeHeader from "../../components/HomeHeader";
-import PaymentCasrousel from '../../components/PaymentCarousel';
-import ThreeFigure from '../../components/ThreeFigure';
+import HomeHeader from "../../components/HomeComponents/HomeHeader";
+import PaymentCasrousel from '../../components/HomeComponents/PaymentCarousel';
+import ThreeFigure from '../../components/HomeComponents/ThreeFigure';
 
 import {
     HomeBlockContainer,
@@ -31,7 +31,8 @@ const Block = (props) => {
     if(props.isAuthenticated){
         bottomButtonMessageId = 'open_disk_btn'
         bottomButtonNavigate = '/dashboard'
-    } 
+    }
+
     const nameSwitch = (id) => {
         switch(id) {
             case 1:
@@ -62,6 +63,21 @@ const Block = (props) => {
           }
     }
 
+    function onEntry(entry) {
+        entry.forEach(change => {
+            if (change.isIntersecting) {
+                change.target.classList.add('element-show');
+            }
+        });
+    }
+
+    let options = { threshold: [0.9] };
+    let observer = new IntersectionObserver(onEntry, options);
+    let elements = document.querySelectorAll('.home-block_info');
+    for (let elm of elements) {
+        observer.observe(elm);
+    }
+
     return(
         <HomeBlockContainer id={props.id} className="home-block-container">
             <HomeBlock id={props.id} className="home-block">
@@ -77,6 +93,7 @@ const Block = (props) => {
                 </HomeBlockInfo>
                 {props.id === 1 ? <ThreeFigure/> : null}
                 {props.id % 2 === 1 && props.id !== 1 && !Mobile ? <HomeBlockImage id={props.id} className="home-block_image"/> : null}
+                {props.id !== 1 && Mobile ? <HomeBlockImage id={props.id} className="home-block_image"/> : null}
             </HomeBlock>
         </HomeBlockContainer>
     )
@@ -97,6 +114,10 @@ const HomeBlocksContainer = (props) => {
 
 const Home = (props) => {
     const navigate = useNavigate()
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const Mobile = useMediaQuery({
         query: '(max-width: 768px)'
@@ -139,7 +160,7 @@ const Home = (props) => {
             {scroll > 300 || Mobile ? 
                 <button className="home-foot-button" onClick={() => navigate(bottomButtonNavigate)}><p><FormattedMessage id={bottomButtonMessageId}/></p></button> 
             : 
-                <button className="home-foot-button" style={{marginLeft: '200vw'}} onClick={() => navigate(bottomButtonNavigate)}><p><FormattedMessage id={bottomButtonMessageId}/></p></button> 
+                null
             }
       </div>
     );

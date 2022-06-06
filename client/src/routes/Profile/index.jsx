@@ -1,75 +1,72 @@
-import React, { useState } from "react"
+import React, { useEffect } from "react"
 import './style.scss'
-import { connect } from 'react-redux'
-import { logout } from "../../actions/auth"
-import { useNavigate } from 'react-router-dom';
-import { updateProfile } from "../../actions/profile"
-import { deleteAccount } from "../../actions/auth";
-import { Link } from "react-router-dom";
+import { useMediaQuery } from "react-responsive"
+import { useParams } from "react-router-dom"
+
+import NavigationPanel from "../../components/ProfileComponents/NavigationPanel"
+import ProfileHeader from "../../components/ProfileComponents/ProfileHeader"
+import MyAccount from "../../components/ProfileComponents/MyAccount"
+import SettingsPage from "../../components/ProfileComponents/SettingsPage"
+import SupportPage from "../../components/ProfileComponents/SupportPage"
+
+import MobileNav from "../../components/ProfileComponents/MobileNav"
+import MobileProfile from "../../components/ProfileComponents/MobileProfile"
 
 const Profile = (props) => {
-    const navigate = useNavigate();
+    const page = useParams().page
 
-    const [first_name, setFirstName] = useState('')
-    const [last_name, setLastName] = useState('')
-    
-    const logOut = async e => {
-        e.preventDefault()
+    const Mobile = useMediaQuery({
+        query: '(max-width: 769px)'
+    })
 
-        const res = await props.logout()
-        if(res){
-            navigate('/')
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+    const choosePage = (page) =>{
+        switch(page){
+            case 'account':
+                return <MyAccount/>
+            case 'settings':
+                return <SettingsPage currentLocale={props.currentLocale} handleChange={props.handleChange}/>
+            case 'support':
+                return <SupportPage/>
+            default: 
+                return <MyAccount/>
         }
     }
 
-    const updateProfile = e => {
-        e.preventDefault()
-        props.updateProfile(first_name, last_name)
-        setFirstName('')
-        setLastName('')
-    }
-
-    const deleteAccount = e => {
-        e.preventDefault()
-        if (window.confirm('Are you sure you want to delete an account?')){
-            props.deleteAccount()
-            navigate('/')
+    const chooseMobilePage = (page) =>{
+        switch(page){
+            case 'account':
+                return <MobileProfile/>
+            case 'settings':
+                return <SettingsPage currentLocale={props.currentLocale} handleChange={props.handleChange}/>
+            case 'support':
+                return <SupportPage/>
+            default: 
+                return <MobileProfile/>
         }
     }
 
     return (
-      <div className="profile">
-            <Link to='/dashboard' style={{display: 'block', marginBottom: '20px', textDecoration: 'underline'}}>dashboard</Link>
-            <div style={{marginBottom: '20px'}}>
-                <h3>Profile</h3>
-                <p>username: {props.username_global}</p>
-                <p>email: {props.email_global}</p>
-                <p>first name: {props.first_name_global}</p>
-                <p>last name: {props.last_name_global}</p>
+        <>
+        {!Mobile ?
+            <div className="profile">
+                <NavigationPanel/>
+                <div className="right-container">
+                    <ProfileHeader page={page} />
+                    {choosePage(page)}
+                </div>
             </div>
-            <div style={{marginBottom: '20px'}}>
-                <h3>Update profile</h3>
-                <form onSubmit={e => updateProfile(e)}>
-                    <p>first name</p>
-                    <input type='text' value={first_name} onChange={e => setFirstName(e.target.value)}></input>
-                    <p>last name</p>
-                    <input type='text' value={last_name} onChange={e => setLastName(e.target.value)}></input>
-                    <button type="submit">Update</button>
-                </form>
+        :   
+            <div className="profile">
+                {chooseMobilePage(page)}
+                <MobileNav/>
             </div>
-            <p style={{color: 'orange', cursor: 'pointer', marginBottom: '10px'}} onClick={logOut}>logout</p>
-            <p style={{color: 'red', cursor: 'pointer'}} onClick={deleteAccount}>delete account</p>
-      </div>
+        }           
+        </>
     );
 }
 
-const mapStateToProps = state => {
-    return {
-        username_global: state.profile.username,
-        email_global: state.profile.email,
-        first_name_global: state.profile.first_name,
-        last_name_global: state.profile.last_name
-    }
-}
-
-export default connect(mapStateToProps, {updateProfile, logout, deleteAccount})(Profile)
+export default Profile

@@ -1,18 +1,57 @@
 [data-theme='light'] {
     --black_to_white : black;
+    --white_to_black: white;
+    --violet_to_black: #5643CC;
+    --grey_to_white: #b9b9b9;
+
+    --input_border: #DFDFDF;
+
+    --cookie_bg: #e2e2e2;
 
     --home_header_background: white;
     --home_header_icon_p: #5643CC;
-
+    --scrolled_pay: #444444;
 
     --home_background_main: linear-gradient(120deg, #ffffff 30%, #000000 120%);
+    --home_background_even: #f1f5f8;
+    --home_background_odd: rgb(255, 255, 255);
+    --home_payment_bg: white;
+    --home_subs_bg: #fdfdfd;
+    --unscrolled_text: rgb(233, 233, 233);
+
+    --advantages_carousel_bg: linear-gradient(to right, #455db5c4, #683fd7bb), url('./images/db.png');
+    --advantages_carousel_mobile: linear-gradient(to right, #455db5c4, #683fd7bb), url('./images/db.png');
+
+    --sign_bg: #f1f5f8;
+    --sign_form_bg: white;
+    --sign_grey: rgb(99, 99, 99);
 }
 
 [data-theme='dark'] {
-    --black_to_white : white;
+    --black_to_white : rgb(241, 241, 241);
+    --white_to_black: black;
+    --violet_to_black: black;
+    --grey_to_white: #ffffff;
 
-    --home_header_background: rgb(84, 84, 84);
+    --input_border: rgb(80, 80, 80);
+
+    --cookie_bg: rgb(28, 28, 28);
+
+    --home_header_background: rgba(84, 84, 84, 0);
     --home_header_icon_p: white;
+    --scrolled_pay: white;
 
-    --home_background_main: linear-gradient(120deg, #000000b8 10%, #ffffff 200%);
+    --home_background_main: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
+    --home_background_even: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
+    --home_background_odd: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
+    --home_payment_bg: url('./images/stars.png'), linear-gradient(#000000, rgb(0, 0, 0));
+    --home_subs_bg: rgba(97, 97, 97, 0.173);
+    --unscrolled_text: rgb(36, 36, 36);
+
+    --advantages_carousel_bg: transparent;
+    --advantages_carousel_mobile: linear-gradient(120deg, #00000079 10%, #0000006e 120%), url('./images/db.png');
+
+    --sign_bg: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
+    --sign_form_bg: rgba(0, 0, 0, 0);
+    --sign_grey: rgb(180, 180, 180);
 }

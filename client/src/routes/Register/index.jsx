@@ -1,25 +1,22 @@
-import React from "react"
+import React, { useEffect } from "react"
 import './style.scss'
-import RegisterForm from "../../components/RegisterForm";
-import AdvantagesCarousel from "../../components/AdvantagesCarousel";
 import { connect } from "react-redux";
 import { RegisterContainer } from "./styled";
-import { useMediaQuery } from 'react-responsive'
+
+import RegisterForm from "../../components/AuthComponents/RegisterForm";
+import AdvantagesCarousel from "../../components/AuthComponents/AdvantagesCarousel";
 
 const Register = (props) => {
-    const Desktop = useMediaQuery({
-        query: '(min-width: 1000px)'
-    })
-    const Mobile = useMediaQuery({
-        query: '(max-width: 1000px)'
-    })
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         <div className="register-page">
             <RegisterContainer className="register-container">
-                {Mobile ? <AdvantagesCarousel/> : null}
-                <RegisterForm/>
-                {Desktop ? <AdvantagesCarousel/> : null}
+                <AdvantagesCarousel currentLocale={props.currentLocale} handleChange={props.handleChange}/>
+                <RegisterForm />
             </RegisterContainer>
       </div>
     );

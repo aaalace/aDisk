@@ -4,9 +4,29 @@
     justify-content: center;
     width: 100vw;
     min-height: 100vh;
-    background-color: #f1f5f8;
+    background: var(--sign_bg);
+
+    @media screen and (max-width: 768px) {
+        background: var(--white_to_black);
+    }
 }
 
 .register-container {
     display: flex;
+    position: absolute;
+    animation: slideInRegister 0.5s;
+   
+    @media screen and (max-width: 768px) {
+        animation: none;
+        position: relative;
+    }
+
+    @keyframes slideInRegister {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
 }

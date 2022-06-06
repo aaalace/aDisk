@@ -44,21 +44,21 @@ class SignUpView(APIView):
             if validate_email(email):
                 if password == re_password:
                     if User.objects.filter(username=username).exists():
-                        return Response({'error': 'User already exists'})
+                        return Response({'error': 'user_already_exists'})
                     elif User.objects.filter(email=email).exists():
-                        return Response({'error': 'Email is already in use'})
+                        return Response({'error': 'email_is_already_in_use'})
                     else:
                         if len(password) < 8:
-                            return Response({'error': 'Password must be at least 8 characters'})
+                            return Response({'error': 'password_characters'})
                         else:
                             user = User.objects.create_user(email=email, username=username, password=password)
 
                             user = User.objects.get(id=user.id)
 
-                            UserProfile.objects.create(user=user, first_name='', last_name='', user_id=user.id)
+                            UserProfile.objects.create(user=user, name='', user_id=user.id)
                             return Response({'success': 'User created'})
-                return Response({'error': 'Passwords do not match'})
-            return Response({'error': 'Email does not exists'})
+                return Response({'error': 'passwords_do_not_match'})
+            return Response({'error': 'email_does_not_exists'})
         except:
             return Response({'error': 'Something went wrong'})
 
@@ -79,7 +79,7 @@ class LoginView(APIView):
             if user is not None:
                 auth.login(request, user)
                 return Response({'success': 'User authenticated'})
-            return Response({'error': 'User is not authenticated'})
+            return Response({'error': 'user_not_authenticated'})
         except Exception as e:
             print(e)
             return Response({'error': 'Something went wrong'})
@@ -127,6 +127,28 @@ class GetUsersView(APIView):
             users = User.objects.all()
             users = UserSerializer(users, many=True)
             return Response(users.data)
+        except Exception as e:
+            print(e)
+            return Response({'error': 'Something went wrong'})
+
+            
+class ChangePasswordView(APIView):
+    permission_classes = (AllowAny, )
+
+    def put(self, request, format=None):
+        try:
+            data = self.request.data
+
+            user_id = data['id']
+            new_password = data['new_password']
+            rep_password = data['rep_password']
+
+            if new_password == rep_password:
+                user = User.objects.get(id=user_id)
+                user.set_password(new_password)
+                user.save()
+                return Response({'success': 'Password changed'})
+            return Response({'error': 'Diffenrent passwords'})
         except Exception as e:
             print(e)
             return Response({'error': 'Something went wrong'})

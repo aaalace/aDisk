@@ -10,7 +10,8 @@ import {
     LOGOUT_FAIL,
     AUTHENTICATED_SUCCESS, 
     AUTHENTICATED_FAIL,
-    LOGOUT_SUCCESS_PROFILE,
+    CHANGE_PASSWORD_SUCCESS,
+    CHANGE_PASSWORD_FAIL,
     DELETE_USER_SUCCESS,
     DELETE_USER_FAIL
 } from './types'
@@ -65,20 +66,20 @@ export const login = (username, password) => async dispatch => {
                 type: LOGIN_SUCCESS
             })
             dispatch(loadUser())
-            return true
+            return [true]
         }
         else {
             dispatch({
                 type: LOGIN_FAIL
             })
         }
-        return false
+        return [false, result.data.error]
     } catch (error) {
         dispatch({
             type: LOGIN_FAIL
         })
         console.log('error in login')
-        return false
+        return [false, '']
     }
 }
 
@@ -138,20 +139,55 @@ export const register = (email, username, password, re_password) => async dispat
             dispatch({
                 type: REGISTER_SUCCESS
             })
-            return true
+            return [true]
         }
         else {
             dispatch({
                 type: REGISTER_FAIL
             })
         }
-        return false
+        return [false, result.data.error]
     } catch (err) {
         dispatch({
             type: REGISTER_FAIL
         })
         console.log('error in register')
-        return false
+        return  [false, '']
+    }
+}
+
+export const changePassword = (data) => async dispatch =>  {
+
+    try {
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken')
+            }
+        }
+        const body = JSON.stringify(data)
+
+        const result = await app.put(`/user/change_password`, body, config)
+
+        if(result.data.success){
+            dispatch({
+                type: CHANGE_PASSWORD_SUCCESS
+            })
+            return [true]
+        }
+        else {
+            dispatch({
+                type: CHANGE_PASSWORD_FAIL
+            })
+        }
+        return [false, result.data.error]
+    } catch (err) {
+        dispatch({
+            type: CHANGE_PASSWORD_FAIL
+        })
+        console.log('error in delete account')
+        return [false, '']
     }
 }
 

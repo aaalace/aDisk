@@ -1,0 +1,22 @@
+.dfigure {
+    display: 'flex';
+    width: '500px';
+    height: '600px';
+
+    position: absolute;
+    animation: slideInFigure 3s;
+
+    @media screen and (max-width: 768px) {
+        position: relative;
+        animation: none;
+    }
+
+    @keyframes slideInFigure {
+        from {
+            transform: translateY(100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+}

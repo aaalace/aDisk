@@ -8,10 +8,10 @@
     height: 200px;
     bottom: 20px;
     right: 20px;
-    background-color: #d7d7d7;
+    background-color: var(--cookie_bg);
+    color: var(--black_to_white);
 
     @media screen and (max-width: 768px) {
-        background-color: #d7d7d7;
         width: 90vw;
         height: 180px;
     }

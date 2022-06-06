@@ -1,0 +1,61 @@
+.adv-carousel {
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    overflow: hidden;
+
+    .adv-carousel-name-container{
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        z-index: 1;
+
+        .adv-workbtns-cont {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .icon {
+            font-family: 'Courier New', monospace;
+            font-size: 35px;
+            font-weight: 500;
+            color: white;
+        }
+    }
+
+    .adv-carousel-description-container{
+        justify-content: center;
+        width: 80%;
+        z-index: 1;
+
+        .desc {
+            font-size: 20px;
+            color: white;
+            line-height: 130%;
+        }
+    }
+
+    .adv-carousel-bar-container{
+        display: flex;
+        justify-content: left;
+        align-items: flex-end;
+        width: 80%;
+        z-index: 1;
+
+        @media screen and (max-width: 769px) {
+            max-width: 95vw;
+        }
+
+
+        .bar {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            margin-right: 10%;
+        }
+    }
+
+}

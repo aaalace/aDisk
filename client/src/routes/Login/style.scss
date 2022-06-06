@@ -4,9 +4,30 @@
     justify-content: center;
     width: 100vw;
     min-height: 100vh;
-    background-color: #f1f5f8;
+    background: var(--sign_bg);
+
+    @media screen and (max-width: 768px) {
+        background: var(--white_to_black);
+    }
 }
 
 .login-container {
     display: flex;
+    // border: 2px solid #fff;
+    position: absolute;
+    animation: slideInLogin 0.5s;
+
+    @media screen and (max-width: 768px) {
+        animation: none;
+        position: relative;
+    }
+    
+    @keyframes slideInLogin {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
 }

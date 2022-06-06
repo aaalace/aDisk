@@ -9,8 +9,8 @@ const ThemeContainer = (props) => {
         if(storedTheme)
             document.documentElement.setAttribute('data-theme', storedTheme)
         else{
-            document.documentElement.setAttribute('data-theme', 'light')
-            localStorage.setItem('theme', 'light')
+            document.documentElement.setAttribute('data-theme', 'dark')
+            localStorage.setItem('theme', 'dark')
         }
     }, []);
 

@@ -5,8 +5,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Provider } from "react-redux";
 import { IntlProvider } from 'react-intl';
 
+import { store } from "./store/store";
+
 import CheckerContainer from "./hocs/CheckerContainer";
-import PrivateWrapper from "./hocs/PrivateRoute";
+import PrivateWrapper from "./hocs/PrivateWrapper";
 import ThemeContainer from "./hocs/ThemeContainer";
 
 import { messages } from './i18n/messages'
@@ -17,8 +19,6 @@ import Register from "./routes/Register";
 import Home from "./routes/Home";
 import Dashboard from "./routes/Dashboard";
 import Profile from "./routes/Profile";
-
-import { store } from "./store";
 
 export const App = () => {
 
@@ -44,15 +44,19 @@ export const App = () => {
                     <ThemeContainer>
                         <BrowserRouter>
                             <Routes>
-                                <Route exact path="/*" element={<Home currentLocale={currentLocale} handleChange={handleChange}/>}/>
-                                <Route exact path="/login" element={<Login/>}/>
-                                <Route exact path="/register" element={<Register/>}/>
-                                <Route element={<PrivateWrapper />}>
-                                    <Route exact path="/dashboard" element={<Dashboard/>} />
-                                </Route>
-                                <Route element={<PrivateWrapper />}>
-                                    <Route exact path="/profile" element={<Profile/>} />
-                                </Route>
+                                <Route path="/*" element={<Home currentLocale={currentLocale} handleChange={handleChange}/>}/>
+                                <Route path="/login" element={
+                                    <Login currentLocale={currentLocale} handleChange={handleChange}/>
+                                }/>
+                                <Route path="/register" element={
+                                    <Register currentLocale={currentLocale} handleChange={handleChange}/>
+                                }/>
+                                <Route path="/dashboard" element={
+                                       <Dashboard/>
+                                }/>
+                                <Route path="/profile/:page" element={
+                                        <Profile currentLocale={currentLocale} handleChange={handleChange}/>
+                                }/>
                             </Routes>  
                         </BrowserRouter>
                     </ThemeContainer>

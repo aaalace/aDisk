@@ -1,0 +1,39 @@
+.languague_choice-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+
+    .switcher {
+        display: flex;
+        border: 1px solid var(--select-border);
+        cursor: pointer;
+
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border: none;
+            padding: 5px;
+            margin: 0;
+            width: 100%;
+            font-family: inherit;
+            font-size: inherit;
+            cursor: inherit;
+            line-height: inherit;
+            outline: none;
+            
+            &::-ms-expand {
+                display: none;
+            }
+        }
+
+        .whiteText {
+            color: #ffffff;
+            background-color: transparent;
+        }
+
+
+    }
+}
