@@ -163,7 +163,6 @@ export const changePassword = (data) => async dispatch =>  {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken')
             }
         }
         const body = JSON.stringify(data)
@@ -186,7 +185,7 @@ export const changePassword = (data) => async dispatch =>  {
         dispatch({
             type: CHANGE_PASSWORD_FAIL
         })
-        console.log('error in delete account')
+        console.log('error in change password')
         return [false, '']
     }
 }

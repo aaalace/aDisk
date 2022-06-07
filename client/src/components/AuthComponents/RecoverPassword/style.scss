@@ -1,0 +1,145 @@
+.recover-password-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--sign_form_bg);
+    height: calc(100vh - 200px);
+    border-right: 1px solid white;
+
+    @media screen and (max-width: 1000px) {
+        border-right: none;
+        padding-top: 50px;
+    }
+
+    .back {
+        display: flex;
+        align-items: center;
+        color: #5643CC;
+        cursor: pointer;
+        text-decoration: none;
+        width: 70%;
+
+        .icon {
+            margin-right: 5px;
+        }
+
+        &:hover {
+            .icon {
+                animation: slideInArrowRepair .4s;
+
+                @keyframes slideInArrowRepair {
+                    from {
+                        transform: translateX(0);
+                    }
+                    to {
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+        }
+    }
+
+    .recover-password {
+        flex-direction: column;
+        width: 70%;
+
+        .recover-password-header {
+            margin-top: 25px;
+            
+            .page-name {
+                font-size: 25px;
+                letter-spacing: 0.7px;
+                color: var(--black_to_white);
+            }
+
+            .page-description {
+                max-width: 300px;
+                color: var(--sign_grey);
+                margin-top: 5px;
+            }
+
+        }
+        
+        .user-recover {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 15px;
+
+            .username-line {
+                width: 100%;
+                margin-top: 15px;
+
+                p {
+                    font-size: 12px;
+                    font-weight: 700;
+                    color: var(--black_to_white);
+                }
+
+                input {
+                    display: flex;
+                    width: 100%;
+                    height: 35px;
+                    background-color: var(--white_to_black);
+                    color: var(--black_to_white);
+                    border: 1px solid var(--input_border);
+                    border-radius: 10px;
+                    margin-top: 5px;
+                    padding: 10px;
+                    transition: width 0.4s ease-in-out;
+                }
+            }
+
+            .recover-bottom-container {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+
+                .recover-bottom-head {
+                    display: flex;
+                    width: 100%;
+                    margin-top: 15px;
+                }
+                .recover-bottom {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: row;
+                    width: 100%;
+                    margin-top: 15px;
+
+                    .send-code {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: 500;
+                        font-size: 13px;
+                        width: fit-content;
+                        height: fit-content;
+                        min-height: 35px;
+                        background-color: #5643CC;
+                        color: white;
+                        border: 0;
+                        border-radius: 7px;
+                        padding: 5px 10px;
+                        margin-right: 10px;
+                        cursor: pointer;
+    
+                        -webkit-touch-callout: none;
+                        -webkit-user-select: none;
+                        -khtml-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        user-select: none; 
+            
+                        &:hover {
+                            background-color: #6651f0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -75,7 +75,7 @@ const HomeHeader = (props) => {
                         {props.isAuthenticated ? 
                             <img className="profile-icon" alt="" src="../images/default-image.jpg" onClick={() => navigate('/profile/account')}></img>
                         : 
-                            <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/>&nbsp;&nbsp;<FormattedMessage id='login_button'/></button>
+                            <button onClick={() => navigate('/login/entry')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/>&nbsp;&nbsp;<FormattedMessage id='login_button'/></button>
                         }
                         <HomeHeaderPayment scrolled={scroll === 0 ? false : true} onClick={props.priceScrollFunc} type="button" className="home-header_payment"><FontAwesomeIcon icon={faCoins}/>&nbsp;&nbsp;AD+</HomeHeaderPayment>
                     </div> 
@@ -90,7 +90,7 @@ const HomeHeader = (props) => {
                         {props.isAuthenticated ? 
                             <img className="profile-icon" alt="" src="../images/default-image.jpg" onClick={() => navigate('/profile/account')}></img>
                         : 
-                            <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/></button>
+                            <button onClick={() => navigate('/login/entry')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/></button>
                         }
                     </div>
                 }

@@ -8,7 +8,6 @@ import { IntlProvider } from 'react-intl';
 import { store } from "./store/store";
 
 import CheckerContainer from "./hocs/CheckerContainer";
-import PrivateWrapper from "./hocs/PrivateWrapper";
 import ThemeContainer from "./hocs/ThemeContainer";
 
 import { messages } from './i18n/messages'
@@ -19,6 +18,7 @@ import Register from "./routes/Register";
 import Home from "./routes/Home";
 import Dashboard from "./routes/Dashboard";
 import Profile from "./routes/Profile";
+import PasswordResetConfirm from "./routes/PasswordResetConfirm";
 
 export const App = () => {
 
@@ -45,11 +45,14 @@ export const App = () => {
                         <BrowserRouter>
                             <Routes>
                                 <Route path="/*" element={<Home currentLocale={currentLocale} handleChange={handleChange}/>}/>
-                                <Route path="/login" element={
+                                <Route path="/login/:page" element={
                                     <Login currentLocale={currentLocale} handleChange={handleChange}/>
                                 }/>
                                 <Route path="/register" element={
                                     <Register currentLocale={currentLocale} handleChange={handleChange}/>
+                                }/>
+                                <Route path="/password-reset-confirm/:uid/:token" element={
+                                    <PasswordResetConfirm />
                                 }/>
                                 <Route path="/dashboard" element={
                                        <Dashboard/>

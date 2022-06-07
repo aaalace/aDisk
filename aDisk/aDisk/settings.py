@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'user.apps.UserConfig',
     'user_profile.apps.UserProfileConfig',
+    'reset_password.apps.ResetPasswordConfig',
     'corsheaders',
 ]
 
@@ -54,7 +55,7 @@ MIDDLEWARE = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'aDisk/build')],
+        'DIRS': [BASE_DIR, 'aDisk'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,3 +129,10 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ]
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'aDiskStrg@gmail.com'
+EMAIL_HOST_PASSWORD = 'oeirbxdckkbyjbrp'

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import './style.scss'
 import { connect } from "react-redux";
-import { RegisterContainer } from "./styled";
+import { RegisterContainer, RegisterPage } from "./styled";
 
 import RegisterForm from "../../components/AuthComponents/RegisterForm";
 import AdvantagesCarousel from "../../components/AuthComponents/AdvantagesCarousel";
@@ -13,12 +13,12 @@ const Register = (props) => {
     }, [])
 
     return (
-        <div className="register-page">
+        <RegisterPage className="register-page">
             <RegisterContainer className="register-container">
                 <AdvantagesCarousel currentLocale={props.currentLocale} handleChange={props.handleChange}/>
                 <RegisterForm />
             </RegisterContainer>
-      </div>
+        </RegisterPage>
     );
 }
 

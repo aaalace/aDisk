@@ -63,7 +63,7 @@ const AccountSettings = (props) => {
 
         const res = await props.changePassword(sendData)
         if(res[0]){
-            setErrorState(res[1])
+            setErrorState('')
             setNewPassword('')
             setNewPasswordRep('')
         }

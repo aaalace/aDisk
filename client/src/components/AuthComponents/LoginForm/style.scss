@@ -136,6 +136,12 @@
                 font-size: 12px;
                 font-weight: 600;
                 letter-spacing: 0.7px;
+
+                        
+                &:hover {
+                    background-image: none;
+                    background-color: #6651f0;
+                }
             }
 
             .not-registered-container{

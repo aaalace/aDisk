@@ -27,7 +27,7 @@ const ProfileHeader = (props) => {
 
     const logOut = () => {
         props.logout()
-        navigate('/login')
+        navigate('/login/entry')
     }
     
     return (

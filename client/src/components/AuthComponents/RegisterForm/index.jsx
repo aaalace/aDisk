@@ -30,7 +30,7 @@ const RegisterForm = (props) => {
         e.preventDefault()
         const res = await props.register(email, username, password, rePassword)
         if(res[0]){
-            navigate('/login')
+            navigate('/login/entry')
             setUsername('')
             setPassword('')
             setEmail('')
@@ -93,7 +93,7 @@ const RegisterForm = (props) => {
                     <div className="already-registered-container">
                         <div style={{display: 'flex'}}>
                             <p className="question"><FormattedMessage id='sign_up_question'/>&nbsp;&nbsp;</p>
-                            <Link className="solution" to='/login'><FormattedMessage id='sign_up_answer'/></Link>
+                            <Link className="solution" to='/login/entry'><FormattedMessage id='sign_up_answer'/></Link>
                         </div>
                     </div>
                 </div> 

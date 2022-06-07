@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import JsonResponse
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.utils.decorators import method_decorator
 from django.contrib import auth
@@ -95,6 +95,7 @@ class LogoutView(APIView):
             print(e)
             return Response({'error': 'Something went wrong'})
 
+
 @method_decorator(ensure_csrf_cookie, name='dispatch')
 class GetCSRFToken(APIView):
     permission_classes = (AllowAny, )
@@ -133,7 +134,6 @@ class GetUsersView(APIView):
 
             
 class ChangePasswordView(APIView):
-    permission_classes = (AllowAny, )
 
     def put(self, request, format=None):
         try:

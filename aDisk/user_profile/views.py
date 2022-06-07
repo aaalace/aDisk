@@ -5,8 +5,10 @@ from .models import UserProfile
 from .serializers import UserProfileSerializer
 from user.serializers import UserSerializer
 from validate_email import validate_email
+from rest_framework.permissions import AllowAny
 
 class GetUserProfileView(APIView):
+    permission_classes = (AllowAny, )
 
     def get(self, request, format=None):
         try:

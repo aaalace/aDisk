@@ -59,7 +59,7 @@ const LoginForm = (props) => {
                             <p><FormattedMessage id='sign_password'/></p>
                             <input type='password' onChange={e => setPassword(e.target.value)} value={password}/>
                         </div>
-                        <div className="username-line"><p className="forget-pass">Forgot your password?</p></div>
+                        <div className="username-line" onClick={() => navigate('/login/reset')}><p className="forget-pass">Forgot your password?</p></div>
                     </div>
                     <div style={{marginTop: '20px'}}>
                         {errorState ? <p style={{color: 'red', fontSize: '13px', bottom: '10px', position: 'relative'}}>{<FormattedMessage id={errorState}/>}</p> : ''}
