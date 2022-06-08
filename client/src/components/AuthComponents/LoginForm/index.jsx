@@ -30,6 +30,12 @@ const LoginForm = (props) => {
         }
     }
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            onSubmit(event)
+        }
+    }    
+
     return (
       <LoginFormStyled className="login-form">
         <div className="recover-password" >
@@ -48,7 +54,7 @@ const LoginForm = (props) => {
                     <hr></hr>
                 </div>
 
-                <form onSubmit={e => onSubmit(e)}>
+                <form onSubmit={e => onSubmit(e)} onKeyDown={handleKeyDown}>
                     <CSRFToken/>
                     <div className="username-sign-in">
                         <div className="username-line">

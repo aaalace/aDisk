@@ -34,6 +34,13 @@ const RecoverPassword = (props) => {
         setLoadingState(false)
     }
 
+    
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            sendReset()
+        }
+    }
+
     return (
         <RecoverPasswordStyled className="recover-password-container">
             <Link to='/login/entry' className="back"><FontAwesomeIcon className="icon" icon={faArrowLeftLong}/>Back</Link>
@@ -60,7 +67,7 @@ const RecoverPassword = (props) => {
                     sendedState ?
                         null
                     :
-                        <div className="user-recover">
+                        <div className="user-recover" onKeyDown={handleKeyDown}>
                             <div className="username-line">
                                 <p><FormattedMessage id='sign_up_email'/></p>
                                 <input type='email' onChange={e => setEmail(e.target.value)} value={email}/>

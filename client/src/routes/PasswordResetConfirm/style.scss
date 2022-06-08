@@ -1,3 +1,84 @@
-.active-change-password {
-    background-color: aqua;
+.passsword-reset-confirm-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+    .result {
+        font-size: 18px;
+        color: #5643CC;
+    }
+
+    .passsword-reset-confirm {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 400px;
+
+        @media screen and (max-width: 769px) {
+            max-width: 80vw;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: rgb(102, 102, 102);
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgb(226, 226, 226);
+            padding-bottom: 10px;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none; 
+        }
+      
+        .password-line {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin-bottom: 15px;
+            width: 100%;
+             
+            p {
+                font-size: 14px;
+                font-weight: 600;
+                color: rgb(102, 102, 102);
+                margin-bottom: 10px;
+            }
+
+            input {
+                height: 32px;
+                border: 1px solid rgb(217, 217, 217);
+                border-radius: 8px;
+                padding: 16px 10px;
+                margin-bottom: 10px;
+            }
+        }
+
+        .bottom {
+
+            .reset-confirm {
+                width: fit-content;
+                height: fit-content;
+                min-height: 35px;
+                background-color: #959595;
+                color: white;
+                border: 0;
+                border-radius: 7px;
+                padding: 5px 10px;
+            }
+
+            .active-change-password {
+                background-color: #5643CC;
+
+                &:hover {
+                    background-color: #6651f0;
+                }
+            }
+        }
+    } 
 }

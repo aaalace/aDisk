@@ -41,6 +41,12 @@ const RegisterForm = (props) => {
         }
     }
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter' && readyToSend) {
+            onSubmit(event)
+        }
+    }  
+
  
     return (
         <RegisterFormStyled className="register-form">
@@ -59,7 +65,7 @@ const RegisterForm = (props) => {
                         <hr></hr>
                     </div>
 
-                    <form onSubmit={e => onSubmit(e)}>
+                    <form onSubmit={e => onSubmit(e)} onKeyDown={handleKeyDown}>
                         <CSRFToken/>
                         <div className="username-register">
                             <div className="username-line">

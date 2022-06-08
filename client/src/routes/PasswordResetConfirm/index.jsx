@@ -3,8 +3,10 @@ import './style.scss'
 import { useParams } from "react-router-dom";
 import { checkResetDependency, resetPassword } from "../../actions/reset_password";
 import { connect } from 'react-redux'
+import { useNavigate } from "react-router-dom";
 
 const PasswordResetConfirm = (props) => {
+    const navigate = useNavigate()
 
     const [avaliablePage, setAvaliablePage] = useState(false)
     const [errorState, setErrorState] = useState('')
@@ -52,6 +54,7 @@ const PasswordResetConfirm = (props) => {
             setErrorState('')
             setNewPassword('')
             setNewPasswordRep('')
+            navigate('/')
         }
         else{
             setErrorState(res[1])
@@ -59,10 +62,10 @@ const PasswordResetConfirm = (props) => {
     }
 
     return (
-      <div className="dashboard">
+        <div className="passsword-reset-confirm-container">
             {
                 avaliablePage ?
-                    <>
+                    <div className="passsword-reset-confirm">
                         <h2>Password reset</h2>
                         <div className="password-line">
                             <p>New password</p>
@@ -72,15 +75,15 @@ const PasswordResetConfirm = (props) => {
                             <p>Confirm password</p>
                             <input type='password' autoComplete="off" value={newPasswordRep} onChange={e => setNewPasswordRep(e.target.value)}/>
                         </div>
-                        <div>
+                        <div className="bottom">
                             {errorState ? <p style={{color: 'red', fontSize: '13px'}}>{errorState}</p> : ''}
-                            <button id='ass-change-password-button' onClick={updateState ? e => changePassword(e) : null} className="update-profile">Update password</button>
+                            <button id='ass-change-password-button' onClick={updateState ? e => changePassword(e) : null} className="reset-confirm">Update password</button>
                         </div>
-                    </>
+                    </div>
                 :
-                    <p>Page is not avaliable anymore</p>
+                    <p className="result">Page is not avaliable anymore</p>
             }
-      </div>
+        </div>
     );
 }
 

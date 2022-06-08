@@ -34,7 +34,7 @@ const PublicProfile = (props) => {
         if (event.key === 'Enter') {
             updateProfile()
         }
-      }
+    }
 
     const updateProfile = async () => {
 
