@@ -49,7 +49,9 @@
                 width: 200px;
                 height: 200px;
                 background-repeat: no-repeat;
+                background: var(--profile-bg);
                 background-size: cover;
+                background-clip: padding-box;
                 object-fit: cover;
                 border: 5px solid var(--profile-avatar-circle-border);
                 box-shadow: var(--profile-avatar-circle-box-shadow);

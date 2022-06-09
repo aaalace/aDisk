@@ -35,7 +35,7 @@ const MyAccount = (props) => {
                 <div className="header-profile-head-image">
                 </div>
                 <HeaderDataContainer className="header-profile-head-data-container">
-                    <img className="profile-icon" alt="" src="../images/default-image.jpg"></img>
+                <img className="profile-icon" alt="" src={`${process.env.REACT_APP_API_URL}/user_profile/get_user_avatar/${props.avatar_global}`}></img>
                     <div className="center-row">
                         <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                             <p className="username">{props.username_global}</p>
@@ -79,7 +79,8 @@ const mapStateToProps = state => {
         username_global: state.profile.username,
         email_global: state.profile.email,
         name_global: state.profile.name,
-        date_joined_global: state.profile.date_joined
+        date_joined_global: state.profile.date_joined,
+        avatar_global: state.profile.avatar
     }
 }
 

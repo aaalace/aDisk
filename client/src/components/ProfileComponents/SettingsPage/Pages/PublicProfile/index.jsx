@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import './style.scss'
 import { useMediaQuery } from "react-responsive"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
+import { faLink, faEllipsis, faMinus, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { connect } from "react-redux"
-import { updateProfile } from "../../../../../actions/profile"
+import { updateProfile, updateAvatar, deleteAvatar } from "../../../../../actions/profile"
 import { FormattedMessage } from 'react-intl'
 
 const PublicProfile = (props) => {
@@ -13,23 +13,15 @@ const PublicProfile = (props) => {
         query: '(max-width: 769px)'
     })
 
+    const selectedFileRef = useRef(null)
+
     const [errorState, setErrorState] = useState(null)
+
+    const [editAvatarState, setEditAvatarState] = useState(null)
 
     const [newUsername, setUsername] = useState('')
     const [newEmail, setEmail] = useState('')
     const [newName, setName] = useState('')
-
-    let updateState = false
-    let updateButtonElement = document.getElementById("pps-update-button")
-    if(updateButtonElement){
-        if(newUsername != '' || newEmail != '' || newName != ''){
-            updateButtonElement.classList.add("active-update-profile")
-            updateState = true
-        }
-        else{
-            updateButtonElement.classList.remove("active-update-profile")
-        }
-    }
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
@@ -38,7 +30,6 @@ const PublicProfile = (props) => {
     }
 
     const updateProfile = async () => {
-
         let sendData = {username: props.username_global, email: props.email_global, name: props.name_global}
         if(newUsername){
             sendData.username = newUsername
@@ -62,9 +53,53 @@ const PublicProfile = (props) => {
         }
     }
 
+    const encodeImage = (event) => {
+        if (event.target.files && event.target.files[0]) {
+            let img = event.target.files[0];
+            let reader = new FileReader();
+            reader.onloadend = function() {
+                props.updateAvatar({b64: reader.result.split(',')[1], user_id: props.user_id_global})
+            }
+            reader.readAsDataURL(img);
+        }
+    }
+
+    const updateAvatar = async () => {
+        selectedFileRef.current.click();
+        setEditAvatarState(false)
+    }
+
+    const deleteAvatar = async () => {
+        props.deleteAvatar({user_id: props.user_id_global})
+        setEditAvatarState(false)
+    }
+
+    let updateState = false
+    let updateButtonElement = document.getElementById("pps-update-button")
+    if(updateButtonElement){
+        if(newUsername != '' || newEmail != '' || newName != ''){
+            updateButtonElement.classList.add("active-update-profile")
+            updateState = true
+        }
+        else{
+            updateButtonElement.classList.remove("active-update-profile")
+        }
+    }
+
+    if(editAvatarState !== null && !Mobile){
+        if(editAvatarState){
+            document.getElementById('pps-edit-btn').setAttribute('class', 'pps-edit-active')
+            document.getElementById('pps-delete-btn').setAttribute('class', 'pps-delete-active')
+        }
+        else{
+            document.getElementById('pps-edit-btn').setAttribute('class', 'pps-edit-button')
+            document.getElementById('pps-delete-btn').setAttribute('class', 'pps-delete-button')
+        }
+    }
+ 
     return (
         <div className="pps-container">
-
+            <input type="file" ref={selectedFileRef} style={{display: "none"}} onChange={encodeImage}/>
             {!Mobile ?
                 <div className="pps-header">
                     <p className="pps-header-name"><FormattedMessage id="sett_public_profile"/></p>
@@ -77,8 +112,9 @@ const PublicProfile = (props) => {
                     <div className="pps-avatar">
                         <p className="pps-avatar-name"><FormattedMessage id="sett_public_picture"/></p>
                         <div className="pps-avatar-container">
-                            <img className="pps-avatar" alt="" src="../images/default-image.jpg"></img>
-                            <button className="pps-edit-button"><FontAwesomeIcon icon={faLink}/></button>
+                            <img className="pps-avatar" alt="" src={`${process.env.REACT_APP_API_URL}/user_profile/get_user_avatar/${props.avatar_global}`}></img>
+                            <button onClick={() => updateAvatar()} className="pps-edit-mob-button"><FontAwesomeIcon icon={faLink}/></button>
+                            <button onClick={() => deleteAvatar()} className="pps-delete-mob-button"><FontAwesomeIcon icon={faMinus}/></button>
                         </div>
                     </div>
                 :
@@ -106,8 +142,10 @@ const PublicProfile = (props) => {
                     <div className="pps-avatar">
                         <p className="pps-avatar-name"><FormattedMessage id="sett_public_picture"/></p>
                         <div className="pps-avatar-container">
-                            <img className="pps-avatar" alt="" src="../images/default-image.jpg"></img>
-                            <button className="pps-edit-button"><FontAwesomeIcon icon={faLink}/></button>
+                            <img className="pps-avatar" alt="" src={`${process.env.REACT_APP_API_URL}/user_profile/get_user_avatar/${props.avatar_global}`}></img>
+                            <button id="pps-menu-btn" className="pps-menu-button" onClick={() => setEditAvatarState(!editAvatarState)}>{editAvatarState ? <FontAwesomeIcon icon={faMinus}/> : <FontAwesomeIcon icon={faEllipsis}/>}</button>
+                            <button id="pps-edit-btn" style={editAvatarState === null ? {display: 'none'}: {}} onClick={() => updateAvatar()}><FontAwesomeIcon icon={faLink}/></button>
+                            <button id="pps-delete-btn" style={editAvatarState === null ? {display: 'none'}: {}} className="pps-delete-button" onClick={() => deleteAvatar()}><FontAwesomeIcon icon={faTrashCan}/></button>
                         </div>
                     </div>
                 :
@@ -121,10 +159,12 @@ const PublicProfile = (props) => {
 
 const mapStateToProps = state => {
     return {
+        user_id_global: state.profile.user_id,
         username_global: state.profile.username,
         email_global: state.profile.email,
         name_global: state.profile.name,
+        avatar_global: state.profile.avatar
     }
 }
 
-export default connect(mapStateToProps, {updateProfile})(PublicProfile)
+export default connect(mapStateToProps, {updateProfile, updateAvatar, deleteAvatar})(PublicProfile)

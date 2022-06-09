@@ -44,6 +44,7 @@
     --profile-avatar-circle-border: white;
     --profile-mobile-nav: rgb(246, 246, 246);
     --profile-input-border: rgb(217, 217, 217);
+    --profile-nav-font-weight: 600;
 }
 
 [data-theme='dark'] {
@@ -91,4 +92,5 @@
     --profile-avatar-circle-border: #121212;
     --profile-mobile-nav: #2d2d2d;
     --profile-input-border: rgb(41, 41, 41);
+    --profile-nav-font-weight: 500;
 }

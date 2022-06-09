@@ -48,7 +48,7 @@ const MobileProfile = (props) => {
             <div className="header-mobile-profile">
                 <div className="main-data-cont">
                     <div className="user-avatar-container">
-                        <img className="profile-icon" alt="" src="../images/default-image.jpg"></img>
+                    <img className="profile-icon" alt="" src={`${process.env.REACT_APP_API_URL}/user_profile/get_user_avatar/${props.avatar_global}`}></img>
                     </div>
                     <div className="user-main-container">
                         <div className="user-data" onClick={() => setOpenedHeaderMenu(!openedHeaderMenu)}>
@@ -101,7 +101,8 @@ const mapStateToProps = state => {
         username_global: state.profile.username,
         email_global: state.profile.email,
         name_global: state.profile.name,
-        date_joined_global: state.profile.date_joined
+        date_joined_global: state.profile.date_joined,
+        avatar_global: state.profile.avatar
     }
 }
 

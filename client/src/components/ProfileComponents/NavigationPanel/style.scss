@@ -53,7 +53,7 @@
             }
 
             p{
-                font-weight: 600;
+                font-weight: var(--profile-nav-font-weight);
                 color: var(--profile-nav-panel-active);
             }
         }

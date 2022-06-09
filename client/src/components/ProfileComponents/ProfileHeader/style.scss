@@ -82,15 +82,14 @@
             margin: auto;
 
             position: relative;
-            padding: 3px;
             box-sizing: border-box;
 
-            $border: 5px;
+            $border: 3px;
             color: #FFF;
-            background: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%) no-repeat;
+            background: var(--profile-bg);
             background-size: cover;
             background-clip: padding-box;
-            border: solid $border transparent; 
+            border: solid $border var(--profile-header-head-prewiew); 
             border-radius: 30px;            
         }
     }
