@@ -43,22 +43,22 @@ const RecoverPassword = (props) => {
 
     return (
         <RecoverPasswordStyled className="recover-password-container">
-            <Link to='/login/entry' className="back"><FontAwesomeIcon className="icon" icon={faArrowLeftLong}/>Back</Link>
+            <Link to='/login/entry' className="back"><FontAwesomeIcon className="icon" icon={faArrowLeftLong}/><FormattedMessage id='pr_back'/></Link>
             <div className="recover-password">
                 <div className="recover-password-header">
                     {
                         sendedState ? 
                             <>
-                                <h2 className="page-name">Password reset sent</h2>
+                                <h2 className="page-name"><FormattedMessage id='pr_success_name'/></h2>
                                 <p className="page-description">
-                                    We've emailed you instructions for setting your password
+                                    <FormattedMessage id='pr_success_desc'/>
                                 </p>
                             </>
                         :   
                             <>
-                                <h2 className="page-name">Password reset</h2>
+                                <h2 className="page-name"><FormattedMessage id='pr_name'/></h2>
                                 <p className="page-description">
-                                    Enter your email adress below, and we'll email instructions setting a new one
+                                    <FormattedMessage id='pr_desc'/>
                                 </p>
                             </>
                     }
@@ -77,7 +77,7 @@ const RecoverPassword = (props) => {
                                     {errorState ? <p style={{color: 'red', fontSize: '13px', position: 'relative'}}>{<FormattedMessage id='email_does_not_exists'/>}</p> : ''}
                                 </div>
                                 <div className="recover-bottom">
-                                    <p onClick={() => sendReset()} className="send-code">Send instructions</p>
+                                    <p onClick={() => sendReset()} className="send-code"><FormattedMessage id='pr_btn'/></p>
                                     {loadingState ? <ReactLoading type='spin' color='#5643CC' height={25} width={25}></ReactLoading> : null}
                                 </div>
                             </div>

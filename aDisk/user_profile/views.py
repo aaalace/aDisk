@@ -44,14 +44,14 @@ class UpdateUserProfileView(APIView):
 
             if validate_email(email):
                 if User.objects.exclude(id=user.id).filter(email=email).exists():
-                    return Response({'error': 'Email is already taken'})
+                    return Response({'error': 'email_is_already_in_use'})
                 if User.objects.exclude(id=user.id).filter(username=username).exists():
-                    return Response({'error': 'Username exists'})
+                    return Response({'error': 'user_already_exists'})
                 else:
                     UserProfile.objects.filter(user=user).update(name=name)
                     User.objects.filter(id=user.id).update(username=username, email=email)
                     return Response({'success': 'Data updated'})
-            return Response({'error': 'Email does not exists'})
+            return Response({'error': 'email_does_not_exists'})
         except Exception as e:
             print(e)
             return Response({'error': 'Something went wrong'})

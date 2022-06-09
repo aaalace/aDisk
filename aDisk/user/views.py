@@ -148,7 +148,7 @@ class ChangePasswordView(APIView):
                 user.set_password(new_password)
                 user.save()
                 return Response({'success': 'Password changed'})
-            return Response({'error': 'Diffenrent passwords'})
+            return Response({'error': 'passwords_do_not_match'})
         except Exception as e:
             print(e)
             return Response({'error': 'Something went wrong'})

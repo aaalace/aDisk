@@ -38,11 +38,6 @@ const MobileProfile = (props) => {
         return <><FormattedMessage id='prof_since'/>&nbsp;{date.split('-')[2]}&nbsp;<FormattedMessage id={months[date.split('-')[1]]}/>&nbsp;{date.split('-')[0]}</>
     }
 
-    const headerBg = [
-        {'background': 'linear-gradient(45deg, #455db57e 9.16%, #5543cc82 43.89%, #683fd77b 64.72%)', 'preview': '#683fd7'},
-        {'background': 'linear-gradient(45deg, #e5a0677e 9.16%, #e98b3e7e 43.89%, #ec710c7e 64.72%)', 'preview': '#ec710c'}
-    ]
-
     const logOut = () => {
         props.logout()
         navigate('/login/entry')
@@ -69,28 +64,28 @@ const MobileProfile = (props) => {
                         :
                         null
                         }
-                        <p style={{fontSize: '13px', color: 'rgb(100, 100, 100)', marginTop: '5px'}}>{props.date_joined_global ? remakeDateJoined(props.date_joined_global) : ''}</p>
+                        <p className="date-joined">{props.date_joined_global ? remakeDateJoined(props.date_joined_global) : ''}</p>
                     </div>
                 </div>
                 <StorageBar completed={30}/>
             </div>
             <div className="main-mobile-profile">
                 <div className="name-surname-container">
-                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faUser} />&nbsp;<FormattedMessage id="prof_name"/></p>
+                    <p className="title"><FontAwesomeIcon className="icon" icon={faUser} />&nbsp;<FormattedMessage id="prof_name"/></p>
                     <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
-                        <p>{props.name_global}</p>
+                        <p className="data">{props.name_global}</p>
                     </div>
                 </div>
                 <div className="email-container">
-                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faEnvelope} />&nbsp;<FormattedMessage id="prof_email"/></p>
+                    <p className="title"><FontAwesomeIcon className="icon" icon={faEnvelope} />&nbsp;<FormattedMessage id="prof_email"/></p>
                     <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
-                        <p>{props.email_global}</p>
+                        <p className="data">{props.email_global}</p>
                     </div>
                 </div>
                 <div className="subscription-container">
-                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faCloud} />&nbsp;<FormattedMessage id="prof_status"/></p>
+                    <p className="title"><FontAwesomeIcon className="icon" icon={faCloud} />&nbsp;<FormattedMessage id="prof_status"/></p>
                     <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
-                        <p style={{color: headerBg[headerBgId]['preview']}}>AD+</p>
+                        <p className="sub">AD+</p>
                     </div>
                 </div>
             </div>

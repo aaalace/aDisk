@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { checkResetDependency, resetPassword } from "../../actions/reset_password";
 import { connect } from 'react-redux'
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 const PasswordResetConfirm = (props) => {
     const navigate = useNavigate()
@@ -66,22 +67,22 @@ const PasswordResetConfirm = (props) => {
             {
                 avaliablePage ?
                     <div className="passsword-reset-confirm">
-                        <h2>Password reset</h2>
+                        <h2><FormattedMessage id="pr_name"/> - aDisk</h2>
                         <div className="password-line">
-                            <p>New password</p>
+                            <p><FormattedMessage id="sett_acc_pass_new"/></p>
                             <input type='password' autoComplete="off" value={newPassword} onChange={e => setNewPassword(e.target.value)}/>
                         </div>
                         <div className="password-line">
-                            <p>Confirm password</p>
+                            <p><FormattedMessage id="sett_acc_pass_confirm"/></p>
                             <input type='password' autoComplete="off" value={newPasswordRep} onChange={e => setNewPasswordRep(e.target.value)}/>
                         </div>
                         <div className="bottom">
-                            {errorState ? <p style={{color: 'red', fontSize: '13px'}}>{errorState}</p> : ''}
-                            <button id='ass-change-password-button' onClick={updateState ? e => changePassword(e) : null} className="reset-confirm">Update password</button>
+                            {errorState ? <p style={{color: 'red', fontSize: '13px', marginBottom: '10px'}}>{<FormattedMessage id={errorState}/>}</p> : ''}
+                            <button id='ass-change-password-button' onClick={updateState ? e => changePassword(e) : null} className="reset-confirm"><FormattedMessage id="sett_acc_pass_btn"/></button>
                         </div>
                     </div>
                 :
-                    <p className="result">Page is not avaliable anymore</p>
+                    <p className="result"><FormattedMessage id="page_not_avaliable"/></p>
             }
         </div>
     );

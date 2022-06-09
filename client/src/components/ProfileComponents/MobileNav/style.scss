@@ -4,13 +4,13 @@
     align-items: center;
     border-radius: 10px;
     padding: 5px 15px;
-    background-color: rgb(246, 246, 246);
+    background-color: var(--profile-mobile-nav);
     position: fixed;
     bottom: 10px;
     width: 70vw;
 
     .nav-link {
-        color: #949494;
+        color: var(--profile-nav-panel-non-active);
         font-size: 20px;
         padding: 5px;
         -webkit-touch-callout: none;
@@ -22,6 +22,6 @@
     }
 
     .active {
-        color: #455EB5;
+        color: var(--profile-header-head-prewiew);
     }
 }

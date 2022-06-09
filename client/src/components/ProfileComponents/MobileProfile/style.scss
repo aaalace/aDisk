@@ -2,9 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
     min-height: 100vh;
-    width: 100vw;
+    width: 95vw;
     padding-bottom: 60px;
 
     .header-mobile-profile {
@@ -49,6 +48,12 @@
                 margin-left: 5vw;
                 flex-direction: column;
 
+                .date-joined {
+                    font-size: 13px;
+                    color: var(--profile-nav-panel-non-active);
+                    margin-top: 5px;
+                }
+
                 .user-data {
                     display: flex;
                     flex-direction: row;
@@ -58,12 +63,14 @@
                     p {
                         font-size: 21px;
                         font-weight: 600;
+                        color: var(--black_to_white);
                     }
         
                     .icon{
                         font-weight: 500;
                         font-size: 15px;
                         margin-left: 5px;
+                        color: var(--profile-nav-panel-non-active);
                     }
                 }
 
@@ -103,24 +110,20 @@
             flex-direction: row;
             justify-content: space-between;
             margin-bottom: 40px;
-            color: #3F3F3F;
             border-bottom: 1px solid #ADADAD;
+
+            .icon {
+                color: var(--profile-header-head-prewiew);
+            }
 
             .title {
                 font-weight: 500;
                 margin-left: 10px;
+                color: var(--black_to_white);
             }
 
-            input {
-                display: flex;
-                width: 100%;
-                height: 35px;
-                background-color: white;
-                border: 1px solid #DFDFDF;
-                border-radius: 10px;
-                margin-bottom: 10px;
-                padding: 10px;
-                transition: width 0.4s ease-in-out;
+            .data {
+                color: var(--profile-headers-color)
             }
         }
 
@@ -133,24 +136,20 @@
             margin-bottom: 40px;
             border-bottom: 1px solid #ADADAD;
             font-size: 16px;
-            color: #3F3F3F;
             margin-top: 30px;
+
+            .icon {
+                color: var(--profile-header-head-prewiew);
+            }
 
             .title {
                 font-weight: 500;
                 margin-left: 10px;
+                color: var(--black_to_white);
             }
 
-            input {
-                display: flex;
-                width: 100%;
-                height: 35px;
-                background-color: white;
-                border: 1px solid #DFDFDF;
-                border-radius: 10px;
-                margin-bottom: 10px;
-                padding: 10px;
-                transition: width 0.4s ease-in-out;
+            .data {
+                color: var(--profile-headers-color)
             }
         }
         
@@ -164,9 +163,18 @@
             border-bottom: 1px solid #ADADAD;
             margin-top: 30px;
 
+            .icon {
+                color: var(--profile-header-head-prewiew);
+            }
+
             .title {
                 font-weight: 500;
                 margin-left: 10px;
+                color: var(--black_to_white);
+            }
+
+            .sub {
+                color: var(--profile-header-head-prewiew);
             }
         }
     }
@@ -183,12 +191,12 @@
 
         p{
             margin-left: 10px;
-            color: #5543cc;
+            color: var(--profile-header-head-prewiew);
         }
 
         .icon {
             margin-top: 2px;
-            color: #5543cc;
+            color: var(--profile-header-head-prewiew);
         }
     }
 }

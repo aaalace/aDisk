@@ -34,7 +34,8 @@ const StorageBar = (props) => {
         marginTop: 10,
         right: 0,
         fontWeight: 'bold',
-        fontSize: 15
+        fontSize: 15,
+        color: 'var(--black_to_white)',
     }
 
     const storageAllInfo = {

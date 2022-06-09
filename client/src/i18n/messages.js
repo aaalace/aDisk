@@ -4,6 +4,16 @@ export const messages = {
   [LOCALES.ENGLISH]: {
     fallback: '',
 
+    // ERRORS
+    user_already_exists: 'User is already registered',
+    email_is_already_in_use: 'Email is already in use',
+    password_characters: 'Password should be at least 8 characters',
+    passwords_do_not_match: 'Passwords do not match',
+    email_does_not_exists: 'Email does not exists',
+    cant_send_email: 'Email does not avaliable',
+    link_is_not_avaliable: 'Link is not avaliable anymore',
+    page_not_avaliable: 'Page is not avaliable anymore',
+
     // HomeHeader
     login_button: 'Sign in',
 
@@ -42,6 +52,14 @@ export const messages = {
 
     user_not_authenticated: 'User does not exists',
 
+    // Password reset
+    pr_back: 'Back',
+    pr_name: 'Password reset',
+    pr_desc: "Enter your email adress below, and we'll email instructions setting a new one",
+    pr_btn: 'Send instructions',
+    pr_success_name: 'Password reset sent',
+    pr_success_desc: "We've emailed you instructions for setting your password",
+
     // Sign up
     sign_up_name: 'Sign up',
     sign_up_google_btn: 'Sign up with Google',
@@ -52,12 +70,6 @@ export const messages = {
     sign_up_question: 'Already have an account?',
     sign_up_answer: 'Sign in',
     sign_up_button: 'Sign up',
-
-    user_already_exists: 'User is already registered',
-    email_is_already_in_use: 'Email is already in use',
-    password_characters: 'Password should be at least 8 characters',
-    passwords_do_not_match: 'Passwords do not match',
-    email_does_not_exists: 'Email does not exists',
 
     // Advantages Carousel
     adv_home: 'Home',
@@ -90,11 +102,48 @@ export const messages = {
     prof_status: 'Account status',
     prof_statistics: 'Storage statistics',
     prof_empty_storage: 'Empty',
-    prof_GB: 'GB'
+    prof_GB: 'GB',
+
+    // Public profile settings
+    sett_public_profile: 'Public profile',
+    sett_public_desc: 'Update your photo and personal details here',
+    sett_public_username: 'Username',
+    sett_public_email: 'Email',
+    sett_public_name: 'Name',
+    sett_public_update: 'Update profile',
+    sett_public_picture: 'Profile picture',
+
+    // Account settings
+    sett_acc: 'Account settings',
+    sett_acc_desc: 'Update your private details here',
+    sett_acc_appearance: 'Appearance',
+    sett_acc_lang: 'Languague',
+    sett_acc_delete_head: 'Delete account',
+    sett_acc_delete_desc: 'Once you delete your account, there is no going back. Please be certain.',
+    sett_acc_delete_btn: 'Delete your account',
+
+    sett_acc_pass_name: 'Change password',
+    sett_acc_pass_new: 'New password',
+    sett_acc_pass_confirm: 'Confirm password',
+    sett_acc_pass_btn: 'Update password',
+
+    // Support
+    supp_question: "Didn't find the answer to your question?",
+    supp_write_us: 'Write us',
   },
 
   [LOCALES.RUSSIAN]: {
     fallback: '',
+
+    // ERRORS
+    user_already_exists: 'Пользователь уже зарегистрирован',
+    email_is_already_in_use: 'Почта уже используется',
+    password_characters: 'Пароль должен состоять минимум из 8 символов',
+    passwords_do_not_match: 'Пароли не совпадают',
+    email_does_not_exists: 'Почта не существует',
+    cant_send_email: 'Мы не можем отправить сообщение по этому адресу',
+    link_is_not_avaliable: 'Ссылка более не доступна',
+    page_not_avaliable: 'Страница более не доступна',
 
     // HomeHeader
     login_button: 'Войти',
@@ -134,6 +183,14 @@ export const messages = {
 
     user_not_authenticated: 'Пользователь не существует',
 
+    // Password reset
+    pr_back: 'Назад',
+    pr_name: 'Восстановление пароля',
+    pr_desc: "Введите свою почту и следуйте инструкции в ней",
+    pr_btn: 'Отправить сообщение',
+    pr_success_name: 'Сообщение отправлено',
+    pr_success_desc: "Мы отправили вам инструкцию по восстановлению пароля",
+
     // Sign up
     sign_up_name: 'Регистрация',
     sign_up_google_btn: 'Зарегистрироваться через Google',
@@ -144,12 +201,6 @@ export const messages = {
     sign_up_question: 'Уже есть аккаунт?',
     sign_up_answer: 'Войдите',
     sign_up_button: 'Зарегистрироваться',
-
-    user_already_exists: 'Пользователь уже зарегистрирован',
-    email_is_already_in_use: 'Почта уже используется',
-    password_characters: 'Пароль должен состоять минимум из 8 символов',
-    passwords_do_not_match: 'Пароли не совпадают',
-    email_does_not_exists: 'Почта не существует',
 
     // Advantages Carousel
     adv_home: 'Главная',
@@ -182,11 +233,48 @@ export const messages = {
     prof_status: 'Статус аккаунта',
     prof_statistics: 'Хранилище',
     prof_empty_storage: 'Свободно',
-    prof_GB: 'ГБ'
+    prof_GB: 'ГБ',
+
+    // Public profile settings
+    sett_public_profile: 'Профиль',
+    sett_public_desc: 'Обновляйте свою личную информацию и аватарку здесь',
+    sett_public_username: 'Имя пользователя',
+    sett_public_email: 'Почта',
+    sett_public_name: 'Имя',
+    sett_public_update: 'Обновить профиль',
+    sett_public_picture: 'Изображение профиля',
+
+    // Account settings
+    sett_acc: 'Аккаунт',
+    sett_acc_desc: 'Обновляйте приватную информацию здесь',
+    sett_acc_appearance: 'Тема',
+    sett_acc_lang: 'Язык',
+    sett_acc_delete_head: 'Удалить аккаунт',
+    sett_acc_delete_desc: 'Удалив аккаунт, вы потеряете доступ к нему навсегда, будьте аккуратны',
+    sett_acc_delete_btn: 'Удалить аккаунт',
+
+    sett_acc_pass_name: 'Изменить пароль',
+    sett_acc_pass_new: 'Новый пароль',
+    sett_acc_pass_confirm: 'Подтвердите пароль',
+    sett_acc_pass_btn: 'Обновить пароль',
+
+    // Support
+    supp_question: "Не нашли ответ на ваш вопрос?",
+    supp_write_us: 'Напишите нам',
     },
 
   [LOCALES.GERMAN]: {
     fallback: '',
+
+    // ERRORS
+    user_already_exists: 'Benutzer ist bereits registriert',
+    email_is_already_in_use: 'E-Mail wird bereits verwendet',
+    password_characters: 'Passwort muss mindestens 8 Zeichen lang sein',
+    passwords_do_not_match:'Passwörter stimmen nicht überein',
+    email_does_not_exists: 'E-Mail existiert nicht',
+    cant_send_email: 'E-Mail ist nicht verfügbar',
+    link_is_not_avaliable: 'Link ist nicht mehr verfügbar',
+    page_not_avaliable: 'Seite ist nicht mehr verfügbar',
 
     // HomeHeader
     login_button: 'Eingang',
@@ -226,6 +314,14 @@ export const messages = {
 
     user_not_authenticated: 'Benutzer existiert nicht',
 
+    // Password reset
+    pr_back: 'Der Rücken',
+    pr_name: 'Passwort zurücksetzen',
+    pr_desc: "Geben Sie unten Ihre E-Mail-Adresse ein, und wir senden Ihnen per E-Mail Anweisungen zum Einrichten einer neuen Adresse",
+    pr_btn: 'Anweisungen senden',
+    pr_success_name: 'Passwort zurücksetzen gesendet',
+    pr_success_desc: "Wir haben Ihnen per E-Mail Anweisungen zum Festlegen Ihres Passworts gesendet",
+
     // Sign up
     sign_up_name: 'Anmelden',
     sign_up_google_btn: 'Melden Sie sich bei Google an',
@@ -236,12 +332,6 @@ export const messages = {
     sign_up_question: 'Sie haben bereits ein Konto?',
     sign_up_answer: 'Eingang',
     sign_up_button: 'Anmelden',
-
-    user_already_exists: 'Benutzer ist bereits registriert',
-    email_is_already_in_use: 'E-Mail wird bereits verwendet',
-    password_characters: 'Passwort muss mindestens 8 Zeichen lang sein',
-    passwords_do_not_match:'Passwörter stimmen nicht überein',
-    email_does_not_exists: 'E-Mail existiert nicht',
 
     // Advantages Carousel
     adv_home: 'Hauptseite',
@@ -274,6 +364,33 @@ export const messages = {
     prof_status: 'Account status',
     prof_statistics: 'Speicherstatistik',
     prof_empty_storage: 'Leer',
-    prof_GB: 'GB'
+    prof_GB: 'GB',
+
+    // Public profile settings
+    sett_public_profile: 'Öffentliches Profil',
+    sett_public_desc: 'Aktualisieren Sie hier Ihr Foto und Ihre persönlichen Daten',
+    sett_public_username: 'Nutzername',
+    sett_public_email: 'Email',
+    sett_public_name: 'Name',
+    sett_public_update: 'Profil aktualisieren',
+    sett_public_picture: 'Profilbild',
+
+    // Account settings
+    sett_acc: 'Account Einstellungen',
+    sett_acc_desc: 'Aktualisieren Sie hier Ihre privaten Daten',
+    sett_acc_appearance: 'Aussehen',
+    sett_acc_lang: 'Sprache',
+    sett_acc_delete_head: 'Konto löschen',
+    sett_acc_delete_desc: 'Sobald Sie Ihr Konto gelöscht haben, gibt es kein Zurück mehr. Seien Sie bitte sicher.',
+    sett_acc_delete_btn: 'Lösche deinen Account',
+
+    sett_acc_pass_name: 'Passwort ändern',
+    sett_acc_pass_new: 'Neues Passwort',
+    sett_acc_pass_confirm: 'Passwort bestätigen',
+    sett_acc_pass_btn: 'Kennwort aktualisieren',
+
+    // Support
+    supp_question: "Haben Sie die Antwort auf Ihre Frage nicht gefunden?",
+    supp_write_us: 'Schreiben Sie uns',
   }
 }

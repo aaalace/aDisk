@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 import { connect } from "react-redux"
 import { updateProfile } from "../../../../../actions/profile"
+import { FormattedMessage } from 'react-intl'
 
 const PublicProfile = (props) => {
 
@@ -66,15 +67,15 @@ const PublicProfile = (props) => {
 
             {!Mobile ?
                 <div className="pps-header">
-                    <p className="pps-header-name">Public profile</p>
-                    <p className="pps-header-desc">Update your photo and personal details here</p>
+                    <p className="pps-header-name"><FormattedMessage id="sett_public_profile"/></p>
+                    <p className="pps-header-desc"><FormattedMessage id="sett_public_desc"/></p>
                 </div>
             :
                 null}
             <div className="pps">
                 { Mobile ?
                     <div className="pps-avatar">
-                        <p className="pps-avatar-name">Profile picture</p>
+                        <p className="pps-avatar-name"><FormattedMessage id="sett_public_picture"/></p>
                         <div className="pps-avatar-container">
                             <img className="pps-avatar" alt="" src="../images/default-image.jpg"></img>
                             <button className="pps-edit-button"><FontAwesomeIcon icon={faLink}/></button>
@@ -85,25 +86,25 @@ const PublicProfile = (props) => {
                 }
                 <div className="pps-main" onKeyDown={e => handleKeyDown(e)}>
                     <div className="pps-main-container">
-                        <p className="pps-main-container-name">Username</p>
+                        <p className="pps-main-container-name"><FormattedMessage id="sett_public_username"/></p>
                         <input placeholder={props.username_global} value={newUsername} onChange={e => setUsername(e.target.value)} className="pps-main-container-input"></input>
                     </div>
                     <div className="pps-main-container">
-                        <p className="pps-main-container-name">Email</p>
+                        <p className="pps-main-container-name"><FormattedMessage id="sett_public_email"/></p>
                         <input placeholder={props.email_global} value={newEmail} onChange={e => setEmail(e.target.value)} className="pps-main-container-input"></input>
                     </div>
                     <div className="pps-main-container">
-                        <p className="pps-main-container-name">Name</p>
+                        <p className="pps-main-container-name"><FormattedMessage id="sett_public_name"/></p>
                         <input placeholder={props.name_global} value={newName} onChange={e => setName(e.target.value)} className="pps-main-container-input"></input>
                     </div>
                     <div>
-                        {errorState ? <p style={{color: 'red', fontSize: '13px', bottom: '10px', position: 'relative'}}>{errorState}</p> : ''}
-                        <button onClick={updateState ? () => updateProfile() : null} className="update-profile" id="pps-update-button">Update profile</button>
+                        {errorState ? <p style={{color: 'red', fontSize: '13px', bottom: '10px', position: 'relative'}}>{<FormattedMessage id={errorState}/>}</p> : ''}
+                        <button onClick={updateState ? () => updateProfile() : null} className="update-profile" id="pps-update-button"><FormattedMessage id="sett_public_update"/></button>
                     </div>
                 </div>
                 { !Mobile ?
                     <div className="pps-avatar">
-                        <p className="pps-avatar-name">Profile picture</p>
+                        <p className="pps-avatar-name"><FormattedMessage id="sett_public_picture"/></p>
                         <div className="pps-avatar-container">
                             <img className="pps-avatar" alt="" src="../images/default-image.jpg"></img>
                             <button className="pps-edit-button"><FontAwesomeIcon icon={faLink}/></button>

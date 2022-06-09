@@ -44,8 +44,8 @@ class SendResetView(APIView):
                     return Response({'success': 'Email Sent'})
                 except Exception as e:
                     print(e)
-                    return Response({"error": 'Невозможно выслать сообщение на указанную почту'})
-            return Response({"error": "Email doesn't exists"})
+                    return Response({"error": 'cant_send_email'})
+            return Response({"error": "email_does_not_exists"})
 
         except Exception as e:
             print(e)
@@ -66,7 +66,7 @@ class CheckDBDependency(APIView):
             if dependency.exists():
                 return Response({"success": "Link is avaliable"})
 
-            return Response({"error": "Link is not avaliable anymore"})
+            return Response({"error": "link_is_not_avaliable"})
 
         except Exception as e:
             print(e)
@@ -89,19 +89,20 @@ class ResetPasswordView(APIView):
 
             if dependency.exists():
                 dependency = ResetPassword.objects.filter(user_id=user_id)
-                for dep in dependency:
-                    dep = ResetPasswordSerializer(dep)
-                    dep_token = dep.data['token']
-                    if new_password == rep_password:
+                if new_password == rep_password:
+                    for dep in dependency:
+                        dep = ResetPasswordSerializer(dep)
+                        dep_token = dep.data['token']
+                        print(new_password, rep_password, token, dep_token)
                         if token == dep_token:
                             dependency.delete()
                             user = User.objects.get(id=user_id)
                             user.set_password(new_password)
                             user.save()
                             return Response({'success': 'Password changed'})
-                        return Response({'error': 'You can not do it anymore'})
-                    return Response({'error': 'Diffenrent passwords'})
-            return Response({'error': 'Diffenrent passwords'})
+                    return Response({'error': 'link_is_not_avaliable'})
+                return Response({'error': 'passwords_do_not_match'})
+            return Response({'error': 'link_is_not_avaliable'})
         except Exception as e:
             print(e)
             return Response({'error': 'Something went wrong'})

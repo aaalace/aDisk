@@ -16,8 +16,16 @@ const initialState = {
     date_joined: ''
 }
 
+const testState = {
+    user_id: 0,
+    email: 'aDiskStrg@gmail.com',
+    username: 'aDisk',
+    name: 'adisk',
+    date_joined: '2022-06-06'
+}
+
 // eslint-disable-next-line
-export default function(state = initialState, action) {
+export default function(state = testState, action) {
     const { type, payload } = action
 
     switch(type) {

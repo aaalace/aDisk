@@ -1,17 +1,22 @@
 [data-theme='light'] {
-    --black_to_white : black;
+
+    /* Common */
+    --black_to_white: #121212;
     --white_to_black: white;
     --violet_to_black: #5643CC;
     --grey_to_white: #b9b9b9;
-
     --input_border: #DFDFDF;
+    --grey_to_red: rgba(244, 244, 244, 0.326);
+    --red_to_white: #F85149;
+    --darkgrey_to_white: rgb(57, 57, 57);
 
+    /* Cookie */
     --cookie_bg: #e2e2e2;
 
+    /* Home */
     --home_header_background: white;
     --home_header_icon_p: #5643CC;
     --scrolled_pay: #444444;
-
     --home_background_main: linear-gradient(120deg, #ffffff 30%, #000000 120%);
     --home_background_even: #f1f5f8;
     --home_background_odd: rgb(255, 255, 255);
@@ -19,39 +24,71 @@
     --home_subs_bg: #fdfdfd;
     --unscrolled_text: rgb(233, 233, 233);
 
+    /* Advantages Carousel */
     --advantages_carousel_bg: linear-gradient(to right, #455db5c4, #683fd7bb), url('./images/db.png');
     --advantages_carousel_mobile: linear-gradient(to right, #455db5c4, #683fd7bb), url('./images/db.png');
 
+    /* Sign in/up */
     --sign_bg: #f1f5f8;
     --sign_form_bg: white;
     --sign_grey: rgb(99, 99, 99);
+
+    /* Profile */
+    --profile-bg: #ffffff;
+    --profile-nav-panel-non-active: #5d5d5d;
+    --profile-nav-panel-active: #000000;
+    --profile-headers-color: black;
+    --profile-header-head: linear-gradient(45deg, #455db57e 9.16%, #5543cc82 43.89%, #683fd77b 64.72%);
+    --profile-header-head-prewiew: #683fd7c9;
+    --profile-avatar-circle-box-shadow: 2px 3px 4px rgb(230, 230, 230);
+    --profile-avatar-circle-border: white;
+    --profile-mobile-nav: rgb(246, 246, 246);
+    --profile-input-border: rgb(217, 217, 217);
 }
 
 [data-theme='dark'] {
-    --black_to_white : rgb(241, 241, 241);
-    --white_to_black: black;
+
+    /* Common */
+    --black_to_white: rgb(241, 241, 241);
+    --white_to_black: #121212;
     --violet_to_black: black;
     --grey_to_white: #ffffff;
-
     --input_border: rgb(80, 80, 80);
+    --grey_to_red: #F85149;
+    --red_to_white: white;
+    --darkgrey_to_white: rgb(241, 241, 241);
 
+    /* Cookie */
     --cookie_bg: rgb(28, 28, 28);
 
+    /* Home */
     --home_header_background: rgba(84, 84, 84, 0);
     --home_header_icon_p: white;
     --scrolled_pay: white;
-
-    --home_background_main: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
-    --home_background_even: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
-    --home_background_odd: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
-    --home_payment_bg: url('./images/stars.png'), linear-gradient(#000000, rgb(0, 0, 0));
+    --home_background_main: url('./images/stars.png'), linear-gradient(120deg, #121212 10%, #121212 120%);
+    --home_background_even: url('./images/stars.png'), linear-gradient(120deg, #121212 10%, #121212 120%);
+    --home_background_odd: url('./images/stars.png'), linear-gradient(120deg, #121212 10%, #121212 120%);
+    --home_payment_bg: url('./images/stars.png'), linear-gradient(#121212, #121212);
     --home_subs_bg: rgba(97, 97, 97, 0.173);
     --unscrolled_text: rgb(36, 36, 36);
 
+    /* Advantages Carousel */
     --advantages_carousel_bg: transparent;
-    --advantages_carousel_mobile: linear-gradient(120deg, #00000079 10%, #0000006e 120%), url('./images/db.png');
+    --advantages_carousel_mobile: linear-gradient(120deg, #121212 10%, #121212 120%), url('./images/db.png');
 
-    --sign_bg: url('./images/stars.png'), linear-gradient(120deg, #000000 10%, #000000 120%);
+    /* Sign in/up */
+    --sign_bg: url('./images/stars.png'), linear-gradient(120deg, #121212 10%, #121212 120%);
     --sign_form_bg: rgba(0, 0, 0, 0);
     --sign_grey: rgb(180, 180, 180);
+
+    /* Profile */
+    --profile-bg: #121212;
+    --profile-nav-panel-non-active: #d4d4d4;
+    --profile-nav-panel-active: #ffffff;
+    --profile-headers-color: #cecece;
+    --profile-header-head: linear-gradient(45deg, #5679f9c0 9.16%, #543cf2a9 43.89%, #875ef6b7 64.72%);
+    --profile-header-head-prewiew: #7645fb;
+    --profile-avatar-circle-border: #121212;
+    --profile-mobile-nav: #2d2d2d;
+    --profile-input-border: rgb(41, 41, 41);
 }

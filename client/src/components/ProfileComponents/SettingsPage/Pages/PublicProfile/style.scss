@@ -18,11 +18,12 @@
         .pps-header-name {
             font-weight: 600;
             margin-bottom: 10px;
+            color: var(--black_to_white);
         }
 
         .pps-header-desc {
             font-size: 13px;
-            color: rgb(99, 99, 99);
+            color: var(--profile-nav-panel-non-active);
             margin-bottom: 20px;
         }
     }
@@ -55,7 +56,7 @@
                 .pps-main-container-name {
                     font-size: 14px;
                     font-weight: 600;
-                    color: rgb(102, 102, 102);
+                    color: var(--profile-nav-panel-non-active);
                     margin-bottom: 10px;
 
                 }
@@ -63,11 +64,13 @@
                 .pps-main-container-input {
                     width: 80%;
                     height: 32px;
-                    border: 1px solid rgb(217, 217, 217);
+                    border: 1px solid var(--profile-input-border);
                     border-radius: 8px;
                     padding: 16px 10px;
                     margin-bottom: 20px;
                     max-width: 400px;
+                    background-color: var(--profile-bg);
+                    color: var(--black_to_white);
     
                     &:hover {
                         border: 1px solid #5643CC;
@@ -87,7 +90,7 @@
             }
 
             .active-update-profile {
-                background-color: #5643CC;
+                background-color: var(--profile-header-head-prewiew);
 
                 &:hover {
                     background-color: #6651f0;
@@ -108,7 +111,7 @@
             .pps-avatar-name {
                 font-size: 14px;
                 font-weight: 600;
-                color: rgb(102, 102, 102);
+                color: var(--profile-nav-panel-non-active);
                 margin-bottom: 20px;
                 cursor: pointer;
             }
@@ -144,7 +147,7 @@
                     position: absolute;
                     bottom: 17px;
                     left: 17px;
-                    background-color: #5643CC;
+                    background-color: var(--profile-header-head-prewiew);
                     color: white;
                     border: 0;
                     border-radius: 30px;
@@ -154,7 +157,8 @@
                     }
 
                     @media screen and (max-width: 769px) {
-                        bottom: 30px;
+                        left: 20px;
+                        bottom: 37px;
                     }
                 }
             }

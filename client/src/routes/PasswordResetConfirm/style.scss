@@ -24,7 +24,7 @@
         h2 {
             font-size: 20px;
             font-weight: 600;
-            color: rgb(102, 102, 102);
+            color: var(--grey_to_white);
             margin-bottom: 20px;
             border-bottom: 1px solid rgb(226, 226, 226);
             padding-bottom: 10px;
@@ -45,14 +45,15 @@
              
             p {
                 font-size: 14px;
-                font-weight: 600;
-                color: rgb(102, 102, 102);
+                color: var(--profile-nav-panel-non-active);
                 margin-bottom: 10px;
             }
 
             input {
                 height: 32px;
-                border: 1px solid rgb(217, 217, 217);
+                background-color: var(--profile-bg);
+                border: 1px solid var(--profile-input-border);
+                color: var(--black_to_white);
                 border-radius: 8px;
                 padding: 16px 10px;
                 margin-bottom: 10px;
@@ -73,7 +74,7 @@
             }
 
             .active-change-password {
-                background-color: #5643CC;
+                background-color: var(--profile-header-head-prewiew);
 
                 &:hover {
                     background-color: #6651f0;

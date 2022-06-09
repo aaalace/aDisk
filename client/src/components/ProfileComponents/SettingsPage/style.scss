@@ -13,7 +13,7 @@
             margin-right: 20px;
             padding: 5px 10px;
             cursor: pointer;
-            color: rgb(99, 99, 99);
+            color: var(--profile-nav-panel-non-active);
             border-bottom: 1px solid transparent;
             
             -webkit-touch-callout: none;
@@ -30,8 +30,8 @@
         }
 
         .active{
-            color: #5f0fc7;
-            border-bottom: 1px solid #5f0fc7;
+            color: var(--profile-header-head-prewiew);
+            border-bottom: 1px solid var(--profile-header-head-prewiew);
             animation: slideInMenuSettings .5s;
 
             @keyframes slideInMenuSettings {

@@ -11,7 +11,7 @@ const data = [
 
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
-  const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
+  const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent } = props;
   const sin = Math.sin(-RADIAN * midAngle);
   const cos = Math.cos(-RADIAN * midAngle);
   const sx = cx + (outerRadius + 10) * cos;
@@ -22,9 +22,16 @@ const renderActiveShape = (props) => {
   const ey = my;
   const textAnchor = cos >= 0 ? 'start' : 'end';
 
+  let colorName = "#333"
+  let colorPercent = "#999"
+  if (localStorage.getItem('theme') === 'dark') {
+        colorName = 'white'
+        colorPercent = '#cecece'
+  }
+
   return (
     <g>
-      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
+      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={colorName}>
         {payload.name}
       </text>
       <Sector
@@ -42,27 +49,29 @@ const renderActiveShape = (props) => {
         startAngle={startAngle}
         endAngle={endAngle}
         innerRadius={outerRadius + 6}
-        outerRadius={outerRadius + 10}
+        outerRadius={outerRadius + 8}
         fill={fill}
       />
       <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
       <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{payload.name}</text>
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
+      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill={colorName}>{payload.name}</text>
+      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill={colorPercent}>
         {`${(percent * 100).toFixed(1)}%`}
       </text>
     </g>
   );
 };
 
-const Charts = ({ themeId }) => {
-
-    const profileThemes = [
-        '#683fd77b',
-        '#ec710c7e'
-    ]
+const Charts = () => {
 
     const [activeIndex, setActiveIndex] = useState(0)
+
+    let colorPie = '#683fd77b'
+    let strokeColor = 'white'
+    if (localStorage.getItem('theme') === 'dark') {
+        colorPie = '#7645fb'
+        strokeColor = '#121212'
+    }
 
     const onPieEnter = (_, index) => {
         setActiveIndex(index)
@@ -79,9 +88,10 @@ const Charts = ({ themeId }) => {
             cy="50%"
             innerRadius={65}
             outerRadius={85}
-            fill={profileThemes[themeId]}
+            fill={colorPie}
             dataKey="value"
             onMouseEnter={onPieEnter}
+            stroke={strokeColor}
           />
         </PieChart>
       </div>

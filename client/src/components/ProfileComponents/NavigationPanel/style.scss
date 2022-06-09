@@ -42,19 +42,19 @@
 
             p{
                 margin-left: 5px;
-                color: #6f6f6f;
+                color: var(--profile-nav-panel-non-active);
             }
         }
 
         .active {
 
             .icon {
-                color: #5543cc;
+                color: var(--profile-header-head-prewiew);
             }
 
             p{
                 font-weight: 600;
-                color: #000000;
+                color: var(--profile-nav-panel-active);
             }
         }
 
@@ -89,12 +89,12 @@
 
             p{
                 margin-left: 10px;
-                color: #5543cc;
+                color: var(--profile-header-head-prewiew);
             }
 
             .icon {
                 margin-top: 2px;
-                color: #5543cc;
+                color: var(--profile-header-head-prewiew);
             }
         }
     }
