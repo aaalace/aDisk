@@ -6,6 +6,7 @@ import { faLink, faEllipsis, faMinus, faTrashCan } from '@fortawesome/free-solid
 import { connect } from "react-redux"
 import { updateProfile, updateAvatar, deleteAvatar } from "../../../../../actions/profile"
 import { FormattedMessage } from 'react-intl'
+import CropImage from "../../../../../components/ProfileComponents/CropImage";
 
 const PublicProfile = (props) => {
 
@@ -22,6 +23,10 @@ const PublicProfile = (props) => {
     const [newUsername, setUsername] = useState('')
     const [newEmail, setEmail] = useState('')
     const [newName, setName] = useState('')
+
+    const [cropSrc, setCropSrc] = useState('')
+
+    const [inputFileValue, setInputFileValue] = useState('')
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
@@ -53,14 +58,21 @@ const PublicProfile = (props) => {
         }
     }
 
+    const sendNewAvatar = (data) => {
+        if(data.src){
+            props.updateAvatar({b64: data.src, crop: data.crop, user_id: props.user_id_global, prev_avatar: props.avatar_global})
+        }
+        setCropSrc('')
+    }
+
     const encodeImage = (event) => {
-        if (event.target.files && event.target.files[0]) {
-            let img = event.target.files[0];
-            let reader = new FileReader();
-            reader.onloadend = function() {
-                props.updateAvatar({b64: reader.result.split(',')[1], user_id: props.user_id_global})
-            }
-            reader.readAsDataURL(img);
+        if(event.target.files && event.target.files.length > 0){
+            const reader = new FileReader()
+            reader.addEventListener(
+                'load',
+                () => setCropSrc(reader.result)
+            )
+            reader.readAsDataURL(event.target.files[0])
         }
     }
 
@@ -70,8 +82,12 @@ const PublicProfile = (props) => {
     }
 
     const deleteAvatar = async () => {
-        props.deleteAvatar({user_id: props.user_id_global})
-        setEditAvatarState(false)
+        if(props.avatar_global !== 'default.jpg'){
+            if (window.confirm('Delete avatar?')){
+                props.deleteAvatar({user_id: props.user_id_global, avatar: props.avatar_global})
+                setEditAvatarState(false)
+            }
+        }
     }
 
     let updateState = false
@@ -99,7 +115,8 @@ const PublicProfile = (props) => {
  
     return (
         <div className="pps-container">
-            <input type="file" ref={selectedFileRef} style={{display: "none"}} onChange={encodeImage}/>
+            <CropImage src={cropSrc} sendNewAvatar={sendNewAvatar}></CropImage>
+            <input value={inputFileValue} type="file" ref={selectedFileRef} style={{display: "none"}} onChange={encodeImage} onClick={() => setInputFileValue('')}/>
             {!Mobile ?
                 <div className="pps-header">
                     <p className="pps-header-name"><FormattedMessage id="sett_public_profile"/></p>

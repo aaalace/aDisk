@@ -237,12 +237,12 @@ export const messages = {
 
     // Public profile settings
     sett_public_profile: 'Профиль',
-    sett_public_desc: 'Обновляйте свою личную информацию и аватарку здесь',
+    sett_public_desc: 'Обновляйте свою личную информацию и аватар здесь',
     sett_public_username: 'Имя пользователя',
     sett_public_email: 'Почта',
     sett_public_name: 'Имя',
     sett_public_update: 'Обновить профиль',
-    sett_public_picture: 'Изображение профиля',
+    sett_public_picture: 'Аватар',
 
     // Account settings
     sett_acc: 'Аккаунт',

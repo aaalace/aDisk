@@ -36,6 +36,7 @@
     /* Profile */
     --profile-bg: #ffffff;
     --profile-nav-panel-non-active: #5d5d5d;
+    --profile-ava-crop-cancel: #7c7c7c;
     --profile-nav-panel-active: #000000;
     --profile-headers-color: black;
     --profile-header-head: linear-gradient(45deg, #455db57e 9.16%, #5543cc82 43.89%, #683fd77b 64.72%);
@@ -85,6 +86,7 @@
     /* Profile */
     --profile-bg: #121212;
     --profile-nav-panel-non-active: #d4d4d4;
+    --profile-ava-crop-cancel: #363636;
     --profile-nav-panel-active: #ffffff;
     --profile-headers-color: #cecece;
     --profile-header-head: linear-gradient(45deg, #5679f9c0 9.16%, #543cf2a9 43.89%, #875ef6b7 64.72%);

@@ -8,8 +8,8 @@ from user.serializers import UserSerializer
 from validate_email import validate_email
 from rest_framework.permissions import AllowAny
 from aDisk.settings import STATICFILES_DIRS
-from .utils.compressor import compressor
 from .utils.delete_file import delete_file
+from .utils.crop_image import crop_image
 
 class GetUserProfileView(APIView):
     permission_classes = (AllowAny, )
@@ -87,9 +87,17 @@ class UpdateUserAvatar(APIView):
     def put(self, request, format=None,):
         try:
             data = self.request.data
+            
+            base64 = data['b64']
+            crop = data['crop']
+            user_id = data['user_id']
+            prev_avatar = data['prev_avatar']
 
-            response = compressor(data['b64'], data['user_id'])
+            response = crop_image(base64, crop, user_id)
+
             if response['status']:
+                if prev_avatar != 'default.jpg':
+                    delete_file(prev_avatar)
                 UserProfile.objects.filter(user_id=data['user_id']).update(avatar=response['name'])
                 return Response({'success': 'Avatar updated', 'path': response['name']})
             return Response({'error': 'Can not save this file'})
@@ -104,10 +112,14 @@ class DeleteUserAvatar(APIView):
         try:
             data = self.request.data
             user_id = data['user_id']
+            avatar = data['avatar']
 
-            delete_file(user_id)
+            DEFAULT_IMG = 'default.jpg'
 
-            UserProfile.objects.filter(user_id=user_id).update(avatar='default.jpg')
+            if avatar != DEFAULT_IMG:
+                delete_file(avatar)
+                UserProfile.objects.filter(user_id=user_id).update(avatar='default.jpg')
+
             return Response({'success': 'Avatar deleted'})
         except Exception as e:
             print(e)

@@ -16,7 +16,7 @@ html {
 }
 
 body {
-    background: var(--white_to_black);
+    background: var(--profile-bg);
 }
 
 select, textarea, input {
