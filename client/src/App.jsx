@@ -7,8 +7,9 @@ import { IntlProvider } from 'react-intl';
 
 import { store } from "./store/store";
 
-import CheckerContainer from "./hocs/CheckerContainer";
+import AuthedCheckerContainer from "./hocs/AuthedCheckerContainer";
 import ThemeContainer from "./hocs/ThemeContainer";
+import PrivateWrapper from "./hocs/PrivateWrapper";
 
 import { messages } from './i18n/messages'
 import { LOCALES } from './i18n/locales'
@@ -40,30 +41,34 @@ export const App = () => {
     return (
         <IntlProvider messages={messages[currentLocale]} locale={currentLocale}>
             <Provider store={store}>
-                <CheckerContainer>
                     <ThemeContainer>
-                        <BrowserRouter>
-                            <Routes>
-                                <Route path="/*" element={<Home currentLocale={currentLocale} handleChange={handleChange}/>}/>
-                                <Route path="/login/:page" element={
-                                    <Login currentLocale={currentLocale} handleChange={handleChange}/>
-                                }/>
-                                <Route path="/register" element={
-                                    <Register currentLocale={currentLocale} handleChange={handleChange}/>
-                                }/>
-                                <Route path="/password-reset-confirm/:uid/:token" element={
-                                    <PasswordResetConfirm />
-                                }/>
-                                <Route path="/dashboard" element={
-                                       <Dashboard/>
-                                }/>
-                                <Route path="/profile/:page" element={
-                                        <Profile currentLocale={currentLocale} handleChange={handleChange}/>
-                                }/>
-                            </Routes>  
-                        </BrowserRouter>
+                        <AuthedCheckerContainer>
+                            <BrowserRouter>
+                                <Routes>
+                                    <Route path="/*" element={<Home currentLocale={currentLocale} handleChange={handleChange}/>}/>
+                                    <Route path="/login/:page" element={
+                                        <Login currentLocale={currentLocale} handleChange={handleChange}/>
+                                    }/>
+                                    <Route path="/register" element={
+                                        <Register currentLocale={currentLocale} handleChange={handleChange}/>
+                                    }/>
+                                    <Route path="/password-reset-confirm/:uid/:token" element={
+                                        <PasswordResetConfirm />
+                                    }/>
+                                    <Route path="/dashboard" element={
+                                        <PrivateWrapper>
+                                        <Dashboard/>
+                                        </PrivateWrapper>
+                                    }/>
+                                    <Route path="/profile/:page" element={
+                                        <PrivateWrapper>
+                                            <Profile currentLocale={currentLocale} handleChange={handleChange}/>
+                                        </PrivateWrapper>
+                                    }/>
+                                </Routes>  
+                            </BrowserRouter>
+                        </AuthedCheckerContainer>    
                     </ThemeContainer>
-                </CheckerContainer>
             </Provider>
         </IntlProvider>
     );

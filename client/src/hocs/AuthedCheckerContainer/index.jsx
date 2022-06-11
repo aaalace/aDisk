@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { checkAuth } from "../../actions/auth";
 import { loadUser } from "../../actions/profile";
 
-const CheckerContainer = (props) => {
+const AuthedCheckerContainer = (props) => {
 
     const [cookieClaimed, setCookieClaimed] = useState(false)
 
@@ -22,11 +22,11 @@ const CheckerContainer = (props) => {
         async function authProcess () {
             const res = await props.checkAuth()
             if(res){
-                props.loadUser()
+                await props.loadUser()
             }
         }
         authProcess()
-    }, [props])
+    }, [])
 
     return (
       <Fragment>
@@ -50,4 +50,4 @@ const CheckerContainer = (props) => {
     );
 }
 
-export default connect(null, {checkAuth, loadUser})(CheckerContainer)
+export default connect(null, {checkAuth, loadUser})(AuthedCheckerContainer)
