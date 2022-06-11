@@ -36,7 +36,6 @@ export default function(state = initialState, action) {
         case DELETE_USER_SUCCESS:
             return {...initialState, isAuthenticated: false}
         
-
         case REGISTER_FAIL: 
         case LOGIN_FAIL: 
         case LOGOUT_FAIL:
