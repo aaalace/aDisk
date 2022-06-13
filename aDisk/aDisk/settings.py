@@ -14,13 +14,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-CORS_ORIGIN_WHITELIST = ['http://localhost:3000', 'http://172.20.10.2:3000']
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000', 'http://172.20.10.3:3000']
 
-CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://172.20.10.2:3000']
+CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://172.20.10.3:3000']
 
 CORS_ALLOW_CREDENTIALS = True
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'http://172.20.10.2:3000']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'http://172.20.10.3:3000']
 
 ROOT_URLCONF = 'aDisk.urls'
 

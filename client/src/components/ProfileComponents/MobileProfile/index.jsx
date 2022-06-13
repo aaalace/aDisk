@@ -32,8 +32,6 @@ const MobileProfile = (props) => {
         '12': 'december',
     }
 
-    const [headerBgId, setHeaderBgId] = useState(0)
-
     const remakeDateJoined = (date) => {
         return <><FormattedMessage id='prof_since'/>&nbsp;{date.split('-')[2]}&nbsp;<FormattedMessage id={months[date.split('-')[1]]}/>&nbsp;{date.split('-')[0]}</>
     }

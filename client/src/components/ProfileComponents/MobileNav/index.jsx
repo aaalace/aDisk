@@ -1,9 +1,9 @@
 import React from "react"
 import './style.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserAstronaut, faGear, faHeadset, faPen, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faUserAstronaut, faGear, faHeadset } from '@fortawesome/free-solid-svg-icons'
 
-import { Link, NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 const MobileNav = (props) => {
 

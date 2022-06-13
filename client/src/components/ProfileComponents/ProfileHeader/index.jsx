@@ -22,6 +22,8 @@ const ProfileHeader = (props) => {
                 return <FormattedMessage id="prof_settings"/>
             case 'support':
                 return <FormattedMessage id="prof_support"/>
+            default:
+                return <FormattedMessage id="prof_my_account"/>
         }
     }
 

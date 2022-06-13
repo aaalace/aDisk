@@ -93,7 +93,7 @@ const PublicProfile = (props) => {
     let updateState = false
     let updateButtonElement = document.getElementById("pps-update-button")
     if(updateButtonElement){
-        if(newUsername != '' || newEmail != '' || newName != ''){
+        if(newUsername !== '' || newEmail !== '' || newName !== ''){
             updateButtonElement.classList.add("active-update-profile")
             updateState = true
         }

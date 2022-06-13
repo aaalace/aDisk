@@ -16,7 +16,7 @@ const NavigationPanel = (props) => {
     return (
         <NavPanelContainer className="nav-panel-container">
             <div className="icon-contaner">
-                <img src="../../favicon.ico"></img>
+                <img alt='' src="../../favicon.ico"></img>
             </div>
             <div className="nav-panel">
                 <div>

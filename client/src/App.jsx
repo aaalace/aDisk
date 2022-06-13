@@ -57,7 +57,7 @@ export const App = () => {
                                     }/>
                                     <Route path="/dashboard" element={
                                         <PrivateWrapper>
-                                        <Dashboard/>
+                                            <Dashboard/>
                                         </PrivateWrapper>
                                     }/>
                                     <Route path="/profile/:page" element={

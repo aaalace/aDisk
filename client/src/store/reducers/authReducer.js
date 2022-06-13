@@ -25,15 +25,13 @@ export default function(state = initialState, action) {
         case REGISTER_SUCCESS: 
             return {...state, isAuthenticated: false}
 
+        case AUTHENTICATED_SUCCESS:
         case LOGIN_SUCCESS: 
             return {...state, isAuthenticated: true}
-    
-        case AUTHENTICATED_SUCCESS:
-        case AUTHENTICATED_FAIL:
-            return {...state, isAuthenticated: payload}
 
         case LOGOUT_SUCCESS: 
         case DELETE_USER_SUCCESS:
+        case AUTHENTICATED_FAIL:
             return {...initialState, isAuthenticated: false}
         
         case REGISTER_FAIL: 

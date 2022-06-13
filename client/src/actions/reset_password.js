@@ -1,9 +1,7 @@
 import { app } from '../lib/axios'
 import { 
     SEND_RESET_SUCCESS,
-    SEND_RESET_FAIL,
-    CHECK_DEPENDENCY_SUCCESS,
-    CHECK_DEPENDENCY_FAIL
+    SEND_RESET_FAIL
 } from './types'
 
 export const sendResetAction = (data) => async dispatch => {

@@ -30,16 +30,19 @@ export const checkAuth = () => async dispatch => {
 
         if(result.data.isAuthenticated === 'success'){
             dispatch({
-                type: AUTHENTICATED_SUCCESS,
-                payload: true
+                type: AUTHENTICATED_SUCCESS
             })
             return true
         }
+        dispatch({
+            type: AUTHENTICATED_FAIL
+        })
+        return false
+        
     } 
     catch (error) {
         dispatch({
-            type: AUTHENTICATED_FAIL,
-            payload: false
+            type: AUTHENTICATED_FAIL
         })
         return false
     }

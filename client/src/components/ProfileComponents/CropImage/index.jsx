@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ReactCrop, { makeAspectCrop, centerCrop } from 'react-image-crop'
+import ReactCrop, { makeAspectCrop } from 'react-image-crop'
 import 'react-image-crop/src/ReactCrop.scss'
 import './style.scss'
 
@@ -85,7 +85,7 @@ export default function CropImage(props) {
                                 onImageLoaded={onImageLoaded}
                                 onChange={onCropChange}
                             >
-                                <img src={props.src} onLoad={onImageLoad}></img>
+                                <img alt='' src={props.src} onLoad={onImageLoad}></img>
                             </ReactCrop>
                             <div className='btns-container'>
                                 <button className='send' onClick={onCropComplete}>OK</button>
