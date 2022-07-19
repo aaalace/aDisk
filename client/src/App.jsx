@@ -55,7 +55,7 @@ export const App = () => {
                                     <Route path="/password-reset-confirm/:uid/:token" element={
                                         <PasswordResetConfirm />
                                     }/>
-                                    <Route path="/dashboard" element={
+                                    <Route path="/dashboard/:page" element={
                                         <PrivateWrapper>
                                             <Dashboard/>
                                         </PrivateWrapper>

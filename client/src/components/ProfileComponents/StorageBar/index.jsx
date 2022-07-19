@@ -9,13 +9,13 @@ const StorageBar = (props) => {
         width: '100%',
         backgroundColor: "#e0e0de",
         borderRadius: 50,
-        marginTop: 30,
+        marginTop: 40,
     }
 
     const fillerStyles = {
         height: '100%',
         width: `${completed}%`,
-        backgroundColor: '#5643CC',
+        backgroundColor: '#6366f1',
         borderRadius: 'inherit',
         textAlign: 'right',
     }

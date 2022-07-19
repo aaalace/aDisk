@@ -16,7 +16,7 @@ const AdvantagesCarousel = (props) => {
     }
 
     return (
-      <CarouselContainer className="adv-carousel">
+      <CarouselContainer className="advant-carousel">
             <div className="adv-carousel-name-container">
                 <p className="icon">aDisk</p>
                 <div className="adv-workbtns-cont">

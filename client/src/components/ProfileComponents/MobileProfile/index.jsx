@@ -87,7 +87,7 @@ const MobileProfile = (props) => {
                     </div>
                 </div>
             </div>
-            <Link className="home-link" to='/dashboard'><FontAwesomeIcon className="icon" icon={faArrowLeftLong} /><p><FormattedMessage id="prof_open_adisk"/></p></Link>
+            <Link className="home-link" to='/dashboard/my-disk'><FontAwesomeIcon className="icon" icon={faArrowLeftLong} /><p><FormattedMessage id="prof_open_adisk"/></p></Link>
         </div>
     )
 }

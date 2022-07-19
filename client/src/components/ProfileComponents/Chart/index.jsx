@@ -69,7 +69,7 @@ const Charts = () => {
     let colorPie = '#683fd77b'
     let strokeColor = 'white'
     if (localStorage.getItem('theme') === 'dark') {
-        colorPie = '#7645fb'
+        colorPie = '#6366f1'
         strokeColor = '#121212'
     }
 

@@ -88,7 +88,7 @@ const HomeHeader = (props) => {
                             <ThemeSwitch checked={appTheme} onChange={() => handleThemeChange(!appTheme)}/>
                         </div>
                         {props.isAuthenticated ? 
-                             <img className="profile-icon" alt="" src={`${process.env.REACT_APP_API_URL}/user_profile/get_user_avatar/${props.avatar_global}`}></img>
+                             <img className="profile-icon" onClick={() => navigate('/profile/account')} alt="" src={`${process.env.REACT_APP_API_URL}/user_profile/get_user_avatar/${props.avatar_global}`}></img>
                         : 
                             <button onClick={() => navigate('/login/entry')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/></button>
                         }

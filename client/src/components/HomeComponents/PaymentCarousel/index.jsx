@@ -71,18 +71,7 @@ const ADPLUSSubscriptionBlock = () => {
 const PaymentCasrouselBlock = () => {
     const navigate = useNavigate()
 
-    const Mobile = useMediaQuery({
-        query: '(max-width: 768px)'
-    })
-
-    let onesState = false
-    if(Mobile){
-        onesState = true
-    }
-    
-    useEffect(() => {
-        Aos.init({duration: 3000, once: onesState})
-    }, [onesState])
+    Aos.init({duration: 2000, once: true})
 
     const navigateFromCarousel = () => {
         navigate('/register')
