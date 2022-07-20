@@ -27,7 +27,7 @@ const NavigationPanel = (props) => {
                     <NavLink to='/profile/settings' className="nav-link"><FontAwesomeIcon className="icon" icon={faGear} /><p><FormattedMessage id="prof_settings"/></p></NavLink>
                     <NavLink to='/profile/support' className="nav-link"><FontAwesomeIcon className="icon" icon={faHeadset} /><p><FormattedMessage id="prof_support"/></p></NavLink>
                 </div>
-                <Link className="home-link" to='/dashboard/my-disk' style={ Tablet ? {fontSize: '18px'} : {} }><FontAwesomeIcon className="icon" icon={faArrowLeftLong}/><p><FormattedMessage id="prof_open_adisk"/></p></Link>
+                <Link className="home-link" to='/dashboard/recent' style={ Tablet ? {fontSize: '18px'} : {} }><FontAwesomeIcon className="icon" icon={faArrowLeftLong}/><p><FormattedMessage id="prof_open_adisk"/></p></Link>
             </div>
         </NavPanelContainer>
     )

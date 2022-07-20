@@ -2,11 +2,10 @@ import React, { useState } from "react"
 import './style.scss'
 import { useNavigate } from "react-router-dom"
 import { connect } from "react-redux"
-import { Link } from "react-router-dom"
 import { FormattedMessage } from 'react-intl'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faEnvelope, faCloud, faArrowLeftLong, faAngleDown, faArrowRightFromBracket, faAngleUp } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faEnvelope, faCloud, faAngleDown, faArrowRightFromBracket, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 
 import StorageBar from "../StorageBar"
 import { logout } from "../../../actions/auth"
@@ -87,7 +86,6 @@ const MobileProfile = (props) => {
                     </div>
                 </div>
             </div>
-            <Link className="home-link" to='/dashboard/my-disk'><FontAwesomeIcon className="icon" icon={faArrowLeftLong} /><p><FormattedMessage id="prof_open_adisk"/></p></Link>
         </div>
     )
 }

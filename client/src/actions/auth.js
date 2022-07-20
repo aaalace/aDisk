@@ -32,6 +32,7 @@ export const checkAuth = () => async dispatch => {
             dispatch({
                 type: AUTHENTICATED_SUCCESS
             })
+            dispatch(loadUser())
             return true
         }
         dispatch({

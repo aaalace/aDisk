@@ -45,7 +45,6 @@ export const App = () => {
                         <AuthedCheckerContainer>
                             <BrowserRouter>
                                 <Routes>
-                                    <Route path="/*" element={<Home currentLocale={currentLocale} handleChange={handleChange}/>}/>
                                     <Route path="/login/:page" element={
                                         <Login currentLocale={currentLocale} handleChange={handleChange}/>
                                     }/>
@@ -65,6 +64,7 @@ export const App = () => {
                                             <Profile currentLocale={currentLocale} handleChange={handleChange}/>
                                         </PrivateWrapper>
                                     }/>
+                                    <Route path="/*" element={<Home currentLocale={currentLocale} handleChange={handleChange}/>}/>
                                 </Routes>  
                             </BrowserRouter>
                         </AuthedCheckerContainer>    

@@ -18,14 +18,7 @@ const AuthedCheckerContainer = (props) => {
         if(cookieClaimedLS){
             setCookieClaimed(true)
         }
-
-        async function authProcess () {
-            const res = await props.checkAuth()
-            if(res){
-                await props.loadUser()
-            }
-        }
-        authProcess()
+        props.checkAuth()
     }, [])
 
     return (

@@ -66,10 +66,9 @@ const Charts = () => {
 
     const [activeIndex, setActiveIndex] = useState(0)
 
-    let colorPie = '#683fd77b'
+    const colorPie = '#6366f1'
     let strokeColor = 'white'
     if (localStorage.getItem('theme') === 'dark') {
-        colorPie = '#6366f1'
         strokeColor = '#121212'
     }
 

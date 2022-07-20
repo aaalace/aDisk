@@ -21,7 +21,7 @@ const LoginForm = (props) => {
 
         const res = await props.login(username, password)
         if(res[0]){
-            navigate('/dashboard')
+            navigate('/dashboard/recent')
             setUsername('')
             setPassword('')
         }

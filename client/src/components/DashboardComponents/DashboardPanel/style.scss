@@ -19,11 +19,42 @@
         }
     }
 
+    .create-file-btn {
+        display: flex;
+        height: 50px;
+        width: 80%;
+        margin-top: 5px;
+        background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+        border-radius: 10px 30px 10px 30px;
+        border-style: none;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        font-size: 18px;
+        align-items: center;
+        justify-content: center;
+        text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    
+        &:hover {
+            background-image: linear-gradient(92.88deg, #5b72c6 9.16%, #455EB5 43.89%, #5643CC 64.72%);
+        }
+    }
+
+    .upload-file-btn {
+        @extend .create-file-btn;
+        border-radius: 30px 10px 30px 10px;
+        background-image: linear-gradient(92.88deg, #673FD7 9.16%, #5643CC 43.89%, #455EB5 64.72%);
+
+        &:hover {
+            background-image: linear-gradient(92.88deg, #5643CC 9.16%, #455EB5 43.89%, #5b72c6 64.72%);
+        }
+    }
+
     .nav-panel {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        margin-top: 30px;
+        margin-top: 35px;
         margin-bottom: 20px;
         width: 80%;
 

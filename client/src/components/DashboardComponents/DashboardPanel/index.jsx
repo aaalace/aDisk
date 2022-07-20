@@ -2,7 +2,7 @@ import React from "react"
 import { useNavigate } from "react-router-dom"
 import './style.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons'
+import { faFileCirclePlus, faFileImport, faFile, faImages, faClock } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from "react-router-dom"
 import { FormattedMessage } from 'react-intl'
 
@@ -18,11 +18,13 @@ const DashboardPanel = () => {
             <div className="icon-contaner">
                 <img onClick={() => navigate('/')} alt='' src="../../favicon.ico"></img>
             </div>
+            <button className="upload-file-btn" type="button"><FontAwesomeIcon className="icon" icon={faFileImport}/>&nbsp;Upload</button>
+            <button className="create-file-btn" type="button"><FontAwesomeIcon className="icon" icon={faFileCirclePlus}/>&nbsp;Create</button>
             <div className="nav-panel">
                 <div>
-                    <NavLink className="nav-link" to="/dashboard/my-disk"><FontAwesomeIcon className="icon" icon={faUserAstronaut}/><p>My disk</p></NavLink>
-                    <NavLink className="nav-link" to="/dashboard/my-disk_1"><FontAwesomeIcon className="icon" icon={faUserAstronaut}/><p>My disk 1</p></NavLink>
-                    <NavLink className="nav-link" to="/dashboard/my-disk_2"><FontAwesomeIcon className="icon" icon={faUserAstronaut}/><p>My disk 2</p></NavLink>
+                    <NavLink className="nav-link" to="/dashboard/recent"><FontAwesomeIcon className="icon" icon={faClock}/><p>Recent</p></NavLink>
+                    <NavLink className="nav-link" to="/dashboard/files"><FontAwesomeIcon className="icon" icon={faFile}/><p>Files</p></NavLink>
+                    <NavLink className="nav-link" to="/dashboard/images"><FontAwesomeIcon className="icon" icon={faImages}/><p>Images</p></NavLink>
                 </div>
             </div>
             <div className="storage-panel">
