@@ -8,7 +8,7 @@ import { Link, NavLink } from "react-router-dom"
 import { NavPanelContainer } from "./styled"
 import { FormattedMessage } from 'react-intl'
 
-const NavigationPanel = (props) => {
+const NavigationPanel = () => {
     
     const navigate = useNavigate()
     

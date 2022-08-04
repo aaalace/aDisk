@@ -1,0 +1,51 @@
+.mobile-controller {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 70px;
+    background-color: var(--profile-bg);
+    z-index: 5;
+
+    .link {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 5px 15px;
+        width: 100px;
+        color: var(--profile-nav-panel-non-active);
+        font-size: 20px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    h1 {
+        font-size: 18px;
+        color: var(--black_to_white);
+    }
+
+    .actions-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100px;
+        padding: 5px 15px;
+
+        .action-button-leave {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            border: none;
+            padding: 5px 0;
+            font-size: 20px;
+            color: #f8392f;
+        }
+    }
+}

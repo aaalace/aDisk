@@ -11,6 +11,7 @@ import SupportPage from "../../components/ProfileComponents/SupportPage"
 
 import MobileNav from "../../components/ProfileComponents/MobileNav"
 import MobileProfile from "../../components/ProfileComponents/MobileProfile"
+import MobileController from "../../components/ProfileComponents/MobileController"
 
 const Profile = (props) => {
     const page = useParams().page
@@ -61,6 +62,7 @@ const Profile = (props) => {
             </div>
         :   
             <div className="profile">
+                <MobileController page={page} />
                 {chooseMobilePage(page)}
                 <MobileNav/>
             </div>

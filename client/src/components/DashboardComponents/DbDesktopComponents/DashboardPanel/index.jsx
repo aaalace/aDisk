@@ -4,10 +4,9 @@ import './style.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileCirclePlus, faFileImport, faFile, faImages, faClock } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from "react-router-dom"
-import { FormattedMessage } from 'react-intl'
 
 import { DashboardPanelStyled } from "./styled"
-import StorageBar from "../../ProfileComponents/StorageBar"
+import StorageBar from "../../../ProfileComponents/StorageBar"
 
 const DashboardPanel = () => {
 

@@ -1,0 +1,47 @@
+.top-menu-bar {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+
+    .tmb-wid {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--tmb-wid-bg);
+        color: var(--tmb-wid-col);
+        font-size: 13px;
+        padding: 7px 15px;
+        border-radius: 20px;
+        margin-right: 5px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--tmb-wid-bg-hovered);
+        }
+
+        .icon {
+            color: grey;
+            font-size: 17px;
+            margin-right: 5px;
+            margin-bottom: 2px;
+        }
+        
+        .star {
+            color: #ffd700;
+        }
+
+        p {
+            margin-bottom: 2px;
+        }
+    }
+}

@@ -1,12 +1,15 @@
-import React, { useEffect } from "react"
+import React, { useState } from "react"
 import './style.scss'
+import MDMCreateUpload from "../MyDiskComponents/MDMobileComponents/MDMCreateUpload"
 
 const DashboardMyDisk = () => {
 
-    return (
-      <div className="dashboard-content">
+    const [createUploadOpened, setCreateUploadOpened] = useState(false)
 
-      </div>
+    return (
+        <div className="dashboard-content">
+            <MDMCreateUpload/>
+        </div>
     );
 }
 

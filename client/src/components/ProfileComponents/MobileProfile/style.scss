@@ -2,22 +2,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
     width: 95vw;
+    padding-top: 70px;
     padding-bottom: 60px;
 
     .header-mobile-profile {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        padding: 55px 25px 25px 25px;
+        padding: 25px 25px 25px 25px;
         width: 100%;
 
         .main-data-cont {
             display: flex;
             flex-direction: row;
             align-items: center;
-            margin-bottom: 20px;
 
             .user-avatar-container{
                 display: flex;

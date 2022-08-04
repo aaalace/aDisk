@@ -56,7 +56,11 @@
                 background-size: cover;
                 background-clip: padding-box;
                 border: solid $border #6651f0; 
-                border-radius: 30px;            
+                border-radius: 30px;   
+                
+                &:hover {
+                    border: solid $border #6651f084; 
+                }
             }
 
             .home-header_sign-in {

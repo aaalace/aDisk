@@ -46,6 +46,12 @@
     --profile-mobile-nav: rgb(246, 246, 246);
     --profile-input-border: rgb(217, 217, 217);
     --profile-nav-font-weight: 600;
+
+    /* Dashboard */
+    --create-upload-bg: #ffffff;
+    --tmb-wid-bg: #eef0f3;
+    --tmb-wid-bg-hovered: #f2f5fa;
+    --tmb-wid-col: #000;
 }
 
 [data-theme='dark'] {
@@ -95,4 +101,10 @@
     --profile-mobile-nav: #2d2d2d;
     --profile-input-border: rgb(41, 41, 41);
     --profile-nav-font-weight: 500;
+
+    /* Dashboard */
+    --create-upload-bg: #2d2e31;
+    --tmb-wid-bg: #2d2e31;
+    --tmb-wid-bg-hovered: #373738;
+    --tmb-wid-col: rgb(237, 237, 237);
 }

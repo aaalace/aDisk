@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { HomePageDevices } from '../../../lib/devices';
+import { HomePageDevices } from '../../../../lib/devices';
 
 
 export const DashboardPanelStyled = styled.div`

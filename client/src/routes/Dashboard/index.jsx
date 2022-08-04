@@ -1,13 +1,22 @@
 import React, { useEffect } from "react"
 import './style.scss'
+import { useMediaQuery } from "react-responsive"
 import { useParams } from "react-router-dom"
 
-import DashboardHeader from "../../components/DashboardComponents/DashboardHeader";
-import DashboardPanel from "../../components/DashboardComponents/DashboardPanel";
 import DashboardMyDisk from "../../components/DashboardComponents/DashboardMyDisk";
+import DashboardHeader from "../../components/DashboardComponents/DbDesktopComponents/DashboardHeader";
+import DashboardPanel from "../../components/DashboardComponents/DbDesktopComponents/DashboardPanel";
+import DashboardMobileNav from "../../components/DashboardComponents/DbMobileComponents/DashboardMobileNav";
+import DashboardMobileController from "../../components/DashboardComponents/DbMobileComponents/DashboardMobileController";
+import TopMenuBar from "../../components/DashboardComponents/MyDiskComponents/TopMenuBar";
+import MDMSearch from "../../components/DashboardComponents/MyDiskComponents/MDMobileComponents/MDMSearch";
 
 const Dashboard = () => {
     const board = useParams().page
+
+    const Mobile = useMediaQuery({
+        query: '(max-width: 769px)'
+    })
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -30,11 +39,26 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard">
-            <DashboardPanel/>
-            <div className="dashboard-models">
-                <DashboardHeader page={board}/>
-                {chooseBoard(board)}
-            </div>
+            {!Mobile ?
+                <>
+                    <DashboardPanel/>
+                    <div className="dashboard-main">
+                        <DashboardHeader page={board}/>
+                        {chooseBoard(board)}
+                    </div>
+                </>
+            :   
+                <>
+                    <DashboardMobileController board={board}/>
+                    <div className="dashboard-mobile-main">
+                        <div className="tmb-mobile-box">
+                            <TopMenuBar/>
+                        </div>
+                        {chooseBoard(board)}
+                    </div>
+                    <DashboardMobileNav/>
+                </>
+            }           
         </div>
     );
 }

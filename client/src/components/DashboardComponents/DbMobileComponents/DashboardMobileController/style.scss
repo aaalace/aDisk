@@ -1,0 +1,64 @@
+.mobile-controller-db {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    background-color: var(--profile-bg);
+    z-index: 5;
+    height: fit-content;
+
+    .mc-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 70px;
+        
+        .link {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 5px 15px;
+            width: 100px;
+            color: var(--profile-nav-panel-non-active);
+            font-size: 20px;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    
+        h1 {
+            font-size: 18px;
+            color: var(--black_to_white);
+        }
+    
+        .actions-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 100px;
+            padding: 5px 15px;
+    
+            .action-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: transparent;
+                border: none;
+                margin: 5px 20px 5px 0;
+                font-size: 20px;
+                color: var(--profile-nav-panel-non-active);
+    
+                &:last-child {
+                    margin: 5px 0;
+                }
+            }
+        }
+    }
+}

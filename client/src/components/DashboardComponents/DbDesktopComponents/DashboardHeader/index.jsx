@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom"
 import './style.scss'
 import { connect } from "react-redux"
 import { FormattedMessage } from 'react-intl'
-import { logout } from "../../../actions/auth"
+import { logout } from "../../../../actions/auth"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { DashboardHeaderStyled } from "./styled"
+import { DashboardHeaderStyled, DashboardSearchInput, DashboardSearchStyled } from "./styled"
 import { faAngleDown, faArrowRightFromBracket, faAngleUp, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+
+import TopMenuBar from "../../MyDiskComponents/TopMenuBar"
 
 const DashboardHeader = (props) => {
 
@@ -57,10 +59,15 @@ const DashboardHeader = (props) => {
                     </div>
                 </div>
             </DashboardHeaderStyled>
-            <DashboardHeaderStyled className="dashboard-search-container">
-                <input className="search-input" type='text' placeholder='Search'/>
-                <button className="search-button" type='button'><FontAwesomeIcon className="icon" icon={faMagnifyingGlass}/></button>
-            </DashboardHeaderStyled>
+            <DashboardSearchStyled className="dashboard-search-container">
+                <div className="search-box">
+                    <DashboardSearchInput className="search-input" type='text' placeholder='Search'/>
+                    <button className="search-button" type='button'><FontAwesomeIcon className="icon" icon={faMagnifyingGlass}/></button>
+                </div>
+                <div className="tmb-box">
+                    <TopMenuBar/>
+                </div>
+            </DashboardSearchStyled>
         </>
     )
 }
