@@ -29,12 +29,15 @@
         color: var(--black_to_white);
         background-color: var(--profile-bg);
         height: 100%;
+        border-radius: 0;
 
         &:focus {
             border-bottom: 2px solid var(--profile-header-head-prewiew);
             padding: 9px 10px 10px 10px;
 
-            ~ .msms-search-button {
+            ~ .msms-search-button ,
+            ~ .on-micro,
+            ~ .off-micro {
                 border-bottom: 2px solid var(--profile-header-head-prewiew);    
                 padding: 9px 10px 10px 10px;
             }
@@ -48,5 +51,6 @@
         padding: 10px;
         color: var(--profile-header-head-prewiew);
         height: 100%;
+        font-size: 18px;
     }
 }

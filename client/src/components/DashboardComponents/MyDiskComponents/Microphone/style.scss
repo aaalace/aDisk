@@ -1,0 +1,14 @@
+.on-micro {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--profile-header-head-prewiew);
+    padding: 10px;
+    color: rgb(52, 220, 52);
+    height: 100%;
+    font-size: 19px;
+}
+
+.off-micro {
+    @extend .on-micro;
+    color: var(--profile-header-head-prewiew);
+}

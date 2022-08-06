@@ -1,0 +1,103 @@
+.sort-button-wid-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    height: 35px;
+
+    text-decoration: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+    cursor: pointer;
+
+    .sort-button-wid {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 10px;
+        color: var(--darkgrey_to_white);
+        background-color: transparent;
+        border-bottom: 1px solid var(--profile-header-head-prewiew);
+
+        &:last-child {
+            margin-left:3px;
+        }
+
+        &:hover {
+            border-bottom: 2px solid var(--profile-header-head-prewiew);
+        }
+
+        .sbw_name {
+            white-space: nowrap;
+        }
+    }
+}
+
+
+.top_sorting_container {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    padding: 15px;
+    background-color: var(--tmb-wid-bg);
+    border-radius: 15px;
+    color: var(--black_to_white);
+    margin-top: 10px;
+
+    .msmsorting_custom_ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: calc(100% + 40px);
+
+        .msmsorting_item {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+
+            &:last-child {
+                margin: 0;
+            }
+
+            .msmsorting_item_data {
+                display: flex;
+                flex-direction: row;
+                cursor: pointer;
+                
+                .icon-cont {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    width: 25px;
+
+                    .icon {
+                        font-size: 18px;
+                        color: var(--profile-nav-panel-non-active);
+                    }
+
+                    .check {
+                        font-size: 18px;
+                        color: var(--profile-header-head-prewiew);
+                    }
+                }
+
+                p {
+                    font-size: 15px;
+                    color: var(--black_to_white);
+                }
+            }
+        }
+    }
+}
+
+.bottom_sorting_container {
+    @extend .top_sorting_container
+}

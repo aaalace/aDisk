@@ -9,13 +9,17 @@ import { DashboardHeaderStyled, DashboardSearchInput, DashboardSearchStyled } fr
 import { faAngleDown, faArrowRightFromBracket, faAngleUp, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 import TopMenuBar from "../../MyDiskComponents/TopMenuBar"
+import Microphone from "../../MyDiskComponents/Microphone"
+import MDDSorting from "../../MyDiskComponents/MDDesktopComponents/MDDSorting"
 
 const DashboardHeader = (props) => {
 
     const navigate = useNavigate()
 
     const [openedHeaderMenu, setOpenedHeaderMenu] = useState(false)
-    
+
+    const [request, setRequest] = useState('')
+
     const chooseHeaderName = (page) => {
         switch(page){
             case 'recent':
@@ -61,11 +65,17 @@ const DashboardHeader = (props) => {
             </DashboardHeaderStyled>
             <DashboardSearchStyled className="dashboard-search-container">
                 <div className="search-box">
-                    <DashboardSearchInput className="search-input" type='text' placeholder='Search'/>
+                    <DashboardSearchInput value={request} onChange={(e) => setRequest(e.value)} className="search-input" type='text' placeholder='Search'/>
+                    <Microphone setListenedText={setRequest}/>
                     <button className="search-button" type='button'><FontAwesomeIcon className="icon" icon={faMagnifyingGlass}/></button>
                 </div>
-                <div className="tmb-box">
-                    <TopMenuBar/>
+                <div className="tmb-sort-container">
+                    <div className="tmb-box">
+                        <TopMenuBar/>
+                    </div> 
+                    <div className="sorting-wid">
+                        <MDDSorting/>
+                    </div> 
                 </div>
             </DashboardSearchStyled>
         </>
