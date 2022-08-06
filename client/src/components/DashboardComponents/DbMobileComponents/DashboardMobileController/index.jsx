@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import './style.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserAstronaut, faMagnifyingGlass, faEllipsis, faClose, faBarsStaggered } from '@fortawesome/free-solid-svg-icons'
+import { faUserAstronaut, faMagnifyingGlass, faClose, faEllipsis} from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
 
 import MDMSearch from "../../MyDiskComponents/MDMobileComponents/MDMSearch"
@@ -19,7 +19,7 @@ const DashboardMobileController = (props) => {
                 <h1>{props.board}</h1>
                 <div className="actions-container">
                     <button className="action-button" onClick={() => setmsmsearchOpened(!msmsearchOpened)}><FontAwesomeIcon className="icon" icon={msmsearchOpened ? faClose : faMagnifyingGlass}/></button>
-                    <button className="action-button" onClick={() => setmsmsortingOpened(true)}><FontAwesomeIcon className="icon" icon={faBarsStaggered}/></button>
+                    <button className="action-button" onClick={() => setmsmsortingOpened(true)}><FontAwesomeIcon className="icon" icon={faEllipsis}/></button>
                 </div>
             </div>
             <MDMSearch msmsOpened={msmsearchOpened} setmsmsOpened={setmsmsearchOpened} />

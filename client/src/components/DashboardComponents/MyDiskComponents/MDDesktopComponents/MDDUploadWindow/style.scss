@@ -1,0 +1,36 @@
+.mddcu_bgq {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 6;
+    top: 0;
+    left: 0;
+}
+
+.mddcu_container {
+    $h: 400px;
+    $w: 600px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $w;
+    height: $h;
+    background-color: var(--create-upload-bg);
+    z-index: 7;
+    top: calc((100vh - $h) / 2);
+    left: calc((100vw - $w) / 2);
+    border-radius: 20px;
+
+    animation: slideInCreateUploadDesktop 0.5s;
+
+    @keyframes slideInCreateUploadDesktop {
+        from {
+            transform: translateY(-100vh);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+}

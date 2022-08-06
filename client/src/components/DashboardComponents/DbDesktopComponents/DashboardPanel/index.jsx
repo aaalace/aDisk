@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import './style.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,18 +7,23 @@ import { NavLink } from "react-router-dom"
 
 import { DashboardPanelStyled } from "./styled"
 import StorageBar from "../../../ProfileComponents/StorageBar"
+import MDDCreateWindow from "../../MyDiskComponents/MDDesktopComponents/MDDCreateWindow"
+import MDDUploadWindow from "../../MyDiskComponents/MDDesktopComponents/MDDUploadWindow"
 
 const DashboardPanel = () => {
 
     const navigate = useNavigate()
+
+    const [createOpened, setCreateOpened] = useState(false)
+    const [uploadOpened, setUploadOpened] = useState(false)
 
     return (
         <DashboardPanelStyled className="dashboard-panel">
             <div className="icon-contaner">
                 <img onClick={() => navigate('/')} alt='' src="../../favicon.ico"></img>
             </div>
-            <button className="upload-file-btn" type="button"><FontAwesomeIcon className="icon" icon={faFileImport}/>&nbsp;Upload</button>
-            <button className="create-file-btn" type="button"><FontAwesomeIcon className="icon" icon={faFileCirclePlus}/>&nbsp;Create</button>
+            <button onClick={() => setUploadOpened(true)} className="upload-file-btn" type="button"><FontAwesomeIcon className="icon" icon={faFileImport}/>&nbsp;Upload</button>
+            <button onClick={() => setCreateOpened(true)} className="create-file-btn" type="button"><FontAwesomeIcon className="icon" icon={faFileCirclePlus}/>&nbsp;Create</button>
             <div className="nav-panel">
                 <div>
                     <NavLink className="nav-link" to="/dashboard/recent"><FontAwesomeIcon className="icon" icon={faClock}/><p>Recent</p></NavLink>
@@ -29,6 +34,8 @@ const DashboardPanel = () => {
             <div className="storage-panel">
                 <StorageBar completed={30}/>
             </div>
+            <MDDUploadWindow uploadOpened={uploadOpened} setUploadOpened={setUploadOpened}/>
+            <MDDCreateWindow createOpened={createOpened} setCreateOpened={setCreateOpened}/>
         </DashboardPanelStyled>
     );
 }

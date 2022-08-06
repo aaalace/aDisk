@@ -1,0 +1,19 @@
+.mddcu_bgq {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 6;
+    top: 0;
+    left: 0;
+}
+
+.mddcu_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 400px;
+    background-color: var(--create-upload-bg);
+    z-index: 7;
+}

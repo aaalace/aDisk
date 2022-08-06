@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import './style.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faA, faChartPie, faCalendarAlt, faArrowUpWideShort, faArrowDownWideShort, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faA, faChartSimple, faCalendarAlt, faArrowUpWideShort, faArrowDownWideShort, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 const MDMSorting = (props) => {
 
@@ -33,7 +33,7 @@ const MDMSorting = (props) => {
                     </div>
                     <div className="msmsorting_item" onClick={() => setSTopId(3)}>
                         <div className="msmsorting_item_data">
-                            <FontAwesomeIcon className="icon" icon={faChartPie}/>
+                            <FontAwesomeIcon className="icon" icon={faChartSimple}/>
                             <p className="msmsorting_name">Размеру</p>
                         </div>
                         <FontAwesomeIcon className={sTopId === 3 ? 'check' : 'notcheck'} icon={faCheck}/>
