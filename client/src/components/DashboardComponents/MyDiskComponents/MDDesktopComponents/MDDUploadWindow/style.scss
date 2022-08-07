@@ -8,11 +8,12 @@
     left: 0;
 }
 
-.mddcu_container {
-    $h: 400px;
-    $w: 600px;
+.mddu_container {
+    $h: 430px;
+    $w: 400px;
     position: fixed;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: $w;
@@ -21,7 +22,16 @@
     z-index: 7;
     top: calc((100vh - $h) / 2);
     left: calc((100vw - $w) / 2);
-    border-radius: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    text-decoration: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
 
     animation: slideInCreateUploadDesktop 0.5s;
 
@@ -31,6 +41,137 @@
         }
         to {
             transform: translateY(0);
+        }
+    }
+
+    .shared-access-wrapper-u {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        width: 90%;
+
+        .saw-name {
+            color: var(--profile-header-head-prewiew);
+            font-size: 12px;
+            margin: 0 0 8px 0;
+        }
+
+        .saw-data {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            .chioce-saw {
+                margin: 0 10px;
+                color: var(--black_to_white);
+                font-size: 14px;
+
+                &:first-child {
+                    margin: 0 10px 0 0;
+                }
+            }
+        }
+    }
+
+    .custom_hr {
+        display: block;
+        width: 90%;
+        border-top: 1px solid rgba(130, 130, 130, 0.393);
+        margin-bottom: 15px;
+        margin-top: 15px;
+    }
+
+    .mddcu_line {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: fit-content;
+        width: 100%;
+
+        .mddcu_inline-item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+
+            .mddcu_icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--profile-header-head-prewiew);
+                width: 90%;
+                height: 45px;
+                color: white;
+                border-radius: 10px;
+                margin-bottom: 7px;
+                margin-top: 7px;
+                font-size: 18px;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                &:hover {
+                    opacity: .8;
+                }
+                
+                .icon {
+                    padding-right: 5px;
+                }
+
+                p {
+                    padding-left: 5px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .drag-and-drop {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        border-radius: 10px;
+        height: 200px;
+        margin-top: 7px;
+        border: dotted 2px grey;
+        color: grey;
+
+        .dad-desc {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                margin: 7px;
+            }
+
+            .dad-icon-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin: 7px;
+
+                .icon {
+                    margin: 0 5px 0 5px;
+                    font-size: 40px;
+                }
+            }
+
+            .dad-counter {
+                margin: 7px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
         }
     }
 }

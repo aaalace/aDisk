@@ -23,6 +23,7 @@
     "react": "^18.1.0",
     "react-animations": "^1.0.0",
     "react-dom": "^18.1.0",
+    "react-dropzone": "^14.2.2",
     "react-image-crop": "^10.0.2",
     "react-intl": "^6.0.1",
     "react-loading": "^2.0.3",
