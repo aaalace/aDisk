@@ -5,11 +5,12 @@
     position: fixed;
     bottom: 0;
     width: 100vw;
-    height: 50px;
+    height: 60px;
     background-color: var(--profile-mobile-nav);
 
     .nav-link {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 100%;
@@ -21,8 +22,18 @@
         -khtml-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
+        text-decoration: none;
         user-select: none;
         font-size: 20px;
+
+        .icon {
+            padding: 3px;
+        }
+
+        p {
+            font-size: 12px;
+            padding: 1px;
+        }
     }
 
     .active {

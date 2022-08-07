@@ -22,7 +22,7 @@ const testState = {
 }
 
 // eslint-disable-next-line
-export default function(state = initialState, action) {
+export default function(state = testState, action) {
     const { type, payload } = action
 
     switch(type) {

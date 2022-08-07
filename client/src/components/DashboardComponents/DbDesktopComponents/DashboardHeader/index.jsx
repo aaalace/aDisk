@@ -26,8 +26,8 @@ const DashboardHeader = (props) => {
                 return 'Recent'
             case 'files':
                 return 'Files'
-            case 'images':
-                return 'Images'
+            case 'shared':
+                return 'Shared'
             default:
                 return 'Files'
         }

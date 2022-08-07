@@ -9,7 +9,6 @@ import DashboardPanel from "../../components/DashboardComponents/DbDesktopCompon
 import DashboardMobileNav from "../../components/DashboardComponents/DbMobileComponents/DashboardMobileNav";
 import DashboardMobileController from "../../components/DashboardComponents/DbMobileComponents/DashboardMobileController";
 import TopMenuBar from "../../components/DashboardComponents/MyDiskComponents/TopMenuBar";
-import MDMSearch from "../../components/DashboardComponents/MyDiskComponents/MDMobileComponents/MDMSearch";
 
 const Dashboard = () => {
     const board = useParams().page

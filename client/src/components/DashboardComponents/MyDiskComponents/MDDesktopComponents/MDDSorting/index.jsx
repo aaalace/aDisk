@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import './style.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faA, faChartSimple, faCalendarAlt, faArrowUpWideShort, faArrowDownWideShort } from '@fortawesome/free-solid-svg-icons'
+import { faA, faChartSimple, faCalendarAlt, faArrowUpWideShort, faArrowDownWideShort, faXmark } from '@fortawesome/free-solid-svg-icons'
 
 const MDDSorting = (props) => {
 
@@ -61,6 +61,7 @@ const MDDSorting = (props) => {
             <div className="sort-button-wid" onClick={openBottom}>{switchBottomNameById()}</div>
         </div>
         <div className="top_sorting_container" style={topOpened ? {display: 'flex'} : {display: 'none'}}>
+            <button type="button" className="tbsc-close" onClick={() => setTopOpened(false)}><FontAwesomeIcon className="icon" icon={faXmark}/></button>
             <div className="msmsorting_line">
                 <div className="msmsorting_custom_ul">
                     <div className="msmsorting_item" onClick={() => toSetTopId(1)}>
@@ -91,6 +92,7 @@ const MDDSorting = (props) => {
             </div>
         </div>
         <div className="bottom_sorting_container" style={bottomOpened ? {display: 'flex'} : {display: 'none'}}>
+        <button type="button" className="tbsc-close" onClick={() => setBottomOpened(false)}><FontAwesomeIcon className="icon" icon={faXmark}/></button>
             <div className="msmsorting_line">
                 <div className="msmsorting_custom_ul">
                     <div className="msmsorting_item" onClick={() => toSetBtmId(1)}>
