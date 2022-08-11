@@ -11,8 +11,8 @@ const MDDCreateWindow = (props) => {
     
     return (
         <>
-        <div className="mddcu_bgq" style={props.createOpened ? {display: 'flex'} : {display: 'none'}} onClick={() => props.setCreateOpened(false)}/>
-        <div className="mddc_container" style={props.createOpened ? {display: 'flex'} : {display: 'none'}}>
+        <div className="mddcu_bgq" onClick={() => props.setCreateOpened(false)}/>
+        <div className="mddc_container">
             <div className="shared-access-wrapper-c">
                 <p className="saw-name">
                     Shared access

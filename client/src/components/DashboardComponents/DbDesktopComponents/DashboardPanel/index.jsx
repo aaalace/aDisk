@@ -34,8 +34,19 @@ const DashboardPanel = () => {
             <div className="storage-panel">
                 <StorageBar completed={30}/>
             </div>
-            <MDDUploadWindow uploadOpened={uploadOpened} setUploadOpened={setUploadOpened}/>
-            <MDDCreateWindow createOpened={createOpened} setCreateOpened={setCreateOpened}/>
+            {
+                uploadOpened ?
+                <MDDUploadWindow uploadOpened={uploadOpened} setUploadOpened={setUploadOpened}/>
+                :
+                null
+            }
+            {
+                createOpened ?
+                <MDDCreateWindow createOpened={createOpened} setCreateOpened={setCreateOpened}/>
+                :
+                null
+            }
+
         </DashboardPanelStyled>
     );
 }

@@ -25,8 +25,8 @@ const MDDUploadWindow = (props) => {
         
     return (
         <>
-        <div className="mddcu_bgq" style={props.uploadOpened ? {display: 'flex'} : {display: 'none'}} onClick={() => props.setUploadOpened(false)}/>
-        <div className="mddu_container" style={props.uploadOpened ? {display: 'flex'} : {display: 'none'}}>
+        <div className="mddcu_bgq" onClick={() => props.setUploadOpened(false)}/>
+        <div className="mddu_container">
             <div className="shared-access-wrapper-u">
                 <p className="saw-name">
                     Shared access
