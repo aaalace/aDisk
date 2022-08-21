@@ -52,6 +52,8 @@
     --tmb-wid-bg: #eef0f3;
     --tmb-wid-bg-hovered: #f2f5fa;
     --tmb-wid-col: #000;
+
+    --item-bg: #eef0f3;
 }
 
 [data-theme='dark'] {
@@ -107,4 +109,6 @@
     --tmb-wid-bg: #2d2e31;
     --tmb-wid-bg-hovered: #373738;
     --tmb-wid-col: rgb(237, 237, 237);
+
+    --item-bg: #2d2e31;
 }

@@ -1,4 +1,10 @@
 .dashboard-content {
     display: flex;
-    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    margin-top: 85px;
+
+    @media screen and (max-width: 768px) {
+        margin-top: 70px;
+    }
 }

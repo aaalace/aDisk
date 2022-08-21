@@ -3,6 +3,11 @@
     align-items: flex-start;
     justify-content: center;
     height: 15vh;
+    display: flex;
+
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
 
     .dashboard-top-container {
         width: 100%;
@@ -114,6 +119,11 @@
     justify-content: flex-start;
     height: 45px;
     flex-direction: column;
+    display: flex;
+
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
 
     .search-box {
         display: flex;
@@ -144,6 +154,11 @@
                     padding: 9px 10px 10px 10px;
                 }
             }
+
+            
+            @media screen and (max-width: 768px) {
+                display: none;
+            }
         }
     
         .search-button {
@@ -164,6 +179,7 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        margin-top: 5px;
 
         .tmb-box {
             display: flex;

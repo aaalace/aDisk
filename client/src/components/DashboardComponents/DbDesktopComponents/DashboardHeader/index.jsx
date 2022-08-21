@@ -5,7 +5,6 @@ import { connect } from "react-redux"
 import { FormattedMessage } from 'react-intl'
 import { logout } from "../../../../actions/auth"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { DashboardHeaderStyled, DashboardSearchInput, DashboardSearchStyled } from "./styled"
 import { faAngleDown, faArrowRightFromBracket, faAngleUp, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 import TopMenuBar from "../../MyDiskComponents/TopMenuBar"
@@ -40,7 +39,7 @@ const DashboardHeader = (props) => {
     
     return (
         <>
-            <DashboardHeaderStyled className="dashboard-header">
+            <div className="dashboard-header">
                 <div className="dashboard-top-container">
                     <p className="name">{chooseHeaderName(props.page)}</p>
                     <div className="user-data-container">
@@ -62,10 +61,10 @@ const DashboardHeader = (props) => {
                         </div>
                     </div>
                 </div>
-            </DashboardHeaderStyled>
-            <DashboardSearchStyled className="dashboard-search-container">
+            </div>
+            <div className="dashboard-search-container">
                 <div className="search-box">
-                    <DashboardSearchInput value={request} onChange={(e) => setRequest(e.value)} className="search-input" type='text' placeholder='Search'/>
+                    <input value={request} onChange={(e) => setRequest(e.value)} className="search-input" type='text' placeholder='Search'/>
                     <Microphone setListenedText={setRequest}/>
                     <button className="search-button" type='button'><FontAwesomeIcon className="icon" icon={faMagnifyingGlass}/></button>
                 </div>
@@ -73,11 +72,16 @@ const DashboardHeader = (props) => {
                     <div className="tmb-box">
                         <TopMenuBar/>
                     </div> 
-                    <div className="sorting-wid">
-                        <MDDSorting/>
-                    </div> 
+                    {
+                    props.page !== 'recent' ?
+                        <div className="sorting-wid">
+                            <MDDSorting/>
+                        </div> 
+                    :
+                        null
+                    }
                 </div>
-            </DashboardSearchStyled>
+            </div>
         </>
     )
 }

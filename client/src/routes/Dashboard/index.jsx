@@ -3,6 +3,8 @@ import './style.scss'
 import { useMediaQuery } from "react-responsive"
 import { useParams } from "react-router-dom"
 
+import { DashboardMainStyled } from "./styled"
+
 import DashboardMyDisk from "../../components/DashboardComponents/DashboardMyDisk";
 import DashboardHeader from "../../components/DashboardComponents/DbDesktopComponents/DashboardHeader";
 import DashboardPanel from "../../components/DashboardComponents/DbDesktopComponents/DashboardPanel";
@@ -41,10 +43,10 @@ const Dashboard = () => {
             {!Mobile ?
                 <>
                     <DashboardPanel/>
-                    <div className="dashboard-main">
+                    <DashboardMainStyled className="dashboard-main">
                         <DashboardHeader page={board}/>
                         {chooseBoard(board)}
-                    </div>
+                    </DashboardMainStyled>
                 </>
             :   
                 <>

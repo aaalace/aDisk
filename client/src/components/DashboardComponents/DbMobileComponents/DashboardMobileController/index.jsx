@@ -19,7 +19,12 @@ const DashboardMobileController = (props) => {
                 <h1>{props.board}</h1>
                 <div className="actions-container">
                     <button className="action-button" onClick={() => setmsmsearchOpened(!msmsearchOpened)}><FontAwesomeIcon className="icon" icon={msmsearchOpened ? faClose : faMagnifyingGlass}/></button>
-                    <button className="action-button" onClick={() => setmsmsortingOpened(true)}><FontAwesomeIcon className="icon" icon={faEllipsis}/></button>
+                    {
+                    props.board !== 'recent' ?
+                        <button className="action-button" onClick={() => setmsmsortingOpened(true)}><FontAwesomeIcon className="icon" icon={faEllipsis}/></button>
+                    :
+                        null
+                    }
                 </div>
             </div>
             <MDMSearch msmsOpened={msmsearchOpened} setmsmsOpened={setmsmsearchOpened} />

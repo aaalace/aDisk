@@ -2,10 +2,6 @@
     display: flex;
     flex-direction: column;
     width: 100vw;
-
-    .dashboard-main {
-        width: 100%;
-    }
     
     .dashboard-mobile-main {
         width: 100%;
@@ -15,7 +11,7 @@
 
         .tmb-mobile-box {
             position: fixed;
-            padding: 0 10px;
+            padding: 10px 10px 0 10px;
         }
     }
 }
