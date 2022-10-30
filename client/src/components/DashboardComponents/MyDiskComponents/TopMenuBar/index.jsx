@@ -8,10 +8,6 @@ const TopMenuBar = () => {
     return (
         <div className="top-menu-bar">
             <div className="tmb-wid">
-                <FontAwesomeIcon className="icon star" icon={faStar}/>
-                <p>Favourites</p>
-            </div>
-            <div className="tmb-wid">
                 <FontAwesomeIcon className="icon" icon={faTrash}/>
                 <p>Recycle bin</p>
             </div>

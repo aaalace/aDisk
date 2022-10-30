@@ -6,4 +6,5 @@ urlpatterns = [
     path('user/', include('user.urls')),
     path('user_profile/', include('user_profile.urls')),
     path('reset_password/', include('reset_password.urls')),
+    path('storage/', include('storage.urls'))
 ]

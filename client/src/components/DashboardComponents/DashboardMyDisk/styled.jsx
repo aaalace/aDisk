@@ -7,8 +7,7 @@ export const DashboardItemsContainerStyled = styled.div`
     display: grid;
     grid-gap: 1rem;
     grid-auto-flow: dense;
-    width: 100%;
-    max-width: 1200px;
+    width: 90%;
 
     @media ${HomePageDevices.desktop} {
         ${props => props.cnt < 5 ? 
@@ -74,6 +73,13 @@ export const DbItemPreviewStyled = styled.div`
     color: ${props => props.format in options ? 'white' : 'var(--black_to_white)'};
     background-color: ${props => props.format in options ? options[props.format] : 'var(--profile-bg)'};
     border-bottom: 1px solid var(--item-bg);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    text-decoration: none;
+    user-select: none;
 
     p {
         font-size:30px;

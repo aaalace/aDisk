@@ -10,6 +10,7 @@ from user_profile.models import UserProfile
 from .serializers import UserSerializer
 from validate_email import validate_email
 from django.middleware.csrf import get_token
+from storage.views import create_user_folder
 
 
 class CheckAuthenticatedView(APIView):
@@ -56,6 +57,7 @@ class SignUpView(APIView):
                             user = User.objects.get(id=user.id)
 
                             UserProfile.objects.create(user=user, name='', user_id=user.id)
+                            create_user_folder(user.id)
                             return Response({'success': 'User created'})
                 return Response({'error': 'passwords_do_not_match'})
             return Response({'error': 'email_does_not_exists'})

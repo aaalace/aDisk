@@ -3,7 +3,7 @@ import './style.scss'
 import { connect } from "react-redux";
 import { LoginContainer, LoginPage } from "./styled";
 import { useMediaQuery } from 'react-responsive'
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import AdvantagesCarousel from "../../components/AuthComponents/AdvantagesCarousel";
 import LoginForm from "../../components/AuthComponents/LoginForm";
