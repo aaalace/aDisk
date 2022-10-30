@@ -4,11 +4,12 @@ import { DashboardItemStyled, DbItemPreviewStyled, DbItemNameStyled, DbItemPrevi
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolder } from '@fortawesome/free-solid-svg-icons'
 
-const DashboardItem = ({item}) => {
+const DashboardItem = (props) => {
+    const item = props.item
 
     const getItemPreview = () => {
         if(item.type === 'image'){
-            return <DbItemPreviewImgStyled alt="" src={`${process.env.REACT_APP_API_URL}/storage/get_img_preview/${item.name}`}></DbItemPreviewImgStyled>
+            return <DbItemPreviewImgStyled alt="" src={`${process.env.REACT_APP_API_URL}/storage/get_img_preview/${props.user_id}/${props.page}/${item.name.split('#')[0]}/${item.name.split('#')[1]}/${item.name.split('#')[2]}`}></DbItemPreviewImgStyled>
         }
         if(item.type === 'folder'){
             return <FontAwesomeIcon className="icon" icon={faFolder} style={{color: 'var(--profile-header-head-prewiew)'}}/>
@@ -24,7 +25,11 @@ const DashboardItem = ({item}) => {
                 {getItemPreview()}
             </DbItemPreviewStyled>
             <DbItemNameStyled className="item-name">
-                <p>{item.name}</p>
+                {
+                    item.type === 'image' ?
+                    <p>{item.name.split('#')[2]}</p> :
+                    <p>{item.name}</p>
+                }
             </DbItemNameStyled>
         </DashboardItemStyled>
     );

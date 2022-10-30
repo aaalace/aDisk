@@ -5,6 +5,9 @@ import os
 from datetime import datetime
 from base64 import b64decode, b64encode
 from PIL import Image
+from django.http import FileResponse
+import codecs
+
 
 def create_user_folder(user_id):
     user_dir = STATICFILES_DIRS[0] + f'/{user_id}'
@@ -80,33 +83,49 @@ class GetFiles(APIView):
     
     def get(self, request, user_id, place, format=None):
 
-        if place == 'files':
-            place = 'private'
-        if place == 'recent':
-            place = 'private'
-
-        folder_dir = STATICFILES_DIRS[0] + f'/{user_id}/{place}'
-        dataset = os.listdir(folder_dir)
-
-        data = {
-            'folders': [],
-            'files': []
-        }
-
-        for el in dataset:
-            try:
-                im = Image.open(os.path.join(folder_dir, el))
-                item = {'type': 'image', 'format': el.split('.')[-1], 'name': el.split('#')[-1]}
-                data['files'].append(item)
-            except IOError:
-                if f'{folder_dir} + {el}'.count('.') > 0:
-                    item = {'type': 'file', 'format': el.split('.')[-1], 'name': el.split('#')[-1]}
-                    data['files'].append(item)
-                else:
-                    item = {'type': 'folder', 'format': 'folder', 'name': el.split('#')[-1]}
-                    data['folders'].append(item)
-        print(data)
         try:
+            if place == 'files':
+                place = 'private'
+            if place == 'recent':
+                place = 'private'
+
+            folder_dir = STATICFILES_DIRS[0] + f'/{user_id}/{place}'
+            dataset = os.listdir(folder_dir)
+
+            data = {
+                'folders': [],
+                'files': []
+            }
+
+            for el in dataset:
+                try:
+                    im = Image.open(os.path.join(folder_dir, el))
+                    item = {'type': 'image', 'format': el.split('.')[-1], 'name': el}
+                    data['files'].append(item)
+                except IOError:
+                    if f'{folder_dir} + {el}'.count('.') > 0:
+                        item = {'type': 'file', 'format': el.split('.')[-1], 'name': el.split('#')[-1]}
+                        data['files'].append(item)
+                    else:
+                        item = {'type': 'folder', 'format': 'folder', 'name': el.split('#')[-1]}
+                        data['folders'].append(item)
             return Response({'success': 'Files got', 'data': data})
         except Exception as e:
             return Response({'error': 'File not got'})
+
+
+class GetImagePreview(APIView):
+    
+    def get(self, request, user_id, place, pic_dt, pic_size, pic_name, format=None):
+
+        try:
+            if place == 'files':
+                place = 'private'
+            if place == 'recent':
+                place = 'private'
+            img = open(STATICFILES_DIRS[0] + f'/{user_id}/{place}/{pic_dt}' + "#" + f'{pic_size}' + "#" + f'{pic_name}', 'rb')
+            response = FileResponse(img)
+            return response
+        except Exception as e:
+            print(e)
+            return FileResponse('')

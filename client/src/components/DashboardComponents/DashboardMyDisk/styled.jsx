@@ -107,11 +107,19 @@ export const DbItemNameStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 0 15px;
+    padding: 5px 15px;
     width: 100%;
     height: 25%;
     color: var(--black_to_white);
     border-radius: 0 0 8px 8px;
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+
+    p {
+        overflow: hidden;
+        white-space: nowrap;
+    }
 `
 
 export const DbItemPreviewImgStyled = styled.img`

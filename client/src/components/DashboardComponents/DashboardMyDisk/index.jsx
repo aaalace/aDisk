@@ -21,22 +21,44 @@ const DashboardMyDisk = (props) => {
         setFolders(gottenItems[1].folders)
     }
 
+    const [readyToUpdate, setReadyToUpdate] = useState(false)
     useEffect(() => {
         if(props.user_id !== 0){
-            getItems() 
+            if(props.page === 'shared'){
+                if(props.items['shared'].folders.length === 0 && props.items['shared'].files.length === 0){
+                    getItems() 
+                }else{
+                    setFiles(props.items['shared'].files)
+                    setFolders(props.items['shared'].folders)
+                }
+            }
+            if(props.page !== 'shared'){
+                if(props.items['private'].folders.length === 0 && props.items['private'].files.length === 0){
+                    getItems()
+                }else{
+                    setFiles(props.items['private'].files)
+                    setFolders(props.items['private'].folders)
+                }
+            }
         }
-    }, [props.user_id, props.page])
+    }, [props.page, readyToUpdate])
+
+    useEffect(() => {
+        if(props.user_id !== 0){
+            setReadyToUpdate(true)
+        }
+    }, [props.user_id])
 
     return (
         <div className="dashboard-content">
             <MDMCreateUpload/>
             <DashboardItemsContainerStyled cnt={folders.length + files.length} >
-                {files.map(item => {
-                    return <DashboardItem key={nanoid()} item={item} />
+            {folders.map(item => {
+                    return <DashboardItem key={nanoid()} item={item} page={props.page} user_id={props.user_id}/>
                 })}
-                {folders.map(item => {
-                    return <DashboardItem key={nanoid()} item={item} />
-                })}
+            {files.map(item => {
+                return <DashboardItem key={nanoid()} item={item} page={props.page} user_id={props.user_id}/>
+            })}
             </DashboardItemsContainerStyled>
         </div>
     );
@@ -45,7 +67,8 @@ const DashboardMyDisk = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        user_id: state.profile.user_id
+        user_id: state.profile.user_id,
+        items: state.dashboard
     }
 }
 

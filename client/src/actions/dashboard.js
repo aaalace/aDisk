@@ -99,7 +99,8 @@ export const getFiles = (user_id, board) => async dispatch => {
 
         if(result.data.success){
             dispatch({
-                type: GET_FILES_SUCCESS
+                type: GET_FILES_SUCCESS,
+                payload: {'data': result.data.data, 'board': board}
             })
             return [true, result.data.data]
         }
