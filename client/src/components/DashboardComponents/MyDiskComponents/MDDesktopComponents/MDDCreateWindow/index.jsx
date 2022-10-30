@@ -18,10 +18,13 @@ const MDDCreateWindow = (props) => {
 
     const createNewFolder = () => {
         const place = sharedOn ? 'shared' : 'private'
-        props.createNewFolder(props.user_id, place, folderName)
-        setNameInputOpened(false)
-        setFolderName('')
-        setSharedOn(false)
+        if(folderName.length > 0){
+            props.createNewFolder(props.user_id, place, folderName)
+            setNameInputOpened(false)
+            setFolderName('')
+            setSharedOn(false)
+            props.setCreateOpened(false)
+        }
     }
     
     return (

@@ -23,7 +23,7 @@
         width: 80%;
         margin-top: 5px;
         background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
-        border-radius: 10px 10px 20px 20px;
+        border-radius: 5px 5px 15px 15px;
         border-style: none;
         box-sizing: border-box;
         color: #FFFFFF;
@@ -40,7 +40,7 @@
 
     .upload-file-btn {
         @extend .create-file-btn;
-        border-radius: 20px 20px 10px 10px;
+        border-radius: 15px 15px 5px 5px;
         background-image: linear-gradient(92.88deg, #673FD7 9.16%, #5643CC 43.89%, #455EB5 64.72%);
 
         &:hover {

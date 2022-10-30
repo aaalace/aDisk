@@ -18,10 +18,12 @@ const MDMCreateUpload = (props) => {
     
     const createNewFolder = () => {
         const place = sharedOn ? 'shared' : 'private'
-        props.createNewFolder(props.user_id, place, folderName)
-        setNameInputOpened(false)
-        setFolderName('')
-        setSharedOn(false)
+        if(folderName.length > 0){
+            props.createNewFolder(props.user_id, place, folderName)
+            setNameInputOpened(false)
+            setFolderName('')
+            setSharedOn(false)
+        }
     }
 
     const sendEncodedFiles = (b64, name) => {
@@ -93,7 +95,7 @@ const MDMCreateUpload = (props) => {
                 </div>
             </div>
         </div>
-        <button className="create_upload_mobile_button" onClick={() => setCreateUploadOpened(true)}><FontAwesomeIcon className="icon" icon={faPlus}/></button>
+        <button className="create_upload_mobile_button" onClick={() => setCreateUploadOpened(true)}><FontAwesomeIcon className="" icon={faPlus}/></button>
         </>
     );
 }

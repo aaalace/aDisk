@@ -10,8 +10,10 @@
         margin-bottom: 60px;
 
         .tmb-mobile-box {
+            width: 100%;
             position: fixed;
-            padding: 10px 0 0 20px;
+            background-color: var(--profile-bg);
+            padding: 5px 0 0 20px;
         }
     }
 }

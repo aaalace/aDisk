@@ -7,6 +7,7 @@ from base64 import b64decode, b64encode
 from PIL import Image
 from django.http import FileResponse
 import codecs
+from user_profile.models import UserProfile
 
 
 def create_user_folder(user_id):
@@ -67,7 +68,6 @@ class UploadNewFile(APIView):
                 file_dir = STATICFILES_DIRS[0] + f'/{user_id}/{folder_place}'
                 file_name = f'{dt}#{str(file_size)}#{name}'
                 completeName = os.path.join(file_dir, file_name)
-
                 file = open(completeName, "wb")
                 file.write(content)
                 file.close()

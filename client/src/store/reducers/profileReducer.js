@@ -27,7 +27,8 @@ const testState = {
     username: 'aDisk',
     name: 'adisk',
     date_joined: '2022-06-06',
-    avatar: 'default.jpg'
+    avatar: 'default.jpg',
+    storage: 0
 }
 
 // eslint-disable-next-line

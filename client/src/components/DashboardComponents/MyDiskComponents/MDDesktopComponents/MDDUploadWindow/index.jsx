@@ -27,10 +27,18 @@ const MDDUploadWindow = (props) => {
         const place = sharedOn ? 'shared' : 'private'
         props.uploadNewFile(props.user_id, place, name, b64)
         setSharedOn(false)
+        setResultFiles([])
+        props.setUploadOpened(false)
     }
 
     const encodeFiles = (event) => {
-        const files = event.target.files
+        let files = []
+        if(!event){
+            files = resultFiles
+        }
+        else{
+            files = event.target.files
+        }
         for (let i = 0; i < files.length; i++){
             const name = files[i].name
             const reader = new FileReader()
@@ -50,7 +58,7 @@ const MDDUploadWindow = (props) => {
         <>
         <div className="mddcu_bgq" onClick={() => props.setUploadOpened(false)}/>
         <input value={''} type="file" multiple ref={selectedFileRef} style={{display: "none"}} onChange={encodeFiles}/>
-        <div className="mddu_container">
+        <div className="mddu_container" style={resultFiles.length > 0 ? {height: '425px'} : {}}>
             <div className="shared-access-wrapper-u">
                 <p className="saw-name">
                     Shared access
@@ -90,6 +98,10 @@ const MDDUploadWindow = (props) => {
                 }
                 </div>
             </div>
+            {resultFiles.length > 0 ?
+                <div style={{width: '90%', display: 'flex', alignItems: 'center', justifyContent: 'flex-end'}}><p className="send_dropzone" onClick={() => encodeFiles(false)}>Save</p></div>
+            :
+            <></>}
         </div>
         </>
     );
