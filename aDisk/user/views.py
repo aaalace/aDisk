@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import JsonResponse
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.utils.decorators import method_decorator
 from django.contrib import auth
@@ -10,6 +10,7 @@ from user_profile.models import UserProfile
 from .serializers import UserSerializer
 from validate_email import validate_email
 from django.middleware.csrf import get_token
+from storage.views import create_user_folder
 
 
 class CheckAuthenticatedView(APIView):
@@ -56,6 +57,7 @@ class SignUpView(APIView):
                             user = User.objects.get(id=user.id)
 
                             UserProfile.objects.create(user=user, name='', user_id=user.id)
+                            create_user_folder(user.id)
                             return Response({'success': 'User created'})
                 return Response({'error': 'passwords_do_not_match'})
             return Response({'error': 'email_does_not_exists'})
@@ -95,6 +97,7 @@ class LogoutView(APIView):
             print(e)
             return Response({'error': 'Something went wrong'})
 
+
 @method_decorator(ensure_csrf_cookie, name='dispatch')
 class GetCSRFToken(APIView):
     permission_classes = (AllowAny, )
@@ -133,7 +136,6 @@ class GetUsersView(APIView):
 
             
 class ChangePasswordView(APIView):
-    permission_classes = (AllowAny, )
 
     def put(self, request, format=None):
         try:
@@ -148,7 +150,7 @@ class ChangePasswordView(APIView):
                 user.set_password(new_password)
                 user.save()
                 return Response({'success': 'Password changed'})
-            return Response({'error': 'Diffenrent passwords'})
+            return Response({'error': 'passwords_do_not_match'})
         except Exception as e:
             print(e)
             return Response({'error': 'Something went wrong'})

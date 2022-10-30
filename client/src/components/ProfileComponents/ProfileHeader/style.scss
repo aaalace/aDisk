@@ -7,6 +7,7 @@
     .name {
         font-size: 30px;
         font-weight: 600;
+        color: var(--black_to_white);
     }
 
     @media screen and (max-width: 768px) {
@@ -43,11 +44,13 @@
 
                 p {
                     margin: 0 5px 0 5px;
+                    color: var(--black_to_white);
                 }
     
                 .icon{
                     font-size: 15px;
                     margin-top: 2px;
+                    color: var(--profile-nav-panel-non-active);
                 }
             }
 
@@ -55,10 +58,10 @@
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                position: fixed;
+                position: absolute;
                 margin-top: 35px;
                 color: white;
-                background-color: #727272;
+                background-color: #f8392f;
                 padding: 5px 10px;
                 border-radius: 5px;
                 font-size: 15px;
@@ -77,17 +80,17 @@
             width: 55px;
             height: 55px;
             margin: auto;
+            margin-right: 7px;
 
             position: relative;
-            padding: 3px;
             box-sizing: border-box;
 
-            $border: 5px;
+            $border: 3px;
             color: #FFF;
-            background: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%) no-repeat;
+            background: var(--profile-bg);
             background-size: cover;
             background-clip: padding-box;
-            border: solid $border transparent; 
+            border: solid $border var(--profile-header-head-prewiew); 
             border-radius: 30px;            
         }
     }

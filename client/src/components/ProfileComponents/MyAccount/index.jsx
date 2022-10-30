@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 import './style.scss'
 import { connect } from "react-redux"
 import { MyAccountView, MyAccountHeader, HeaderDataContainer, MyAccountData } from "./styled"
@@ -29,20 +29,13 @@ const MyAccount = (props) => {
         return <><FormattedMessage id='prof_since'/>&nbsp;{date.split('-')[2]}&nbsp;<FormattedMessage id={months[date.split('-')[1]]}/>&nbsp;{date.split('-')[0]}</>
     }
 
-    const [headerBgId, setHeaderBgId] = useState(0)
-
-    const headerBg = [
-        {'background': 'linear-gradient(45deg, #455db57e 9.16%, #5543cc82 43.89%, #683fd77b 64.72%)', 'preview': '#683fd77b'},
-        {'background': 'linear-gradient(45deg, #e5a0677e 9.16%, #e98b3e7e 43.89%, #ec710c7e 64.72%)', 'preview': '#ec710c7e'}
-    ]
-
     return (
         <MyAccountView className="my-account-view">
             <MyAccountHeader className="my-account-header">
-                <div className="header-profile-head-image" style={{background: headerBg[headerBgId]['background']}}>
+                <div className="header-profile-head-image">
                 </div>
                 <HeaderDataContainer className="header-profile-head-data-container">
-                    <img className="profile-icon" alt="" src="../images/default-image.jpg"></img>
+                <img className="profile-icon" alt="" src={`${process.env.REACT_APP_API_URL}/user_profile/get_user_avatar/${props.avatar_global}`}></img>
                     <div className="center-row">
                         <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                             <p className="username">{props.username_global}</p>
@@ -53,27 +46,27 @@ const MyAccount = (props) => {
             </MyAccountHeader>
             <MyAccountData className="my-account">
                 <div className="name-surname-container">
-                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faUser} />&nbsp;<FormattedMessage id='prof_name'/></p>
+                    <p className="title"><FontAwesomeIcon className="icon" icon={faUser} />&nbsp;<FormattedMessage id='prof_name'/></p>
                     <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
                         <p>{props.name_global}</p>
                     </div>
                 </div>
                 <div className="email-container">
-                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faEnvelope} />&nbsp;<FormattedMessage id='prof_email'/></p>
+                    <p className="title"><FontAwesomeIcon className="icon" icon={faEnvelope} />&nbsp;<FormattedMessage id='prof_email'/></p>
                     <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
                         <p>{props.email_global}</p>
                     </div>
                 </div>
                 <div className="subscription-container">
-                    <p className="title"><FontAwesomeIcon className="icon" style={{color: headerBg[headerBgId]['preview']}} icon={faCloud} />&nbsp;<FormattedMessage id='prof_status'/></p>
+                    <p className="title"><FontAwesomeIcon className="icon" icon={faCloud} />&nbsp;<FormattedMessage id='prof_status'/></p>
                     <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
-                        <p style={{color: headerBg[headerBgId]['preview']}}>AD+</p>
+                        <p className="sub">AD+</p>
                     </div>
                 </div>
             </MyAccountData>
             <div className="storage-stats">
                 <p className="stats-header"><FormattedMessage id='prof_statistics'/></p>
-                <Charts themeId={headerBgId}/>
+                <Charts/>
             </div>
         </MyAccountView>
     )
@@ -86,7 +79,8 @@ const mapStateToProps = state => {
         username_global: state.profile.username,
         email_global: state.profile.email,
         name_global: state.profile.name,
-        date_joined_global: state.profile.date_joined
+        date_joined_global: state.profile.date_joined,
+        avatar_global: state.profile.avatar
     }
 }
 

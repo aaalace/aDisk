@@ -3,14 +3,15 @@ import './style.scss'
 import { SupportContainer, QuestionContainer } from "./styled"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserAstronaut, faHeadset, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { FormattedMessage } from 'react-intl'
 
 const SupportPage = () => {
 
     return (
         <SupportContainer className="support-container">
             <div className="support-header">
-                <p>Не нашли ответ на ваш вопрос?</p>
-                <a href = "mailto: tyj5resd@gmail.com">Напишите нам<FontAwesomeIcon className="icon" icon={faEnvelope}/></a>
+                <p><FormattedMessage id="supp_question"/></p>
+                <a href = "mailto: tyj5resd@gmail.com"><FormattedMessage id="supp_write_us"/><FontAwesomeIcon className="icon" icon={faEnvelope}/></a>
             </div>
             <QuestionContainer id={1} className="question-container">
                 <div className="question">

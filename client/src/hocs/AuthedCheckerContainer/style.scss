@@ -1,0 +1,42 @@
+.cookie-modal {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 400px;
+    height: 200px;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--cookie_bg);
+    color: var(--black_to_white);
+
+    @media screen and (max-width: 768px) {
+        width: 90vw;
+        height: 180px;
+    }
+
+    .warning {
+        width: 80%;
+        margin-top: 15px;
+        font-size: 20px;
+    }
+
+    .info {
+        width: 80%;
+    }
+
+    .accept {
+        display: flex;
+        justify-content: flex-end;
+        width: 80%;
+
+        .accept-button {
+            width: 150px;
+            height: 30px;
+            background-color: #5643CC;
+            color: white;
+            border: 0;
+        }
+    }
+}

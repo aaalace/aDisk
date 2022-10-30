@@ -1,0 +1,95 @@
+.msmsorting_bg {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 6;
+    top: 0;
+}
+
+.msmsorting_container {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 315px;
+    width: 100vw;
+    background-color: var(--create-upload-bg);
+    z-index: 7;
+    border-radius: 20px 20px 0 0;
+
+    animation: slideInCreateUpload 0.3s;
+
+    @keyframes slideInCreateUpload {
+        from {
+            transform: translateY(100%);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    .msmsorting_line {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: fit-content;
+        width: 90%;
+
+        .msmsorting_heading {
+            color: grey;
+            margin: 30px 0;
+            font-size: 13px;
+            margin-left: 11px;
+        }
+
+        .msmsorting_custom_ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+
+            .msmsorting_item {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 20px;
+
+                .msmsorting_item_data {
+                    display: flex;
+                    flex-direction: row;
+
+                    .icon {
+                        font-size: 18px;
+                        color: var(--profile-nav-panel-non-active);
+                        width: 40px;
+                    }
+    
+                    p {
+                        font-size: 15px;
+                        color: var(--black_to_white);
+                    }
+                }
+
+                .notcheck {
+                    display: none;
+                }
+
+                .check {
+                    font-size: 18px;
+                    color: var(--profile-header-head-prewiew);
+                }
+            }
+        }
+    }
+
+    .custom_hr_sorting {
+        display: block;
+        width: 100%;
+        border-top: 1px solid rgba(130, 130, 130, 0.393);
+        margin-bottom: 25px;
+        margin-top: 5px;
+    }
+}

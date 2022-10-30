@@ -20,6 +20,7 @@ export const SupportContainer = styled.div`
         align-items: center;
         width 100vw;
         margin-top: 40px;
+        padding-top: 70px;
     }
 `
 

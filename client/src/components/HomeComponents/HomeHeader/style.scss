@@ -44,21 +44,23 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 55px;
-                height: 55px;
+                width: 50px;
+                height: 50px;
                 margin: auto;
 
                 position: relative;
-                padding: 3px;
                 box-sizing: border-box;
-
-                $border: 5px;
+                $border: 3px;
                 color: #FFF;
-                background: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%) no-repeat;
+                background: var(--profile-bg);
                 background-size: cover;
                 background-clip: padding-box;
-                border: solid $border transparent; 
-                border-radius: 30px;            
+                border: solid $border #6651f0; 
+                border-radius: 30px;   
+                
+                &:hover {
+                    border: solid $border #6651f084; 
+                }
             }
 
             .home-header_sign-in {

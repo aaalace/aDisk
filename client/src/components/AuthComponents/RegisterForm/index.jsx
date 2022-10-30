@@ -30,7 +30,7 @@ const RegisterForm = (props) => {
         e.preventDefault()
         const res = await props.register(email, username, password, rePassword)
         if(res[0]){
-            navigate('/login')
+            navigate('/login/entry')
             setUsername('')
             setPassword('')
             setEmail('')
@@ -40,6 +40,12 @@ const RegisterForm = (props) => {
             setErrorState(res[1])
         }
     }
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter' && readyToSend) {
+            onSubmit(event)
+        }
+    }  
 
  
     return (
@@ -59,7 +65,7 @@ const RegisterForm = (props) => {
                         <hr></hr>
                     </div>
 
-                    <form onSubmit={e => onSubmit(e)}>
+                    <form onSubmit={e => onSubmit(e)} onKeyDown={handleKeyDown}>
                         <CSRFToken/>
                         <div className="username-register">
                             <div className="username-line">
@@ -93,7 +99,7 @@ const RegisterForm = (props) => {
                     <div className="already-registered-container">
                         <div style={{display: 'flex'}}>
                             <p className="question"><FormattedMessage id='sign_up_question'/>&nbsp;&nbsp;</p>
-                            <Link className="solution" to='/login'><FormattedMessage id='sign_up_answer'/></Link>
+                            <Link className="solution" to='/login/entry'><FormattedMessage id='sign_up_answer'/></Link>
                         </div>
                     </div>
                 </div> 

@@ -1,0 +1,43 @@
+.react-switch-checkbox-shared {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+  
+.react-switch-label-shared {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 48px;
+    height: 24px;
+    border-radius: 100px;
+    position: relative;
+    transition: background-color .2s;
+    background: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%) no-repeat;
+    background-size: cover;
+    background-clip: padding-box;
+    border-radius: 30px;            
+}
+  
+.react-switch-label-shared .react-switch-button-shared {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 45px;
+    transition: .2s;
+    background: rgba(255, 255, 255, 0);
+    color: white;
+}
+  
+.react-switch-checkbox-shared:checked + .react-switch-label-shared .react-switch-button-shared {
+    left: calc(100% - 6px);
+    transform: translateX(-100%);
+}
+
+.react-switch-label-shared:active .react-switch-button-shared {
+    width: 14px;
+}

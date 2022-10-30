@@ -73,11 +73,11 @@ const HomeHeader = (props) => {
                 { !Mobile ? 
                     <div className="buttons-menu">
                         {props.isAuthenticated ? 
-                            <img className="profile-icon" alt="" src="../images/default-image.jpg" onClick={() => navigate('/profile/account')}></img>
+                            <img className="profile-icon" onClick={() => navigate('/profile/account')} alt="" src={`${process.env.REACT_APP_API_URL}/user_profile/get_user_avatar/${props.avatar_global}`}></img>
                         : 
-                            <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/>&nbsp;&nbsp;<FormattedMessage id='login_button'/></button>
+                            <button onClick={() => navigate('/login/entry')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/>&nbsp;&nbsp;<FormattedMessage id='login_button'/></button>
                         }
-                        <HomeHeaderPayment scrolled={scroll === 0 ? false : true} onClick={props.priceScrollFunc} type="button" className="home-header_payment"><FontAwesomeIcon icon={faCoins}/>&nbsp;&nbsp;AD+</HomeHeaderPayment>
+                        <HomeHeaderPayment onClick={props.priceScrollFunc} type="button" className="home-header_payment"><FontAwesomeIcon icon={faCoins}/>&nbsp;&nbsp;AD+</HomeHeaderPayment>
                     </div> 
                 : 
                     <div className="buttons-menu-mobile">
@@ -88,9 +88,9 @@ const HomeHeader = (props) => {
                             <ThemeSwitch checked={appTheme} onChange={() => handleThemeChange(!appTheme)}/>
                         </div>
                         {props.isAuthenticated ? 
-                            <img className="profile-icon" alt="" src="../images/default-image.jpg" onClick={() => navigate('/profile/account')}></img>
+                             <img className="profile-icon" onClick={() => navigate('/profile/account')} alt="" src={`${process.env.REACT_APP_API_URL}/user_profile/get_user_avatar/${props.avatar_global}`}></img>
                         : 
-                            <button onClick={() => navigate('/login')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/></button>
+                            <button onClick={() => navigate('/login/entry')} type="button" className="home-header_sign-in"><FontAwesomeIcon icon={faUserAlt}/></button>
                         }
                     </div>
                 }
@@ -107,7 +107,8 @@ const HomeHeader = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        isAuthenticated: state.auth.isAuthenticated
+        isAuthenticated: state.auth.isAuthenticated,
+        avatar_global: state.profile.avatar
     }
 }
 

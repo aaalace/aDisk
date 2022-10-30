@@ -30,7 +30,7 @@ const Block = (props) => {
     let bottomButtonNavigate = '/register'
     if(props.isAuthenticated){
         bottomButtonMessageId = 'open_disk_btn'
-        bottomButtonNavigate = '/dashboard'
+        bottomButtonNavigate = '/dashboard/recent'
     }
 
     const nameSwitch = (id) => {
@@ -144,7 +144,7 @@ const Home = (props) => {
     let bottomButtonNavigate = '/register'
     if(props.isAuthenticated){
         bottomButtonMessageId = 'open_disk_btn'
-        bottomButtonNavigate = '/dashboard'
+        bottomButtonNavigate = '/dashboard/recent'
     }
 
     useEffect(() => {

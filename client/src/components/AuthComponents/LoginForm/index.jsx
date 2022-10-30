@@ -21,7 +21,7 @@ const LoginForm = (props) => {
 
         const res = await props.login(username, password)
         if(res[0]){
-            navigate('/dashboard')
+            navigate('/dashboard/recent')
             setUsername('')
             setPassword('')
         }
@@ -29,6 +29,12 @@ const LoginForm = (props) => {
             setErrorState(res[1])
         }
     }
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            onSubmit(event)
+        }
+    }    
 
     return (
       <LoginFormStyled className="login-form">
@@ -48,7 +54,7 @@ const LoginForm = (props) => {
                     <hr></hr>
                 </div>
 
-                <form onSubmit={e => onSubmit(e)}>
+                <form onSubmit={e => onSubmit(e)} onKeyDown={handleKeyDown}>
                     <CSRFToken/>
                     <div className="username-sign-in">
                         <div className="username-line">
@@ -59,7 +65,7 @@ const LoginForm = (props) => {
                             <p><FormattedMessage id='sign_password'/></p>
                             <input type='password' onChange={e => setPassword(e.target.value)} value={password}/>
                         </div>
-                        <div className="username-line"><p className="forget-pass">Forgot your password?</p></div>
+                        <div className="username-line" onClick={() => navigate('/login/reset')}><p className="forget-pass">Forgot your password?</p></div>
                     </div>
                     <div style={{marginTop: '20px'}}>
                         {errorState ? <p style={{color: 'red', fontSize: '13px', bottom: '10px', position: 'relative'}}>{<FormattedMessage id={errorState}/>}</p> : ''}

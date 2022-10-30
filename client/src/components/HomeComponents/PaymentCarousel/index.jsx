@@ -2,7 +2,6 @@ import React from "react"
 import './style.scss'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
-import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { FormattedMessage } from 'react-intl'
 import { useMediaQuery } from "react-responsive"
@@ -24,7 +23,6 @@ const CommonSubscriptionBlock = (props) => {
             <div className="carousel-block-body">
                 <ul className="list">
                     <li><FontAwesomeIcon icon={faCheck} style={{color: '#79d246', marginRight: '5px'}}/><b>10&nbsp;</b><FormattedMessage id='home_payment_body_1'/></li>
-                    <li><FontAwesomeIcon icon={faClose} style={{color: '#c81b1b', marginRight: '5px'}}/><FormattedMessage id='home_payment_body_2'/></li>
                     <li><FontAwesomeIcon icon={faClose} style={{color: '#c81b1b', marginRight: '5px'}}/><FormattedMessage id='home_payment_body_3'/></li>
                 </ul>
                 <hr style={{margin: '20px 0', color: '#79d246'}}></hr>
@@ -51,7 +49,6 @@ const ADPLUSSubscriptionBlock = () => {
             <div className="carousel-block-body-ADPLUS">
                 <ul className="list">
                     <li><FontAwesomeIcon icon={faCheck} style={{color: '#79d246', marginRight: '5px'}}/><b style={{color: '#5643CC'}}>100&nbsp;</b><FormattedMessage id='home_payment_body_1'/></li>
-                    <li><FontAwesomeIcon icon={faCheck} style={{color: '#79d246', marginRight: '5px'}}/><FormattedMessage id='home_payment_body_2'/></li>
                     <li><FontAwesomeIcon icon={faCheck} style={{color: '#79d246', marginRight: '5px'}}/><FormattedMessage id='home_payment_body_3'/></li>
                 </ul>
                 <hr style={{margin: '20px 0', color: '#79d246'}}></hr>
@@ -71,18 +68,7 @@ const ADPLUSSubscriptionBlock = () => {
 const PaymentCasrouselBlock = () => {
     const navigate = useNavigate()
 
-    const Mobile = useMediaQuery({
-        query: '(max-width: 768px)'
-    })
-
-    let onesState = false
-    if(Mobile){
-        onesState = true
-    }
-    
-    useEffect(() => {
-        Aos.init({duration: 3000, once: onesState})
-    }, [onesState])
+    Aos.init({duration: 2000, once: true})
 
     const navigateFromCarousel = () => {
         navigate('/register')
@@ -102,6 +88,7 @@ const PaymentCasrousel = (props) => {
         <PaymentCarouselStyled className='payment-carousel-container' ref={props.paymentRef}>
             <div className='payment-carousel-header'>
                 <p className='top'>AD+</p>
+                <p className="middle">Temporarily unavailable</p>
                 <p className='bottom'><FormattedMessage id='home_payment_header'/></p>
             </div>
             <PaymentCasrouselBlock/>

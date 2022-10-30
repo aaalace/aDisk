@@ -3,6 +3,10 @@
     flex-direction: column;
     width: 90%;
 
+    @media screen and (max-width: 769px) {
+        padding: 0 5vw;
+    }
+
     .pps-header {
         display: flex;
         flex-direction: column;
@@ -18,11 +22,12 @@
         .pps-header-name {
             font-weight: 600;
             margin-bottom: 10px;
+            color: var(--black_to_white);
         }
 
         .pps-header-desc {
             font-size: 13px;
-            color: rgb(99, 99, 99);
+            color: var(--profile-nav-panel-non-active);
             margin-bottom: 20px;
         }
     }
@@ -55,7 +60,7 @@
                 .pps-main-container-name {
                     font-size: 14px;
                     font-weight: 600;
-                    color: rgb(102, 102, 102);
+                    color: var(--profile-nav-panel-non-active);
                     margin-bottom: 10px;
 
                 }
@@ -63,11 +68,13 @@
                 .pps-main-container-input {
                     width: 80%;
                     height: 32px;
-                    border: 1px solid rgb(217, 217, 217);
+                    border: 1px solid var(--profile-input-border);
                     border-radius: 8px;
                     padding: 16px 10px;
                     margin-bottom: 20px;
                     max-width: 400px;
+                    background-color: var(--profile-bg);
+                    color: var(--black_to_white);
     
                     &:hover {
                         border: 1px solid #5643CC;
@@ -87,7 +94,7 @@
             }
 
             .active-update-profile {
-                background-color: #5643CC;
+                background-color: var(--profile-header-head-prewiew);
 
                 &:hover {
                     background-color: #6651f0;
@@ -108,7 +115,7 @@
             .pps-avatar-name {
                 font-size: 14px;
                 font-weight: 600;
-                color: rgb(102, 102, 102);
+                color: var(--profile-nav-panel-non-active);
                 margin-bottom: 20px;
                 cursor: pointer;
             }
@@ -116,6 +123,12 @@
             .pps-avatar-container {
                 display: flex;
                 position: relative;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none; 
 
                 .pps-avatar {
                     display: flex;
@@ -124,18 +137,18 @@
                     width: 200px;
                     height: 200px;
                     position: relative;
-                    padding: 3px;
                     box-sizing: border-box;
-                    $border: 5px;
+                    $border: 3px;
                     color: #FFF;
-                    background: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%) no-repeat;
+                    background: var(--profile-bg);
                     background-size: cover;
                     background-clip: padding-box;
-                    border: solid $border transparent; 
+                    border: solid $border #6651f0; 
+                    border-radius: 30px;        
                     border-radius: 100px;     
                 }
 
-                .pps-edit-button {
+                .pps-menu-button {
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -144,18 +157,164 @@
                     position: absolute;
                     bottom: 17px;
                     left: 17px;
-                    background-color: #5643CC;
+                    background-color: #6651f0;
                     color: white;
                     border: 0;
                     border-radius: 30px;
+                    z-index: 2;
 
                     &:hover {
-                        background-color: #6651f0;
+                        background-color: #7865f5;
+                    }
+                }
+
+                .pps-edit-button {
+                    align-items: center;
+                    justify-content: center;
+                    height: 30px;
+                    width: 30px;
+                    position: absolute;
+                    bottom: 17px;
+                    left: 17px;
+                    background-color: #6651f0;
+                    color: white;
+                    border: 0;
+                    border-radius: 30px;
+                    z-index: 1;
+
+                    animation: leftAvatarButtonSlideIn .4s;
+
+                    @keyframes leftAvatarButtonSlideIn {
+                        from {
+                            bottom: 10px;
+                            left: -20px;
+                        }
+                        to {
+                            bottom: 17px;
+                            left: 17px;
+                        }
+                    }
+                }
+
+                .pps-delete-button {
+                    align-items: center;
+                    justify-content: center;
+                    height: 30px;
+                    width: 30px;
+                    position: absolute;
+                    bottom: 17px;
+                    left: 17px;
+                    background-color: #6651f0;
+                    color: white;
+                    border: 0;
+                    z-index: 1;
+                    border-radius: 30px;
+
+                    animation: rightAvatarButtonSlideIn .4s;
+
+                    @keyframes rightAvatarButtonSlideIn {
+                        from {
+                            bottom: -20px;
+                            left: 10px;
+                        }
+                        to {
+                            bottom: 17px;
+                            left: 17px;
+                        }
+                    }
+                }
+
+                .pps-edit-active {
+                    align-items: center;
+                    justify-content: center;
+                    height: 30px;
+                    width: 30px;
+                    position: absolute;
+                    bottom: 10px;
+                    left: -20px;
+                    background-color: #6651f0;
+                    color: white;
+                    border: 0;
+                    border-radius: 30px;
+                    z-index: 1;
+                    animation: leftAvatarButtonSlideOut .4s;
+
+                    @keyframes leftAvatarButtonSlideOut {
+                        from {
+                            bottom: 17px;
+                            left: 17px;
+                        }
+                        to {
+                            bottom: 10px;
+                            left: -20px;
+                        }
                     }
 
-                    @media screen and (max-width: 769px) {
-                        bottom: 30px;
+                    &:hover {
+                        background-color: #7865f5;
                     }
+                }
+
+                .pps-delete-active {
+                    align-items: center;
+                    justify-content: center;
+                    height: 30px;
+                    width: 30px;
+                    position: absolute;
+                    bottom: -20px;
+                    left: 10px;
+                    background-color: #6651f0;
+                    color: white;
+                    border: 0;
+                    z-index: 1;
+                    border-radius: 30px;
+
+                    animation: rightAvatarButtonSlideOut .4s;
+
+                    @keyframes rightAvatarButtonSlideOut {
+                        from {
+                            bottom: 17px;
+                            left: 17px;
+                        }
+                        to {
+                            bottom: -20px;
+                            left: 10px;
+                        }
+                    }
+
+                    &:hover {
+                        background-color: #7865f5;
+                    }
+                }
+
+                .pps-edit-mob-button {
+                    align-items: center;
+                    justify-content: center;
+                    height: 30px;
+                    width: 30px;
+                    position: absolute;
+                    bottom: 27px;
+                    left: 27px;
+                    background-color: #6651f0;
+                    color: white;
+                    border: 0;
+                    z-index: 1;
+                    border-radius: 30px;
+                }
+
+                .pps-delete-mob-button {
+                    align-items: center;
+                    justify-content: center;
+                    height: 30px;
+                    width: 30px;
+                    position: absolute;
+                    bottom: 27px;
+                    left: 143px;
+                    background-color: #6651f0;
+                    color: white;
+                    border: 0;
+                    z-index: 1;
+                    border-radius: 30px;
                 }
             }
         }

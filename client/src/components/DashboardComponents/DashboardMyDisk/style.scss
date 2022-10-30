@@ -1,0 +1,18 @@
+.dashboard-content {
+    display: flex;
+    align-items: center;
+    margin-top: 85px;
+
+    @media screen and (max-width: 768px) {
+        margin-top: 70px;
+        justify-content: center;
+        padding-bottom: 70px;
+    }
+
+    .icon {
+        font-size: 100px;
+        @media screen and (max-width: 768px) {
+            font-size: 30px;
+        }
+    }
+}

@@ -30,16 +30,20 @@ export const checkAuth = () => async dispatch => {
 
         if(result.data.isAuthenticated === 'success'){
             dispatch({
-                type: AUTHENTICATED_SUCCESS,
-                payload: true
+                type: AUTHENTICATED_SUCCESS
             })
+            dispatch(loadUser())
             return true
         }
+        dispatch({
+            type: AUTHENTICATED_FAIL
+        })
+        return false
+        
     } 
     catch (error) {
         dispatch({
-            type: AUTHENTICATED_FAIL,
-            payload: false
+            type: AUTHENTICATED_FAIL
         })
         return false
     }
@@ -186,7 +190,7 @@ export const changePassword = (data) => async dispatch =>  {
         dispatch({
             type: CHANGE_PASSWORD_FAIL
         })
-        console.log('error in delete account')
+        console.log('error in change password')
         return [false, '']
     }
 }

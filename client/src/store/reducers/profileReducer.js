@@ -5,7 +5,11 @@ import {
     UPDATE_PROFILE_SUCCESS, 
     UPDATE_PROFILE_FAIL,
     DELETE_USER_SUCCESS,
-    DELETE_USER_FAIL
+    DELETE_USER_FAIL,
+    UPDATE_USER_AVATAR_SUCCESS,
+    UPDATE_USER_AVATAR_FAIL,
+    DELETE_USER_AVATAR_SUCCESS,
+    DELETE_USER_AVATAR_FAIL
 } from '../../actions/types'
 
 const initialState = {
@@ -13,11 +17,22 @@ const initialState = {
     email: '',
     username: '',
     name: '',
-    date_joined: ''
+    date_joined: '',
+    avatar: 'default.jpg'
+}
+
+const testState = {
+    user_id: 0,
+    email: 'aDiskStrg@gmail.com',
+    username: 'aDisk',
+    name: 'adisk',
+    date_joined: '2022-06-06',
+    avatar: 'default.jpg',
+    storage: 0
 }
 
 // eslint-disable-next-line
-export default function(state = initialState, action) {
+export default function(state = testState, action) {
     const { type, payload } = action
 
     switch(type) {
@@ -27,12 +42,9 @@ export default function(state = initialState, action) {
                 email: payload.email,
                 username: payload.username,
                 name: payload.profile.name,
-                date_joined: payload.date_joined
+                date_joined: payload.date_joined,
+                avatar: payload.profile.avatar
             }
-        
-        case LOAD_PROFILE_FAIL:
-        case LOGOUT_SUCCESS:
-            return initialState
         
         case UPDATE_PROFILE_SUCCESS:
             return {...state,
@@ -40,12 +52,22 @@ export default function(state = initialState, action) {
                 email: payload.email,
                 name: payload.name,
             }
+        
+        case UPDATE_USER_AVATAR_SUCCESS:
+        case DELETE_USER_AVATAR_SUCCESS:
+            return {...state,
+                avatar: payload
+            }
 
+        case LOAD_PROFILE_FAIL:
+        case LOGOUT_SUCCESS:
         case DELETE_USER_SUCCESS:
             return initialState
 
         case UPDATE_PROFILE_FAIL:
         case DELETE_USER_FAIL:
+        case UPDATE_USER_AVATAR_FAIL:
+        case DELETE_USER_AVATAR_FAIL:
             return state
 
         default:

@@ -16,7 +16,7 @@ const AdvantagesCarousel = (props) => {
     }
 
     return (
-      <CarouselContainer className="adv-carousel">
+      <CarouselContainer className="advant-carousel">
             <div className="adv-carousel-name-container">
                 <p className="icon">aDisk</p>
                 <div className="adv-workbtns-cont">
@@ -28,7 +28,7 @@ const AdvantagesCarousel = (props) => {
             </CarouselDescription>
             <div className="adv-carousel-bar-container">
                 <Link className="bar" to='/'><FontAwesomeIcon icon={faHome} style={{fontSize: '24px'}}/></Link>
-                <Link className="bar" to='/login'><FontAwesomeIcon icon={faUserAlt}/>&nbsp;&nbsp;<FormattedMessage id='adv_login'/></Link>
+                <Link className="bar" to='/login/entry'><FontAwesomeIcon icon={faUserAlt}/>&nbsp;&nbsp;<FormattedMessage id='adv_login'/></Link>
                 <Link className="bar" to='/register'><FontAwesomeIcon icon={faUserPlus}/>&nbsp;&nbsp;<FormattedMessage id='adv_reg'/></Link>
             </div>
       </CarouselContainer>

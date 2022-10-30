@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import { useNavigate } from 'react-router-dom'
 import { changePassword } from "../../../../../actions/auth"
 import { deleteAccount } from "../../../../../actions/auth";
+import { FormattedMessage } from 'react-intl'
 
 import ThemeSwitch from '../../../../GeneralComponents/ThemeSwitch'
 import { LanguageChoice } from '../../../../GeneralComponents/LanguageChoice'
@@ -63,7 +64,7 @@ const AccountSettings = (props) => {
 
         const res = await props.changePassword(sendData)
         if(res[0]){
-            setErrorState(res[1])
+            setErrorState('')
             setNewPassword('')
             setNewPasswordRep('')
         }
@@ -88,8 +89,8 @@ const AccountSettings = (props) => {
         <div className="ass-container">
             {!Mobile ?
                 <div className="ass-header">
-                    <p className="ass-header-name">Account settings</p>
-                    <p className="ass-header-desc">Update your private details here</p>
+                    <p className="ass-header-name"><FormattedMessage id="sett_acc"/></p>
+                    <p className="ass-header-desc"><FormattedMessage id="sett_acc_desc"/></p>
                 </div> 
             :
                 null}
@@ -98,51 +99,51 @@ const AccountSettings = (props) => {
                 { !Mobile ?
                     <div className="ass-main">
                         <div className="ass-theme">
-                            <p className="ass-theme-name">Appearance</p>
+                            <p className="ass-theme-name"><FormattedMessage id="sett_acc_appearance"/></p>
                             <ThemeSwitch checked={appTheme} onChange={() => handleThemeChange(!appTheme)}/>
                         </div>
                         <div className="ass-languague">
-                            <p className="ass-languague-name">Language</p>
+                            <p className="ass-languague-name"><FormattedMessage id="sett_acc_lang"/></p>
                             <LanguageChoice currentLocale={props.currentLocale} handleChange={props.handleChange} customStyles={langStyles}/>
                         </div>
                         <div className="ass-delete">
-                            <p className="ass-delete-name">Delete account</p>
-                            <p className="ass-delete-desc">Once you delete your account, there is no going back. Please be certain.</p>
-                            <button className="ass-delete-account" onClick={e => deleteAccount(e)}>Delete your account</button>
+                            <p className="ass-delete-name"><FormattedMessage id="sett_acc_delete_head"/></p>
+                            <p className="ass-delete-desc"><FormattedMessage id="sett_acc_delete_desc"/></p>
+                            <button className="ass-delete-account" onClick={e => deleteAccount(e)}><FormattedMessage id="sett_acc_delete_btn"/></button>
                         </div>
                     </div>
                 :
                     null
                 }
                 <div className="ass-password">
-                    <p className="ass-password-name">Change password</p>
+                    <p className="ass-password-name"><FormattedMessage id="sett_acc_pass_name"/></p>
                     <div className="password-line">
-                        <p>New password</p>
+                        <p><FormattedMessage id="sett_acc_pass_new"/></p>
                         <input type='password' autoComplete="off" value={newPassword} onChange={e => setNewPassword(e.target.value)}/>
                     </div>
                     <div className="password-line">
-                        <p>Confirm password</p>
+                        <p><FormattedMessage id="sett_acc_pass_confirm"/></p>
                         <input type='password' autoComplete="off" value={newPasswordRep} onChange={e => setNewPasswordRep(e.target.value)}/>
                     </div>
                     <div>
-                        {errorState ? <p style={{color: 'red', fontSize: '13px', bottom: '10px', position: 'relative'}}>{errorState}</p> : ''}
-                        <button id='ass-change-password-button' onClick={updateState ? e => changePassword(e) : null} className="update-profile">Update password</button>
+                        {errorState ? <p style={{color: 'red', fontSize: '13px', bottom: '10px', position: 'relative'}}>{<FormattedMessage id={errorState}/>}</p> : ''}
+                        <button id='ass-change-password-button' onClick={updateState ? e => changePassword(e) : null} className="update-profile"><FormattedMessage id="sett_acc_pass_btn"/></button>
                     </div>
                 </div>
                 { Mobile ?
                     <div className="ass-main">
                         <div className="ass-theme">
-                            <p className="ass-theme-name">Appearance</p>
+                            <p className="ass-theme-name"><FormattedMessage id="sett_acc_appearance"/></p>
                             <ThemeSwitch checked={appTheme} onChange={() => handleThemeChange(!appTheme)}/>
                         </div>
                         <div className="ass-languague">
-                            <p className="ass-languague-name">Languague</p>
+                            <p className="ass-languague-name"><FormattedMessage id="sett_acc_lang"/></p>
                             <LanguageChoice currentLocale={props.currentLocale} handleChange={props.handleChange} customStyles={langStyles}/>
                         </div>
                         <div className="ass-delete">
-                            <p className="ass-delete-name">Delete account</p>
-                            <p className="ass-delete-desc">Once you delete your account, there is no going back. Please be certain.</p>
-                            <button className="ass-delete-account" onClick={e => deleteAccount(e)}>Delete your account</button>
+                            <p className="ass-delete-name"><FormattedMessage id="sett_acc_delete_head"/></p>
+                            <p className="ass-delete-desc"><FormattedMessage id="sett_acc_delete_desc"/></p>
+                            <button className="ass-delete-account" onClick={e => deleteAccount(e)}><FormattedMessage id="sett_acc_delete_btn"/></button>
                         </div>
                     </div>
                 :

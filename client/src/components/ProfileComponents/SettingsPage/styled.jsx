@@ -19,6 +19,7 @@ export const SettingsContainer = styled.div`
     @media ${HomePageDevices.mobile} {
         align-items: center;
         width 100vw;
+        padding-top: 70px;
     }
 `
 

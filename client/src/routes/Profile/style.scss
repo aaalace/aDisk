@@ -3,11 +3,11 @@
     flex-direction: row;
     background-color: white;
     min-height: 100vh;
+    background-color: var(--profile-bg);
 
     @media screen and (max-width: 769px) {
         justify-content: center;
     }
-
 
     .profile-bg {
         display: none;

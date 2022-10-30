@@ -1,0 +1,101 @@
+.dashboard-panel {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+
+    .icon-contaner {
+        display: flex;
+        height: 15vh;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    .create-file-btn {
+        display: flex;
+        height: 50px;
+        width: 80%;
+        margin-top: 5px;
+        background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+        border-radius: 5px 5px 15px 15px;
+        border-style: none;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        font-size: 18px;
+        align-items: center;
+        justify-content: center;
+        text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    
+        &:hover {
+            background-image: linear-gradient(92.88deg, #5b72c6 9.16%, #455EB5 43.89%, #5643CC 64.72%);
+        }
+    }
+
+    .upload-file-btn {
+        @extend .create-file-btn;
+        border-radius: 15px 15px 5px 5px;
+        background-image: linear-gradient(92.88deg, #673FD7 9.16%, #5643CC 43.89%, #455EB5 64.72%);
+
+        &:hover {
+            background-image: linear-gradient(92.88deg, #5643CC 9.16%, #455EB5 43.89%, #5b72c6 64.72%);
+        }
+    }
+
+    .nav-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 35px;
+        margin-bottom: 20px;
+        width: 80%;
+
+        .nav-link {
+            display: flex;
+            margin-bottom: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            align-items: center;
+            padding: 8px;
+            border-radius: 10px;
+
+            .icon {
+                margin-left: 5px;
+                color: #6F6F6F;
+                width: 20px;
+            }
+
+            p{
+                margin-left: 10px;
+                color: var(--profile-nav-panel-non-active);
+            }
+        }
+
+        .active {
+
+            .icon {
+                color: var(--profile-header-head-prewiew);
+            }
+
+            p{
+                font-weight: var(--profile-nav-font-weight);
+                color: var(--profile-nav-panel-active);
+            }
+        }
+    }
+
+    .storage-panel {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        padding: 8px;
+        border-top: 1px solid;
+        color: var(--profile-header-head-prewiew);
+    }
+}

@@ -1,12 +1,18 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth.models import User
+from django.http import FileResponse
 from .models import UserProfile
 from .serializers import UserProfileSerializer
 from user.serializers import UserSerializer
 from validate_email import validate_email
+from rest_framework.permissions import AllowAny
+from aDisk.settings import STATICFILES_DIRS
+from .utils.delete_file import delete_file
+from .utils.crop_image import crop_image
 
 class GetUserProfileView(APIView):
+    permission_classes = (AllowAny, )
 
     def get(self, request, format=None):
         try:
@@ -23,7 +29,13 @@ class GetUserProfileView(APIView):
             user_profile = UserProfile.objects.get(user=user)
             user_profile = UserProfileSerializer(user_profile)
 
-            return Response({'profile': user_profile.data, 'username': str(username), 'user_id': user_id, 'email': email, 'date_joined': date_joined})
+            return Response({
+                'profile': user_profile.data, 
+                'username': str(username), 
+                'user_id': user_id, 
+                'email': email, 
+                'date_joined': date_joined, 
+            })
         except Exception as e:
             print(e)
             return Response({'error': 'Something went wrong'})
@@ -42,14 +54,74 @@ class UpdateUserProfileView(APIView):
 
             if validate_email(email):
                 if User.objects.exclude(id=user.id).filter(email=email).exists():
-                    return Response({'error': 'Email is already taken'})
+                    return Response({'error': 'email_is_already_in_use'})
                 if User.objects.exclude(id=user.id).filter(username=username).exists():
-                    return Response({'error': 'Username exists'})
+                    return Response({'error': 'user_already_exists'})
                 else:
                     UserProfile.objects.filter(user=user).update(name=name)
                     User.objects.filter(id=user.id).update(username=username, email=email)
                     return Response({'success': 'Data updated'})
-            return Response({'error': 'Email does not exists'})
+            return Response({'error': 'email_does_not_exists'})
         except Exception as e:
             print(e)
             return Response({'error': 'Something went wrong'})
+
+
+class GetUserAvatar(APIView):
+    permission_classes = (AllowAny, )
+    
+    def get(self, request, path, format=None,):
+        try:
+            img = open(STATICFILES_DIRS[0] + '/images/' +  path, 'rb')
+            response = FileResponse(img)
+            return response
+        except Exception as e:
+            print(e)
+            img = open(STATICFILES_DIRS[0] + '/images/default.jpg', 'rb')
+            response = FileResponse(img)
+            return response
+
+
+class UpdateUserAvatar(APIView):
+    
+    def put(self, request, format=None,):
+        try:
+            data = self.request.data
+            
+            base64 = data['b64']
+            crop = data['crop']
+            user_id = data['user_id']
+            prev_avatar = data['prev_avatar']
+
+            response = crop_image(base64, crop, user_id)
+
+            if response['status']:
+                if prev_avatar != 'default.jpg':
+                    delete_file(prev_avatar)
+                UserProfile.objects.filter(user_id=data['user_id']).update(avatar=response['name'])
+                return Response({'success': 'Avatar updated', 'path': response['name']})
+            return Response({'error': 'Can not save this file'})
+        except Exception as e:
+            print(e)
+            return Response({'error': 'Something went wrong'})
+
+
+class DeleteUserAvatar(APIView):
+    
+    def put(self, request, format=None,):
+        try:
+            data = self.request.data
+            user_id = data['user_id']
+            avatar = data['avatar']
+
+            DEFAULT_IMG = 'default.jpg'
+
+            if avatar != DEFAULT_IMG:
+                delete_file(avatar)
+                UserProfile.objects.filter(user_id=user_id).update(avatar='default.jpg')
+
+            return Response({'success': 'Avatar deleted'})
+        except Exception as e:
+            print(e)
+            return Response({'error': 'Something went wrong'})
+
