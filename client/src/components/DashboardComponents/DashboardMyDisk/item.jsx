@@ -25,11 +25,7 @@ const DashboardItem = (props) => {
                 {getItemPreview()}
             </DbItemPreviewStyled>
             <DbItemNameStyled className="item-name">
-                {
-                    item.type === 'image' ?
-                    <p>{item.name.split('#')[2]}</p> :
-                    <p>{item.name}</p>
-                }
+                <p>{item.name.split('#')[2]}</p>
             </DbItemNameStyled>
         </DashboardItemStyled>
     );

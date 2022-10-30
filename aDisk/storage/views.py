@@ -38,7 +38,7 @@ class CreateNewFolder(APIView):
             folder_dir = STATICFILES_DIRS[0] + f'/{user_id}/{folder_place}/{dt}#0#{folder_name}'
             try:
                 os.mkdir(folder_dir)
-                return Response({'success': 'Folder created'})
+                return Response({'success': 'Folder created', 'data': {'type': 'folder', 'format': 'folder', 'name': f"{dt}#0#{folder_name}"}})
             except FileExistsError:
                 return Response({'error': 'Folder exists'})
         except Exception as e:
@@ -71,7 +71,15 @@ class UploadNewFile(APIView):
                 file = open(completeName, "wb")
                 file.write(content)
                 file.close()
-                return Response({'success': 'File created'})
+                try:
+                    im = Image.open(completeName)
+                    item = {'type': 'image', 'format': name.split('.')[-1], 'name': file_name}
+                except IOError:
+                    if completeName.count('.') > 0:
+                        item = {'type': 'file', 'format': name.split('.')[-1], 'name': file_name}
+                    else:
+                        item = {'type': 'folder', 'format': 'folder', 'name': file_name}
+                return Response({'success': 'File created', 'data': item})
             except FileExistsError:
                 return Response({'error': 'File exists'})
         except Exception as e:
@@ -104,10 +112,10 @@ class GetFiles(APIView):
                     data['files'].append(item)
                 except IOError:
                     if f'{folder_dir} + {el}'.count('.') > 0:
-                        item = {'type': 'file', 'format': el.split('.')[-1], 'name': el.split('#')[-1]}
+                        item = {'type': 'file', 'format': el.split('.')[-1], 'name': el}
                         data['files'].append(item)
                     else:
-                        item = {'type': 'folder', 'format': 'folder', 'name': el.split('#')[-1]}
+                        item = {'type': 'folder', 'format': 'folder', 'name': el}
                         data['folders'].append(item)
             return Response({'success': 'Files got', 'data': data})
         except Exception as e:

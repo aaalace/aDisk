@@ -25,7 +25,9 @@ const DashboardMyDisk = (props) => {
     useEffect(() => {
         if(props.user_id !== 0){
             if(props.page === 'shared'){
-                if(props.items['shared'].folders.length === 0 && props.items['shared'].files.length === 0){
+                if(!props.items['shared'].filled){
+                    setFolders([])
+                    setFiles([])
                     getItems() 
                 }else{
                     setFiles(props.items['shared'].files)
@@ -33,7 +35,9 @@ const DashboardMyDisk = (props) => {
                 }
             }
             if(props.page !== 'shared'){
-                if(props.items['private'].folders.length === 0 && props.items['private'].files.length === 0){
+                if(!props.items['private'].filled){
+                    setFolders([])
+                    setFiles([])
                     getItems()
                 }else{
                     setFiles(props.items['private'].files)
@@ -41,7 +45,7 @@ const DashboardMyDisk = (props) => {
                 }
             }
         }
-    }, [props.page, readyToUpdate])
+    }, [props.page, props.items, readyToUpdate])
 
     useEffect(() => {
         if(props.user_id !== 0){
@@ -54,10 +58,10 @@ const DashboardMyDisk = (props) => {
             <MDMCreateUpload/>
             <DashboardItemsContainerStyled cnt={folders.length + files.length} >
             {folders.map(item => {
-                    return <DashboardItem key={nanoid()} item={item} page={props.page} user_id={props.user_id}/>
+                    return <DashboardItem key={item.name} item={item} page={props.page} user_id={props.user_id}/>
                 })}
             {files.map(item => {
-                return <DashboardItem key={nanoid()} item={item} page={props.page} user_id={props.user_id}/>
+                return <DashboardItem key={item.name} item={item} page={props.page} user_id={props.user_id}/>
             })}
             </DashboardItemsContainerStyled>
         </div>

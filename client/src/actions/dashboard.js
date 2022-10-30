@@ -25,11 +25,13 @@ export const createNewFolder = (user_id, folder_place, folder_name) => async dis
 
         const result = await app.post(`/storage/create_new_folder`, body, config)
 
+        console.log(folder_place)
         if(result.data.success){
             dispatch({
-                type: CREATE_NEW_FOLDER_SUCCESS
+                type: CREATE_NEW_FOLDER_SUCCESS,
+                payload: {'data': result.data.data, 'board': folder_place}
             })
-            return [true]
+            return [true, '']
         }
         else {
             dispatch({
@@ -41,7 +43,6 @@ export const createNewFolder = (user_id, folder_place, folder_name) => async dis
         dispatch({
             type: CREATE_NEW_FOLDER_FAIL
         })
-        console.log('error in creating new folder')
         return [false, '']
     }
 }
@@ -64,7 +65,8 @@ export const uploadNewFile = (user_id, folder_place, name, b64) => async dispatc
 
         if(result.data.success){
             dispatch({
-                type: UPLOAD_NEW_FILE_SUCCESS
+                type: UPLOAD_NEW_FILE_SUCCESS,
+                payload: {'data': result.data.data, 'board': folder_place}
             })
             return [true]
         }
@@ -78,7 +80,6 @@ export const uploadNewFile = (user_id, folder_place, name, b64) => async dispatc
         dispatch({
             type: UPLOAD_NEW_FILE_FAIL
         })
-        console.log('error in uploading new file')
         return [false, '']
     }
 }
@@ -114,7 +115,6 @@ export const getFiles = (user_id, board) => async dispatch => {
         dispatch({
             type: GET_FILES_FAIL
         })
-        console.log('error in getting ')
         return [false, []]
     }
 }
