@@ -23,20 +23,18 @@ const Dashboard = () => {
         window.scrollTo(0, 0)
     }, [])
 
-    const chooseBoard = (board) =>{
-        switch(board){
-            case 'my-disk':
-                return <DashboardMyDisk/>
-            case 'my-disk_1':
-                return <DashboardMyDisk/>
-            case 'my-disk_2':
-                return <DashboardMyDisk/>
-            case 'my-disk_3':
-                return <DashboardMyDisk/>
-            default: 
-                return <DashboardMyDisk/>
-        }
-    }
+    // const chooseBoard = (board) =>{
+    //     switch(board){
+    //         case 'recent':
+    //             return <DashboardMyDisk page={'recent'}/>
+    //         case 'files':
+    //             return <DashboardMyDisk/>
+    //         case 'shared':
+    //             return <DashboardMyDisk/>
+    //         default: 
+    //             return <DashboardMyDisk/>
+    //     }
+    // }
 
     return (
         <div className="dashboard">
@@ -45,7 +43,7 @@ const Dashboard = () => {
                     <DashboardPanel/>
                     <DashboardMainStyled className="dashboard-main">
                         <DashboardHeader page={board}/>
-                        {chooseBoard(board)}
+                        <DashboardMyDisk page={board}/>
                     </DashboardMainStyled>
                 </>
             :   
@@ -55,7 +53,7 @@ const Dashboard = () => {
                         <div className="tmb-mobile-box">
                             <TopMenuBar/>
                         </div>
-                        {chooseBoard(board)}
+                        <DashboardMyDisk page={board}/>
                     </div>
                     <DashboardMobileNav/>
                 </>

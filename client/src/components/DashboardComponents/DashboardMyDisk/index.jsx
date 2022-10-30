@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react"
 import './style.scss'
+import { connect } from "react-redux"
+import { getFiles } from "../../../actions/dashboard"
+import { nanoid } from 'nanoid'
 
 import MDMCreateUpload from "../MyDiskComponents/MDMobileComponents/MDMCreateUpload"
 
@@ -7,62 +10,32 @@ import { DashboardItemsContainerStyled } from "./styled"
 
 import DashboardItem from "./item"
 
-const DashboardMyDisk = () => {
+const DashboardMyDisk = (props) => {
 
-    const [items, setItems] = useState([])
+    const [folders, setFolders] = useState([])
+    const [files, setFiles] = useState([])
 
-    const getItems = () => {
-        const gottenItems = [
-            {
-                name: 'file.pptx',
-                type: 'file',
-                format: 'pptx'
-            },
-            {
-                name: 'image.png',
-                type: 'image',
-                format: 'png',
-            },
-            {
-                name: 'file.txt',
-                type: 'file',
-                format: 'txt'
-            },
-            {
-                name: 'file.xlsx',
-                type: 'file',
-                format: 'xlsx'
-            },
-            {
-                name: 'file.pdf',
-                type: 'file',
-                format: 'pdf'
-            },
-            {
-                name: 'file.docx',
-                type: 'file',
-                format: 'docx'
-            },
-            {
-                name: 'file.py',
-                type: 'file',
-                format: 'py'
-            },
-        ]
-        setItems(gottenItems)
-        
+    const getItems = async () => {
+        const gottenItems = await props.getFiles(props.user_id, props.page)
+        setFiles(gottenItems[1].files)
+        setFolders(gottenItems[1].folders)
     }
 
     useEffect(() => {
-        getItems()
-    }, [])
+        if(props.user_id !== 0){
+            getItems() 
+        }
+    }, [props.user_id, props.page])
 
     return (
         <div className="dashboard-content">
             <MDMCreateUpload/>
-            <DashboardItemsContainerStyled cnt={items.length} >
-                {items.map(item => {
-                    return <DashboardItem item={item} />
+            <DashboardItemsContainerStyled cnt={folders.length + files.length} >
+                {files.map(item => {
+                    return <DashboardItem key={nanoid()} item={item} />
+                })}
+                {folders.map(item => {
+                    return <DashboardItem key={nanoid()} item={item} />
                 })}
             </DashboardItemsContainerStyled>
         </div>
@@ -70,5 +43,13 @@ const DashboardMyDisk = () => {
 }
 
 
-export default DashboardMyDisk
+const mapStateToProps = (state) => {
+    return {
+        user_id: state.profile.user_id
+    }
+}
+
+
+export default connect(mapStateToProps, {getFiles})(DashboardMyDisk)
+
 

@@ -4,7 +4,9 @@ import {
     CREATE_NEW_FOLDER_SUCCESS,
     CREATE_NEW_FOLDER_FAIL,
     UPLOAD_NEW_FILE_SUCCESS,
-    UPLOAD_NEW_FILE_FAIL
+    UPLOAD_NEW_FILE_FAIL,
+    GET_FILES_SUCCESS,
+    GET_FILES_FAIL
 } from './types'
 
 
@@ -78,5 +80,40 @@ export const uploadNewFile = (user_id, folder_place, name, b64) => async dispatc
         })
         console.log('error in uploading new file')
         return [false, '']
+    }
+}
+
+
+export const getFiles = (user_id, board) => async dispatch => {
+    
+    try {
+        const config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken')
+            }
+        }
+
+        const result = await app.get(`/storage/get_files/${user_id}/${board}`, config)
+
+        if(result.data.success){
+            dispatch({
+                type: GET_FILES_SUCCESS
+            })
+            return [true, result.data.data]
+        }
+        else {
+            dispatch({
+                type: GET_FILES_FAIL
+            })
+        }
+        return [false, []]
+    } catch (error) {
+        dispatch({
+            type: GET_FILES_FAIL
+        })
+        console.log('error in getting ')
+        return [false, []]
     }
 }
