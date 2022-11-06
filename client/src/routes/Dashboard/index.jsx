@@ -23,19 +23,6 @@ const Dashboard = () => {
         window.scrollTo(0, 0)
     }, [])
 
-    // const chooseBoard = (board) =>{
-    //     switch(board){
-    //         case 'recent':
-    //             return <DashboardMyDisk page={'recent'}/>
-    //         case 'files':
-    //             return <DashboardMyDisk/>
-    //         case 'shared':
-    //             return <DashboardMyDisk/>
-    //         default: 
-    //             return <DashboardMyDisk/>
-    //     }
-    // }
-
     return (
         <div className="dashboard">
             {!Mobile ?
@@ -50,9 +37,6 @@ const Dashboard = () => {
                 <>
                     <DashboardMobileController board={board}/>
                     <div className="dashboard-mobile-main">
-                        <div className="tmb-mobile-box">
-                            <TopMenuBar/>
-                        </div>
                         <DashboardMyDisk page={board}/>
                     </div>
                     <DashboardMobileNav/>

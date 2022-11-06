@@ -4,7 +4,7 @@
     margin-top: 85px;
 
     @media screen and (max-width: 768px) {
-        margin-top: 70px;
+        margin-top: 10px;
         justify-content: center;
         padding-bottom: 70px;
     }
@@ -13,6 +13,69 @@
         font-size: 100px;
         @media screen and (max-width: 768px) {
             font-size: 30px;
+        }
+    }
+
+    .ofc_bgq {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 6;
+        top: 0;
+        left: 0;
+    }
+
+    .opened-folder-container {
+        overflow: auto;
+        $h: 70vh;
+        padding: 30px 30px;
+        $w: 70vw;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: $w;
+        height: $h;
+        background-color: var(--create-upload-bg);
+        z-index: 7;
+        top: calc((100vh - $h) / 2);
+        left: calc((100vw - $w) / 2);
+        border-radius: 5px;
+        cursor: pointer;
+
+        text-decoration: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none; 
+
+        animation: slideInCreateUploadDesktop 0.5s;
+
+        @keyframes slideInCreateUploadDesktop {
+            from {
+                transform: translateY(-100vh);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            $h: 80vh;
+            $w: 85vw;
+            width: $w;
+            height: $h;
+            top: calc((100vh - $h) / 2);
+            left: calc((100vw - $w) / 2);
+        }
+
+        .folderFileItem {
+            width: 100%;
+            height: 100px;
         }
     }
 }

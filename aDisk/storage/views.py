@@ -8,6 +8,7 @@ from PIL import Image
 from django.http import FileResponse
 import codecs
 from user_profile.models import UserProfile
+import uuid
 
 
 def create_user_folder(user_id):
@@ -35,11 +36,13 @@ class CreateNewFolder(APIView):
             folder_name = data['folder_name']
 
             dt = current_datetime()
+            unique = uuid.uuid4()
 
-            folder_dir = STATICFILES_DIRS[0] + f'/{user_id}/{folder_place}/{dt}#0#{folder_name}'
+            name = f'{unique}#{dt}#0#{folder_name}'
+            folder_dir = STATICFILES_DIRS[0] + f'/{user_id}/{folder_place}/{name}'
             try:
                 os.mkdir(folder_dir)
-                return Response({'success': 'Folder created', 'data': {'type': 'folder', 'format': 'folder', 'name': f"{dt}#0#{folder_name}"}})
+                return Response({'success': 'Folder created', 'data': {'type': 'folder', 'format': 'folder', 'name': name}})
             except FileExistsError:
                 return Response({'error': 'Folder exists'})
         except Exception as e:
@@ -56,18 +59,20 @@ class UploadNewFile(APIView):
             user_id = data['user_id']
             folder_place = data['folder_place']
             name = data['name']
-            b64 = data['b64']
-
-            dt = current_datetime()      
+            b64 = data['b64']   
 
             try:
                 content = b64.split(',')[1]
                 content = b64decode(content)
 
+                dt = current_datetime()   
+                unique = uuid.uuid4()
                 file_size = len(content)
+
                 file_dir = STATICFILES_DIRS[0] + f'/{user_id}/{folder_place}'
-                file_name = f'{dt}#{str(file_size)}#{name}'
+                file_name = f'{unique}#{dt}#{str(file_size)}#{name}'
                 completeName = os.path.join(file_dir, file_name)
+
                 file = open(completeName, "wb")
                 file.write(content)
                 file.close()
@@ -119,20 +124,65 @@ class GetFiles(APIView):
                         data['folders'].append(item)
             return Response({'success': 'Files got', 'data': data})
         except Exception as e:
-            return Response({'error': 'File not got'})
+            return Response({'error': 'Files not got'})
 
 
-class GetImagePreview(APIView):
+class GetFolderFiles(APIView):
     
-    def get(self, request, user_id, place, pic_dt, pic_size, pic_name, format=None):
+    def get(self, request, user_id, place, pic_unique, pic_dt, pic_size, pic_name, format=None):
 
         try:
             if place == 'files':
                 place = 'private'
             if place == 'recent':
                 place = 'private'
-            img = open(STATICFILES_DIRS[0] + f'/{user_id}/{place}/{pic_dt}' + "#" + f'{pic_size}' + "#" + f'{pic_name}', 'rb')
+            folder_dir = STATICFILES_DIRS[0] + f'/{user_id}/{place}/{pic_unique}' + '#' + pic_dt + "#" + pic_size + "#" + pic_name
+            dataset = os.listdir(folder_dir)
+
+            data = {
+                'files': []
+            }
+
+            for el in dataset:
+                try:
+                    im = Image.open(os.path.join(folder_dir, el))
+                    item = {'type': 'image', 'format': el.split('.')[-1], 'name': el}
+                    data['files'].append(item)
+                except IOError:
+                    item = {'type': 'file', 'format': el.split('.')[-1], 'name': el}
+                    data['files'].append(item)
+            return Response({'success': 'Files got', 'data': data})
+        except Exception as e:
+            print(e)
+            return Response({'error': 'Files not got'})
+
+class GetImagePreview(APIView):
+    
+    def get(self, request, user_id, place, pic_unique, pic_dt, pic_size, pic_name, format=None):
+
+        try:
+            if place == 'files':
+                place = 'private'
+            if place == 'recent':
+                place = 'private'
+            img = open(STATICFILES_DIRS[0] + f'/{user_id}/{place}/{pic_unique}' + '#' + pic_dt + "#" + pic_size + "#" + pic_name, 'rb')
             response = FileResponse(img)
+            return response
+        except Exception as e:
+            print(e)
+            return FileResponse('')
+
+
+class InstallFile(APIView):
+    
+    def get(self, request, user_id, place, pic_unique, pic_dt, pic_size, pic_name, format=None):
+
+        try:
+            if place == 'files':
+                place = 'private'
+            if place == 'recent':
+                place = 'private'
+            response = FileResponse(open(STATICFILES_DIRS[0] + f'/{user_id}/{place}/{pic_unique}' + '#' + pic_dt + "#" + pic_size + "#" + pic_name, 'rb'))
             return response
         except Exception as e:
             print(e)

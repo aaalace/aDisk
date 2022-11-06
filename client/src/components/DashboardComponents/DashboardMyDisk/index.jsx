@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react"
 import './style.scss'
 import { connect } from "react-redux"
-import { getFiles } from "../../../actions/dashboard"
-import { nanoid } from 'nanoid'
+import { getFiles, getFolderFiles } from "../../../actions/dashboard"
 
 import MDMCreateUpload from "../MyDiskComponents/MDMobileComponents/MDMCreateUpload"
 
@@ -14,6 +13,10 @@ const DashboardMyDisk = (props) => {
 
     const [folders, setFolders] = useState([])
     const [files, setFiles] = useState([])
+    const [folderFiles, setFolderFiles] = useState([])
+
+    const [openedFolder, setOpenedFolderName] = useState(false)
+    const [readyToUpdate, setReadyToUpdate] = useState(false)
 
     const getItems = async () => {
         const gottenItems = await props.getFiles(props.user_id, props.page)
@@ -21,7 +24,11 @@ const DashboardMyDisk = (props) => {
         setFolders(gottenItems[1].folders)
     }
 
-    const [readyToUpdate, setReadyToUpdate] = useState(false)
+    const getFolderItems = async () => {
+        const gottenItems = await props.getFolderFiles(props.user_id, props.page, openedFolder)
+        setFolderFiles(gottenItems[1].files)
+    }
+
     useEffect(() => {
         if(props.user_id !== 0){
             if(props.page === 'shared'){
@@ -45,7 +52,13 @@ const DashboardMyDisk = (props) => {
                 }
             }
         }
+        document.getElementById('no_right_click').addEventListener('contextmenu', (e)=>{e.preventDefault()});
     }, [props.page, props.items, readyToUpdate])
+
+    const closeOpenedFolder = () => {
+        setOpenedFolderName(false)
+        setFolderFiles([])
+    }
 
     useEffect(() => {
         if(props.user_id !== 0){
@@ -53,18 +66,37 @@ const DashboardMyDisk = (props) => {
         }
     }, [props.user_id])
 
+    useEffect(() => {
+        if(openedFolder){
+            getFolderItems()
+        }
+    }, [openedFolder])
+
     return (
-        <div className="dashboard-content">
+        <div className="dashboard-content" id="no_right_click">
             <MDMCreateUpload/>
-            <DashboardItemsContainerStyled cnt={folders.length + files.length} >
-            {folders.map(item => {
-                    return <DashboardItem key={item.name} item={item} page={props.page} user_id={props.user_id}/>
-                })}
-            {files.map(item => {
-                return <DashboardItem key={item.name} item={item} page={props.page} user_id={props.user_id}/>
-            })}
+            {openedFolder ?
+                <>
+                <div className="ofc_bgq" onClick={() => closeOpenedFolder()}/>
+                <div className="opened-folder-container">
+                    {folderFiles.length > 0 ? folderFiles.map(item => {
+                            return <DashboardItem folderFile={true} key={item.name} item={item} page={props.page} parentFolder={openedFolder} user_id={props.user_id}/>
+                    }) :
+                    <p style={{color: 'var(--black_to_white)'}}>Empty folder</p>}
+                </div> 
+                </>
+            :
+                <></>
+            }
+            <DashboardItemsContainerStyled cnt={folders.length + files.length}>
+                    {folders.map(item => {
+                            return <DashboardItem setOpenedFolderName={setOpenedFolderName} key={item.name} item={item} page={props.page} user_id={props.user_id}/>
+                    })}
+                    {files.map(item => {
+                            return <DashboardItem key={item.name} item={item} page={props.page} user_id={props.user_id}/>
+                    })}
             </DashboardItemsContainerStyled>
-        </div>
+        </div >
     );
 }
 
@@ -77,6 +109,6 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {getFiles})(DashboardMyDisk)
+export default connect(mapStateToProps, {getFiles, getFolderFiles})(DashboardMyDisk)
 
 

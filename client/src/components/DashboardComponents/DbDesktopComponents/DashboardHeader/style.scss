@@ -177,17 +177,8 @@
         width: 100%;
         height: fit-content;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: center;
         margin-top: 5px;
-
-        .tmb-box {
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-end;
-            flex-direction: row;
-            width: 100%;
-            height: 100%;
-        }
     }
 }

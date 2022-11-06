@@ -69,16 +69,15 @@ const DashboardHeader = (props) => {
                     <button className="search-button" type='button'><FontAwesomeIcon className="icon" icon={faMagnifyingGlass}/></button>
                 </div>
                 <div className="tmb-sort-container">
-                    <div className="tmb-box">
-                        <TopMenuBar/>
-                    </div> 
                     {
                     props.page !== 'recent' ?
                         <div className="sorting-wid">
                             <MDDSorting/>
                         </div> 
                     :
-                        null
+                        <p style={{marginTop: '10px', color: 'var(--black_to_white)'}}>
+                            Last 30 days
+                        </p>
                     }
                 </div>
             </div>
