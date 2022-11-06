@@ -11,6 +11,10 @@ const DashboardItem = (props) => {
 
     const getItemPreview = () => {
         if(item.type === 'image'){
+            if(props.folderFile){
+                console.log(props.parentFolder)
+                return <p>.{item.format}</p>
+            }
             return <DbItemPreviewImgStyled alt="" src={`${process.env.REACT_APP_API_URL}/storage/get_img_preview/${props.user_id}/${props.page}/${item.name.split('#')[0]}/${item.name.split('#')[1]}/${item.name.split('#')[2]}/${item.name.split('#')[3]}`}></DbItemPreviewImgStyled>
         }
         if(item.type === 'folder'){

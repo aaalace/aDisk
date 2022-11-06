@@ -80,7 +80,6 @@ export const DashboardFolderItemStyled = styled.div`
 
 `
 
-
 export const DbItemPreviewStyled = styled.div`
     display: flex;
     align-items: center;
@@ -146,7 +145,7 @@ export const DbFolderItemPreviewStyled = styled.div`
     margin: 3px 0;
 
     p {
-        font-size:30px;
+        font-size:16px;
         overflow: hidden;
         max-width: 90%;
     }

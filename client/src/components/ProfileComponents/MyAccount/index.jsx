@@ -60,7 +60,7 @@ const MyAccount = (props) => {
                 <div className="subscription-container">
                     <p className="title"><FontAwesomeIcon className="icon" icon={faCloud} />&nbsp;<FormattedMessage id='prof_status'/></p>
                     <div style={{display: 'flex', flexDirection: 'row', marginRight: '10px'}}>
-                        <p className="sub">AD+</p>
+                        <p className="sub">Standard</p>
                     </div>
                 </div>
             </MyAccountData>
